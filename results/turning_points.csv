@@ -1,0 +1,94 @@
+metro,date,direction,months_early
+Atlanta,2020-08-01,up,2
+Atlanta,2021-05-01,down,-1
+Atlanta,2021-09-01,up,2
+Atlanta,2022-04-01,down,2
+Atlanta,2022-08-01,up,3
+Atlanta,2024-05-01,down,0
+Atlanta,2025-11-01,down,0
+Austin,2021-10-01,down,2
+Austin,2022-02-01,up,3
+Austin,2022-07-01,down,1
+Boston,2020-08-01,down,2
+Boston,2022-11-01,up,1
+Charlotte,2022-03-01,down,3
+Charlotte,2022-06-01,up,1
+Charlotte,2024-08-01,down,1
+Chicago,2022-10-01,up,2
+Columbus,2021-02-01,down,-1
+Columbus,2022-08-01,up,0
+Dallas,2021-10-01,up,3
+Dallas,2023-02-01,down,3
+Denver,2020-07-01,down,1
+Denver,2021-04-01,up,1
+Denver,2021-07-01,down,0
+Denver,2024-09-01,up,2
+Denver,2025-02-01,down,2
+Denver,2025-09-01,up,3
+Denver,2026-01-01,down,1
+Houston,2022-08-01,up,2
+Houston,2023-04-01,down,-1
+Houston,2025-04-01,up,4
+Houston,2025-11-01,down,2
+Indianapolis,2021-05-01,down,0
+Indianapolis,2022-09-01,up,2
+Indianapolis,2023-08-01,down,1
+Indianapolis,2024-02-01,up,1
+Jacksonville,2021-07-01,up,1
+Jacksonville,2023-03-01,down,-1
+Jacksonville,2026-02-01,up,2
+Las Vegas,2021-06-01,up,0
+Las Vegas,2022-10-01,down,2
+Las Vegas,2023-09-01,up,2
+Las Vegas,2025-08-01,down,1
+Miami,2021-09-01,up,2
+Miami,2024-10-01,down,1
+Miami,2026-03-01,up,1
+Nashville,2021-08-01,up,2
+Nashville,2022-12-01,down,3
+Nashville,2023-03-01,up,-1
+Nashville,2023-06-01,down,3
+Nashville,2024-11-01,up,9
+Nashville,2025-12-01,down,-1
+Nashville,2026-05-01,up,12
+Orlando,2021-09-01,up,1
+Orlando,2023-11-01,up,0
+Orlando,2024-04-01,down,3
+Phoenix,2022-02-01,down,1
+Phoenix,2022-06-01,up,3
+Phoenix,2022-09-01,down,2
+Phoenix,2023-08-01,up,1
+Phoenix,2024-02-01,down,1
+Phoenix,2026-01-01,up,2
+Phoenix,2026-05-01,down,2
+Raleigh,2021-07-01,up,2
+Raleigh,2022-10-01,down,3
+Raleigh,2023-05-01,up,1
+Raleigh,2023-08-01,down,1
+Raleigh,2025-05-01,up,-1
+Raleigh,2025-08-01,down,3
+Salt Lake City,2021-11-01,down,1
+Salt Lake City,2024-09-01,up,6
+Salt Lake City,2026-04-01,down,1
+San Antonio,2022-08-01,up,1
+San Antonio,2023-04-01,down,2
+San Antonio,2025-07-01,up,2
+San Antonio,2025-11-01,down,0
+San Diego,2020-07-01,down,1
+San Diego,2020-11-01,up,3
+San Diego,2021-08-01,down,1
+San Diego,2022-02-01,up,2
+San Diego,2022-07-01,down,2
+San Diego,2023-04-01,up,4
+San Diego,2024-10-01,down,3
+San Diego,2025-12-01,up,1
+Seattle,2021-07-01,down,0
+Seattle,2022-02-01,up,2
+Seattle,2022-06-01,down,1
+Seattle,2023-08-01,up,3
+Seattle,2025-04-01,down,1
+Seattle,2025-09-01,up,2
+Seattle,2026-03-01,down,3
+Tampa,2023-01-01,down,-1
+Tampa,2023-12-01,up,-1
+Tampa,2026-03-01,up,2

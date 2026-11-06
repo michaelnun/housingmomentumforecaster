@@ -1,0 +1,10 @@
+signal,horizon_months,months_tested,first_month,housing_only,with_signal,gain,p_value,helps
+Out-of-town search,3,73,May 2020,0.871,0.868,-0.003,0.168,False
+Out-of-town search,6,67,Aug 2020,0.734,0.759,0.025,0.024,True
+Out-of-town search,12,56,Feb 2021,0.554,0.595,0.041,0.002,True
+Local buyer search,3,73,May 2020,0.871,0.869,-0.003,0.954,False
+Local buyer search,6,67,Aug 2020,0.734,0.721,-0.013,0.522,False
+Local buyer search,12,56,Feb 2021,0.554,0.542,-0.012,0.507,False
+Home Depot / Lowe's searches,3,73,May 2020,0.871,0.866,-0.006,0.583,False
+Home Depot / Lowe's searches,6,67,Aug 2020,0.734,0.737,0.003,0.368,False
+Home Depot / Lowe's searches,12,56,Feb 2021,0.554,0.556,0.002,0.088,False

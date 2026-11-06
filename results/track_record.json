@@ -1,0 +1,25 @@
+{
+  "model": "A",
+  "months_tested": 75,
+  "top5_hit_rate": 0.963,
+  "top5_excess_3m_pct": 1.14,
+  "top5_excess_per_year_pct": 4.54,
+  "driver_rank_corr": {
+    "Price momentum": 0.682,
+    "Market tightness": 0.503,
+    "Buyer demand": 0.161,
+    "Out-of-town demand": 0.161,
+    "Local jobs": 0.082,
+    "score": 0.871
+  },
+  "components": [
+    "Price momentum",
+    "Market tightness",
+    "Buyer demand",
+    "Out-of-town demand",
+    "Local jobs"
+  ],
+  "demo": false,
+  "as_of": "Aug 2026",
+  "first_test_month": "Mar 2020"
+}

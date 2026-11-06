@@ -1,0 +1,23 @@
+rank,metro,predicted_vs_avg_pct,signal,model_used,as_of
+1,Chicago,1.24,Overweight,A,Aug 2026
+2,Columbus,0.53,Overweight,A,Aug 2026
+3,San Diego,0.5,Overweight,A,Aug 2026
+4,Denver,0.48,Overweight,A,Aug 2026
+5,Salt Lake City,0.42,Overweight,A,Aug 2026
+6,Miami,0.36,Hold,A,Aug 2026
+7,Boston,0.33,Hold,A,Aug 2026
+8,Indianapolis,0.27,Hold,A,Aug 2026
+9,Jacksonville,0.12,Hold,A,Aug 2026
+10,Dallas,-0.0,Hold,A,Aug 2026
+11,Seattle,-0.02,Hold,A,Aug 2026
+12,Tampa,-0.02,Hold,A,Aug 2026
+13,Nashville,-0.07,Hold,A,Aug 2026
+14,Austin,-0.09,Hold,A,Aug 2026
+15,Phoenix,-0.27,Hold,A,Aug 2026
+16,Orlando,-0.34,Hold,A,Aug 2026
+17,Houston,-0.34,Hold,A,Aug 2026
+18,Atlanta,-0.43,Avoid,A,Aug 2026
+19,Raleigh,-0.53,Avoid,A,Aug 2026
+20,San Antonio,-0.67,Avoid,A,Aug 2026
+21,Charlotte,-0.69,Avoid,A,Aug 2026
+22,Las Vegas,-0.77,Avoid,A,Aug 2026

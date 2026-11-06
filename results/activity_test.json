@@ -1,0 +1,96 @@
+{
+  "new_listings": {
+    "label": "New listings",
+    "scorecard": {
+      "Naive": {
+        "rank_corr": 0.225,
+        "top5_overlap": 0.322,
+        "direction": 0.582
+      },
+      "A": {
+        "rank_corr": 0.412,
+        "top5_overlap": 0.45,
+        "direction": 0.641
+      },
+      "B": {
+        "rank_corr": 0.394,
+        "top5_overlap": 0.431,
+        "direction": 0.642
+      }
+    },
+    "B_vs_A": {
+      "comparison": "B vs A",
+      "DM_stat": -1.303,
+      "p_value_one_sided": 0.904,
+      "verdict": "no clear difference"
+    },
+    "test_months": 72,
+    "lead_time": [
+      {
+        "months_ahead": 0,
+        "corr_buyer_search": NaN,
+        "corr_outoftown": NaN
+      },
+      {
+        "months_ahead": 1,
+        "corr_buyer_search": -0.037,
+        "corr_outoftown": 0.025
+      },
+      {
+        "months_ahead": 2,
+        "corr_buyer_search": -0.07,
+        "corr_outoftown": 0.018
+      },
+      {
+        "months_ahead": 3,
+        "corr_buyer_search": -0.092,
+        "corr_outoftown": 0.013
+      },
+      {
+        "months_ahead": 4,
+        "corr_buyer_search": -0.088,
+        "corr_outoftown": 0.014
+      },
+      {
+        "months_ahead": 5,
+        "corr_buyer_search": -0.086,
+        "corr_outoftown": 0.022
+      },
+      {
+        "months_ahead": 6,
+        "corr_buyer_search": -0.073,
+        "corr_outoftown": 0.045
+      },
+      {
+        "months_ahead": 7,
+        "corr_buyer_search": -0.079,
+        "corr_outoftown": 0.062
+      },
+      {
+        "months_ahead": 8,
+        "corr_buyer_search": -0.106,
+        "corr_outoftown": 0.068
+      },
+      {
+        "months_ahead": 9,
+        "corr_buyer_search": -0.144,
+        "corr_outoftown": 0.07
+      },
+      {
+        "months_ahead": 10,
+        "corr_buyer_search": -0.165,
+        "corr_outoftown": 0.089
+      },
+      {
+        "months_ahead": 11,
+        "corr_buyer_search": -0.171,
+        "corr_outoftown": 0.097
+      },
+      {
+        "months_ahead": 12,
+        "corr_buyer_search": -0.175,
+        "corr_outoftown": 0.11
+      }
+    ]
+  }
+}

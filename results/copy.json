@@ -1,0 +1,28 @@
+{
+  "stages": {
+    "Rising": "Prices have been beating other metros and are expected to keep doing so",
+    "Turning up": "Prices have lagged, but the model expects them to start beating other metros",
+    "Turning down": "Prices have been strong, but the model expects them to fall behind",
+    "Falling": "Prices have lagged and are expected to keep lagging"
+  },
+  "audience": {
+    "Real estate": {
+      "Rising": "Strong market: put agents and listing marketing here.",
+      "Turning up": "Early opportunity: start building listings and agent capacity.",
+      "Turning down": "Expect slower sales soon; prepare sellers for price cuts.",
+      "Falling": "Hold spending; watch for the outlook to turn."
+    },
+    "Home improvement retail": {
+      "Rising": "Active market: keep move-in stock (paint, appliances) deep.",
+      "Turning up": "Activity picking up: plan staff and stock ahead of it.",
+      "Turning down": "Fewer moves ahead: shift toward repair and remodel products.",
+      "Falling": "Keep inventory lean; lean on maintenance and pro customers."
+    },
+    "Investors": {
+      "Rising": "Strong momentum, but entry prices are already up.",
+      "Turning up": "Potential early entry: the outlook is improving before prices show it.",
+      "Turning down": "Warning sign: consider trimming exposure.",
+      "Falling": "Wait for the outlook to improve before buying."
+    }
+  }
+}

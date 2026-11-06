@@ -1,0 +1,101 @@
+[
+  {
+    "signal": "Out-of-town search",
+    "horizon_months": 3,
+    "months_tested": 73,
+    "first_month": "May 2020",
+    "housing_only": 0.871,
+    "with_signal": 0.868,
+    "gain": -0.003,
+    "p_value": 0.168,
+    "helps": false
+  },
+  {
+    "signal": "Out-of-town search",
+    "horizon_months": 6,
+    "months_tested": 67,
+    "first_month": "Aug 2020",
+    "housing_only": 0.734,
+    "with_signal": 0.759,
+    "gain": 0.025,
+    "p_value": 0.024,
+    "helps": true
+  },
+  {
+    "signal": "Out-of-town search",
+    "horizon_months": 12,
+    "months_tested": 56,
+    "first_month": "Feb 2021",
+    "housing_only": 0.554,
+    "with_signal": 0.595,
+    "gain": 0.041,
+    "p_value": 0.002,
+    "helps": true
+  },
+  {
+    "signal": "Local buyer search",
+    "horizon_months": 3,
+    "months_tested": 73,
+    "first_month": "May 2020",
+    "housing_only": 0.871,
+    "with_signal": 0.869,
+    "gain": -0.003,
+    "p_value": 0.954,
+    "helps": false
+  },
+  {
+    "signal": "Local buyer search",
+    "horizon_months": 6,
+    "months_tested": 67,
+    "first_month": "Aug 2020",
+    "housing_only": 0.734,
+    "with_signal": 0.721,
+    "gain": -0.013,
+    "p_value": 0.522,
+    "helps": false
+  },
+  {
+    "signal": "Local buyer search",
+    "horizon_months": 12,
+    "months_tested": 56,
+    "first_month": "Feb 2021",
+    "housing_only": 0.554,
+    "with_signal": 0.542,
+    "gain": -0.012,
+    "p_value": 0.507,
+    "helps": false
+  },
+  {
+    "signal": "Home Depot / Lowe's searches",
+    "horizon_months": 3,
+    "months_tested": 73,
+    "first_month": "May 2020",
+    "housing_only": 0.871,
+    "with_signal": 0.866,
+    "gain": -0.006,
+    "p_value": 0.583,
+    "helps": false
+  },
+  {
+    "signal": "Home Depot / Lowe's searches",
+    "horizon_months": 6,
+    "months_tested": 67,
+    "first_month": "Aug 2020",
+    "housing_only": 0.734,
+    "with_signal": 0.737,
+    "gain": 0.003,
+    "p_value": 0.368,
+    "helps": false
+  },
+  {
+    "signal": "Home Depot / Lowe's searches",
+    "horizon_months": 12,
+    "months_tested": 56,
+    "first_month": "Feb 2021",
+    "housing_only": 0.554,
+    "with_signal": 0.556,
+    "gain": 0.002,
+    "p_value": 0.088,
+    "helps": false
+  }
+]
