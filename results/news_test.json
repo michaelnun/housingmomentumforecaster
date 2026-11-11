@@ -1,0 +1,66 @@
+{
+  "rule_file": "docs/preregistration_news.md",
+  "metros_with_news": 12,
+  "3m": {
+    "passed": false,
+    "rules": {
+      "Main values, all metros: better with p < 0.05": false,
+      "Main values, 23 new metros: better (above zero)": false,
+      "Raw values, all metros: better (above zero)": false
+    },
+    "all_metros": {
+      "check": "All metros",
+      "months": 69,
+      "gain": -0.0095,
+      "better_share": 0.232,
+      "p": 0.9795,
+      "test": "3-month score",
+      "version": "Main values",
+      "share_significant": null
+    },
+    "new_metros": null,
+    "raw_values": {
+      "check": "All metros",
+      "months": 69,
+      "gain": -0.0186,
+      "better_share": 0.275,
+      "p": 0.9857,
+      "test": "3-month score",
+      "version": "Raw values",
+      "share_significant": null
+    },
+    "first_month": "Oct 2020",
+    "last_month": "Jun 2026"
+  },
+  "12m": {
+    "passed": false,
+    "rules": {
+      "Main values, all metros: better with p < 0.05": false,
+      "Main values, 23 new metros: better (above zero)": false,
+      "Raw values, all metros: better (above zero)": false
+    },
+    "all_metros": {
+      "check": "All metros",
+      "months": 51,
+      "gain": -0.0123,
+      "better_share": 0.373,
+      "p": 0.7313,
+      "test": "12-month outlook",
+      "version": "Main values",
+      "share_significant": null
+    },
+    "new_metros": null,
+    "raw_values": {
+      "check": "All metros",
+      "months": 51,
+      "gain": -0.0279,
+      "better_share": 0.392,
+      "p": 0.9259,
+      "test": "12-month outlook",
+      "version": "Raw values",
+      "share_significant": null
+    },
+    "first_month": "Jul 2021",
+    "last_month": "Sep 2025"
+  }
+}
