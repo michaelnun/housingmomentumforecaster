@@ -12,6 +12,7 @@ A monthly dashboard that ranks 45 big U.S. housing markets by where home values 
 - **12-month outlook (0–100, experimental):** the same for the year ahead, adding rent growth.
 - **Stages:** Rising, Turning up, Turning down, Falling (where prices have been vs. where they're expected to go).
 - **How often it's right** next to every score, a **"market right now"** panel (home value, rent, days to sell, price cuts, buyer's or seller's market), plain-language reasons, advice for each audience, CSV downloads and shareable links for each metro.
+- **Out-of-town interest:** how much people across the U.S. search "[city] homes for sale", compared with other cities and a year ago. Shown as context only, not used in the scores (see findings).
 - **Updates itself** every month (GitHub Actions), and saves each month's published scores so the live track record can't be revised later.
 
 ![Metro detail](docs/metro.png)
@@ -26,12 +27,14 @@ Tested month by month from May 2020 to 2026. Every forecast used only data avail
 | Top 5 picks | Beat the typical metro over the next 3 months 99% of the time, about +6% a year faster growth |
 | Scores 80–100 | Beat the typical metro 98% of the time (3 months) and 88% (12 months) |
 | Turning points | Score crossed 50 before 84% of 174 lasting price-trend turns, typically 2 months early |
-| **Does Google search help?** | **No.** Not at 3 months. Nationwide search looked helpful 12 months out on the first 22 metros, but on 23 metros added later it made the outlook worse (−0.06), and across all 45 it added nothing (p = 0.56). It was removed, as the [pre-registered rule](docs/preregistration.md) required |
+| **Does Google search help?** | **No.** Not at 3 or 6 months. Nationwide search looked helpful 12 months out on the first 22 metros, but on 23 metros added later it made the outlook worse (−0.06), and across all 45 it added nothing (p = 0.56). It was removed, as the [pre-registered rule](docs/preregistration.md) required |
+| Where search did help | Nationwide "[city] homes for sale" searches helped a year out in Sun Belt and Mountain West metros (+0.037, p = 0.003), where people from other states were buying in 2020–23, and hurt in coastal, Midwest and Northeast metros (−0.082). The first 22 metros were mostly Sun Belt, which is why it looked useful at first. The gain faded after 2023, and listing views and rent capture it |
+| Search as an early read | **No.** Search arrives weeks before Zillow's numbers, so we tested whether one extra month of search improves the 3-month score, with the [rule written down first](docs/preregistration_nowcast.md). It didn't (−0.003, p = 0.93); waiting for Zillow's next month would add +0.083 |
 | **Does website activity help?** | **Yes.** Realtor.com listing page views improve the forecast on Zillow's raw values, including on the 23 untouched metros (+0.08, p < 0.001). **Solid** |
 | 12-month outlook | Ranking accuracy 0.65 vs. 0.42 for "trend continues" across all metros (p = 0.003), but not clearly better on the 23 new metros, so it's labeled experimental |
 | Didn't help | Local buyer and seller searches, Home Depot / Lowe's searches, metro jobs, Census store sales |
 
-**Takeaway:** what people *search* for didn't add anything beyond housing data, but what they actually *look at* (listing views) did.
+**Takeaway:** what people *search* for didn't add anything beyond housing data, not even as an early signal, but what they actually *look at* (listing views) did. Nationwide search tracked one big event, the 2020–23 move to the Sun Belt, and didn't carry over to other regions or later years.
 
 **How we kept it honest:** all modeling choices were made on the original 22 metros. The rules for judging them on 23 new metros were [written down before that data was downloaded](docs/preregistration.md). Every finding is re-checked on raw (unsmoothed) values, on early vs. recent years and with each metro dropped (`step9_stability.py`; dashboard → Track record).
 
@@ -39,7 +42,7 @@ Tested month by month from May 2020 to 2026. Every forecast used only data avail
 
 ![Which signals help](docs/signal_tests.png)
 
-**Limits:** Zillow smooths its home-value series, which flatters short-term accuracy; on raw values it's lower (0.63 vs. 0.54 for the trend at 3 months) but still significant. The scores compare metros with each other and don't forecast national price levels. Google Trends data is a sample. Realtor.com changed how it counts page views in late 2021.
+**Limits:** Zillow smooths its home-value series, which flatters short-term accuracy; on raw values it's lower (0.63 vs. 0.54 for the trend at 3 months) but still significant. The scores compare metros with each other and don't forecast national price levels. Google Trends data is a sample, and nationwide searches for nearly every city jumped in spring 2026 and fell back by fall while local searches didn't (most likely a change in Google's data). Realtor.com changed how it counts page views in late 2021.
 
 ## Data (all free and public)
 
@@ -62,7 +65,8 @@ The downloaded data is stored in `data/`.
 7. `step7_signal_tests.py`: does each extra signal help at 3, 6 and 12 months?
 8. `step8_robustness.py`: the tests again on Zillow's unsmoothed values
 9. `step9_stability.py`: untouched metros, early vs. recent years, drop-one-metro, verdict per finding
-10. `dashboard.py`: Streamlit dashboard
+10. `step10_search.py`: search as an early read (pre-registered test), where search helped, and the out-of-town interest table for the dashboard
+11. `dashboard.py`: Streamlit dashboard
 
 ## Monthly updates (automatic)
 
@@ -75,7 +79,7 @@ pip install -r requirements.txt
 python step1_collect.py          # about 1 hour (Google Trends is slow)
 python step2_build.py && python step3_model.py && python step4_index.py
 python step5_activity.py && python step6_findings.py && python step7_signal_tests.py
-python step8_robustness.py && python step9_stability.py
+python step8_robustness.py && python step9_stability.py && python step10_search.py
 streamlit run dashboard.py
 ```
 

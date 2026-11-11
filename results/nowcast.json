@@ -1,0 +1,47 @@
+{
+  "passed": false,
+  "rules": {
+    "Main values, all 45 metros: better with p < 0.05": false,
+    "Main values, 23 new metros: better (above zero)": false,
+    "Raw values, all 45 metros: better (above zero)": false
+  },
+  "rule_file": "docs/preregistration_nowcast.md",
+  "all_metros": {
+    "check": "All metros",
+    "months": 74,
+    "gain": -0.0033,
+    "better_share": 0.432,
+    "p": 0.9309,
+    "test": "Early read: search one month ahead",
+    "version": "Main values",
+    "share_significant": null
+  },
+  "new_metros": {
+    "check": "New metros (untouched test)",
+    "months": 74,
+    "gain": -0.0038,
+    "better_share": 0.432,
+    "p": 0.8234,
+    "test": "Early read: search one month ahead",
+    "version": "Main values",
+    "share_significant": null
+  },
+  "raw_values": {
+    "check": "All metros",
+    "months": 74,
+    "gain": -0.0164,
+    "better_share": 0.324,
+    "p": 0.9984,
+    "test": "Early read: search one month ahead",
+    "version": "Raw values",
+    "share_significant": null
+  },
+  "waiting_for_zillow": {
+    "waiting_gain": 0.0828,
+    "early_read_gain": -0.0033,
+    "share_recovered": -0.04
+  },
+  "months_tested": 74,
+  "first_month": "May 2020",
+  "last_month": "Jun 2026"
+}

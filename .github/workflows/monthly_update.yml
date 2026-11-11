@@ -43,7 +43,7 @@ jobs:
           python step3_model.py
           python step4_index.py
 
-      - name: "Steps 5-9: extra tests, charts and stability checks (allowed to fail)"
+      - name: "Steps 5-10: extra tests, charts, stability checks and search (allowed to fail)"
         continue-on-error: true
         run: |
           python step5_activity.py || echo "step 5 failed"
@@ -51,6 +51,7 @@ jobs:
           python step7_signal_tests.py || echo "step 7 failed"
           python step8_robustness.py || echo "step 8 failed"
           python step9_stability.py || echo "step 9 failed"
+          python step10_search.py || echo "step 10 failed"
 
       - name: Save new data and results to the repo
         run: |
@@ -61,6 +62,7 @@ jobs:
             echo "Nothing changed."
           else
             git commit -m "Monthly data update $(date -u +%Y-%m-%d)"
+            git pull --rebase origin main   # in case someone pushed while this was running
             git push
           fi
 

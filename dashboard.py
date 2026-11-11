@@ -63,6 +63,8 @@ def load():
         "tp": _csv("turning_points.csv", parse_dates=["date"]),
         "sigt": _csv("signal_tests.csv"), "rob": _csv("robustness_unsmoothed.csv"),
         "stab": _csv("stability.csv"), "verdicts": _json("stability.json"),
+        "interest": _csv("search_interest.csv", parse_dates=["date"]), "nowcast": _json("nowcast.json"),
+        "nowcast_t": _csv("nowcast.csv"), "where": _csv("search_by_region.csv"),
     }
 
 
@@ -139,6 +141,18 @@ def outlook_caveat():
         return ("Experimental: the 12-month outlook beat the simple 'trend continues' guess across all "
                 "metros, but not clearly on the 23 metros added after the model was built.")
     return ""
+
+
+def interest_note(latest):
+    return (f"How much people across the U.S. search \"[city] homes for sale\", through {latest:%B %Y} "
+            "(search data arrives weeks before Zillow's). Each city is compared with the typical city in the "
+            "same month. **Context only, not used in the scores:** it didn't improve forecasts overall. It "
+            "tracked the 2020–23 move to the Sun Belt, but not other regions or recent years (Track record page).")
+
+
+SPIKE_NOTE = ("Nationwide searches for nearly every city jumped in spring 2026 and fell back by fall, while local "
+              "searches didn't, so it's most likely a change in Google's data. Comparing each city with the "
+              "typical city removes most of it.")
 
 
 def open_metro():
@@ -398,6 +412,34 @@ elif view == "Metro":
     if ok(r.get("for_sale_vs_last_year_pct")):
         m7.metric("Homes for sale vs. a year ago", f"{r['for_sale_vs_last_year_pct']:+.0f}%")
 
+    si = D["interest"]
+    mi = si[si["metro"] == pick].sort_values("date") if si is not None else None
+    if mi is not None and len(mi):
+        li = mi.iloc[-1]
+        st.markdown("#### Out-of-town interest")
+        st.caption(interest_note(li["date"]))
+        c1, c2 = st.columns([1, 2])
+        with c1:
+            if ok(li["vs_year_ago_pct"]):
+                st.metric("vs. a year ago, compared with other cities", f"{li['vs_year_ago_pct']:+.0f}%",
+                          help="Change in this city's nationwide searches relative to the typical city "
+                               "(3-month averages).")
+                st.metric("Rank for rising interest", f"{int(li['rank_rising'])} of {int(li['metros_ranked'])}")
+        with c2:
+            rec = mi[mi["date"] >= mi["date"].max() - pd.DateOffset(years=5)]
+            fig = go.Figure()
+            fig.add_trace(go.Scatter(x=rec["date"], y=rec["typical_3m"], mode="lines", name="Typical city",
+                                     line=dict(color="#8C958F", width=1.8, dash="dot"),
+                                     hovertemplate="%{x|%b %Y}: %{y:.0f}<extra>Typical city</extra>"))
+            fig.add_trace(go.Scatter(x=rec["date"], y=rec["index_3m"], mode="lines", name=pick,
+                                     line=dict(color="#2F6B45", width=2.5),
+                                     hovertemplate="%{x|%b %Y}: %{y:.0f}<extra>" + pick + "</extra>"))
+            fig.update_yaxes(range=[0, 105], title="Search interest (100 = peak)")
+            style(fig, 240).update_layout(showlegend=True, legend=dict(orientation="h", y=1.2, x=0))
+            st.plotly_chart(fig, width="stretch")
+        if li["date"] >= pd.Timestamp("2026-03-01"):
+            st.caption(SPIKE_NOTE)
+
     left, right = st.columns([1, 1.3])
     with left:
         st.markdown("#### Why")
@@ -472,6 +514,20 @@ elif view == "Alerts":
                             f"{pill(x['prev_band'], BAND_COLORS)} → {pill(x['outlook_band'], BAND_COLORS)}</h4>"
                             f"<p>{copy['audience_12m'][audience][x['outlook_band']]}</p></div>",
                             unsafe_allow_html=True)
+    si = D["interest"]
+    if si is not None and len(si):
+        last = si[si["date"] == si["date"].max()].dropna(subset=["vs_year_ago_pct"]).sort_values("vs_year_ago_pct")
+        if len(last) >= 10:
+            st.markdown(f"#### Out-of-town interest: biggest changes ({last['date'].iloc[0]:%B %Y})")
+            st.caption("Nationwide \"[city] homes for sale\" searches vs. a year ago, compared with other cities. "
+                       "Context only, not used in the scores. " + SPIKE_NOTE)
+            iv = pd.concat([last.head(5), last.tail(5)])
+            fig = go.Figure(go.Bar(x=iv["vs_year_ago_pct"], y=iv["metro"], orientation="h",
+                                   marker_color=["#2F6B45" if v > 0 else "#B5533C" for v in iv["vs_year_ago_pct"]],
+                                   text=[f"{v:+.0f}%" for v in iv["vs_year_ago_pct"]], textposition="outside"))
+            fig.update_xaxes(title="Out-of-town search interest vs. a year ago, relative to other cities (%)")
+            st.plotly_chart(style(fig, 360), width="stretch")
+
     st.markdown("#### Biggest 3-month score moves")
     mv = now.dropna(subset=["score_chg"]).sort_values("score_chg")
     mv = pd.concat([mv.head(5), mv.tail(5)]).drop_duplicates("metro").sort_values("score_chg")
@@ -631,6 +687,49 @@ elif view == "Track record":
         piv.columns = [f"{c} months" for c in piv.columns]
         st.dataframe(piv, width="stretch")
 
+    wh = D["where"]
+    if wh is not None and len(wh):
+        with st.expander("Where did nationwide search help a year out?"):
+            st.markdown("Nationwide search added to housing data alone, 12 months ahead, by group of metros. "
+                        "It helped in the Sun Belt and Mountain West, where people from other states were "
+                        "buying during 2020–23, and hurt elsewhere. The first 22 metros were mostly Sun Belt, "
+                        "which is why it looked useful before the 23 new metros (mostly coastal, Midwest and "
+                        "Northeast) were added. Once listing page views and rent are in the model, it adds "
+                        "nothing anywhere.")
+            w = wh.assign(cell=[f"{g:+.3f}{' ✓' if p < 0.05 else ''}" for g, p in zip(wh["gain"], wh["p"])])
+            w = w.rename(columns={"check": "Metros", "cell": "Change in ranking accuracy",
+                                  "better_share": "Better in % of months", "metros": "Number of metros"})
+            st.dataframe(w[["Metros", "Number of metros", "Change in ranking accuracy", "Better in % of months"]]
+                         .style.format({"Better in % of months": "{:.0%}"}), hide_index=True, width="stretch")
+
+    nc = D["nowcast"]
+    if nc and nc.get("all_metros"):
+        st.markdown("#### Can search give an early read before Zillow's numbers?")
+        a_, n_, r_ = nc["all_metros"], nc.get("new_metros") or {}, nc.get("raw_values") or {}
+        verdict_ = "Passed" if nc["passed"] else "Failed"
+        wz = nc.get("waiting_for_zillow") or {}
+        st.markdown(
+            f"Search is available weeks before Zillow publishes, so we tested whether one extra month of search "
+            f"(newer than the latest housing data) improves the 3-month score. The pass/fail rule was written "
+            f"down before the test was run. **{verdict_}.** Change in ranking accuracy: {a_['gain']:+.3f} across "
+            f"all metros (p = {a_['p']:.2f}), {n_.get('gain', float('nan')):+.3f} on the 23 new metros, "
+            f"{r_.get('gain', float('nan')):+.3f} on raw values"
+            + (f". Waiting for Zillow's next month would add {wz['waiting_gain']:+.3f}; search recovers none of "
+               f"that." if wz.get("waiting_gain") and (wz.get("early_read_gain") or 0) <= 0 else ".")
+            + (" So search isn't used for an early read." if not nc["passed"] else
+               " So the dashboard shows an early read."))
+        t_ = D["nowcast_t"]
+        with st.expander("Every check, and the rule as written beforehand"):
+            if t_ is not None:
+                t2 = t_.assign(cell=[f"{g:+.3f}{' ✓' if p < 0.05 else ''}" for g, p in zip(t_["gain"], t_["p"])])
+                st.dataframe(t2.rename(columns={"test": "Test", "check": "Metros", "version": "Values",
+                                                "cell": "Change in ranking accuracy", "months": "Months"})
+                             [["Test", "Values", "Metros", "Months", "Change in ranking accuracy"]],
+                             hide_index=True, width="stretch")
+            pre2 = Path(__file__).resolve().parent / "docs" / "preregistration_nowcast.md"
+            if pre2.exists():
+                st.markdown(pre2.read_text())
+
     rob = D["rob"]
     if rob is not None and len(rob):
         st.markdown("#### Stricter test: Zillow's unsmoothed home values")
@@ -724,7 +823,9 @@ A monthly ranking of {n_metros} big U.S. housing markets by where home values ar
 2. **Compare each metro with the typical one**, so national swings like mortgage rates drop out.
 3. **Model:** a simple, explainable regression. The 3-month score uses housing data plus Realtor.com
    listing page views. The 12-month outlook adds rent growth, which only helps further out.
-   Google searches were tested at every horizon and kept out: once listing views are in, they add nothing.
+   Google searches were tested at every horizon, and as an early read before Zillow's numbers come out,
+   and kept out: once listing views are in, they add nothing. Nationwide searches for each city tracked the
+   2020–23 move to the Sun Belt but not other regions; the Metro page shows them as context.
 4. **Tested honestly:** for every month since 2020, the model learned only from data available at the
    time, then predicted. The Track record page shows how often it was right.
 """)
@@ -734,8 +835,10 @@ A monthly ranking of {n_metros} big U.S. housing markets by where home values ar
   carries those forward.
 - Zillow smooths its home-value series, which flatters short-term accuracy. The stricter test on raw
   values gives clearly lower numbers (Track record page).
-- Search data comes from Google Trends samples, which shift a little every download; city names like
-  Portland or Columbus also pick up searches for other places with the same name.
+- Search data comes from Google Trends samples, which shift a little every download. Shared city names
+  get their state added (Portland, Oregon), but some searches for other places can still slip in.
+- Nationwide searches for nearly every city jumped in spring 2026 and fell back by fall, while local
+  searches didn't, most likely a change in Google's data.
 - The choices to add page views to the 3-month score and search to the 12-month outlook were made
   after seeing results for the original 22 metros. The 23 metros added later were an untouched test,
   with the rules written down beforehand (Track record page). Page views passed. Search failed and was

@@ -1,0 +1,8 @@
+check,months,gain,better_share,p,metros
+All metros,56,0.0217,0.643,0.0754,45
+Sun Belt and Mountain West,56,0.037,0.679,0.0027,21
+"Coastal, Midwest and Northeast",56,-0.0822,0.107,0.9982,24
+Original 22 metros,56,0.0492,0.786,0.0003,22
+New metros (untouched test),56,-0.0552,0.321,0.9332,23
+Early years,28,0.0206,0.857,0.0,45
+Recent years,28,0.0228,0.429,0.2343,45
