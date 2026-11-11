@@ -49,6 +49,11 @@ def _csv(name, **kw):
     return pd.read_csv(f, **kw) if f.exists() else None
 
 
+def _raw(name):
+    f = RESULTS.parent / "data" / "raw" / name
+    return pd.read_csv(f, parse_dates=["date"]) if f.exists() else None
+
+
 def _json(name):
     f = RESULTS / name
     return json.loads(f.read_text()) if f.exists() else {}
@@ -72,6 +77,7 @@ def load():
         "news_test": _json("news_test.json"), "news_test_t": _csv("news_test.csv"),
         "news_metro": _csv("news_metro.csv", parse_dates=["date"]), "news_heads": _csv("news_headlines.csv"),
         "news_sent": _csv("news_sentiment.csv"), "news_sent_j": _json("news_sentiment.json"),
+        "pv": _raw("pageviews_clean.csv"),
     }
 
 
@@ -206,6 +212,68 @@ def track_page(title, query, **params):
     if st.session_state.get("ga_last") != key:
         st.session_state["ga_last"] = key
         ga_event("page_view", page_title=title, page_location=SITE + query, **params)
+
+
+STATUS_STYLE = {"In the score": ("#2F6B45", "#E6F0E9"), "Context only": ("#5E6863", "#EEF0EF"),
+                "Being tested": ("#8A5A1E", "#F6EEDF"), "Passed its test": ("#2F6B45", "#E6F0E9")}
+
+
+def signal_card(col, label, value, detail, status):
+    fg, bg = STATUS_STYLE[status]
+    col.markdown(
+        f"<div class='card' style='height:100%'><div class='lbl'>{label}</div>"
+        f"<div style='font-size:1.45rem;font-weight:700;margin:2px 0'>{value}</div>"
+        f"<p style='font-size:0.85rem;color:#3A423E;min-height:2.6em'>{detail}</p>"
+        f"<span style='display:inline-block;margin-top:6px;padding:1px 8px;border-radius:999px;font-size:0.75rem;"
+        f"font-weight:600;color:{fg};background:{bg}'>{status}</span></div>", unsafe_allow_html=True)
+
+
+def web_signals(pick):
+    """What the web says about one metro: the four web signals side by side, each labeled by
+    whether it's used in the score (it improved forecasts) or shown as context only."""
+    cards = []
+    pv = D["pv"]
+    mp = pv[pv["metro"] == pick].sort_values("date") if pv is not None else None
+    if mp is not None and len(mp):
+        last = mp.iloc[-1]
+        yr = mp[mp["date"] == last["date"] - pd.DateOffset(years=1)]
+        chg = f", {100 * (last['pageviews'] / yr.iloc[0]['pageviews'] - 1):+.0f}% vs. a year ago" if len(yr) else ""
+        cards.append(("LISTING VIEWS · REALTOR.COM", f"{last['pageviews']:.2f}× U.S.",
+                      f"Views per home for sale vs. the U.S. average ({last['date']:%b %Y}){chg}", "In the score"))
+    si = D["interest"]
+    mi = si[si["metro"] == pick].sort_values("date") if si is not None else None
+    if mi is not None and len(mi) and ok(mi.iloc[-1]["vs_year_ago_pct"]):
+        li = mi.iloc[-1]
+        cards.append(("OUT-OF-TOWN SEARCHES · GOOGLE", f"{li['vs_year_ago_pct']:+.0f}%",
+                      f"vs. a year ago, compared with other cities; rank {int(li['rank_rising'])} of "
+                      f"{int(li['metros_ranked'])} for rising interest", "Context only"))
+    nm, nt = D["news_metro"], D["news_test"]
+    mn = nm[nm["metro"] == pick].dropna(subset=["tone_3m"]).sort_values("date") if nm is not None else None
+    if mn is not None and len(mn) and ok(mn.iloc[-1]["typical_tone_3m"]):
+        ln = mn.iloc[-1]
+        final = bool(nt.get("complete"))
+        passed = final and any((nt.get(k) or {}).get("passed") for k in ("3m", "12m"))
+        diff = ln["tone_3m"] - ln["typical_tone_3m"]
+        cards.append(("NEWS TONE · GDELT", f"{diff:+.2f}",
+                      f"{'More positive' if diff > 0 else 'More negative'} than the typical metro's housing news; "
+                      f"{ln['articles_3m']:,.0f} articles a month",
+                      "Passed its test" if passed else "Context only" if final else "Being tested"))
+    ns = D["news_sent"]
+    sm = ns[ns["metro"] == pick] if ns is not None else None
+    if sm is not None and len(sm) and sm.iloc[0]["headlines"] >= 3:
+        x = sm.iloc[0]
+        cards.append(("HEADLINE SENTIMENT · OUR VADER", f"{x['sent_housing']:+.2f}",
+                      f"{x['share_positive']:.0%} of {int(x['headlines'])} recent headlines positive, "
+                      f"{x['share_negative']:.0%} negative", "Context only"))
+    if not cards:
+        return
+    st.markdown(f"#### What the web says about {pick}")
+    st.caption("Online signals about this market. **In the score** = it improved the forecasts in testing. "
+               "**Context only** = shown to help read the market, but it didn't improve the forecasts "
+               "(or can't be tested yet). Details further down and on the Track record page.")
+    cols = st.columns(len(cards))
+    for col, card in zip(cols, cards):
+        signal_card(col, *card)
 
 
 def open_metro():
@@ -431,6 +499,8 @@ elif view == "Metro":
         st.markdown(f"<div class='note'>{r['note']}</div>", unsafe_allow_html=True)
     if ok(r.get("data_gaps")) and r.get("data_gaps"):
         st.caption(f"Data note: {r['data_gaps']}. Scores for this metro are a little less certain.")
+
+    web_signals(pick)
 
     st.markdown(f"#### What it means for {audience.lower()}")
     st.markdown(f"- **Next 3 months:** {copy['audience'][audience][r['stage']]}")
