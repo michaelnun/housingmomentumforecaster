@@ -34,5 +34,6 @@ python step7_signal_tests.py || echo STEP 7 (signal tests) FAILED - dashboard st
 python step8_robustness.py || echo STEP 8 (robustness) FAILED - dashboard still works
 python step9_stability.py || echo STEP 9 (stability) FAILED - dashboard still works
 python step10_search.py || echo STEP 10 (search) FAILED - dashboard still works
+python step11_news.py || echo STEP 11 (news) FAILED - dashboard still works
 echo DONE %date% %time%. Open the dashboard with run_dashboard.bat
 exit /b 0

@@ -137,3 +137,26 @@ BLS_AREAS = {
     "Cleveland": ("39", ["17460"]), "Indianapolis": ("18", ["26900"]),
     "Louisville": ("21", ["31140"]),
 }
+
+# News coverage of each city's housing market (web content), from the GDELT DOC 2.0 API: U.S.
+# English-language news, January 2017 on. The rules for testing it were written down before any
+# news data was downloaded: docs/preregistration_news.md
+NEWS_START = "2017-01-01"
+NEWS_PHRASES = ['"housing market"', '"home prices"', '"home sales"', '"real estate market"',
+                '"housing prices"']
+# How each city is written in the news query, when not just its name. Variants are tried in order;
+# a later one is used only if the ones before it return almost nothing (NEWS_MIN_ARTICLES).
+NEWS_NAMES = {
+    "Portland": ['"portland" oregon', '"portland"'],
+    "Columbus": ['"columbus" ohio', '"columbus"'],
+    "Richmond": ['"richmond" virginia', '"richmond"'],
+    "Birmingham": ['"birmingham" alabama', '"birmingham"'],
+    "Washington DC": ['"washington dc"', '"washington d.c."', '"district of columbia"'],
+    "St. Louis": ['"st. louis"', '"st louis"', '"saint louis"'],
+}
+NEWS_MIN_ARTICLES = 5  # a metro averaging fewer matching articles a month counts as having no news data
+NEWS_QUERIES = {
+    m: [f'{name} ({" OR ".join(NEWS_PHRASES)}) sourcecountry:US sourcelang:english'
+        for name in NEWS_NAMES.get(m, [f'"{m.lower()}"'])]
+    for m in METROS
+}

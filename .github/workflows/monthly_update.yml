@@ -43,7 +43,7 @@ jobs:
           python step3_model.py
           python step4_index.py
 
-      - name: "Steps 5-10: extra tests, charts, stability checks and search (allowed to fail)"
+      - name: "Steps 5-11: extra tests, charts, stability checks, search and news (allowed to fail)"
         continue-on-error: true
         run: |
           python step5_activity.py || echo "step 5 failed"
@@ -52,6 +52,7 @@ jobs:
           python step8_robustness.py || echo "step 8 failed"
           python step9_stability.py || echo "step 9 failed"
           python step10_search.py || echo "step 10 failed"
+          python step11_news.py || echo "step 11 failed"
 
       - name: Save new data and results to the repo
         run: |

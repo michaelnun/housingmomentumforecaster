@@ -161,6 +161,26 @@ def build(raw: Path):
         df["pageviews_yoy"] = lv - np.log(g["pageviews"].shift(12))
         extra["pageviews"] = ["pageviews_level", "pageviews_chg3", "pageviews_yoy"]
 
+    news_file = raw / "news_clean.csv"  # news coverage and tone (GDELT), see docs/preregistration_news.md
+    if news_file.exists():
+        news = pd.read_csv(news_file, parse_dates=["date"])
+        qf = raw / "news_quality.csv"
+        if qf.exists():  # metros with too little news count as having no news data
+            ok = pd.read_csv(qf).query("usable")["metro"]
+            news = news[news["metro"].isin(ok)]
+        news["tone_x"] = news["tone"] * news["articles"]
+        df = df.merge(news[["metro", "date", "articles", "share", "tone_x"]].rename(
+            columns={"articles": "news_articles", "share": "news_share"}), on=["metro", "date"], how="left")
+        g = df.groupby("metro")
+        roll = lambda c: g[c].transform(lambda s: s.rolling(3, min_periods=3).sum())
+        n3 = roll("news_articles")
+        df["news_tone_3m"] = roll("tone_x") / n3.where(n3 > 0)          # average tone, last 3 months
+        df["news_tone_chg3"] = df["news_tone_3m"] - g["news_tone_3m"].shift(3)
+        share3 = g["news_share"].transform(lambda s: s.rolling(3, min_periods=3).mean())
+        df["news_vol_yoy"] = np.log(share3.where(share3 > 0)) - np.log(
+            share3.where(share3 > 0).groupby(df["metro"]).shift(12))      # news volume vs. a year ago
+        extra["news"] = ["news_tone_3m", "news_tone_chg3", "news_vol_yoy"]
+
     for key, fname, terms in (("seller", "seller_clean.csv", SELLER_TERMS),
                               ("moving", "movingto_clean.csv", ["movingto"])):
         f = raw / fname

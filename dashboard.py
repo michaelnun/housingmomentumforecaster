@@ -5,9 +5,13 @@
 Links can open a page directly, e.g.  ?view=Metro&metro=Denver
 """
 import json
+import random
+import threading
+import time
 from pathlib import Path
 
 import pandas as pd
+import requests
 import plotly.graph_objects as go
 import streamlit as st
 
@@ -65,6 +69,8 @@ def load():
         "stab": _csv("stability.csv"), "verdicts": _json("stability.json"),
         "interest": _csv("search_interest.csv", parse_dates=["date"]), "nowcast": _json("nowcast.json"),
         "nowcast_t": _csv("nowcast.csv"), "where": _csv("search_by_region.csv"),
+        "news_test": _json("news_test.json"), "news_test_t": _csv("news_test.csv"),
+        "news_metro": _csv("news_metro.csv", parse_dates=["date"]), "news_heads": _csv("news_headlines.csv"),
     }
 
 
@@ -155,6 +161,52 @@ SPIKE_NOTE = ("Nationwide searches for nearly every city jumped in spring 2026 a
               "typical city removes most of it.")
 
 
+# ---------------------------------------------------------------- usage tracking (web usage analysis)
+SITE = "https://housing-momentum-forecaster.streamlit.app/"
+
+
+def _ga_cfg():
+    """Google Analytics 4 keys from the app's Streamlit secrets ([ga4] measurement_id, api_secret).
+    Without them nothing is tracked."""
+    try:
+        g = st.secrets["ga4"]
+        return g["measurement_id"], g["api_secret"]
+    except Exception:
+        return None
+
+
+def _post(url, body):
+    try:
+        requests.post(url, json=body, timeout=4)
+    except Exception:
+        pass
+
+
+def ga_event(event, **params):
+    """Send one anonymous event to Google Analytics (Measurement Protocol): which page, metro,
+    industry, download. No personal information. Runs in the background, never breaks the page."""
+    cfg = _ga_cfg()
+    if not cfg:
+        return
+    ss = st.session_state
+    if "ga_client" not in ss:
+        ss["ga_client"] = f"{random.randint(10**8, 10**9)}.{int(time.time())}"
+        ss["ga_session"] = str(int(time.time()))
+    body = {"client_id": ss["ga_client"],
+            "events": [{"name": event, "params": {"session_id": ss["ga_session"], "engagement_time_msec": 1000,
+                                                  **{k: str(v)[:100] for k, v in params.items()}}}]}
+    url = f"https://www.google-analytics.com/mp/collect?measurement_id={cfg[0]}&api_secret={cfg[1]}"
+    threading.Thread(target=_post, args=(url, body), daemon=True).start()
+
+
+def track_page(title, query, **params):
+    """A page view, sent once per page (Streamlit re-runs the script on every click)."""
+    key = (title, query, params.get("audience"))
+    if st.session_state.get("ga_last") != key:
+        st.session_state["ga_last"] = key
+        ga_event("page_view", page_title=title, page_location=SITE + query, **params)
+
+
 def open_metro():
     """Callback for 'Open a metro': switch pages before the next run draws them."""
     m = st.session_state.get("jump")
@@ -170,6 +222,10 @@ if "view" not in st.session_state:
     st.session_state["view"] = qp.get("view") if qp.get("view") in VIEWS else "Overview"
 if "metro" not in st.session_state and qp.get("metro"):
     st.session_state["metro"] = qp.get("metro")  # checked against this month's metros below
+if "ga_started" not in st.session_state:  # first page of a visit: did they arrive by a shared link?
+    st.session_state["ga_started"] = True
+    if qp.get("metro"):
+        ga_event("shared_link_open", metro=qp.get("metro"))
 
 with st.sidebar:
     st.markdown("### Settings")
@@ -185,7 +241,7 @@ with st.sidebar:
     st.caption("Scores compare metros with each other. A high score means faster growth than the "
                "typical big metro, not a promise that prices will rise. Not financial advice.")
     st.caption("Data: Zillow (home values, rents, market stats), Realtor.com listing views, "
-               "Google Trends, FRED, Census, BLS. Refreshed monthly.")
+               "Google Trends, GDELT news, FRED, Census, BLS. Refreshed monthly.")
 
 now = hist[hist["date"] == month].sort_values("rank")
 as_of = pd.Timestamp(month).strftime("%B %Y")
@@ -213,6 +269,7 @@ if view == "Overview":
     if HAS12 and not has12_now:
         st.caption("The 12-month outlook starts in 2021 (it needs a year of tested history first).")
     hz = st.segmented_control("Horizon", horizons, default="Next 3 months") or "Next 3 months"
+    track_page("Overview", f"?view=Overview&horizon={hz.split()[1]}m", audience=audience)
     twelve = hz == "Next 12 months"
     sc, fc, px = ("outlook_12m", "forecast_12m", "price_vs_avg_12m") if twelve else \
         ("score", "forecast", "price_vs_avg")
@@ -321,6 +378,7 @@ if view == "Overview":
                             "note": "Now vs. year ahead", "todo3": f"Next 3 months ({audience})",
                             "todo12": f"Year ahead ({audience})"})
     st.download_button("Download this ranking (CSV, opens in Excel)", dl.to_csv(index=False),
+                       on_click=ga_event, args=("file_download",), kwargs={"file_name": "ranking.csv"},
                        file_name=f"housing_momentum_{pd.Timestamp(month):%Y_%m}.csv", mime="text/csv")
 
 # ================================================================ Metro
@@ -334,6 +392,7 @@ elif view == "Metro":
         st.session_state["metro"] = now.iloc[0]["metro"]
     pick = st.selectbox("Metro", metros, key="metro")
     st.query_params["metro"] = pick
+    track_page(f"Metro: {pick}", f"?view=Metro&metro={pick.replace(' ', '+')}", metro=pick, audience=audience)
     r = now[now["metro"] == pick].iloc[0]
     series = hist[(hist["metro"] == pick) & (hist["date"] <= month)].sort_values("date")
     st.markdown(f"## {pick}")
@@ -440,6 +499,46 @@ elif view == "Metro":
         if li["date"] >= pd.Timestamp("2026-03-01"):
             st.caption(SPIKE_NOTE)
 
+    nm, nh, nt = D["news_metro"], D["news_heads"], D["news_test"]
+    mn = nm[nm["metro"] == pick].dropna(subset=["tone_3m"]).sort_values("date") if nm is not None else None
+    if mn is not None and len(mn):
+        ln = mn.iloc[-1]
+        passed = any((nt.get(k) or {}).get("passed") for k in ("3m", "12m"))
+        status = ("It improved the forecasts in testing (Track record page)." if passed else
+                  "**Context only, not used in the scores:** it didn't improve the forecasts (Track record page)."
+                  if nt.get("3m") else "**Context only, not used in the scores.**")
+        st.markdown(f"#### {pick} in the news")
+        st.caption(f"U.S. news articles about {pick}'s housing market (tracked by GDELT), through {ln['date']:%B %Y}. "
+                   f"Tone is GDELT's automated score of the wording: above 0 = more positive, below 0 = more "
+                   f"negative. {status}")
+        c1, c2 = st.columns([1, 2])
+        with c1:
+            st.metric("Articles a month (last 3 months)", f"{ln['articles_3m']:,.0f}")
+            if ok(ln["typical_tone_3m"]):
+                st.metric("Tone vs. the typical metro", f"{ln['tone_3m'] - ln['typical_tone_3m']:+.2f}",
+                          help="Average tone of this metro's housing news over the last 3 months, minus the "
+                               "typical metro's.")
+        with c2:
+            rec = mn[mn["date"] >= mn["date"].max() - pd.DateOffset(years=5)]
+            fig = go.Figure()
+            fig.add_trace(go.Scatter(x=rec["date"], y=rec["typical_tone_3m"], mode="lines", name="Typical metro",
+                                     line=dict(color="#8C958F", width=1.8, dash="dot"),
+                                     hovertemplate="%{x|%b %Y}: %{y:.2f}<extra>Typical metro</extra>"))
+            fig.add_trace(go.Scatter(x=rec["date"], y=rec["tone_3m"], mode="lines", name=pick,
+                                     line=dict(color="#2F6B45", width=2.5),
+                                     hovertemplate="%{x|%b %Y}: %{y:.2f}<extra>" + pick + "</extra>"))
+            fig.add_hline(y=0, line_color="#C9CFCB")
+            fig.update_yaxes(title="News tone (3-month average)")
+            style(fig, 240).update_layout(showlegend=True, legend=dict(orientation="h", y=1.2, x=0))
+            st.plotly_chart(fig, width="stretch")
+        hs = nh[nh["metro"] == pick].head(5) if nh is not None else None
+        if hs is not None and len(hs):
+            st.markdown("**Latest headlines**")
+            for h_ in hs.itertuples():
+                title = str(h_.title).replace("[", "(").replace("]", ")")
+                when = f" · {pd.Timestamp(h_.seen):%b %d}" if ok(h_.seen) else ""
+                st.markdown(f"- [{title}]({h_.url}) · {h_.site}{when}")
+
     left, right = st.columns([1, 1.3])
     with left:
         st.markdown("#### Why")
@@ -486,11 +585,13 @@ elif view == "Metro":
         "sale_to_list_pct": "Sale price vs. asking (%)", "price_cut_share_pct": "Listings with a price cut (%)",
         "market_type": "Market", "reason": "Why"})
     st.download_button(f"Download {pick}'s full history (CSV)", hd.to_csv(index=False),
+                       on_click=ga_event, args=("file_download",), kwargs={"file_name": "metro_history.csv", "metro": pick},
                        file_name=f"housing_momentum_{pick.lower().replace(' ', '_').replace('.', '')}.csv",
                        mime="text/csv")
 
 # ================================================================ Alerts
 elif view == "Alerts":
+    track_page("Alerts", "?view=Alerts", audience=audience)
     st.markdown(f"#### 3-month stage changes in {as_of}")
     changed = now[now["prev_stage"].notna() & (now["prev_stage"] != now["stage"])]
     if changed.empty:
@@ -539,6 +640,7 @@ elif view == "Alerts":
 
 # ================================================================ Track record
 elif view == "Track record":
+    track_page("Track record", "?view=Track+record", audience=audience)
     st.markdown("#### How often is it right?")
     st.caption("Every score was made month by month using only data available at the time, then checked "
                "against what home values actually did. 'Beat' = grew faster than the typical big metro.")
@@ -730,6 +832,35 @@ elif view == "Track record":
             if pre2.exists():
                 st.markdown(pre2.read_text())
 
+    ntest = D["news_test"]
+    if ntest and (ntest.get("3m") or {}).get("all_metros"):
+        st.markdown("#### Does news coverage help? (web content)")
+        lines = []
+        for key, label in (("3m", "3-month score"), ("12m", "12-month outlook")):
+            r_ = ntest.get(key) or {}
+            a_ = r_.get("all_metros")
+            if not a_:
+                continue
+            n_, w_ = r_.get("new_metros") or {}, r_.get("raw_values") or {}
+            lines.append(f"- **{label}: {'passed' if r_['passed'] else 'failed'}.** Change in ranking accuracy "
+                         f"{a_['gain']:+.3f} across all metros (p = {a_['p']:.2f}), "
+                         f"{n_.get('gain', float('nan')):+.3f} on the 23 new metros, "
+                         f"{w_.get('gain', float('nan')):+.3f} on raw values.")
+        st.markdown("We added how much U.S. news writes about each city's housing market, and how positive or "
+                    "negative that coverage is (GDELT news data since 2017), to the score models. The pass/fail rule "
+                    "was written down before any news data was downloaded.\n\n" + "\n".join(lines))
+        tn = D["news_test_t"]
+        with st.expander("Every check, and the rule as written beforehand"):
+            if tn is not None:
+                t3 = tn.assign(cell=[f"{g:+.3f}{' ✓' if p < 0.05 else ''}" for g, p in zip(tn["gain"], tn["p"])])
+                st.dataframe(t3.rename(columns={"test": "Test", "check": "Metros", "version": "Values",
+                                                "cell": "Change in ranking accuracy", "months": "Months"})
+                             [["Test", "Values", "Metros", "Months", "Change in ranking accuracy"]],
+                             hide_index=True, width="stretch")
+            pre3 = Path(__file__).resolve().parent / "docs" / "preregistration_news.md"
+            if pre3.exists():
+                st.markdown(pre3.read_text())
+
     rob = D["rob"]
     if rob is not None and len(rob):
         st.markdown("#### Stricter test: Zillow's unsmoothed home values")
@@ -795,6 +926,7 @@ elif view == "Track record":
 
 # ================================================================ About
 else:
+    track_page("About", "?view=About", audience=audience)
     o = track.get("outlook", {})
     st.markdown("#### What this is")
     st.markdown(f"""
@@ -818,8 +950,8 @@ A monthly ranking of {n_metros} big U.S. housing markets by where home values ar
     st.markdown("#### How it works")
     st.markdown("""
 1. **Data**, every month: Zillow (home values, rents, how fast homes sell, inventory, price cuts),
-   Realtor.com listing page views, Google Trends searches, mortgage rates (FRED), unemployment and jobs
-   (FRED, BLS) and home-improvement store sales (Census).
+   Realtor.com listing page views, Google Trends searches, news coverage of each housing market (GDELT),
+   mortgage rates (FRED), unemployment and jobs (FRED, BLS) and home-improvement store sales (Census).
 2. **Compare each metro with the typical one**, so national swings like mortgage rates drop out.
 3. **Model:** a simple, explainable regression. The 3-month score uses housing data plus Realtor.com
    listing page views. The 12-month outlook adds rent growth, which only helps further out.
@@ -848,5 +980,10 @@ A monthly ranking of {n_metros} big U.S. housing markets by where home values ar
   so treat it as a guide.
 - Realtor.com changed how it counts page views in late 2021.
 """)
+    if _ga_cfg():
+        st.markdown("#### Usage")
+        st.markdown("This site counts page views anonymously with Google Analytics: which pages and metros are "
+                    "viewed, which industry is picked, and downloads. No names, emails or other personal "
+                    "information.")
     st.caption("Web Analytics, Fordham University Gabelli School of Business, Fall 2026. Code and data: "
                "github.com/michaelnun/housingmomentumforecaster")

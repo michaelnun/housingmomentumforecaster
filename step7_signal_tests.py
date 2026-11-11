@@ -73,7 +73,8 @@ def main(raw):
     for key, name in (("pageviews", "Realtor.com listing page views"),
                       ("moving", "Nationwide \"moving to [city]\" searches"),
                       ("seller", "Local seller searches"),
-                      ("rent", "Zillow rent growth")):
+                      ("rent", "Zillow rent growth"),
+                      ("news", "News coverage and tone (GDELT)")):
         if key in feats:
             signals[name] = feats[key]
 
