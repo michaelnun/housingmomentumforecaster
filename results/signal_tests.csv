@@ -2,12 +2,12 @@ signal,horizon_months,months_tested,first_month,housing_only,with_signal,gain,p_
 Nationwide search interest,3,74,May 2020,0.876,0.875,-0.001,0.377,False
 Nationwide search interest,6,68,Aug 2020,0.768,0.771,0.002,0.104,False
 Nationwide search interest,12,56,Feb 2021,0.603,0.625,0.022,0.014,True
-Local buyer search,3,74,May 2020,0.876,0.875,-0.001,0.927,False
-Local buyer search,6,68,Aug 2020,0.768,0.764,-0.004,0.989,False
-Local buyer search,12,56,Feb 2021,0.603,0.606,0.003,0.916,False
-Home Depot / Lowe's searches,3,74,May 2020,0.876,0.876,-0.001,0.921,False
-Home Depot / Lowe's searches,6,68,Aug 2020,0.768,0.766,-0.002,0.903,False
-Home Depot / Lowe's searches,12,56,Feb 2021,0.603,0.597,-0.006,0.467,False
+Local buyer search,3,74,May 2020,0.876,0.876,-0.001,0.829,False
+Local buyer search,6,68,Aug 2020,0.768,0.766,-0.002,0.956,False
+Local buyer search,12,56,Feb 2021,0.603,0.608,0.005,0.888,False
+Home Depot / Lowe's searches,3,74,May 2020,0.876,0.875,-0.001,0.941,False
+Home Depot / Lowe's searches,6,68,Aug 2020,0.768,0.765,-0.004,0.96,False
+Home Depot / Lowe's searches,12,56,Feb 2021,0.603,0.597,-0.007,0.61,False
 Home-improvement store sales (Census),3,72,Jul 2020,0.879,0.879,-0.001,0.783,False
 Home-improvement store sales (Census),6,66,Oct 2020,0.768,0.765,-0.002,0.355,False
 Home-improvement store sales (Census),12,54,Apr 2021,0.602,0.599,-0.003,0.616,False

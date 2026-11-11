@@ -1,5 +1,5 @@
 comparison,DM_stat,p_value_one_sided,verdict
 A vs Naive,4.412,0.0,A is better (significant)
-B vs A,-1.286,0.901,no clear difference
-C vs B,-1.33,0.908,no clear difference
+B vs A,-0.794,0.786,no clear difference
+C vs B,-1.3,0.903,no clear difference
 P vs A,1.576,0.058,no clear difference

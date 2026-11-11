@@ -46,8 +46,8 @@
     "rent_without": 0.506,
     "rent_with": 0.538,
     "p_rent_helps": 0.05,
-    "outlook_model": 0.574,
+    "outlook_model": 0.568,
     "outlook_naive": 0.416,
-    "p_outlook_vs_naive": 0.021
+    "p_outlook_vs_naive": 0.023
   }
 ]

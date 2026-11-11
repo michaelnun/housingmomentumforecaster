@@ -9,9 +9,9 @@
   "all_metros": {
     "check": "All metros",
     "months": 74,
-    "gain": -0.0033,
-    "better_share": 0.432,
-    "p": 0.9309,
+    "gain": -0.0038,
+    "better_share": 0.405,
+    "p": 0.9394,
     "test": "Early read: search one month ahead",
     "version": "Main values",
     "share_significant": null
@@ -19,9 +19,9 @@
   "new_metros": {
     "check": "New metros (untouched test)",
     "months": 74,
-    "gain": -0.0038,
-    "better_share": 0.432,
-    "p": 0.8234,
+    "gain": -0.0044,
+    "better_share": 0.405,
+    "p": 0.8389,
     "test": "Early read: search one month ahead",
     "version": "Main values",
     "share_significant": null
@@ -29,17 +29,17 @@
   "raw_values": {
     "check": "All metros",
     "months": 74,
-    "gain": -0.0164,
-    "better_share": 0.324,
-    "p": 0.9984,
+    "gain": -0.0171,
+    "better_share": 0.365,
+    "p": 0.997,
     "test": "Early read: search one month ahead",
     "version": "Raw values",
     "share_significant": null
   },
   "waiting_for_zillow": {
     "waiting_gain": 0.0828,
-    "early_read_gain": -0.0033,
-    "share_recovered": -0.04
+    "early_read_gain": -0.0038,
+    "share_recovered": -0.046
   },
   "months_tested": 74,
   "first_month": "May 2020",

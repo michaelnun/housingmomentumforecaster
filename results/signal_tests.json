@@ -38,9 +38,9 @@
     "months_tested": 74,
     "first_month": "May 2020",
     "housing_only": 0.876,
-    "with_signal": 0.875,
+    "with_signal": 0.876,
     "gain": -0.001,
-    "p_value": 0.927,
+    "p_value": 0.829,
     "helps": false
   },
   {
@@ -49,9 +49,9 @@
     "months_tested": 68,
     "first_month": "Aug 2020",
     "housing_only": 0.768,
-    "with_signal": 0.764,
-    "gain": -0.004,
-    "p_value": 0.989,
+    "with_signal": 0.766,
+    "gain": -0.002,
+    "p_value": 0.956,
     "helps": false
   },
   {
@@ -60,9 +60,9 @@
     "months_tested": 56,
     "first_month": "Feb 2021",
     "housing_only": 0.603,
-    "with_signal": 0.606,
-    "gain": 0.003,
-    "p_value": 0.916,
+    "with_signal": 0.608,
+    "gain": 0.005,
+    "p_value": 0.888,
     "helps": false
   },
   {
@@ -71,9 +71,9 @@
     "months_tested": 74,
     "first_month": "May 2020",
     "housing_only": 0.876,
-    "with_signal": 0.876,
+    "with_signal": 0.875,
     "gain": -0.001,
-    "p_value": 0.921,
+    "p_value": 0.941,
     "helps": false
   },
   {
@@ -82,9 +82,9 @@
     "months_tested": 68,
     "first_month": "Aug 2020",
     "housing_only": 0.768,
-    "with_signal": 0.766,
-    "gain": -0.002,
-    "p_value": 0.903,
+    "with_signal": 0.765,
+    "gain": -0.004,
+    "p_value": 0.96,
     "helps": false
   },
   {
@@ -94,8 +94,8 @@
     "first_month": "Feb 2021",
     "housing_only": 0.603,
     "with_signal": 0.597,
-    "gain": -0.006,
-    "p_value": 0.467,
+    "gain": -0.007,
+    "p_value": 0.61,
     "helps": false
   },
   {
