@@ -24,5 +24,22 @@
       "Turning down": "Warning sign: consider trimming exposure.",
       "Falling": "Wait for the outlook to improve before buying."
     }
+  },
+  "audience_12m": {
+    "Real estate": {
+      "Strong": "Good market to grow in over the next year: worth adding agents or marketing.",
+      "Average": "Expect a typical year relative to other big metros.",
+      "Weak": "Plan for a slower year here; avoid big new commitments."
+    },
+    "Home improvement retail": {
+      "Strong": "Plan for more move-in demand over the next year (staffing, stock, new locations).",
+      "Average": "Expect typical demand relative to other big metros.",
+      "Weak": "Expect fewer moves over the year; lean on repair, remodel and pro customers."
+    },
+    "Investors": {
+      "Strong": "Year-ahead outlook favors this market vs. other big metros.",
+      "Average": "No clear edge vs. other big metros over the year.",
+      "Weak": "Year-ahead outlook is weak: be cautious adding exposure here."
+    }
   }
 }

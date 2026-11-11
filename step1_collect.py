@@ -6,6 +6,8 @@
 """
 import argparse
 import io
+import json
+import os
 import random
 import time
 
@@ -26,26 +28,73 @@ class _Tee:
         self.out.flush(); self.f.flush()
 
 
-from config import (RAW, START, METROS, BUYER_TERMS, HOME_IMPROVEMENT_TERMS,
-                    FRED_NATIONAL, BLS_AREAS)
+from config import (RAW, START, METROS, BUYER_TERMS, HOME_IMPROVEMENT_TERMS, SELLER_TERMS,
+                    NATIONWIDE_SEARCHES, SEARCH_NAMES, FRED_NATIONAL, BLS_AREAS)
 
 ZILLOW_URL = ("https://files.zillowstatic.com/research/public_csvs/zhvi/"
               "Metro_zhvi_uc_sfrcondo_tier_0.33_0.67_sm_sa_month.csv")
+# Same index without Zillow's smoothing, used only for the robustness check (step 8)
+ZILLOW_RAW_URL = ("https://files.zillowstatic.com/research/public_csvs/zhvi/"
+                  "Metro_zhvi_uc_sfrcondo_tier_0.33_0.67_month.csv")
 REDFIN_URL = ("https://redfin-public-data.s3.us-west-2.amazonaws.com/"
               "redfin_market_tracker/redfin_metro_market_tracker.tsv000.gz")
 FRED_URL = "https://fred.stlouisfed.org/graph/fredgraph.csv?id={}"
 
 
+REFRESH_DAYS = 21  # files older than this are downloaded again, so a monthly rerun gets new data
+IN_CLOUD = bool(os.environ.get("CI"))  # True when GitHub Actions runs this
+# When each file was last downloaded. Kept in a file (not the file's modified date) because
+# GitHub resets modified dates on every run.
+MANIFEST = RAW / "downloaded.json"
+
+
+def _manifest():
+    try:
+        return json.loads(MANIFEST.read_text())
+    except (OSError, ValueError):
+        return {}
+
+
+def mark(path):
+    """Record that a file was just downloaded."""
+    m = _manifest()
+    m[str(path.relative_to(RAW)).replace("\\", "/")] = pd.Timestamp.now().isoformat(timespec="seconds")
+    MANIFEST.write_text(json.dumps(m, indent=1, sort_keys=True))
+
+
+def is_fresh(path):
+    """True if the file exists and was downloaded in the last REFRESH_DAYS days."""
+    if not path.exists():
+        return False
+    ts = _manifest().get(str(path.relative_to(RAW)).replace("\\", "/"))
+    if ts:
+        return (pd.Timestamp.now() - pd.Timestamp(ts)).days < REFRESH_DAYS
+    if IN_CLOUD:  # no record and file dates mean nothing on GitHub: download again
+        return False
+    return (time.time() - path.stat().st_mtime) < REFRESH_DAYS * 86400
+
+
+def covers_all_metros(path):
+    """True if a combined file already has every metro in config.py (False after adding metros)."""
+    try:
+        return set(METROS) <= set(pd.read_csv(path, usecols=["metro"])["metro"].unique())
+    except Exception:
+        return False
+
+
 def download(url, dest):
-    if dest.exists():
-        print(f"  already have {dest.name}")
+    if is_fresh(dest):
+        print(f"  already have a recent {dest.name}")
         return
     print(f"  downloading {dest.name} ...")
+    tmp = dest.with_suffix(dest.suffix + ".part")  # only replace the old file once complete
     with requests.get(url, stream=True, timeout=120) as r:
         r.raise_for_status()
-        with open(dest, "wb") as f:
+        with open(tmp, "wb") as f:
             for chunk in r.iter_content(1 << 20):
                 f.write(chunk)
+    tmp.replace(dest)
+    mark(dest)
 
 
 def city_key(name):
@@ -70,6 +119,14 @@ def collect_zillow():
     long.to_csv(RAW / "zillow_clean.csv", index=False)
     missing = set(METROS) - set(long["metro"])
     print(f"  {long['metro'].nunique()} metros matched" + (f"; MISSING {missing}" if missing else ""))
+    try:  # unsmoothed version, only for the robustness check
+        raw_dest = RAW / "zillow_zhvi_metro_raw.csv"
+        download(ZILLOW_RAW_URL, raw_dest)
+        r = zillow_long(raw_dest, "zhvi")
+        r[r["date"] >= START].to_csv(RAW / "zillow_raw_clean.csv", index=False)
+        print(f"  unsmoothed series: {r['metro'].nunique()} metros")
+    except Exception as e:
+        print(f"  unsmoothed series not available ({type(e).__name__}); robustness check will skip")
 
 
 ZILLOW_BASE = "https://files.zillowstatic.com/research/public_csvs/{folder}/Metro_{folder}_{tail}"
@@ -104,7 +161,7 @@ def collect_market():
     frames = []
     for col, folders in ZILLOW_MARKET.items():
         dest = RAW / f"zillow_{col}.csv"
-        if not dest.exists():
+        if not is_fresh(dest):
             for folder in folders:
                 for tail in ZILLOW_TAILS:
                     url = ZILLOW_BASE.format(folder=folder, tail=tail)
@@ -114,9 +171,10 @@ def collect_market():
                         continue
                     if r.ok and r.text.startswith("RegionID"):
                         dest.write_bytes(r.content)
+                        mark(dest)
                         print(f"  {col}: {folder}/{tail}")
                         break
-                if dest.exists():
+                if is_fresh(dest):
                     break
         if dest.exists():
             frames.append(zillow_long(dest, col))
@@ -129,6 +187,57 @@ def collect_market():
         df = df.merge(f, on=["metro", "date"], how="outer")
     df = df[df["date"] >= START]
     df.to_csv(RAW / "market_clean.csv", index=False)
+    print(f"  {df['metro'].nunique()} metros, {df['date'].min():%b %Y} to {df['date'].max():%b %Y}")
+
+
+ZORI_TAILS = ["uc_sfrcondomfr_sm_month.csv", "uc_sfrcondomfr_sm_sa_month.csv",
+              "uc_sfrcondomfr_month.csv", "uc_sfr_sm_month.csv"]
+
+
+def collect_rent():
+    """Zillow Observed Rent Index (typical rent), by metro, monthly since 2015."""
+    print("Zillow rent (ZORI)")
+    dest = RAW / "zillow_rent.csv"
+    if not is_fresh(dest):
+        for tail in ZORI_TAILS:
+            url = ZILLOW_BASE.format(folder="zori", tail=tail)
+            try:
+                r = requests.get(url, timeout=120)
+            except requests.RequestException:
+                continue
+            if r.ok and r.text.startswith("RegionID"):
+                dest.write_bytes(r.content)
+                mark(dest)
+                print(f"  zori/{tail}")
+                break
+    if not dest.exists():
+        print("  rent index NOT FOUND on Zillow, skipping")
+        return
+    df = zillow_long(dest, "rent")
+    df = df[df["date"] >= START]
+    df.to_csv(RAW / "rent_clean.csv", index=False)
+    print(f"  {df['metro'].nunique()} metros, {df['date'].min():%b %Y} to {df['date'].max():%b %Y}")
+
+
+def collect_pageviews():
+    """Realtor.com listing page views per property, metro vs. the U.S. (ratio, 1 = U.S. average).
+    From Realtor.com's Market Hotness data on FRED: LDPEPRVSUSMSA<CBSA code>. Starts Aug 2017.
+    Realtor.com changed its method in Nov 2021, so earlier and later values aren't fully
+    comparable; using the ratio to the U.S. limits the damage, since the change hit every metro."""
+    print("Realtor.com listing page views (via FRED)")
+    rows = []
+    for metro, (_, areas) in BLS_AREAS.items():
+        try:
+            s = fred(f"LDPEPRVSUSMSA{areas[0]}")
+        except Exception as e:
+            print(f"  {metro}: not available ({type(e).__name__})")
+            continue
+        rows.append(pd.DataFrame({"metro": metro, "date": s.index, "pageviews": s.values}))
+    if not rows:
+        print("  no page-view data; skipping")
+        return
+    df = pd.concat(rows).dropna()
+    df.to_csv(RAW / "pageviews_clean.csv", index=False)
     print(f"  {df['metro'].nunique()} metros, {df['date'].min():%b %Y} to {df['date'].max():%b %Y}")
 
 
@@ -235,8 +344,8 @@ def collect_employment():
     No key needed (limited to 25 requests a day, this uses about 8)."""
     print("Metro employment (BLS)")
     dest = RAW / "employment_clean.csv"
-    if dest.exists():
-        print("  already have it")
+    if is_fresh(dest) and covers_all_metros(dest):
+        print("  already have a recent copy")
         return
     ids = {}
     for metro, (fips, areas) in BLS_AREAS.items():
@@ -272,45 +381,64 @@ def collect_employment():
         frames.append(d.reset_index().assign(metro=metro))
     df = pd.concat(frames)
     df.to_csv(dest, index=False)
+    mark(dest)
     have = df.dropna(subset=["jobs"])["metro"].nunique() if "jobs" in df else 0
     print(f"  jobs for {have} metros, {df['date'].min():%b %Y} to {df['date'].max():%b %Y}")
 
 
+class TrendsBlocked(RuntimeError):
+    pass
+
+
 def trends_pull(pytrends, terms, geo, timeframe):
-    for attempt in range(6):
+    tries = 2 if IN_CLOUD else 6  # on GitHub, give up fast and reuse saved data instead
+    for attempt in range(tries):
         try:
             pytrends.build_payload(terms, geo=geo, timeframe=timeframe)
             df = pytrends.interest_over_time()
+            if df.empty:
+                raise ValueError("empty response")
             return df.drop(columns="isPartial", errors="ignore")
         except Exception as e:  # Google rate-limits often; back off and retry
             wait = 60 * (attempt + 1) + random.uniform(0, 30)
             print(f"    rate limited ({type(e).__name__}), waiting {wait:.0f}s")
             time.sleep(wait)
-    raise RuntimeError(f"Google Trends kept failing for {geo}")
+    raise TrendsBlocked(f"Google Trends kept failing for {geo}")
 
 
-def collect_trends(pulls):
+def _monthly(df):
+    df.index = pd.to_datetime(df.index).to_period("M").to_timestamp()
+    df.index.name = "date"
+    return df
+
+
+def collect_local(term_groups, subdir, clean_name, pulls, label):
+    """Google Trends for each metro's own media market. One file per metro, so a run that
+    gets cut off resumes where it stopped. If Google blocks us, the saved files are kept."""
     from pytrends.request import TrendReq
-    print("Google Trends (slow on purpose to avoid Google's rate limit)")
-    out_dir = RAW / "trends"
+    print(f"Google Trends, local: {label} (slow on purpose to avoid Google's rate limit)")
+    out_dir = RAW / subdir
     out_dir.mkdir(exist_ok=True)
     timeframe = f"{START} {pd.Timestamp.today():%Y-%m-%d}"
     pytrends = TrendReq(hl="en-US", tz=300)
     for metro, (_, geo, _) in METROS.items():
         dest = out_dir / f"{metro.replace(' ', '_')}.csv"
-        if dest.exists():
+        if is_fresh(dest):
             continue
         print(f"  {metro}")
-        frames = []
-        for terms in (BUYER_TERMS, HOME_IMPROVEMENT_TERMS):
-            # Each pull is a sample, so values wobble. Averaging pulls reduces that noise.
-            pulls_df = [trends_pull(pytrends, terms, geo, timeframe) for _ in range(pulls)]
-            frames.append(sum(pulls_df) / pulls)
-            time.sleep(random.uniform(15, 30))
-        df = pd.concat(frames, axis=1)
-        df.index = pd.to_datetime(df.index).to_period("M").to_timestamp()
-        df.index.name = "date"
-        df.to_csv(dest)
+        try:
+            frames = []
+            for terms in term_groups:
+                # Each pull is a sample, so values wobble. Averaging pulls reduces that noise.
+                pulls_df = [trends_pull(pytrends, terms, geo, timeframe) for _ in range(pulls)]
+                frames.append(sum(pulls_df) / pulls)
+                time.sleep(random.uniform(15, 30))
+        except TrendsBlocked:
+            print("  Google Trends is blocking requests right now; keeping the search data "
+                  "already saved. The next run will try again.")
+            break
+        _monthly(pd.concat(frames, axis=1)).to_csv(dest)
+        mark(dest)
     all_ = []
     for metro in METROS:
         f = out_dir / f"{metro.replace(' ', '_')}.csv"
@@ -318,37 +446,125 @@ def collect_trends(pulls):
             d = pd.read_csv(f, parse_dates=["date"])
             d["metro"] = metro
             all_.append(d)
-    pd.concat(all_).to_csv(RAW / "trends_clean.csv", index=False)
+    if all_:
+        pd.concat(all_).to_csv(RAW / clean_name, index=False)
+        print(f"  {len(all_)} of {len(METROS)} metros saved")
+    else:
+        print("  nothing saved yet")
 
 
-def collect_out_of_town():
-    """Nationwide searches for '<city> homes for sale'. Mostly people outside the metro,
-    i.e. buyers thinking of moving there. Scaling differs per request, but we only use
-    each city's change over time, so that does not matter."""
-    from pytrends.request import TrendReq
-    print("Google Trends: out-of-town interest")
-    dest = RAW / "outoftown_clean.csv"
-    if dest.exists():
-        print("  already have it")
+ARCHIVE = RAW / "trends_archive"
+KEEP_PULLS = 6  # average up to the last 6 monthly downloads
+
+
+def _archive_files(key):
+    """Saved downloads, oldest first (an old pre-archive copy counts as older than a new pull)."""
+    return sorted(ARCHIVE.glob(f"{key}_*.csv"),
+                  key=lambda f: (f.stem.split("_")[1], 0 if f.stem.endswith("legacy") else 1))
+
+
+def _archive_pulls(key):
+    """All saved downloads of one nationwide search, oldest first, as long tables."""
+    ARCHIVE.mkdir(exist_ok=True)
+    legacy = RAW / f"{key}_clean.csv"  # files saved before the archive existed: keep them
+    if not _archive_files(key) and legacy.exists():
+        old = pd.read_csv(legacy, parse_dates=["date"])
+        if "term" not in old:
+            tmpl = NATIONWIDE_SEARCHES[key]
+            old["term"] = old["metro"].map(lambda m: tmpl.format(m.lower()))
+            old = old.rename(columns={key: "value"})[["date", "metro", "term", "value"]]
+            stamp = pd.Timestamp(legacy.stat().st_mtime, unit="s")
+            old.to_csv(ARCHIVE / f"{key}_{stamp:%Y-%m-%d}_legacy.csv", index=False)
+    return [pd.read_csv(f, parse_dates=["date"]) for f in _archive_files(key)]
+
+
+def build_nationwide(key, terms):
+    """Combine saved downloads into one series per city. Google Trends returns a slightly
+    different random sample on every download, so averaging several months' downloads cuts
+    that noise. Only downloads that used the city's current search term are used, if any exist.
+    Each download is put on the same footing (divided by its own average) before averaging."""
+    pulls = _archive_pulls(key)
+    if not pulls:
         return
+    rows, quality = [], []
+    for metro, term in terms.items():
+        parts = [p[p["metro"] == metro] for p in pulls]
+        parts = [x for x in parts if len(x)]
+        match = [x for x in parts if (x["term"] == term).all()]
+        use = (match or parts)[-KEEP_PULLS:]
+        if not use:
+            continue
+        series = []
+        for x in use:
+            v = x.set_index("date")["value"].astype(float)
+            series.append(v / v.mean() if v.mean() > 0 else v)
+        avg = pd.concat(series, axis=1).mean(axis=1)
+        avg = 100 * avg / avg.max() if avg.max() > 0 else avg
+        rows.append(pd.DataFrame({"date": avg.index, "metro": metro, key: avg.round(2).values,
+                                  "term": use[-1]["term"].iloc[0], "pulls_averaged": len(use)}))
+        quality.append({"search": key, "metro": metro, "term": use[-1]["term"].iloc[0],
+                        "pulls_averaged": len(use),
+                        "zero_share": round(float((use[-1]["value"] == 0).mean()), 3),
+                        "current_term": bool(match)})
+    pd.concat(rows).to_csv(RAW / f"{key}_clean.csv", index=False)
+    q = pd.DataFrame(quality)
+    qf = RAW / "search_quality.csv"
+    if qf.exists():
+        old = pd.read_csv(qf)
+        q = pd.concat([old[old["search"] != key], q])
+    q.to_csv(qf, index=False)
+    bad = q[(q["search"] == key) & (q["zero_share"] > 0.3)]
+    if len(bad):
+        print(f"  too many zero months (won't be used): {', '.join(bad['metro'])}")
+
+
+def collect_nationwide(key, template):
+    """Searches about each city across the whole U.S., e.g. 'denver homes for sale'.
+    Mostly people outside the metro. Scaling differs per request, but we only use each
+    city's change over time, so that does not matter."""
+    names = list(METROS)
+    terms = {m: template.format(SEARCH_NAMES.get(m, m.lower())) for m in names}
+    print(f"Google Trends, nationwide: '{template.format('[city]')}'")
+    pulls = _archive_pulls(key)
+    last = _archive_files(key)
+    have = pulls[-1] if pulls else None
+    up_to_date = (have is not None and is_fresh(last[-1])
+                  and set(zip(have["metro"], have["term"])) >= set(terms.items()))
+    if up_to_date:
+        print("  already have a recent download with the current search terms")
+        build_nationwide(key, terms)
+        return
+    from pytrends.request import TrendReq
     timeframe = f"{START} {pd.Timestamp.today():%Y-%m-%d}"
     pytrends = TrendReq(hl="en-US", tz=300)
-    names = list(METROS)
-    terms = {m: f"{m.lower()} homes for sale" for m in names}
     parts = []
-    for i in range(0, len(names), 5):
-        group = names[i:i + 5]
-        df = trends_pull(pytrends, [terms[m] for m in group], "US", timeframe)
-        df.columns = group
-        parts.append(df)
-        time.sleep(random.uniform(15, 30))
-    df = pd.concat(parts, axis=1)
-    df.index = pd.to_datetime(df.index).to_period("M").to_timestamp()
-    long = df.reset_index().melt(id_vars=df.index.name or "index", var_name="metro",
-                                 value_name="outoftown")
-    long = long.rename(columns={long.columns[0]: "date"})
-    long.to_csv(dest, index=False)
+    try:
+        for i in range(0, len(names), 5):
+            group = names[i:i + 5]
+            df = trends_pull(pytrends, [terms[m] for m in group], "US", timeframe)
+            df.columns = group
+            parts.append(df)
+            time.sleep(random.uniform(15, 30))
+    except TrendsBlocked:
+        print("  Google Trends is blocking requests right now; using the saved downloads.")
+        build_nationwide(key, terms)
+        return
+    df = _monthly(pd.concat(parts, axis=1))
+    long = df.reset_index().melt(id_vars="date", var_name="metro", value_name="value")
+    long["term"] = long["metro"].map(terms)
+    dest = ARCHIVE / f"{key}_{pd.Timestamp.today():%Y-%m-%d}.csv"
+    long[["date", "metro", "term", "value"]].to_csv(dest, index=False)
+    mark(dest)
+    build_nationwide(key, terms)
     print(f"  {len(names)} metros")
+
+
+def collect_trends(pulls):
+    collect_local((BUYER_TERMS, HOME_IMPROVEMENT_TERMS), "trends", "trends_clean.csv", pulls,
+                  "buyer and Home Depot / Lowe's searches")
+    for key, template in NATIONWIDE_SEARCHES.items():
+        collect_nationwide(key, template)
+    collect_local((SELLER_TERMS,), "trends_seller", "seller_clean.csv", pulls, "seller searches")
 
 
 if __name__ == "__main__":
@@ -360,13 +576,13 @@ if __name__ == "__main__":
     a = ap.parse_args()
     collect_zillow()
     collect_fred()
-    for extra in (collect_home_improvement, collect_employment):
+    collect_market()
+    extras = [collect_home_improvement, collect_employment, collect_rent, collect_pageviews]
+    if not a.skip_trends:
+        extras.append(lambda: collect_trends(a.pulls))
+    for extra in extras:
         try:
             extra()
         except Exception as e:  # optional extras must never stop the main download
-            print(f"  {extra.__name__} failed: {type(e).__name__}: {e}")
-    collect_market()
-    if not a.skip_trends:
-        collect_trends(a.pulls)
-        collect_out_of_town()
+            print(f"  {getattr(extra, '__name__', 'trends')} failed: {type(e).__name__}: {e}")
     print("Done. Next: python step2_build.py")

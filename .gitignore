@@ -1,0 +1,7 @@
+# Data IS stored in the repo (so GitHub's monthly run only re-downloads what's out of date)
+data/collect_log.txt
+*.part
+__pycache__/
+*.pyc
+run_log.txt
+.DS_Store

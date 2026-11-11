@@ -1,0 +1,4006 @@
+metro,date,hi_sales_yoy
+Phoenix,2019-01-01,12.4
+Phoenix,2019-02-01,2.8
+Phoenix,2019-03-01,2.0
+Phoenix,2019-04-01,7.6
+Phoenix,2019-05-01,-0.7
+Phoenix,2019-06-01,-6.2
+Phoenix,2019-07-01,0.8
+Phoenix,2019-08-01,1.3
+Phoenix,2019-09-01,0.2
+Phoenix,2019-10-01,0.0
+Phoenix,2019-11-01,-1.9
+Phoenix,2019-12-01,3.4
+Phoenix,2020-01-01,3.0
+Phoenix,2020-02-01,9.8
+Phoenix,2020-03-01,8.4
+Phoenix,2020-04-01,7.4
+Phoenix,2020-05-01,16.4
+Phoenix,2020-06-01,27.7
+Phoenix,2020-07-01,18.8
+Phoenix,2020-08-01,14.6
+Phoenix,2020-09-01,25.1
+Phoenix,2020-10-01,17.4
+Phoenix,2020-11-01,19.0
+Phoenix,2020-12-01,22.0
+Phoenix,2021-01-01,16.3
+Phoenix,2021-02-01,14.2
+Phoenix,2021-03-01,34.9
+Phoenix,2021-04-01,30.1
+Phoenix,2021-05-01,10.2
+Phoenix,2021-06-01,9.2
+Phoenix,2021-07-01,6.5
+Phoenix,2021-08-01,10.0
+Phoenix,2021-09-01,7.8
+Phoenix,2021-10-01,7.2
+Phoenix,2021-11-01,16.2
+Phoenix,2021-12-01,12.6
+Phoenix,2022-01-01,9.1
+Phoenix,2022-02-01,14.0
+Phoenix,2022-03-01,2.3
+Phoenix,2022-04-01,-1.9
+Phoenix,2022-05-01,6.6
+Phoenix,2022-06-01,4.9
+Phoenix,2022-07-01,4.3
+Phoenix,2022-08-01,13.1
+Phoenix,2022-09-01,8.1
+Phoenix,2022-10-01,7.5
+Phoenix,2022-11-01,-0.1
+Phoenix,2022-12-01,0.3
+Phoenix,2023-01-01,4.4
+Phoenix,2023-02-01,2.2
+Phoenix,2023-03-01,-5.0
+Phoenix,2023-04-01,-4.7
+Phoenix,2023-05-01,3.2
+Phoenix,2023-06-01,-1.3
+Phoenix,2023-07-01,-1.6
+Phoenix,2023-08-01,-1.2
+Phoenix,2023-09-01,-4.8
+Phoenix,2023-10-01,-1.8
+Phoenix,2023-11-01,0.1
+Phoenix,2023-12-01,-3.9
+Phoenix,2024-01-01,-4.4
+Phoenix,2024-02-01,0.4
+Phoenix,2024-03-01,-5.9
+Phoenix,2024-04-01,5.0
+Phoenix,2024-05-01,-2.9
+Phoenix,2024-06-01,-4.6
+Phoenix,2024-07-01,7.8
+Phoenix,2024-08-01,0.2
+Phoenix,2024-09-01,2.2
+Phoenix,2024-10-01,9.0
+Phoenix,2024-11-01,4.4
+Phoenix,2024-12-01,6.1
+Phoenix,2025-01-01,2.2
+Phoenix,2025-02-01,-5.3
+Phoenix,2025-03-01,6.0
+Phoenix,2025-04-01,3.1
+Phoenix,2025-05-01,-1.2
+Phoenix,2025-06-01,2.4
+Phoenix,2025-07-01,-1.4
+Phoenix,2025-08-01,-5.4
+Phoenix,2025-09-01,1.4
+Phoenix,2025-10-01,-3.3
+Phoenix,2025-11-01,-4.8
+Phoenix,2025-12-01,1.7
+Phoenix,2026-01-01,4.1
+Phoenix,2026-02-01,5.2
+Phoenix,2026-03-01,4.4
+Phoenix,2026-04-01,2.6
+Phoenix,2026-05-01,1.0
+Dallas,2019-01-01,10.1
+Dallas,2019-02-01,2.7
+Dallas,2019-03-01,0.4
+Dallas,2019-04-01,7.2
+Dallas,2019-05-01,-1.2
+Dallas,2019-06-01,-5.7
+Dallas,2019-07-01,0.9
+Dallas,2019-08-01,1.0
+Dallas,2019-09-01,1.0
+Dallas,2019-10-01,0.8
+Dallas,2019-11-01,-1.3
+Dallas,2019-12-01,4.6
+Dallas,2020-01-01,3.8
+Dallas,2020-02-01,8.3
+Dallas,2020-03-01,7.7
+Dallas,2020-04-01,8.0
+Dallas,2020-05-01,15.3
+Dallas,2020-06-01,26.1
+Dallas,2020-07-01,17.4
+Dallas,2020-08-01,13.3
+Dallas,2020-09-01,23.4
+Dallas,2020-10-01,16.0
+Dallas,2020-11-01,16.8
+Dallas,2020-12-01,21.4
+Dallas,2021-01-01,14.7
+Dallas,2021-02-01,12.2
+Dallas,2021-03-01,35.0
+Dallas,2021-04-01,29.1
+Dallas,2021-05-01,10.1
+Dallas,2021-06-01,8.3
+Dallas,2021-07-01,6.0
+Dallas,2021-08-01,10.3
+Dallas,2021-09-01,7.8
+Dallas,2021-10-01,6.8
+Dallas,2021-11-01,17.0
+Dallas,2021-12-01,13.9
+Dallas,2022-01-01,5.2
+Dallas,2022-02-01,10.4
+Dallas,2022-03-01,-2.2
+Dallas,2022-04-01,-5.6
+Dallas,2022-05-01,3.1
+Dallas,2022-06-01,1.6
+Dallas,2022-07-01,0.1
+Dallas,2022-08-01,7.9
+Dallas,2022-09-01,3.4
+Dallas,2022-10-01,3.1
+Dallas,2022-11-01,-5.1
+Dallas,2022-12-01,-4.3
+Dallas,2023-01-01,6.0
+Dallas,2023-02-01,1.5
+Dallas,2023-03-01,-4.4
+Dallas,2023-04-01,-6.3
+Dallas,2023-05-01,1.3
+Dallas,2023-06-01,-2.2
+Dallas,2023-07-01,-2.2
+Dallas,2023-08-01,-0.9
+Dallas,2023-09-01,-5.0
+Dallas,2023-10-01,-3.4
+Dallas,2023-11-01,-1.8
+Dallas,2023-12-01,-6.0
+Dallas,2024-01-01,-7.8
+Dallas,2024-02-01,1.9
+Dallas,2024-03-01,-7.5
+Dallas,2024-04-01,5.1
+Dallas,2024-05-01,-3.6
+Dallas,2024-06-01,-6.0
+Dallas,2024-07-01,5.0
+Dallas,2024-08-01,4.5
+Dallas,2024-09-01,3.3
+Dallas,2024-10-01,11.2
+Dallas,2024-11-01,9.4
+Dallas,2024-12-01,10.2
+Dallas,2025-01-01,7.7
+Dallas,2025-02-01,-1.1
+Dallas,2025-03-01,8.5
+Dallas,2025-04-01,6.2
+Dallas,2025-05-01,1.8
+Dallas,2025-06-01,6.9
+Dallas,2025-07-01,4.6
+Dallas,2025-08-01,-6.7
+Dallas,2025-09-01,6.1
+Dallas,2025-10-01,0.0
+Dallas,2025-11-01,-3.2
+Dallas,2025-12-01,2.9
+Dallas,2026-01-01,3.7
+Dallas,2026-02-01,4.8
+Dallas,2026-03-01,7.6
+Dallas,2026-04-01,2.7
+Dallas,2026-05-01,1.8
+Houston,2019-01-01,10.1
+Houston,2019-02-01,2.7
+Houston,2019-03-01,0.4
+Houston,2019-04-01,7.2
+Houston,2019-05-01,-1.2
+Houston,2019-06-01,-5.7
+Houston,2019-07-01,0.9
+Houston,2019-08-01,1.0
+Houston,2019-09-01,1.0
+Houston,2019-10-01,0.8
+Houston,2019-11-01,-1.3
+Houston,2019-12-01,4.6
+Houston,2020-01-01,3.8
+Houston,2020-02-01,8.3
+Houston,2020-03-01,7.7
+Houston,2020-04-01,8.0
+Houston,2020-05-01,15.3
+Houston,2020-06-01,26.1
+Houston,2020-07-01,17.4
+Houston,2020-08-01,13.3
+Houston,2020-09-01,23.4
+Houston,2020-10-01,16.0
+Houston,2020-11-01,16.8
+Houston,2020-12-01,21.4
+Houston,2021-01-01,14.7
+Houston,2021-02-01,12.2
+Houston,2021-03-01,35.0
+Houston,2021-04-01,29.1
+Houston,2021-05-01,10.1
+Houston,2021-06-01,8.3
+Houston,2021-07-01,6.0
+Houston,2021-08-01,10.3
+Houston,2021-09-01,7.8
+Houston,2021-10-01,6.8
+Houston,2021-11-01,17.0
+Houston,2021-12-01,13.9
+Houston,2022-01-01,5.2
+Houston,2022-02-01,10.4
+Houston,2022-03-01,-2.2
+Houston,2022-04-01,-5.6
+Houston,2022-05-01,3.1
+Houston,2022-06-01,1.6
+Houston,2022-07-01,0.1
+Houston,2022-08-01,7.9
+Houston,2022-09-01,3.4
+Houston,2022-10-01,3.1
+Houston,2022-11-01,-5.1
+Houston,2022-12-01,-4.3
+Houston,2023-01-01,6.0
+Houston,2023-02-01,1.5
+Houston,2023-03-01,-4.4
+Houston,2023-04-01,-6.3
+Houston,2023-05-01,1.3
+Houston,2023-06-01,-2.2
+Houston,2023-07-01,-2.2
+Houston,2023-08-01,-0.9
+Houston,2023-09-01,-5.0
+Houston,2023-10-01,-3.4
+Houston,2023-11-01,-1.8
+Houston,2023-12-01,-6.0
+Houston,2024-01-01,-7.8
+Houston,2024-02-01,1.9
+Houston,2024-03-01,-7.5
+Houston,2024-04-01,5.1
+Houston,2024-05-01,-3.6
+Houston,2024-06-01,-6.0
+Houston,2024-07-01,5.0
+Houston,2024-08-01,4.5
+Houston,2024-09-01,3.3
+Houston,2024-10-01,11.2
+Houston,2024-11-01,9.4
+Houston,2024-12-01,10.2
+Houston,2025-01-01,7.7
+Houston,2025-02-01,-1.1
+Houston,2025-03-01,8.5
+Houston,2025-04-01,6.2
+Houston,2025-05-01,1.8
+Houston,2025-06-01,6.9
+Houston,2025-07-01,4.6
+Houston,2025-08-01,-6.7
+Houston,2025-09-01,6.1
+Houston,2025-10-01,0.0
+Houston,2025-11-01,-3.2
+Houston,2025-12-01,2.9
+Houston,2026-01-01,3.7
+Houston,2026-02-01,4.8
+Houston,2026-03-01,7.6
+Houston,2026-04-01,2.7
+Houston,2026-05-01,1.8
+Austin,2019-01-01,10.1
+Austin,2019-02-01,2.7
+Austin,2019-03-01,0.4
+Austin,2019-04-01,7.2
+Austin,2019-05-01,-1.2
+Austin,2019-06-01,-5.7
+Austin,2019-07-01,0.9
+Austin,2019-08-01,1.0
+Austin,2019-09-01,1.0
+Austin,2019-10-01,0.8
+Austin,2019-11-01,-1.3
+Austin,2019-12-01,4.6
+Austin,2020-01-01,3.8
+Austin,2020-02-01,8.3
+Austin,2020-03-01,7.7
+Austin,2020-04-01,8.0
+Austin,2020-05-01,15.3
+Austin,2020-06-01,26.1
+Austin,2020-07-01,17.4
+Austin,2020-08-01,13.3
+Austin,2020-09-01,23.4
+Austin,2020-10-01,16.0
+Austin,2020-11-01,16.8
+Austin,2020-12-01,21.4
+Austin,2021-01-01,14.7
+Austin,2021-02-01,12.2
+Austin,2021-03-01,35.0
+Austin,2021-04-01,29.1
+Austin,2021-05-01,10.1
+Austin,2021-06-01,8.3
+Austin,2021-07-01,6.0
+Austin,2021-08-01,10.3
+Austin,2021-09-01,7.8
+Austin,2021-10-01,6.8
+Austin,2021-11-01,17.0
+Austin,2021-12-01,13.9
+Austin,2022-01-01,5.2
+Austin,2022-02-01,10.4
+Austin,2022-03-01,-2.2
+Austin,2022-04-01,-5.6
+Austin,2022-05-01,3.1
+Austin,2022-06-01,1.6
+Austin,2022-07-01,0.1
+Austin,2022-08-01,7.9
+Austin,2022-09-01,3.4
+Austin,2022-10-01,3.1
+Austin,2022-11-01,-5.1
+Austin,2022-12-01,-4.3
+Austin,2023-01-01,6.0
+Austin,2023-02-01,1.5
+Austin,2023-03-01,-4.4
+Austin,2023-04-01,-6.3
+Austin,2023-05-01,1.3
+Austin,2023-06-01,-2.2
+Austin,2023-07-01,-2.2
+Austin,2023-08-01,-0.9
+Austin,2023-09-01,-5.0
+Austin,2023-10-01,-3.4
+Austin,2023-11-01,-1.8
+Austin,2023-12-01,-6.0
+Austin,2024-01-01,-7.8
+Austin,2024-02-01,1.9
+Austin,2024-03-01,-7.5
+Austin,2024-04-01,5.1
+Austin,2024-05-01,-3.6
+Austin,2024-06-01,-6.0
+Austin,2024-07-01,5.0
+Austin,2024-08-01,4.5
+Austin,2024-09-01,3.3
+Austin,2024-10-01,11.2
+Austin,2024-11-01,9.4
+Austin,2024-12-01,10.2
+Austin,2025-01-01,7.7
+Austin,2025-02-01,-1.1
+Austin,2025-03-01,8.5
+Austin,2025-04-01,6.2
+Austin,2025-05-01,1.8
+Austin,2025-06-01,6.9
+Austin,2025-07-01,4.6
+Austin,2025-08-01,-6.7
+Austin,2025-09-01,6.1
+Austin,2025-10-01,0.0
+Austin,2025-11-01,-3.2
+Austin,2025-12-01,2.9
+Austin,2026-01-01,3.7
+Austin,2026-02-01,4.8
+Austin,2026-03-01,7.6
+Austin,2026-04-01,2.7
+Austin,2026-05-01,1.8
+San Antonio,2019-01-01,10.1
+San Antonio,2019-02-01,2.7
+San Antonio,2019-03-01,0.4
+San Antonio,2019-04-01,7.2
+San Antonio,2019-05-01,-1.2
+San Antonio,2019-06-01,-5.7
+San Antonio,2019-07-01,0.9
+San Antonio,2019-08-01,1.0
+San Antonio,2019-09-01,1.0
+San Antonio,2019-10-01,0.8
+San Antonio,2019-11-01,-1.3
+San Antonio,2019-12-01,4.6
+San Antonio,2020-01-01,3.8
+San Antonio,2020-02-01,8.3
+San Antonio,2020-03-01,7.7
+San Antonio,2020-04-01,8.0
+San Antonio,2020-05-01,15.3
+San Antonio,2020-06-01,26.1
+San Antonio,2020-07-01,17.4
+San Antonio,2020-08-01,13.3
+San Antonio,2020-09-01,23.4
+San Antonio,2020-10-01,16.0
+San Antonio,2020-11-01,16.8
+San Antonio,2020-12-01,21.4
+San Antonio,2021-01-01,14.7
+San Antonio,2021-02-01,12.2
+San Antonio,2021-03-01,35.0
+San Antonio,2021-04-01,29.1
+San Antonio,2021-05-01,10.1
+San Antonio,2021-06-01,8.3
+San Antonio,2021-07-01,6.0
+San Antonio,2021-08-01,10.3
+San Antonio,2021-09-01,7.8
+San Antonio,2021-10-01,6.8
+San Antonio,2021-11-01,17.0
+San Antonio,2021-12-01,13.9
+San Antonio,2022-01-01,5.2
+San Antonio,2022-02-01,10.4
+San Antonio,2022-03-01,-2.2
+San Antonio,2022-04-01,-5.6
+San Antonio,2022-05-01,3.1
+San Antonio,2022-06-01,1.6
+San Antonio,2022-07-01,0.1
+San Antonio,2022-08-01,7.9
+San Antonio,2022-09-01,3.4
+San Antonio,2022-10-01,3.1
+San Antonio,2022-11-01,-5.1
+San Antonio,2022-12-01,-4.3
+San Antonio,2023-01-01,6.0
+San Antonio,2023-02-01,1.5
+San Antonio,2023-03-01,-4.4
+San Antonio,2023-04-01,-6.3
+San Antonio,2023-05-01,1.3
+San Antonio,2023-06-01,-2.2
+San Antonio,2023-07-01,-2.2
+San Antonio,2023-08-01,-0.9
+San Antonio,2023-09-01,-5.0
+San Antonio,2023-10-01,-3.4
+San Antonio,2023-11-01,-1.8
+San Antonio,2023-12-01,-6.0
+San Antonio,2024-01-01,-7.8
+San Antonio,2024-02-01,1.9
+San Antonio,2024-03-01,-7.5
+San Antonio,2024-04-01,5.1
+San Antonio,2024-05-01,-3.6
+San Antonio,2024-06-01,-6.0
+San Antonio,2024-07-01,5.0
+San Antonio,2024-08-01,4.5
+San Antonio,2024-09-01,3.3
+San Antonio,2024-10-01,11.2
+San Antonio,2024-11-01,9.4
+San Antonio,2024-12-01,10.2
+San Antonio,2025-01-01,7.7
+San Antonio,2025-02-01,-1.1
+San Antonio,2025-03-01,8.5
+San Antonio,2025-04-01,6.2
+San Antonio,2025-05-01,1.8
+San Antonio,2025-06-01,6.9
+San Antonio,2025-07-01,4.6
+San Antonio,2025-08-01,-6.7
+San Antonio,2025-09-01,6.1
+San Antonio,2025-10-01,0.0
+San Antonio,2025-11-01,-3.2
+San Antonio,2025-12-01,2.9
+San Antonio,2026-01-01,3.7
+San Antonio,2026-02-01,4.8
+San Antonio,2026-03-01,7.6
+San Antonio,2026-04-01,2.7
+San Antonio,2026-05-01,1.8
+Atlanta,2019-01-01,14.9
+Atlanta,2019-02-01,3.2
+Atlanta,2019-03-01,1.7
+Atlanta,2019-04-01,6.0
+Atlanta,2019-05-01,-1.2
+Atlanta,2019-06-01,-5.3
+Atlanta,2019-07-01,1.1
+Atlanta,2019-08-01,0.0
+Atlanta,2019-09-01,0.5
+Atlanta,2019-10-01,-0.3
+Atlanta,2019-11-01,-1.7
+Atlanta,2019-12-01,2.4
+Atlanta,2020-01-01,-0.3
+Atlanta,2020-02-01,7.4
+Atlanta,2020-03-01,5.7
+Atlanta,2020-04-01,2.4
+Atlanta,2020-05-01,11.1
+Atlanta,2020-06-01,23.8
+Atlanta,2020-07-01,15.4
+Atlanta,2020-08-01,12.0
+Atlanta,2020-09-01,21.9
+Atlanta,2020-10-01,13.4
+Atlanta,2020-11-01,14.8
+Atlanta,2020-12-01,19.2
+Atlanta,2021-01-01,16.1
+Atlanta,2021-02-01,13.5
+Atlanta,2021-03-01,36.0
+Atlanta,2021-04-01,34.0
+Atlanta,2021-05-01,12.4
+Atlanta,2021-06-01,9.9
+Atlanta,2021-07-01,7.3
+Atlanta,2021-08-01,11.2
+Atlanta,2021-09-01,8.5
+Atlanta,2021-10-01,8.3
+Atlanta,2021-11-01,17.9
+Atlanta,2021-12-01,14.9
+Atlanta,2022-01-01,11.9
+Atlanta,2022-02-01,17.4
+Atlanta,2022-03-01,5.8
+Atlanta,2022-04-01,1.1
+Atlanta,2022-05-01,10.1
+Atlanta,2022-06-01,8.6
+Atlanta,2022-07-01,7.0
+Atlanta,2022-08-01,15.6
+Atlanta,2022-09-01,10.8
+Atlanta,2022-10-01,10.3
+Atlanta,2022-11-01,4.1
+Atlanta,2022-12-01,2.0
+Atlanta,2023-01-01,6.5
+Atlanta,2023-02-01,3.6
+Atlanta,2023-03-01,-4.4
+Atlanta,2023-04-01,-4.7
+Atlanta,2023-05-01,2.9
+Atlanta,2023-06-01,-1.3
+Atlanta,2023-07-01,-1.0
+Atlanta,2023-08-01,0.2
+Atlanta,2023-09-01,-4.4
+Atlanta,2023-10-01,-0.1
+Atlanta,2023-11-01,0.0
+Atlanta,2023-12-01,-3.2
+Atlanta,2024-01-01,-5.3
+Atlanta,2024-02-01,1.3
+Atlanta,2024-03-01,-5.8
+Atlanta,2024-04-01,6.1
+Atlanta,2024-05-01,-1.9
+Atlanta,2024-06-01,-4.2
+Atlanta,2024-07-01,7.6
+Atlanta,2024-08-01,-0.8
+Atlanta,2024-09-01,3.3
+Atlanta,2024-10-01,9.3
+Atlanta,2024-11-01,3.3
+Atlanta,2024-12-01,3.5
+Atlanta,2025-01-01,1.5
+Atlanta,2025-02-01,-4.9
+Atlanta,2025-03-01,3.8
+Atlanta,2025-04-01,1.5
+Atlanta,2025-05-01,-3.4
+Atlanta,2025-06-01,1.2
+Atlanta,2025-07-01,-1.6
+Atlanta,2025-08-01,-5.3
+Atlanta,2025-09-01,1.5
+Atlanta,2025-10-01,-4.3
+Atlanta,2025-11-01,-4.7
+Atlanta,2025-12-01,4.4
+Atlanta,2026-01-01,2.5
+Atlanta,2026-02-01,3.7
+Atlanta,2026-03-01,6.3
+Atlanta,2026-04-01,3.3
+Atlanta,2026-05-01,2.1
+Tampa,2019-01-01,12.5
+Tampa,2019-02-01,3.1
+Tampa,2019-03-01,1.4
+Tampa,2019-04-01,6.3
+Tampa,2019-05-01,-1.4
+Tampa,2019-06-01,-5.4
+Tampa,2019-07-01,0.4
+Tampa,2019-08-01,1.4
+Tampa,2019-09-01,0.5
+Tampa,2019-10-01,-0.2
+Tampa,2019-11-01,-2.0
+Tampa,2019-12-01,3.9
+Tampa,2020-01-01,1.1
+Tampa,2020-02-01,6.8
+Tampa,2020-03-01,5.7
+Tampa,2020-04-01,4.4
+Tampa,2020-05-01,12.7
+Tampa,2020-06-01,24.5
+Tampa,2020-07-01,15.7
+Tampa,2020-08-01,11.9
+Tampa,2020-09-01,22.3
+Tampa,2020-10-01,13.9
+Tampa,2020-11-01,15.7
+Tampa,2020-12-01,19.1
+Tampa,2021-01-01,14.7
+Tampa,2021-02-01,11.8
+Tampa,2021-03-01,33.2
+Tampa,2021-04-01,29.7
+Tampa,2021-05-01,9.0
+Tampa,2021-06-01,6.4
+Tampa,2021-07-01,4.9
+Tampa,2021-08-01,8.0
+Tampa,2021-09-01,5.9
+Tampa,2021-10-01,5.7
+Tampa,2021-11-01,15.0
+Tampa,2021-12-01,11.5
+Tampa,2022-01-01,8.1
+Tampa,2022-02-01,13.2
+Tampa,2022-03-01,1.8
+Tampa,2022-04-01,-2.1
+Tampa,2022-05-01,6.7
+Tampa,2022-06-01,6.2
+Tampa,2022-07-01,4.2
+Tampa,2022-08-01,13.0
+Tampa,2022-09-01,8.3
+Tampa,2022-10-01,7.5
+Tampa,2022-11-01,0.6
+Tampa,2022-12-01,-0.4
+Tampa,2023-01-01,6.6
+Tampa,2023-02-01,4.0
+Tampa,2023-03-01,-3.4
+Tampa,2023-04-01,-4.2
+Tampa,2023-05-01,3.5
+Tampa,2023-06-01,-1.1
+Tampa,2023-07-01,-1.0
+Tampa,2023-08-01,0.8
+Tampa,2023-09-01,-4.4
+Tampa,2023-10-01,-0.5
+Tampa,2023-11-01,0.4
+Tampa,2023-12-01,-3.6
+Tampa,2024-01-01,-3.4
+Tampa,2024-02-01,3.8
+Tampa,2024-03-01,-4.0
+Tampa,2024-04-01,8.0
+Tampa,2024-05-01,-0.5
+Tampa,2024-06-01,-2.5
+Tampa,2024-07-01,9.6
+Tampa,2024-08-01,0.3
+Tampa,2024-09-01,5.7
+Tampa,2024-10-01,12.3
+Tampa,2024-11-01,5.7
+Tampa,2024-12-01,5.7
+Tampa,2025-01-01,-0.3
+Tampa,2025-02-01,-8.5
+Tampa,2025-03-01,0.8
+Tampa,2025-04-01,-1.1
+Tampa,2025-05-01,-5.2
+Tampa,2025-06-01,-1.4
+Tampa,2025-07-01,-4.3
+Tampa,2025-08-01,-7.4
+Tampa,2025-09-01,-2.2
+Tampa,2025-10-01,-7.5
+Tampa,2025-11-01,-7.2
+Tampa,2025-12-01,1.1
+Tampa,2026-01-01,1.2
+Tampa,2026-02-01,2.7
+Tampa,2026-03-01,5.8
+Tampa,2026-04-01,2.5
+Tampa,2026-05-01,0.9
+Orlando,2019-01-01,12.5
+Orlando,2019-02-01,3.1
+Orlando,2019-03-01,1.4
+Orlando,2019-04-01,6.3
+Orlando,2019-05-01,-1.4
+Orlando,2019-06-01,-5.4
+Orlando,2019-07-01,0.4
+Orlando,2019-08-01,1.4
+Orlando,2019-09-01,0.5
+Orlando,2019-10-01,-0.2
+Orlando,2019-11-01,-2.0
+Orlando,2019-12-01,3.9
+Orlando,2020-01-01,1.1
+Orlando,2020-02-01,6.8
+Orlando,2020-03-01,5.7
+Orlando,2020-04-01,4.4
+Orlando,2020-05-01,12.7
+Orlando,2020-06-01,24.5
+Orlando,2020-07-01,15.7
+Orlando,2020-08-01,11.9
+Orlando,2020-09-01,22.3
+Orlando,2020-10-01,13.9
+Orlando,2020-11-01,15.7
+Orlando,2020-12-01,19.1
+Orlando,2021-01-01,14.7
+Orlando,2021-02-01,11.8
+Orlando,2021-03-01,33.2
+Orlando,2021-04-01,29.7
+Orlando,2021-05-01,9.0
+Orlando,2021-06-01,6.4
+Orlando,2021-07-01,4.9
+Orlando,2021-08-01,8.0
+Orlando,2021-09-01,5.9
+Orlando,2021-10-01,5.7
+Orlando,2021-11-01,15.0
+Orlando,2021-12-01,11.5
+Orlando,2022-01-01,8.1
+Orlando,2022-02-01,13.2
+Orlando,2022-03-01,1.8
+Orlando,2022-04-01,-2.1
+Orlando,2022-05-01,6.7
+Orlando,2022-06-01,6.2
+Orlando,2022-07-01,4.2
+Orlando,2022-08-01,13.0
+Orlando,2022-09-01,8.3
+Orlando,2022-10-01,7.5
+Orlando,2022-11-01,0.6
+Orlando,2022-12-01,-0.4
+Orlando,2023-01-01,6.6
+Orlando,2023-02-01,4.0
+Orlando,2023-03-01,-3.4
+Orlando,2023-04-01,-4.2
+Orlando,2023-05-01,3.5
+Orlando,2023-06-01,-1.1
+Orlando,2023-07-01,-1.0
+Orlando,2023-08-01,0.8
+Orlando,2023-09-01,-4.4
+Orlando,2023-10-01,-0.5
+Orlando,2023-11-01,0.4
+Orlando,2023-12-01,-3.6
+Orlando,2024-01-01,-3.4
+Orlando,2024-02-01,3.8
+Orlando,2024-03-01,-4.0
+Orlando,2024-04-01,8.0
+Orlando,2024-05-01,-0.5
+Orlando,2024-06-01,-2.5
+Orlando,2024-07-01,9.6
+Orlando,2024-08-01,0.3
+Orlando,2024-09-01,5.7
+Orlando,2024-10-01,12.3
+Orlando,2024-11-01,5.7
+Orlando,2024-12-01,5.7
+Orlando,2025-01-01,-0.3
+Orlando,2025-02-01,-8.5
+Orlando,2025-03-01,0.8
+Orlando,2025-04-01,-1.1
+Orlando,2025-05-01,-5.2
+Orlando,2025-06-01,-1.4
+Orlando,2025-07-01,-4.3
+Orlando,2025-08-01,-7.4
+Orlando,2025-09-01,-2.2
+Orlando,2025-10-01,-7.5
+Orlando,2025-11-01,-7.2
+Orlando,2025-12-01,1.1
+Orlando,2026-01-01,1.2
+Orlando,2026-02-01,2.7
+Orlando,2026-03-01,5.8
+Orlando,2026-04-01,2.5
+Orlando,2026-05-01,0.9
+Miami,2019-01-01,12.5
+Miami,2019-02-01,3.1
+Miami,2019-03-01,1.4
+Miami,2019-04-01,6.3
+Miami,2019-05-01,-1.4
+Miami,2019-06-01,-5.4
+Miami,2019-07-01,0.4
+Miami,2019-08-01,1.4
+Miami,2019-09-01,0.5
+Miami,2019-10-01,-0.2
+Miami,2019-11-01,-2.0
+Miami,2019-12-01,3.9
+Miami,2020-01-01,1.1
+Miami,2020-02-01,6.8
+Miami,2020-03-01,5.7
+Miami,2020-04-01,4.4
+Miami,2020-05-01,12.7
+Miami,2020-06-01,24.5
+Miami,2020-07-01,15.7
+Miami,2020-08-01,11.9
+Miami,2020-09-01,22.3
+Miami,2020-10-01,13.9
+Miami,2020-11-01,15.7
+Miami,2020-12-01,19.1
+Miami,2021-01-01,14.7
+Miami,2021-02-01,11.8
+Miami,2021-03-01,33.2
+Miami,2021-04-01,29.7
+Miami,2021-05-01,9.0
+Miami,2021-06-01,6.4
+Miami,2021-07-01,4.9
+Miami,2021-08-01,8.0
+Miami,2021-09-01,5.9
+Miami,2021-10-01,5.7
+Miami,2021-11-01,15.0
+Miami,2021-12-01,11.5
+Miami,2022-01-01,8.1
+Miami,2022-02-01,13.2
+Miami,2022-03-01,1.8
+Miami,2022-04-01,-2.1
+Miami,2022-05-01,6.7
+Miami,2022-06-01,6.2
+Miami,2022-07-01,4.2
+Miami,2022-08-01,13.0
+Miami,2022-09-01,8.3
+Miami,2022-10-01,7.5
+Miami,2022-11-01,0.6
+Miami,2022-12-01,-0.4
+Miami,2023-01-01,6.6
+Miami,2023-02-01,4.0
+Miami,2023-03-01,-3.4
+Miami,2023-04-01,-4.2
+Miami,2023-05-01,3.5
+Miami,2023-06-01,-1.1
+Miami,2023-07-01,-1.0
+Miami,2023-08-01,0.8
+Miami,2023-09-01,-4.4
+Miami,2023-10-01,-0.5
+Miami,2023-11-01,0.4
+Miami,2023-12-01,-3.6
+Miami,2024-01-01,-3.4
+Miami,2024-02-01,3.8
+Miami,2024-03-01,-4.0
+Miami,2024-04-01,8.0
+Miami,2024-05-01,-0.5
+Miami,2024-06-01,-2.5
+Miami,2024-07-01,9.6
+Miami,2024-08-01,0.3
+Miami,2024-09-01,5.7
+Miami,2024-10-01,12.3
+Miami,2024-11-01,5.7
+Miami,2024-12-01,5.7
+Miami,2025-01-01,-0.3
+Miami,2025-02-01,-8.5
+Miami,2025-03-01,0.8
+Miami,2025-04-01,-1.1
+Miami,2025-05-01,-5.2
+Miami,2025-06-01,-1.4
+Miami,2025-07-01,-4.3
+Miami,2025-08-01,-7.4
+Miami,2025-09-01,-2.2
+Miami,2025-10-01,-7.5
+Miami,2025-11-01,-7.2
+Miami,2025-12-01,1.1
+Miami,2026-01-01,1.2
+Miami,2026-02-01,2.7
+Miami,2026-03-01,5.8
+Miami,2026-04-01,2.5
+Miami,2026-05-01,0.9
+Jacksonville,2019-01-01,12.5
+Jacksonville,2019-02-01,3.1
+Jacksonville,2019-03-01,1.4
+Jacksonville,2019-04-01,6.3
+Jacksonville,2019-05-01,-1.4
+Jacksonville,2019-06-01,-5.4
+Jacksonville,2019-07-01,0.4
+Jacksonville,2019-08-01,1.4
+Jacksonville,2019-09-01,0.5
+Jacksonville,2019-10-01,-0.2
+Jacksonville,2019-11-01,-2.0
+Jacksonville,2019-12-01,3.9
+Jacksonville,2020-01-01,1.1
+Jacksonville,2020-02-01,6.8
+Jacksonville,2020-03-01,5.7
+Jacksonville,2020-04-01,4.4
+Jacksonville,2020-05-01,12.7
+Jacksonville,2020-06-01,24.5
+Jacksonville,2020-07-01,15.7
+Jacksonville,2020-08-01,11.9
+Jacksonville,2020-09-01,22.3
+Jacksonville,2020-10-01,13.9
+Jacksonville,2020-11-01,15.7
+Jacksonville,2020-12-01,19.1
+Jacksonville,2021-01-01,14.7
+Jacksonville,2021-02-01,11.8
+Jacksonville,2021-03-01,33.2
+Jacksonville,2021-04-01,29.7
+Jacksonville,2021-05-01,9.0
+Jacksonville,2021-06-01,6.4
+Jacksonville,2021-07-01,4.9
+Jacksonville,2021-08-01,8.0
+Jacksonville,2021-09-01,5.9
+Jacksonville,2021-10-01,5.7
+Jacksonville,2021-11-01,15.0
+Jacksonville,2021-12-01,11.5
+Jacksonville,2022-01-01,8.1
+Jacksonville,2022-02-01,13.2
+Jacksonville,2022-03-01,1.8
+Jacksonville,2022-04-01,-2.1
+Jacksonville,2022-05-01,6.7
+Jacksonville,2022-06-01,6.2
+Jacksonville,2022-07-01,4.2
+Jacksonville,2022-08-01,13.0
+Jacksonville,2022-09-01,8.3
+Jacksonville,2022-10-01,7.5
+Jacksonville,2022-11-01,0.6
+Jacksonville,2022-12-01,-0.4
+Jacksonville,2023-01-01,6.6
+Jacksonville,2023-02-01,4.0
+Jacksonville,2023-03-01,-3.4
+Jacksonville,2023-04-01,-4.2
+Jacksonville,2023-05-01,3.5
+Jacksonville,2023-06-01,-1.1
+Jacksonville,2023-07-01,-1.0
+Jacksonville,2023-08-01,0.8
+Jacksonville,2023-09-01,-4.4
+Jacksonville,2023-10-01,-0.5
+Jacksonville,2023-11-01,0.4
+Jacksonville,2023-12-01,-3.6
+Jacksonville,2024-01-01,-3.4
+Jacksonville,2024-02-01,3.8
+Jacksonville,2024-03-01,-4.0
+Jacksonville,2024-04-01,8.0
+Jacksonville,2024-05-01,-0.5
+Jacksonville,2024-06-01,-2.5
+Jacksonville,2024-07-01,9.6
+Jacksonville,2024-08-01,0.3
+Jacksonville,2024-09-01,5.7
+Jacksonville,2024-10-01,12.3
+Jacksonville,2024-11-01,5.7
+Jacksonville,2024-12-01,5.7
+Jacksonville,2025-01-01,-0.3
+Jacksonville,2025-02-01,-8.5
+Jacksonville,2025-03-01,0.8
+Jacksonville,2025-04-01,-1.1
+Jacksonville,2025-05-01,-5.2
+Jacksonville,2025-06-01,-1.4
+Jacksonville,2025-07-01,-4.3
+Jacksonville,2025-08-01,-7.4
+Jacksonville,2025-09-01,-2.2
+Jacksonville,2025-10-01,-7.5
+Jacksonville,2025-11-01,-7.2
+Jacksonville,2025-12-01,1.1
+Jacksonville,2026-01-01,1.2
+Jacksonville,2026-02-01,2.7
+Jacksonville,2026-03-01,5.8
+Jacksonville,2026-04-01,2.5
+Jacksonville,2026-05-01,0.9
+Charlotte,2019-01-01,15.6
+Charlotte,2019-02-01,2.7
+Charlotte,2019-03-01,1.0
+Charlotte,2019-04-01,5.6
+Charlotte,2019-05-01,-1.6
+Charlotte,2019-06-01,-4.3
+Charlotte,2019-07-01,0.8
+Charlotte,2019-08-01,1.9
+Charlotte,2019-09-01,4.0
+Charlotte,2019-10-01,1.7
+Charlotte,2019-11-01,0.4
+Charlotte,2019-12-01,2.4
+Charlotte,2020-01-01,2.6
+Charlotte,2020-02-01,11.7
+Charlotte,2020-03-01,10.0
+Charlotte,2020-04-01,9.4
+Charlotte,2020-05-01,16.7
+Charlotte,2020-06-01,29.4
+Charlotte,2020-07-01,22.2
+Charlotte,2020-08-01,16.8
+Charlotte,2020-09-01,26.2
+Charlotte,2020-10-01,17.1
+Charlotte,2020-11-01,21.4
+Charlotte,2020-12-01,25.1
+Charlotte,2021-01-01,19.7
+Charlotte,2021-02-01,18.4
+Charlotte,2021-03-01,41.7
+Charlotte,2021-04-01,36.6
+Charlotte,2021-05-01,15.8
+Charlotte,2021-06-01,12.6
+Charlotte,2021-07-01,10.3
+Charlotte,2021-08-01,13.8
+Charlotte,2021-09-01,10.8
+Charlotte,2021-10-01,10.8
+Charlotte,2021-11-01,20.0
+Charlotte,2021-12-01,16.8
+Charlotte,2022-01-01,6.6
+Charlotte,2022-02-01,11.2
+Charlotte,2022-03-01,0.1
+Charlotte,2022-04-01,-4.2
+Charlotte,2022-05-01,4.7
+Charlotte,2022-06-01,4.0
+Charlotte,2022-07-01,1.9
+Charlotte,2022-08-01,10.4
+Charlotte,2022-09-01,6.1
+Charlotte,2022-10-01,5.2
+Charlotte,2022-11-01,-0.8
+Charlotte,2022-12-01,-2.3
+Charlotte,2023-01-01,2.9
+Charlotte,2023-02-01,0.0
+Charlotte,2023-03-01,-7.8
+Charlotte,2023-04-01,-8.7
+Charlotte,2023-05-01,-1.5
+Charlotte,2023-06-01,-5.5
+Charlotte,2023-07-01,-5.3
+Charlotte,2023-08-01,-3.4
+Charlotte,2023-09-01,-8.7
+Charlotte,2023-10-01,-4.2
+Charlotte,2023-11-01,-3.5
+Charlotte,2023-12-01,-8.3
+Charlotte,2024-01-01,-8.1
+Charlotte,2024-02-01,-1.6
+Charlotte,2024-03-01,-7.8
+Charlotte,2024-04-01,4.3
+Charlotte,2024-05-01,-4.7
+Charlotte,2024-06-01,-6.7
+Charlotte,2024-07-01,3.2
+Charlotte,2024-08-01,-3.6
+Charlotte,2024-09-01,0.2
+Charlotte,2024-10-01,6.8
+Charlotte,2024-11-01,1.6
+Charlotte,2024-12-01,2.8
+Charlotte,2025-01-01,1.8
+Charlotte,2025-02-01,-4.5
+Charlotte,2025-03-01,4.1
+Charlotte,2025-04-01,1.3
+Charlotte,2025-05-01,-2.5
+Charlotte,2025-06-01,1.4
+Charlotte,2025-07-01,0.1
+Charlotte,2025-08-01,-5.1
+Charlotte,2025-09-01,-0.2
+Charlotte,2025-10-01,-4.6
+Charlotte,2025-11-01,-6.3
+Charlotte,2025-12-01,3.1
+Charlotte,2026-01-01,1.1
+Charlotte,2026-02-01,2.2
+Charlotte,2026-03-01,6.1
+Charlotte,2026-04-01,3.0
+Charlotte,2026-05-01,1.1
+Raleigh,2019-01-01,15.6
+Raleigh,2019-02-01,2.7
+Raleigh,2019-03-01,1.0
+Raleigh,2019-04-01,5.6
+Raleigh,2019-05-01,-1.6
+Raleigh,2019-06-01,-4.3
+Raleigh,2019-07-01,0.8
+Raleigh,2019-08-01,1.9
+Raleigh,2019-09-01,4.0
+Raleigh,2019-10-01,1.7
+Raleigh,2019-11-01,0.4
+Raleigh,2019-12-01,2.4
+Raleigh,2020-01-01,2.6
+Raleigh,2020-02-01,11.7
+Raleigh,2020-03-01,10.0
+Raleigh,2020-04-01,9.4
+Raleigh,2020-05-01,16.7
+Raleigh,2020-06-01,29.4
+Raleigh,2020-07-01,22.2
+Raleigh,2020-08-01,16.8
+Raleigh,2020-09-01,26.2
+Raleigh,2020-10-01,17.1
+Raleigh,2020-11-01,21.4
+Raleigh,2020-12-01,25.1
+Raleigh,2021-01-01,19.7
+Raleigh,2021-02-01,18.4
+Raleigh,2021-03-01,41.7
+Raleigh,2021-04-01,36.6
+Raleigh,2021-05-01,15.8
+Raleigh,2021-06-01,12.6
+Raleigh,2021-07-01,10.3
+Raleigh,2021-08-01,13.8
+Raleigh,2021-09-01,10.8
+Raleigh,2021-10-01,10.8
+Raleigh,2021-11-01,20.0
+Raleigh,2021-12-01,16.8
+Raleigh,2022-01-01,6.6
+Raleigh,2022-02-01,11.2
+Raleigh,2022-03-01,0.1
+Raleigh,2022-04-01,-4.2
+Raleigh,2022-05-01,4.7
+Raleigh,2022-06-01,4.0
+Raleigh,2022-07-01,1.9
+Raleigh,2022-08-01,10.4
+Raleigh,2022-09-01,6.1
+Raleigh,2022-10-01,5.2
+Raleigh,2022-11-01,-0.8
+Raleigh,2022-12-01,-2.3
+Raleigh,2023-01-01,2.9
+Raleigh,2023-02-01,0.0
+Raleigh,2023-03-01,-7.8
+Raleigh,2023-04-01,-8.7
+Raleigh,2023-05-01,-1.5
+Raleigh,2023-06-01,-5.5
+Raleigh,2023-07-01,-5.3
+Raleigh,2023-08-01,-3.4
+Raleigh,2023-09-01,-8.7
+Raleigh,2023-10-01,-4.2
+Raleigh,2023-11-01,-3.5
+Raleigh,2023-12-01,-8.3
+Raleigh,2024-01-01,-8.1
+Raleigh,2024-02-01,-1.6
+Raleigh,2024-03-01,-7.8
+Raleigh,2024-04-01,4.3
+Raleigh,2024-05-01,-4.7
+Raleigh,2024-06-01,-6.7
+Raleigh,2024-07-01,3.2
+Raleigh,2024-08-01,-3.6
+Raleigh,2024-09-01,0.2
+Raleigh,2024-10-01,6.8
+Raleigh,2024-11-01,1.6
+Raleigh,2024-12-01,2.8
+Raleigh,2025-01-01,1.8
+Raleigh,2025-02-01,-4.5
+Raleigh,2025-03-01,4.1
+Raleigh,2025-04-01,1.3
+Raleigh,2025-05-01,-2.5
+Raleigh,2025-06-01,1.4
+Raleigh,2025-07-01,0.1
+Raleigh,2025-08-01,-5.1
+Raleigh,2025-09-01,-0.2
+Raleigh,2025-10-01,-4.6
+Raleigh,2025-11-01,-6.3
+Raleigh,2025-12-01,3.1
+Raleigh,2026-01-01,1.1
+Raleigh,2026-02-01,2.2
+Raleigh,2026-03-01,6.1
+Raleigh,2026-04-01,3.0
+Raleigh,2026-05-01,1.1
+Nashville,2019-01-01,13.9
+Nashville,2019-02-01,2.5
+Nashville,2019-03-01,0.2
+Nashville,2019-04-01,5.9
+Nashville,2019-05-01,-1.9
+Nashville,2019-06-01,-4.0
+Nashville,2019-07-01,1.8
+Nashville,2019-08-01,-0.1
+Nashville,2019-09-01,1.0
+Nashville,2019-10-01,0.1
+Nashville,2019-11-01,-1.4
+Nashville,2019-12-01,4.0
+Nashville,2020-01-01,0.5
+Nashville,2020-02-01,6.3
+Nashville,2020-03-01,5.0
+Nashville,2020-04-01,4.7
+Nashville,2020-05-01,10.0
+Nashville,2020-06-01,22.4
+Nashville,2020-07-01,14.3
+Nashville,2020-08-01,10.9
+Nashville,2020-09-01,20.4
+Nashville,2020-10-01,12.5
+Nashville,2020-11-01,14.4
+Nashville,2020-12-01,19.5
+Nashville,2021-01-01,15.3
+Nashville,2021-02-01,14.4
+Nashville,2021-03-01,37.8
+Nashville,2021-04-01,31.7
+Nashville,2021-05-01,13.6
+Nashville,2021-06-01,11.2
+Nashville,2021-07-01,8.0
+Nashville,2021-08-01,12.4
+Nashville,2021-09-01,9.0
+Nashville,2021-10-01,8.4
+Nashville,2021-11-01,18.5
+Nashville,2021-12-01,13.9
+Nashville,2022-01-01,11.8
+Nashville,2022-02-01,17.4
+Nashville,2022-03-01,5.5
+Nashville,2022-04-01,0.7
+Nashville,2022-05-01,10.1
+Nashville,2022-06-01,8.8
+Nashville,2022-07-01,7.1
+Nashville,2022-08-01,16.2
+Nashville,2022-09-01,11.7
+Nashville,2022-10-01,11.2
+Nashville,2022-11-01,4.2
+Nashville,2022-12-01,1.6
+Nashville,2023-01-01,6.6
+Nashville,2023-02-01,5.1
+Nashville,2023-03-01,-3.3
+Nashville,2023-04-01,-4.2
+Nashville,2023-05-01,3.0
+Nashville,2023-06-01,-1.3
+Nashville,2023-07-01,-0.9
+Nashville,2023-08-01,0.7
+Nashville,2023-09-01,-3.2
+Nashville,2023-10-01,1.3
+Nashville,2023-11-01,1.9
+Nashville,2023-12-01,-1.7
+Nashville,2024-01-01,-5.9
+Nashville,2024-02-01,-0.4
+Nashville,2024-03-01,-7.7
+Nashville,2024-04-01,4.7
+Nashville,2024-05-01,-3.2
+Nashville,2024-06-01,-5.8
+Nashville,2024-07-01,5.1
+Nashville,2024-08-01,-6.2
+Nashville,2024-09-01,-0.2
+Nashville,2024-10-01,5.9
+Nashville,2024-11-01,-3.1
+Nashville,2024-12-01,-0.8
+Nashville,2025-01-01,-1.4
+Nashville,2025-02-01,-9.6
+Nashville,2025-03-01,0.5
+Nashville,2025-04-01,-2.3
+Nashville,2025-05-01,-6.1
+Nashville,2025-06-01,-2.5
+Nashville,2025-07-01,-3.7
+Nashville,2025-08-01,-5.5
+Nashville,2025-09-01,-2.1
+Nashville,2025-10-01,-8.2
+Nashville,2025-11-01,-5.5
+Nashville,2025-12-01,3.3
+Nashville,2026-01-01,1.6
+Nashville,2026-02-01,3.5
+Nashville,2026-03-01,5.7
+Nashville,2026-04-01,3.2
+Nashville,2026-05-01,1.5
+Memphis,2019-01-01,13.9
+Memphis,2019-02-01,2.5
+Memphis,2019-03-01,0.2
+Memphis,2019-04-01,5.9
+Memphis,2019-05-01,-1.9
+Memphis,2019-06-01,-4.0
+Memphis,2019-07-01,1.8
+Memphis,2019-08-01,-0.1
+Memphis,2019-09-01,1.0
+Memphis,2019-10-01,0.1
+Memphis,2019-11-01,-1.4
+Memphis,2019-12-01,4.0
+Memphis,2020-01-01,0.5
+Memphis,2020-02-01,6.3
+Memphis,2020-03-01,5.0
+Memphis,2020-04-01,4.7
+Memphis,2020-05-01,10.0
+Memphis,2020-06-01,22.4
+Memphis,2020-07-01,14.3
+Memphis,2020-08-01,10.9
+Memphis,2020-09-01,20.4
+Memphis,2020-10-01,12.5
+Memphis,2020-11-01,14.4
+Memphis,2020-12-01,19.5
+Memphis,2021-01-01,15.3
+Memphis,2021-02-01,14.4
+Memphis,2021-03-01,37.8
+Memphis,2021-04-01,31.7
+Memphis,2021-05-01,13.6
+Memphis,2021-06-01,11.2
+Memphis,2021-07-01,8.0
+Memphis,2021-08-01,12.4
+Memphis,2021-09-01,9.0
+Memphis,2021-10-01,8.4
+Memphis,2021-11-01,18.5
+Memphis,2021-12-01,13.9
+Memphis,2022-01-01,11.8
+Memphis,2022-02-01,17.4
+Memphis,2022-03-01,5.5
+Memphis,2022-04-01,0.7
+Memphis,2022-05-01,10.1
+Memphis,2022-06-01,8.8
+Memphis,2022-07-01,7.1
+Memphis,2022-08-01,16.2
+Memphis,2022-09-01,11.7
+Memphis,2022-10-01,11.2
+Memphis,2022-11-01,4.2
+Memphis,2022-12-01,1.6
+Memphis,2023-01-01,6.6
+Memphis,2023-02-01,5.1
+Memphis,2023-03-01,-3.3
+Memphis,2023-04-01,-4.2
+Memphis,2023-05-01,3.0
+Memphis,2023-06-01,-1.3
+Memphis,2023-07-01,-0.9
+Memphis,2023-08-01,0.7
+Memphis,2023-09-01,-3.2
+Memphis,2023-10-01,1.3
+Memphis,2023-11-01,1.9
+Memphis,2023-12-01,-1.7
+Memphis,2024-01-01,-5.9
+Memphis,2024-02-01,-0.4
+Memphis,2024-03-01,-7.7
+Memphis,2024-04-01,4.7
+Memphis,2024-05-01,-3.2
+Memphis,2024-06-01,-5.8
+Memphis,2024-07-01,5.1
+Memphis,2024-08-01,-6.2
+Memphis,2024-09-01,-0.2
+Memphis,2024-10-01,5.9
+Memphis,2024-11-01,-3.1
+Memphis,2024-12-01,-0.8
+Memphis,2025-01-01,-1.4
+Memphis,2025-02-01,-9.6
+Memphis,2025-03-01,0.5
+Memphis,2025-04-01,-2.3
+Memphis,2025-05-01,-6.1
+Memphis,2025-06-01,-2.5
+Memphis,2025-07-01,-3.7
+Memphis,2025-08-01,-5.5
+Memphis,2025-09-01,-2.1
+Memphis,2025-10-01,-8.2
+Memphis,2025-11-01,-5.5
+Memphis,2025-12-01,3.3
+Memphis,2026-01-01,1.6
+Memphis,2026-02-01,3.5
+Memphis,2026-03-01,5.7
+Memphis,2026-04-01,3.2
+Memphis,2026-05-01,1.5
+Birmingham,2019-01-01,13.8
+Birmingham,2019-02-01,2.5
+Birmingham,2019-03-01,0.4
+Birmingham,2019-04-01,7.1
+Birmingham,2019-05-01,-1.7
+Birmingham,2019-06-01,-4.5
+Birmingham,2019-07-01,1.3
+Birmingham,2019-08-01,1.4
+Birmingham,2019-09-01,0.9
+Birmingham,2019-10-01,0.1
+Birmingham,2019-11-01,-1.7
+Birmingham,2019-12-01,3.5
+Birmingham,2020-01-01,-7.1
+Birmingham,2020-02-01,-0.3
+Birmingham,2020-03-01,-0.9
+Birmingham,2020-04-01,-3.7
+Birmingham,2020-05-01,2.4
+Birmingham,2020-06-01,14.9
+Birmingham,2020-07-01,8.4
+Birmingham,2020-08-01,5.3
+Birmingham,2020-09-01,13.5
+Birmingham,2020-10-01,6.0
+Birmingham,2020-11-01,8.1
+Birmingham,2020-12-01,11.3
+Birmingham,2021-01-01,18.5
+Birmingham,2021-02-01,15.9
+Birmingham,2021-03-01,37.7
+Birmingham,2021-04-01,35.7
+Birmingham,2021-05-01,16.0
+Birmingham,2021-06-01,12.7
+Birmingham,2021-07-01,8.9
+Birmingham,2021-08-01,13.5
+Birmingham,2021-09-01,10.5
+Birmingham,2021-10-01,10.0
+Birmingham,2021-11-01,19.9
+Birmingham,2021-12-01,16.5
+Birmingham,2022-01-01,7.5
+Birmingham,2022-02-01,13.0
+Birmingham,2022-03-01,1.7
+Birmingham,2022-04-01,-2.3
+Birmingham,2022-05-01,5.9
+Birmingham,2022-06-01,4.2
+Birmingham,2022-07-01,3.6
+Birmingham,2022-08-01,11.3
+Birmingham,2022-09-01,7.5
+Birmingham,2022-10-01,6.6
+Birmingham,2022-11-01,-0.4
+Birmingham,2022-12-01,-2.3
+Birmingham,2023-01-01,8.1
+Birmingham,2023-02-01,6.5
+Birmingham,2023-03-01,-2.0
+Birmingham,2023-04-01,-4.0
+Birmingham,2023-05-01,4.1
+Birmingham,2023-06-01,0.9
+Birmingham,2023-07-01,0.4
+Birmingham,2023-08-01,3.1
+Birmingham,2023-09-01,-2.4
+Birmingham,2023-10-01,1.9
+Birmingham,2023-11-01,1.0
+Birmingham,2023-12-01,-1.5
+Birmingham,2024-01-01,-3.3
+Birmingham,2024-02-01,3.3
+Birmingham,2024-03-01,-3.8
+Birmingham,2024-04-01,10.0
+Birmingham,2024-05-01,0.8
+Birmingham,2024-06-01,-2.3
+Birmingham,2024-07-01,8.3
+Birmingham,2024-08-01,-2.5
+Birmingham,2024-09-01,3.8
+Birmingham,2024-10-01,10.8
+Birmingham,2024-11-01,3.8
+Birmingham,2024-12-01,4.2
+Birmingham,2025-01-01,0.4
+Birmingham,2025-02-01,-8.8
+Birmingham,2025-03-01,0.0
+Birmingham,2025-04-01,-2.6
+Birmingham,2025-05-01,-6.1
+Birmingham,2025-06-01,-2.0
+Birmingham,2025-07-01,-3.9
+Birmingham,2025-08-01,-6.7
+Birmingham,2025-09-01,-2.0
+Birmingham,2025-10-01,-8.9
+Birmingham,2025-11-01,-7.5
+Birmingham,2025-12-01,3.6
+Birmingham,2026-01-01,-0.5
+Birmingham,2026-02-01,2.6
+Birmingham,2026-03-01,6.0
+Birmingham,2026-04-01,2.7
+Birmingham,2026-05-01,1.9
+New Orleans,2019-01-01,14.1
+New Orleans,2019-02-01,2.0
+New Orleans,2019-03-01,0.3
+New Orleans,2019-04-01,6.3
+New Orleans,2019-05-01,-1.8
+New Orleans,2019-06-01,-4.3
+New Orleans,2019-07-01,1.0
+New Orleans,2019-08-01,1.7
+New Orleans,2019-09-01,1.5
+New Orleans,2019-10-01,-0.1
+New Orleans,2019-11-01,-1.7
+New Orleans,2019-12-01,3.5
+New Orleans,2020-01-01,-4.2
+New Orleans,2020-02-01,2.5
+New Orleans,2020-03-01,0.7
+New Orleans,2020-04-01,-1.6
+New Orleans,2020-05-01,5.6
+New Orleans,2020-06-01,16.6
+New Orleans,2020-07-01,9.7
+New Orleans,2020-08-01,6.0
+New Orleans,2020-09-01,15.3
+New Orleans,2020-10-01,7.6
+New Orleans,2020-11-01,9.1
+New Orleans,2020-12-01,13.3
+New Orleans,2021-01-01,14.6
+New Orleans,2021-02-01,11.7
+New Orleans,2021-03-01,33.6
+New Orleans,2021-04-01,32.0
+New Orleans,2021-05-01,11.6
+New Orleans,2021-06-01,8.9
+New Orleans,2021-07-01,5.8
+New Orleans,2021-08-01,10.2
+New Orleans,2021-09-01,7.2
+New Orleans,2021-10-01,6.7
+New Orleans,2021-11-01,17.7
+New Orleans,2021-12-01,14.0
+New Orleans,2022-01-01,11.4
+New Orleans,2022-02-01,16.8
+New Orleans,2022-03-01,5.0
+New Orleans,2022-04-01,0.7
+New Orleans,2022-05-01,9.5
+New Orleans,2022-06-01,9.4
+New Orleans,2022-07-01,7.6
+New Orleans,2022-08-01,15.6
+New Orleans,2022-09-01,11.0
+New Orleans,2022-10-01,10.7
+New Orleans,2022-11-01,3.0
+New Orleans,2022-12-01,1.5
+New Orleans,2023-01-01,5.1
+New Orleans,2023-02-01,2.9
+New Orleans,2023-03-01,-4.1
+New Orleans,2023-04-01,-5.1
+New Orleans,2023-05-01,2.5
+New Orleans,2023-06-01,-2.7
+New Orleans,2023-07-01,-2.1
+New Orleans,2023-08-01,-0.6
+New Orleans,2023-09-01,-5.0
+New Orleans,2023-10-01,-1.0
+New Orleans,2023-11-01,-0.5
+New Orleans,2023-12-01,-4.3
+New Orleans,2024-01-01,-8.5
+New Orleans,2024-02-01,-2.4
+New Orleans,2024-03-01,-9.7
+New Orleans,2024-04-01,1.7
+New Orleans,2024-05-01,-6.3
+New Orleans,2024-06-01,-8.1
+New Orleans,2024-07-01,2.3
+New Orleans,2024-08-01,-8.3
+New Orleans,2024-09-01,-1.3
+New Orleans,2024-10-01,4.4
+New Orleans,2024-11-01,-3.9
+New Orleans,2024-12-01,-3.0
+New Orleans,2025-01-01,-1.9
+New Orleans,2025-02-01,-9.8
+New Orleans,2025-03-01,-0.4
+New Orleans,2025-04-01,-3.2
+New Orleans,2025-05-01,-6.3
+New Orleans,2025-06-01,-2.8
+New Orleans,2025-07-01,-5.3
+New Orleans,2025-08-01,-6.1
+New Orleans,2025-09-01,-2.0
+New Orleans,2025-10-01,-7.7
+New Orleans,2025-11-01,-4.8
+New Orleans,2025-12-01,3.4
+New Orleans,2026-01-01,2.2
+New Orleans,2026-02-01,5.3
+New Orleans,2026-03-01,6.4
+New Orleans,2026-04-01,3.1
+New Orleans,2026-05-01,1.9
+Oklahoma City,2019-01-01,12.1
+Oklahoma City,2019-02-01,4.5
+Oklahoma City,2019-03-01,0.4
+Oklahoma City,2019-04-01,8.8
+Oklahoma City,2019-05-01,-3.4
+Oklahoma City,2019-06-01,-4.3
+Oklahoma City,2019-07-01,2.3
+Oklahoma City,2019-08-01,0.4
+Oklahoma City,2019-09-01,1.4
+Oklahoma City,2019-10-01,0.9
+Oklahoma City,2019-11-01,-1.0
+Oklahoma City,2019-12-01,6.2
+Oklahoma City,2020-01-01,2.9
+Oklahoma City,2020-02-01,7.2
+Oklahoma City,2020-03-01,4.2
+Oklahoma City,2020-04-01,3.2
+Oklahoma City,2020-05-01,13.1
+Oklahoma City,2020-06-01,22.9
+Oklahoma City,2020-07-01,13.6
+Oklahoma City,2020-08-01,11.9
+Oklahoma City,2020-09-01,21.4
+Oklahoma City,2020-10-01,13.2
+Oklahoma City,2020-11-01,14.2
+Oklahoma City,2020-12-01,18.9
+Oklahoma City,2021-01-01,16.8
+Oklahoma City,2021-02-01,12.0
+Oklahoma City,2021-03-01,37.8
+Oklahoma City,2021-04-01,31.9
+Oklahoma City,2021-05-01,11.3
+Oklahoma City,2021-06-01,9.0
+Oklahoma City,2021-07-01,7.5
+Oklahoma City,2021-08-01,10.4
+Oklahoma City,2021-09-01,7.9
+Oklahoma City,2021-10-01,8.2
+Oklahoma City,2021-11-01,17.6
+Oklahoma City,2021-12-01,15.2
+Oklahoma City,2022-01-01,7.7
+Oklahoma City,2022-02-01,16.2
+Oklahoma City,2022-03-01,3.5
+Oklahoma City,2022-04-01,0.0
+Oklahoma City,2022-05-01,9.6
+Oklahoma City,2022-06-01,8.7
+Oklahoma City,2022-07-01,7.4
+Oklahoma City,2022-08-01,16.1
+Oklahoma City,2022-09-01,10.2
+Oklahoma City,2022-10-01,9.0
+Oklahoma City,2022-11-01,3.4
+Oklahoma City,2022-12-01,0.4
+Oklahoma City,2023-01-01,0.2
+Oklahoma City,2023-02-01,-3.7
+Oklahoma City,2023-03-01,-10.5
+Oklahoma City,2023-04-01,-11.6
+Oklahoma City,2023-05-01,-5.3
+Oklahoma City,2023-06-01,-9.4
+Oklahoma City,2023-07-01,-10.9
+Oklahoma City,2023-08-01,-10.8
+Oklahoma City,2023-09-01,-11.0
+Oklahoma City,2023-10-01,-7.4
+Oklahoma City,2023-11-01,-7.0
+Oklahoma City,2023-12-01,-10.6
+Oklahoma City,2024-01-01,-7.7
+Oklahoma City,2024-02-01,-2.5
+Oklahoma City,2024-03-01,-9.8
+Oklahoma City,2024-04-01,1.1
+Oklahoma City,2024-05-01,-5.6
+Oklahoma City,2024-06-01,-6.4
+Oklahoma City,2024-07-01,4.8
+Oklahoma City,2024-08-01,-3.0
+Oklahoma City,2024-09-01,-1.3
+Oklahoma City,2024-10-01,4.3
+Oklahoma City,2024-11-01,-3.5
+Oklahoma City,2024-12-01,-0.4
+Oklahoma City,2025-01-01,0.5
+Oklahoma City,2025-02-01,-7.3
+Oklahoma City,2025-03-01,4.2
+Oklahoma City,2025-04-01,1.4
+Oklahoma City,2025-05-01,-2.2
+Oklahoma City,2025-06-01,0.6
+Oklahoma City,2025-07-01,-0.7
+Oklahoma City,2025-08-01,-4.1
+Oklahoma City,2025-09-01,3.4
+Oklahoma City,2025-10-01,-1.6
+Oklahoma City,2025-11-01,-1.2
+Oklahoma City,2025-12-01,4.0
+Oklahoma City,2026-01-01,4.4
+Oklahoma City,2026-02-01,10.1
+Oklahoma City,2026-03-01,8.1
+Oklahoma City,2026-04-01,4.3
+Oklahoma City,2026-05-01,1.3
+Richmond,2019-01-01,14.3
+Richmond,2019-02-01,3.1
+Richmond,2019-03-01,1.7
+Richmond,2019-04-01,6.6
+Richmond,2019-05-01,-1.8
+Richmond,2019-06-01,-4.8
+Richmond,2019-07-01,0.9
+Richmond,2019-08-01,1.3
+Richmond,2019-09-01,1.8
+Richmond,2019-10-01,-1.0
+Richmond,2019-11-01,-1.3
+Richmond,2019-12-01,2.1
+Richmond,2020-01-01,-0.9
+Richmond,2020-02-01,5.5
+Richmond,2020-03-01,4.7
+Richmond,2020-04-01,4.1
+Richmond,2020-05-01,10.7
+Richmond,2020-06-01,23.1
+Richmond,2020-07-01,14.4
+Richmond,2020-08-01,10.2
+Richmond,2020-09-01,20.2
+Richmond,2020-10-01,11.3
+Richmond,2020-11-01,13.2
+Richmond,2020-12-01,18.5
+Richmond,2021-01-01,17.3
+Richmond,2021-02-01,15.2
+Richmond,2021-03-01,36.2
+Richmond,2021-04-01,31.9
+Richmond,2021-05-01,11.6
+Richmond,2021-06-01,8.9
+Richmond,2021-07-01,8.6
+Richmond,2021-08-01,13.6
+Richmond,2021-09-01,10.1
+Richmond,2021-10-01,11.0
+Richmond,2021-11-01,21.1
+Richmond,2021-12-01,16.2
+Richmond,2022-01-01,11.2
+Richmond,2022-02-01,16.8
+Richmond,2022-03-01,4.5
+Richmond,2022-04-01,-0.7
+Richmond,2022-05-01,9.5
+Richmond,2022-06-01,9.2
+Richmond,2022-07-01,6.7
+Richmond,2022-08-01,15.5
+Richmond,2022-09-01,10.6
+Richmond,2022-10-01,10.2
+Richmond,2022-11-01,4.4
+Richmond,2022-12-01,2.3
+Richmond,2023-01-01,3.3
+Richmond,2023-02-01,1.0
+Richmond,2023-03-01,-6.2
+Richmond,2023-04-01,-5.9
+Richmond,2023-05-01,1.0
+Richmond,2023-06-01,-3.6
+Richmond,2023-07-01,-3.8
+Richmond,2023-08-01,-3.3
+Richmond,2023-09-01,-7.0
+Richmond,2023-10-01,-3.1
+Richmond,2023-11-01,-2.2
+Richmond,2023-12-01,-5.3
+Richmond,2024-01-01,-4.9
+Richmond,2024-02-01,-0.3
+Richmond,2024-03-01,-7.7
+Richmond,2024-04-01,3.5
+Richmond,2024-05-01,-4.3
+Richmond,2024-06-01,-6.1
+Richmond,2024-07-01,6.6
+Richmond,2024-08-01,-4.4
+Richmond,2024-09-01,0.9
+Richmond,2024-10-01,7.0
+Richmond,2024-11-01,-1.7
+Richmond,2024-12-01,0.1
+Richmond,2025-01-01,-0.4
+Richmond,2025-02-01,-8.1
+Richmond,2025-03-01,1.7
+Richmond,2025-04-01,-1.3
+Richmond,2025-05-01,-5.3
+Richmond,2025-06-01,-1.8
+Richmond,2025-07-01,-4.9
+Richmond,2025-08-01,-5.7
+Richmond,2025-09-01,-2.3
+Richmond,2025-10-01,-8.4
+Richmond,2025-11-01,-6.0
+Richmond,2025-12-01,3.1
+Richmond,2026-01-01,0.7
+Richmond,2026-02-01,3.1
+Richmond,2026-03-01,5.3
+Richmond,2026-04-01,2.5
+Richmond,2026-05-01,1.0
+Denver,2019-01-01,10.4
+Denver,2019-02-01,2.2
+Denver,2019-03-01,0.5
+Denver,2019-04-01,5.1
+Denver,2019-05-01,-2.2
+Denver,2019-06-01,-3.9
+Denver,2019-07-01,1.6
+Denver,2019-08-01,1.3
+Denver,2019-09-01,3.0
+Denver,2019-10-01,1.0
+Denver,2019-11-01,-1.4
+Denver,2019-12-01,4.9
+Denver,2020-01-01,6.2
+Denver,2020-02-01,10.6
+Denver,2020-03-01,8.8
+Denver,2020-04-01,5.4
+Denver,2020-05-01,14.3
+Denver,2020-06-01,24.5
+Denver,2020-07-01,17.3
+Denver,2020-08-01,13.1
+Denver,2020-09-01,23.7
+Denver,2020-10-01,15.6
+Denver,2020-11-01,16.7
+Denver,2020-12-01,20.9
+Denver,2021-01-01,14.8
+Denver,2021-02-01,11.0
+Denver,2021-03-01,32.1
+Denver,2021-04-01,30.5
+Denver,2021-05-01,10.4
+Denver,2021-06-01,8.6
+Denver,2021-07-01,6.3
+Denver,2021-08-01,8.7
+Denver,2021-09-01,5.8
+Denver,2021-10-01,6.7
+Denver,2021-11-01,15.7
+Denver,2021-12-01,12.8
+Denver,2022-01-01,14.0
+Denver,2022-02-01,20.8
+Denver,2022-03-01,8.8
+Denver,2022-04-01,4.6
+Denver,2022-05-01,12.3
+Denver,2022-06-01,12.3
+Denver,2022-07-01,10.1
+Denver,2022-08-01,19.4
+Denver,2022-09-01,14.9
+Denver,2022-10-01,12.8
+Denver,2022-11-01,7.7
+Denver,2022-12-01,3.8
+Denver,2023-01-01,1.8
+Denver,2023-02-01,3.0
+Denver,2023-03-01,-3.9
+Denver,2023-04-01,-4.3
+Denver,2023-05-01,4.0
+Denver,2023-06-01,-1.9
+Denver,2023-07-01,-2.7
+Denver,2023-08-01,-4.2
+Denver,2023-09-01,-4.5
+Denver,2023-10-01,-0.5
+Denver,2023-11-01,0.8
+Denver,2023-12-01,-2.5
+Denver,2024-01-01,-1.2
+Denver,2024-02-01,-1.7
+Denver,2024-03-01,-5.6
+Denver,2024-04-01,5.3
+Denver,2024-05-01,-5.0
+Denver,2024-06-01,-2.9
+Denver,2024-07-01,8.4
+Denver,2024-08-01,-0.2
+Denver,2024-09-01,3.1
+Denver,2024-10-01,6.1
+Denver,2024-11-01,-1.5
+Denver,2024-12-01,-0.5
+Denver,2025-01-01,-4.2
+Denver,2025-02-01,-5.4
+Denver,2025-03-01,1.3
+Denver,2025-04-01,-2.0
+Denver,2025-05-01,-3.9
+Denver,2025-06-01,-3.3
+Denver,2025-07-01,-5.4
+Denver,2025-08-01,-5.8
+Denver,2025-09-01,-2.6
+Denver,2025-10-01,-5.3
+Denver,2025-11-01,-4.9
+Denver,2025-12-01,5.3
+Denver,2026-01-01,5.1
+Denver,2026-02-01,2.8
+Denver,2026-03-01,3.4
+Denver,2026-04-01,3.4
+Denver,2026-05-01,2.0
+Las Vegas,2019-01-01,13.1
+Las Vegas,2019-02-01,2.3
+Las Vegas,2019-03-01,1.9
+Las Vegas,2019-04-01,7.1
+Las Vegas,2019-05-01,-1.5
+Las Vegas,2019-06-01,-5.6
+Las Vegas,2019-07-01,0.5
+Las Vegas,2019-08-01,1.0
+Las Vegas,2019-09-01,1.1
+Las Vegas,2019-10-01,0.1
+Las Vegas,2019-11-01,-1.7
+Las Vegas,2019-12-01,2.6
+Las Vegas,2020-01-01,0.4
+Las Vegas,2020-02-01,8.7
+Las Vegas,2020-03-01,6.7
+Las Vegas,2020-04-01,6.0
+Las Vegas,2020-05-01,14.9
+Las Vegas,2020-06-01,25.4
+Las Vegas,2020-07-01,16.3
+Las Vegas,2020-08-01,11.9
+Las Vegas,2020-09-01,22.6
+Las Vegas,2020-10-01,14.6
+Las Vegas,2020-11-01,16.6
+Las Vegas,2020-12-01,19.6
+Las Vegas,2021-01-01,16.9
+Las Vegas,2021-02-01,13.6
+Las Vegas,2021-03-01,35.4
+Las Vegas,2021-04-01,30.6
+Las Vegas,2021-05-01,9.7
+Las Vegas,2021-06-01,9.1
+Las Vegas,2021-07-01,7.2
+Las Vegas,2021-08-01,11.0
+Las Vegas,2021-09-01,7.7
+Las Vegas,2021-10-01,7.3
+Las Vegas,2021-11-01,17.8
+Las Vegas,2021-12-01,13.8
+Las Vegas,2022-01-01,7.0
+Las Vegas,2022-02-01,11.4
+Las Vegas,2022-03-01,-0.2
+Las Vegas,2022-04-01,-4.4
+Las Vegas,2022-05-01,5.1
+Las Vegas,2022-06-01,3.9
+Las Vegas,2022-07-01,2.0
+Las Vegas,2022-08-01,10.0
+Las Vegas,2022-09-01,5.8
+Las Vegas,2022-10-01,5.5
+Las Vegas,2022-11-01,-2.0
+Las Vegas,2022-12-01,-0.9
+Las Vegas,2023-01-01,8.6
+Las Vegas,2023-02-01,6.3
+Las Vegas,2023-03-01,-0.7
+Las Vegas,2023-04-01,-1.3
+Las Vegas,2023-05-01,6.1
+Las Vegas,2023-06-01,1.2
+Las Vegas,2023-07-01,1.9
+Las Vegas,2023-08-01,3.6
+Las Vegas,2023-09-01,-1.0
+Las Vegas,2023-10-01,2.1
+Las Vegas,2023-11-01,3.3
+Las Vegas,2023-12-01,-1.3
+Las Vegas,2024-01-01,-5.0
+Las Vegas,2024-02-01,0.5
+Las Vegas,2024-03-01,-6.7
+Las Vegas,2024-04-01,4.6
+Las Vegas,2024-05-01,-3.7
+Las Vegas,2024-06-01,-4.9
+Las Vegas,2024-07-01,6.5
+Las Vegas,2024-08-01,0.2
+Las Vegas,2024-09-01,2.2
+Las Vegas,2024-10-01,9.5
+Las Vegas,2024-11-01,3.7
+Las Vegas,2024-12-01,4.6
+Las Vegas,2025-01-01,3.5
+Las Vegas,2025-02-01,-4.3
+Las Vegas,2025-03-01,5.0
+Las Vegas,2025-04-01,2.5
+Las Vegas,2025-05-01,-2.0
+Las Vegas,2025-06-01,1.7
+Las Vegas,2025-07-01,-1.8
+Las Vegas,2025-08-01,-6.5
+Las Vegas,2025-09-01,1.5
+Las Vegas,2025-10-01,-3.9
+Las Vegas,2025-11-01,-6.6
+Las Vegas,2025-12-01,1.5
+Las Vegas,2026-01-01,1.5
+Las Vegas,2026-02-01,3.4
+Las Vegas,2026-03-01,5.4
+Las Vegas,2026-04-01,3.4
+Las Vegas,2026-05-01,3.0
+Salt Lake City,2019-01-01,13.5
+Salt Lake City,2019-02-01,1.9
+Salt Lake City,2019-03-01,0.8
+Salt Lake City,2019-04-01,4.6
+Salt Lake City,2019-05-01,-1.2
+Salt Lake City,2019-06-01,-4.2
+Salt Lake City,2019-07-01,2.1
+Salt Lake City,2019-08-01,0.1
+Salt Lake City,2019-09-01,3.3
+Salt Lake City,2019-10-01,0.8
+Salt Lake City,2019-11-01,0.1
+Salt Lake City,2019-12-01,3.4
+Salt Lake City,2020-01-01,4.1
+Salt Lake City,2020-02-01,12.8
+Salt Lake City,2020-03-01,10.1
+Salt Lake City,2020-04-01,7.9
+Salt Lake City,2020-05-01,13.3
+Salt Lake City,2020-06-01,26.1
+Salt Lake City,2020-07-01,17.9
+Salt Lake City,2020-08-01,13.8
+Salt Lake City,2020-09-01,24.5
+Salt Lake City,2020-10-01,17.1
+Salt Lake City,2020-11-01,18.1
+Salt Lake City,2020-12-01,23.1
+Salt Lake City,2021-01-01,16.2
+Salt Lake City,2021-02-01,13.4
+Salt Lake City,2021-03-01,37.2
+Salt Lake City,2021-04-01,34.5
+Salt Lake City,2021-05-01,17.3
+Salt Lake City,2021-06-01,13.5
+Salt Lake City,2021-07-01,10.5
+Salt Lake City,2021-08-01,14.4
+Salt Lake City,2021-09-01,10.2
+Salt Lake City,2021-10-01,9.6
+Salt Lake City,2021-11-01,19.7
+Salt Lake City,2021-12-01,17.1
+Salt Lake City,2022-01-01,13.2
+Salt Lake City,2022-02-01,18.6
+Salt Lake City,2022-03-01,7.8
+Salt Lake City,2022-04-01,2.8
+Salt Lake City,2022-05-01,11.0
+Salt Lake City,2022-06-01,9.8
+Salt Lake City,2022-07-01,8.1
+Salt Lake City,2022-08-01,16.7
+Salt Lake City,2022-09-01,11.9
+Salt Lake City,2022-10-01,11.1
+Salt Lake City,2022-11-01,4.2
+Salt Lake City,2022-12-01,1.1
+Salt Lake City,2023-01-01,8.9
+Salt Lake City,2023-02-01,6.3
+Salt Lake City,2023-03-01,-2.0
+Salt Lake City,2023-04-01,-2.8
+Salt Lake City,2023-05-01,4.8
+Salt Lake City,2023-06-01,1.9
+Salt Lake City,2023-07-01,1.6
+Salt Lake City,2023-08-01,3.1
+Salt Lake City,2023-09-01,0.0
+Salt Lake City,2023-10-01,4.5
+Salt Lake City,2023-11-01,5.2
+Salt Lake City,2023-12-01,1.5
+Salt Lake City,2024-01-01,-6.3
+Salt Lake City,2024-02-01,-0.6
+Salt Lake City,2024-03-01,-8.6
+Salt Lake City,2024-04-01,3.7
+Salt Lake City,2024-05-01,-4.3
+Salt Lake City,2024-06-01,-6.9
+Salt Lake City,2024-07-01,5.0
+Salt Lake City,2024-08-01,-4.3
+Salt Lake City,2024-09-01,-0.6
+Salt Lake City,2024-10-01,5.0
+Salt Lake City,2024-11-01,-2.3
+Salt Lake City,2024-12-01,-1.1
+Salt Lake City,2025-01-01,1.2
+Salt Lake City,2025-02-01,-5.0
+Salt Lake City,2025-03-01,5.7
+Salt Lake City,2025-04-01,2.7
+Salt Lake City,2025-05-01,-2.9
+Salt Lake City,2025-06-01,1.6
+Salt Lake City,2025-07-01,-0.6
+Salt Lake City,2025-08-01,-4.1
+Salt Lake City,2025-09-01,2.4
+Salt Lake City,2025-10-01,-3.7
+Salt Lake City,2025-11-01,-4.0
+Salt Lake City,2025-12-01,5.6
+Salt Lake City,2026-01-01,3.4
+Salt Lake City,2026-02-01,8.3
+Salt Lake City,2026-03-01,8.7
+Salt Lake City,2026-04-01,6.6
+Salt Lake City,2026-05-01,5.8
+Los Angeles,2019-01-01,10.5
+Los Angeles,2019-02-01,0.2
+Los Angeles,2019-03-01,0.7
+Los Angeles,2019-04-01,8.5
+Los Angeles,2019-05-01,-2.2
+Los Angeles,2019-06-01,-5.8
+Los Angeles,2019-07-01,0.9
+Los Angeles,2019-08-01,0.7
+Los Angeles,2019-09-01,-0.5
+Los Angeles,2019-10-01,-1.4
+Los Angeles,2019-11-01,-2.6
+Los Angeles,2019-12-01,2.1
+Los Angeles,2020-01-01,0.4
+Los Angeles,2020-02-01,9.5
+Los Angeles,2020-03-01,3.9
+Los Angeles,2020-04-01,-0.6
+Los Angeles,2020-05-01,13.5
+Los Angeles,2020-06-01,24.4
+Los Angeles,2020-07-01,15.4
+Los Angeles,2020-08-01,12.1
+Los Angeles,2020-09-01,22.0
+Los Angeles,2020-10-01,14.7
+Los Angeles,2020-11-01,16.0
+Los Angeles,2020-12-01,20.7
+Los Angeles,2021-01-01,14.7
+Los Angeles,2021-02-01,12.2
+Los Angeles,2021-03-01,38.3
+Los Angeles,2021-04-01,35.0
+Los Angeles,2021-05-01,10.8
+Los Angeles,2021-06-01,9.1
+Los Angeles,2021-07-01,6.9
+Los Angeles,2021-08-01,9.4
+Los Angeles,2021-09-01,7.5
+Los Angeles,2021-10-01,7.3
+Los Angeles,2021-11-01,16.6
+Los Angeles,2021-12-01,11.3
+Los Angeles,2022-01-01,5.7
+Los Angeles,2022-02-01,9.8
+Los Angeles,2022-03-01,-2.1
+Los Angeles,2022-04-01,-6.1
+Los Angeles,2022-05-01,1.5
+Los Angeles,2022-06-01,-0.3
+Los Angeles,2022-07-01,-2.0
+Los Angeles,2022-08-01,7.4
+Los Angeles,2022-09-01,2.0
+Los Angeles,2022-10-01,0.4
+Los Angeles,2022-11-01,-7.3
+Los Angeles,2022-12-01,-2.9
+Los Angeles,2023-01-01,-1.8
+Los Angeles,2023-02-01,-2.8
+Los Angeles,2023-03-01,-6.9
+Los Angeles,2023-04-01,-7.6
+Los Angeles,2023-05-01,0.9
+Los Angeles,2023-06-01,-3.2
+Los Angeles,2023-07-01,-2.4
+Los Angeles,2023-08-01,-2.2
+Los Angeles,2023-09-01,-6.0
+Los Angeles,2023-10-01,-2.6
+Los Angeles,2023-11-01,-1.1
+Los Angeles,2023-12-01,-5.1
+Los Angeles,2024-01-01,-1.2
+Los Angeles,2024-02-01,2.7
+Los Angeles,2024-03-01,-5.7
+Los Angeles,2024-04-01,6.3
+Los Angeles,2024-05-01,-2.1
+Los Angeles,2024-06-01,-3.7
+Los Angeles,2024-07-01,7.8
+Los Angeles,2024-08-01,-1.2
+Los Angeles,2024-09-01,4.3
+Los Angeles,2024-10-01,12.7
+Los Angeles,2024-11-01,4.8
+Los Angeles,2024-12-01,0.8
+Los Angeles,2025-01-01,-0.1
+Los Angeles,2025-02-01,-7.6
+Los Angeles,2025-03-01,1.4
+Los Angeles,2025-04-01,-0.2
+Los Angeles,2025-05-01,-5.5
+Los Angeles,2025-06-01,-1.7
+Los Angeles,2025-07-01,-6.0
+Los Angeles,2025-08-01,-8.0
+Los Angeles,2025-09-01,-3.8
+Los Angeles,2025-10-01,-10.1
+Los Angeles,2025-11-01,-9.3
+Los Angeles,2025-12-01,-0.5
+Los Angeles,2026-01-01,1.3
+Los Angeles,2026-02-01,2.9
+Los Angeles,2026-03-01,6.2
+Los Angeles,2026-04-01,2.1
+Los Angeles,2026-05-01,1.2
+San Diego,2019-01-01,10.5
+San Diego,2019-02-01,0.2
+San Diego,2019-03-01,0.7
+San Diego,2019-04-01,8.5
+San Diego,2019-05-01,-2.2
+San Diego,2019-06-01,-5.8
+San Diego,2019-07-01,0.9
+San Diego,2019-08-01,0.7
+San Diego,2019-09-01,-0.5
+San Diego,2019-10-01,-1.4
+San Diego,2019-11-01,-2.6
+San Diego,2019-12-01,2.1
+San Diego,2020-01-01,0.4
+San Diego,2020-02-01,9.5
+San Diego,2020-03-01,3.9
+San Diego,2020-04-01,-0.6
+San Diego,2020-05-01,13.5
+San Diego,2020-06-01,24.4
+San Diego,2020-07-01,15.4
+San Diego,2020-08-01,12.1
+San Diego,2020-09-01,22.0
+San Diego,2020-10-01,14.7
+San Diego,2020-11-01,16.0
+San Diego,2020-12-01,20.7
+San Diego,2021-01-01,14.7
+San Diego,2021-02-01,12.2
+San Diego,2021-03-01,38.3
+San Diego,2021-04-01,35.0
+San Diego,2021-05-01,10.8
+San Diego,2021-06-01,9.1
+San Diego,2021-07-01,6.9
+San Diego,2021-08-01,9.4
+San Diego,2021-09-01,7.5
+San Diego,2021-10-01,7.3
+San Diego,2021-11-01,16.6
+San Diego,2021-12-01,11.3
+San Diego,2022-01-01,5.7
+San Diego,2022-02-01,9.8
+San Diego,2022-03-01,-2.1
+San Diego,2022-04-01,-6.1
+San Diego,2022-05-01,1.5
+San Diego,2022-06-01,-0.3
+San Diego,2022-07-01,-2.0
+San Diego,2022-08-01,7.4
+San Diego,2022-09-01,2.0
+San Diego,2022-10-01,0.4
+San Diego,2022-11-01,-7.3
+San Diego,2022-12-01,-2.9
+San Diego,2023-01-01,-1.8
+San Diego,2023-02-01,-2.8
+San Diego,2023-03-01,-6.9
+San Diego,2023-04-01,-7.6
+San Diego,2023-05-01,0.9
+San Diego,2023-06-01,-3.2
+San Diego,2023-07-01,-2.4
+San Diego,2023-08-01,-2.2
+San Diego,2023-09-01,-6.0
+San Diego,2023-10-01,-2.6
+San Diego,2023-11-01,-1.1
+San Diego,2023-12-01,-5.1
+San Diego,2024-01-01,-1.2
+San Diego,2024-02-01,2.7
+San Diego,2024-03-01,-5.7
+San Diego,2024-04-01,6.3
+San Diego,2024-05-01,-2.1
+San Diego,2024-06-01,-3.7
+San Diego,2024-07-01,7.8
+San Diego,2024-08-01,-1.2
+San Diego,2024-09-01,4.3
+San Diego,2024-10-01,12.7
+San Diego,2024-11-01,4.8
+San Diego,2024-12-01,0.8
+San Diego,2025-01-01,-0.1
+San Diego,2025-02-01,-7.6
+San Diego,2025-03-01,1.4
+San Diego,2025-04-01,-0.2
+San Diego,2025-05-01,-5.5
+San Diego,2025-06-01,-1.7
+San Diego,2025-07-01,-6.0
+San Diego,2025-08-01,-8.0
+San Diego,2025-09-01,-3.8
+San Diego,2025-10-01,-10.1
+San Diego,2025-11-01,-9.3
+San Diego,2025-12-01,-0.5
+San Diego,2026-01-01,1.3
+San Diego,2026-02-01,2.9
+San Diego,2026-03-01,6.2
+San Diego,2026-04-01,2.1
+San Diego,2026-05-01,1.2
+San Francisco,2019-01-01,10.5
+San Francisco,2019-02-01,0.2
+San Francisco,2019-03-01,0.7
+San Francisco,2019-04-01,8.5
+San Francisco,2019-05-01,-2.2
+San Francisco,2019-06-01,-5.8
+San Francisco,2019-07-01,0.9
+San Francisco,2019-08-01,0.7
+San Francisco,2019-09-01,-0.5
+San Francisco,2019-10-01,-1.4
+San Francisco,2019-11-01,-2.6
+San Francisco,2019-12-01,2.1
+San Francisco,2020-01-01,0.4
+San Francisco,2020-02-01,9.5
+San Francisco,2020-03-01,3.9
+San Francisco,2020-04-01,-0.6
+San Francisco,2020-05-01,13.5
+San Francisco,2020-06-01,24.4
+San Francisco,2020-07-01,15.4
+San Francisco,2020-08-01,12.1
+San Francisco,2020-09-01,22.0
+San Francisco,2020-10-01,14.7
+San Francisco,2020-11-01,16.0
+San Francisco,2020-12-01,20.7
+San Francisco,2021-01-01,14.7
+San Francisco,2021-02-01,12.2
+San Francisco,2021-03-01,38.3
+San Francisco,2021-04-01,35.0
+San Francisco,2021-05-01,10.8
+San Francisco,2021-06-01,9.1
+San Francisco,2021-07-01,6.9
+San Francisco,2021-08-01,9.4
+San Francisco,2021-09-01,7.5
+San Francisco,2021-10-01,7.3
+San Francisco,2021-11-01,16.6
+San Francisco,2021-12-01,11.3
+San Francisco,2022-01-01,5.7
+San Francisco,2022-02-01,9.8
+San Francisco,2022-03-01,-2.1
+San Francisco,2022-04-01,-6.1
+San Francisco,2022-05-01,1.5
+San Francisco,2022-06-01,-0.3
+San Francisco,2022-07-01,-2.0
+San Francisco,2022-08-01,7.4
+San Francisco,2022-09-01,2.0
+San Francisco,2022-10-01,0.4
+San Francisco,2022-11-01,-7.3
+San Francisco,2022-12-01,-2.9
+San Francisco,2023-01-01,-1.8
+San Francisco,2023-02-01,-2.8
+San Francisco,2023-03-01,-6.9
+San Francisco,2023-04-01,-7.6
+San Francisco,2023-05-01,0.9
+San Francisco,2023-06-01,-3.2
+San Francisco,2023-07-01,-2.4
+San Francisco,2023-08-01,-2.2
+San Francisco,2023-09-01,-6.0
+San Francisco,2023-10-01,-2.6
+San Francisco,2023-11-01,-1.1
+San Francisco,2023-12-01,-5.1
+San Francisco,2024-01-01,-1.2
+San Francisco,2024-02-01,2.7
+San Francisco,2024-03-01,-5.7
+San Francisco,2024-04-01,6.3
+San Francisco,2024-05-01,-2.1
+San Francisco,2024-06-01,-3.7
+San Francisco,2024-07-01,7.8
+San Francisco,2024-08-01,-1.2
+San Francisco,2024-09-01,4.3
+San Francisco,2024-10-01,12.7
+San Francisco,2024-11-01,4.8
+San Francisco,2024-12-01,0.8
+San Francisco,2025-01-01,-0.1
+San Francisco,2025-02-01,-7.6
+San Francisco,2025-03-01,1.4
+San Francisco,2025-04-01,-0.2
+San Francisco,2025-05-01,-5.5
+San Francisco,2025-06-01,-1.7
+San Francisco,2025-07-01,-6.0
+San Francisco,2025-08-01,-8.0
+San Francisco,2025-09-01,-3.8
+San Francisco,2025-10-01,-10.1
+San Francisco,2025-11-01,-9.3
+San Francisco,2025-12-01,-0.5
+San Francisco,2026-01-01,1.3
+San Francisco,2026-02-01,2.9
+San Francisco,2026-03-01,6.2
+San Francisco,2026-04-01,2.1
+San Francisco,2026-05-01,1.2
+Sacramento,2019-01-01,10.5
+Sacramento,2019-02-01,0.2
+Sacramento,2019-03-01,0.7
+Sacramento,2019-04-01,8.5
+Sacramento,2019-05-01,-2.2
+Sacramento,2019-06-01,-5.8
+Sacramento,2019-07-01,0.9
+Sacramento,2019-08-01,0.7
+Sacramento,2019-09-01,-0.5
+Sacramento,2019-10-01,-1.4
+Sacramento,2019-11-01,-2.6
+Sacramento,2019-12-01,2.1
+Sacramento,2020-01-01,0.4
+Sacramento,2020-02-01,9.5
+Sacramento,2020-03-01,3.9
+Sacramento,2020-04-01,-0.6
+Sacramento,2020-05-01,13.5
+Sacramento,2020-06-01,24.4
+Sacramento,2020-07-01,15.4
+Sacramento,2020-08-01,12.1
+Sacramento,2020-09-01,22.0
+Sacramento,2020-10-01,14.7
+Sacramento,2020-11-01,16.0
+Sacramento,2020-12-01,20.7
+Sacramento,2021-01-01,14.7
+Sacramento,2021-02-01,12.2
+Sacramento,2021-03-01,38.3
+Sacramento,2021-04-01,35.0
+Sacramento,2021-05-01,10.8
+Sacramento,2021-06-01,9.1
+Sacramento,2021-07-01,6.9
+Sacramento,2021-08-01,9.4
+Sacramento,2021-09-01,7.5
+Sacramento,2021-10-01,7.3
+Sacramento,2021-11-01,16.6
+Sacramento,2021-12-01,11.3
+Sacramento,2022-01-01,5.7
+Sacramento,2022-02-01,9.8
+Sacramento,2022-03-01,-2.1
+Sacramento,2022-04-01,-6.1
+Sacramento,2022-05-01,1.5
+Sacramento,2022-06-01,-0.3
+Sacramento,2022-07-01,-2.0
+Sacramento,2022-08-01,7.4
+Sacramento,2022-09-01,2.0
+Sacramento,2022-10-01,0.4
+Sacramento,2022-11-01,-7.3
+Sacramento,2022-12-01,-2.9
+Sacramento,2023-01-01,-1.8
+Sacramento,2023-02-01,-2.8
+Sacramento,2023-03-01,-6.9
+Sacramento,2023-04-01,-7.6
+Sacramento,2023-05-01,0.9
+Sacramento,2023-06-01,-3.2
+Sacramento,2023-07-01,-2.4
+Sacramento,2023-08-01,-2.2
+Sacramento,2023-09-01,-6.0
+Sacramento,2023-10-01,-2.6
+Sacramento,2023-11-01,-1.1
+Sacramento,2023-12-01,-5.1
+Sacramento,2024-01-01,-1.2
+Sacramento,2024-02-01,2.7
+Sacramento,2024-03-01,-5.7
+Sacramento,2024-04-01,6.3
+Sacramento,2024-05-01,-2.1
+Sacramento,2024-06-01,-3.7
+Sacramento,2024-07-01,7.8
+Sacramento,2024-08-01,-1.2
+Sacramento,2024-09-01,4.3
+Sacramento,2024-10-01,12.7
+Sacramento,2024-11-01,4.8
+Sacramento,2024-12-01,0.8
+Sacramento,2025-01-01,-0.1
+Sacramento,2025-02-01,-7.6
+Sacramento,2025-03-01,1.4
+Sacramento,2025-04-01,-0.2
+Sacramento,2025-05-01,-5.5
+Sacramento,2025-06-01,-1.7
+Sacramento,2025-07-01,-6.0
+Sacramento,2025-08-01,-8.0
+Sacramento,2025-09-01,-3.8
+Sacramento,2025-10-01,-10.1
+Sacramento,2025-11-01,-9.3
+Sacramento,2025-12-01,-0.5
+Sacramento,2026-01-01,1.3
+Sacramento,2026-02-01,2.9
+Sacramento,2026-03-01,6.2
+Sacramento,2026-04-01,2.1
+Sacramento,2026-05-01,1.2
+Seattle,2019-01-01,11.4
+Seattle,2019-02-01,1.9
+Seattle,2019-03-01,0.4
+Seattle,2019-04-01,7.1
+Seattle,2019-05-01,-1.1
+Seattle,2019-06-01,-4.8
+Seattle,2019-07-01,1.4
+Seattle,2019-08-01,0.6
+Seattle,2019-09-01,1.1
+Seattle,2019-10-01,0.4
+Seattle,2019-11-01,0.1
+Seattle,2019-12-01,4.5
+Seattle,2020-01-01,-6.1
+Seattle,2020-02-01,1.7
+Seattle,2020-03-01,-0.8
+Seattle,2020-04-01,-3.9
+Seattle,2020-05-01,2.8
+Seattle,2020-06-01,14.6
+Seattle,2020-07-01,7.8
+Seattle,2020-08-01,4.8
+Seattle,2020-09-01,13.7
+Seattle,2020-10-01,5.4
+Seattle,2020-11-01,5.1
+Seattle,2020-12-01,11.3
+Seattle,2021-01-01,15.0
+Seattle,2021-02-01,12.0
+Seattle,2021-03-01,33.7
+Seattle,2021-04-01,32.2
+Seattle,2021-05-01,13.2
+Seattle,2021-06-01,9.1
+Seattle,2021-07-01,6.1
+Seattle,2021-08-01,9.9
+Seattle,2021-09-01,6.5
+Seattle,2021-10-01,5.9
+Seattle,2021-11-01,16.3
+Seattle,2021-12-01,11.6
+Seattle,2022-01-01,11.7
+Seattle,2022-02-01,17.1
+Seattle,2022-03-01,6.3
+Seattle,2022-04-01,1.7
+Seattle,2022-05-01,9.6
+Seattle,2022-06-01,9.4
+Seattle,2022-07-01,7.9
+Seattle,2022-08-01,15.4
+Seattle,2022-09-01,11.5
+Seattle,2022-10-01,11.5
+Seattle,2022-11-01,5.4
+Seattle,2022-12-01,2.4
+Seattle,2023-01-01,2.7
+Seattle,2023-02-01,0.6
+Seattle,2023-03-01,-6.3
+Seattle,2023-04-01,-6.6
+Seattle,2023-05-01,1.1
+Seattle,2023-06-01,-3.9
+Seattle,2023-07-01,-3.7
+Seattle,2023-08-01,-1.8
+Seattle,2023-09-01,-6.0
+Seattle,2023-10-01,-2.4
+Seattle,2023-11-01,-2.0
+Seattle,2023-12-01,-4.3
+Seattle,2024-01-01,-8.6
+Seattle,2024-02-01,-3.5
+Seattle,2024-03-01,-10.1
+Seattle,2024-04-01,1.2
+Seattle,2024-05-01,-6.3
+Seattle,2024-06-01,-8.6
+Seattle,2024-07-01,1.8
+Seattle,2024-08-01,-9.5
+Seattle,2024-09-01,-2.6
+Seattle,2024-10-01,3.0
+Seattle,2024-11-01,-6.9
+Seattle,2024-12-01,-6.6
+Seattle,2025-01-01,-3.3
+Seattle,2025-02-01,-11.0
+Seattle,2025-03-01,-1.2
+Seattle,2025-04-01,-6.9
+Seattle,2025-05-01,-8.4
+Seattle,2025-06-01,-3.1
+Seattle,2025-07-01,-5.8
+Seattle,2025-08-01,-6.2
+Seattle,2025-09-01,-3.9
+Seattle,2025-10-01,-9.5
+Seattle,2025-11-01,-6.6
+Seattle,2025-12-01,0.7
+Seattle,2026-01-01,0.1
+Seattle,2026-02-01,3.3
+Seattle,2026-03-01,5.6
+Seattle,2026-04-01,6.1
+Seattle,2026-05-01,2.4
+Portland,2019-01-01,8.5
+Portland,2019-02-01,1.6
+Portland,2019-03-01,0.4
+Portland,2019-04-01,8.7
+Portland,2019-05-01,-2.4
+Portland,2019-06-01,-4.4
+Portland,2019-07-01,0.8
+Portland,2019-08-01,-0.3
+Portland,2019-09-01,1.0
+Portland,2019-10-01,0.1
+Portland,2019-11-01,-0.3
+Portland,2019-12-01,4.9
+Portland,2020-01-01,3.5
+Portland,2020-02-01,9.3
+Portland,2020-03-01,6.8
+Portland,2020-04-01,3.6
+Portland,2020-05-01,11.3
+Portland,2020-06-01,22.9
+Portland,2020-07-01,15.2
+Portland,2020-08-01,12.8
+Portland,2020-09-01,22.2
+Portland,2020-10-01,14.5
+Portland,2020-11-01,14.9
+Portland,2020-12-01,20.7
+Portland,2021-01-01,14.1
+Portland,2021-02-01,11.6
+Portland,2021-03-01,32.8
+Portland,2021-04-01,31.0
+Portland,2021-05-01,12.8
+Portland,2021-06-01,9.4
+Portland,2021-07-01,6.5
+Portland,2021-08-01,9.5
+Portland,2021-09-01,6.3
+Portland,2021-10-01,4.9
+Portland,2021-11-01,14.7
+Portland,2021-12-01,11.0
+Portland,2022-01-01,13.0
+Portland,2022-02-01,17.5
+Portland,2022-03-01,7.5
+Portland,2022-04-01,2.8
+Portland,2022-05-01,10.9
+Portland,2022-06-01,10.7
+Portland,2022-07-01,9.1
+Portland,2022-08-01,17.3
+Portland,2022-09-01,13.0
+Portland,2022-10-01,14.1
+Portland,2022-11-01,7.1
+Portland,2022-12-01,5.0
+Portland,2023-01-01,3.6
+Portland,2023-02-01,1.2
+Portland,2023-03-01,-6.0
+Portland,2023-04-01,-5.7
+Portland,2023-05-01,0.7
+Portland,2023-06-01,-4.1
+Portland,2023-07-01,-3.9
+Portland,2023-08-01,-2.8
+Portland,2023-09-01,-5.3
+Portland,2023-10-01,-2.2
+Portland,2023-11-01,-1.6
+Portland,2023-12-01,-4.4
+Portland,2024-01-01,-6.3
+Portland,2024-02-01,-1.6
+Portland,2024-03-01,-8.0
+Portland,2024-04-01,2.6
+Portland,2024-05-01,-4.4
+Portland,2024-06-01,-6.4
+Portland,2024-07-01,4.1
+Portland,2024-08-01,-5.8
+Portland,2024-09-01,-1.0
+Portland,2024-10-01,4.8
+Portland,2024-11-01,-4.2
+Portland,2024-12-01,-2.4
+Portland,2025-01-01,-0.6
+Portland,2025-02-01,-7.9
+Portland,2025-03-01,2.3
+Portland,2025-04-01,-3.3
+Portland,2025-05-01,-5.3
+Portland,2025-06-01,-0.5
+Portland,2025-07-01,-2.8
+Portland,2025-08-01,-4.6
+Portland,2025-09-01,-1.5
+Portland,2025-10-01,-7.9
+Portland,2025-11-01,-4.8
+Portland,2025-12-01,1.3
+Portland,2026-01-01,1.1
+Portland,2026-02-01,3.1
+Portland,2026-03-01,4.2
+Portland,2026-04-01,5.5
+Portland,2026-05-01,2.1
+New York,2019-01-01,11.3
+New York,2019-02-01,1.0
+New York,2019-03-01,-1.1
+New York,2019-04-01,5.1
+New York,2019-05-01,-2.1
+New York,2019-06-01,-4.4
+New York,2019-07-01,-0.4
+New York,2019-08-01,0.4
+New York,2019-09-01,1.0
+New York,2019-10-01,-1.6
+New York,2019-11-01,-2.8
+New York,2019-12-01,3.2
+New York,2020-01-01,4.7
+New York,2020-02-01,10.4
+New York,2020-03-01,6.9
+New York,2020-04-01,1.7
+New York,2020-05-01,12.6
+New York,2020-06-01,25.3
+New York,2020-07-01,18.1
+New York,2020-08-01,15.1
+New York,2020-09-01,25.2
+New York,2020-10-01,18.0
+New York,2020-11-01,18.7
+New York,2020-12-01,23.2
+New York,2021-01-01,9.8
+New York,2021-02-01,6.3
+New York,2021-03-01,29.0
+New York,2021-04-01,32.1
+New York,2021-05-01,7.4
+New York,2021-06-01,4.3
+New York,2021-07-01,1.4
+New York,2021-08-01,4.0
+New York,2021-09-01,1.9
+New York,2021-10-01,1.2
+New York,2021-11-01,9.5
+New York,2021-12-01,7.3
+New York,2022-01-01,18.8
+New York,2022-02-01,24.1
+New York,2022-03-01,13.0
+New York,2022-04-01,6.7
+New York,2022-05-01,15.6
+New York,2022-06-01,15.2
+New York,2022-07-01,13.0
+New York,2022-08-01,22.8
+New York,2022-09-01,17.7
+New York,2022-10-01,17.3
+New York,2022-11-01,11.0
+New York,2022-12-01,8.9
+New York,2023-01-01,-1.6
+New York,2023-02-01,-2.3
+New York,2023-03-01,-9.3
+New York,2023-04-01,-9.1
+New York,2023-05-01,-1.7
+New York,2023-06-01,-6.7
+New York,2023-07-01,-6.0
+New York,2023-08-01,-4.4
+New York,2023-09-01,-9.6
+New York,2023-10-01,-5.4
+New York,2023-11-01,-5.6
+New York,2023-12-01,-8.9
+New York,2024-01-01,-6.4
+New York,2024-02-01,-1.8
+New York,2024-03-01,-9.0
+New York,2024-04-01,2.0
+New York,2024-05-01,-5.3
+New York,2024-06-01,-7.0
+New York,2024-07-01,3.2
+New York,2024-08-01,-10.8
+New York,2024-09-01,0.2
+New York,2024-10-01,5.0
+New York,2024-11-01,-4.6
+New York,2024-12-01,-5.6
+New York,2025-01-01,-5.3
+New York,2025-02-01,-13.5
+New York,2025-03-01,-3.0
+New York,2025-04-01,-4.9
+New York,2025-05-01,-9.1
+New York,2025-06-01,-5.4
+New York,2025-07-01,-8.0
+New York,2025-08-01,-5.9
+New York,2025-09-01,-7.3
+New York,2025-10-01,-11.3
+New York,2025-11-01,-6.6
+New York,2025-12-01,2.0
+New York,2026-01-01,3.4
+New York,2026-02-01,4.9
+New York,2026-03-01,5.3
+New York,2026-04-01,2.9
+New York,2026-05-01,2.8
+Boston,2019-01-01,12.9
+Boston,2019-02-01,1.9
+Boston,2019-03-01,-1.1
+Boston,2019-04-01,3.5
+Boston,2019-05-01,-0.7
+Boston,2019-06-01,-1.3
+Boston,2019-07-01,3.7
+Boston,2019-08-01,1.4
+Boston,2019-09-01,4.9
+Boston,2019-10-01,2.1
+Boston,2019-11-01,2.2
+Boston,2019-12-01,5.4
+Boston,2020-01-01,0.2
+Boston,2020-02-01,7.7
+Boston,2020-03-01,7.6
+Boston,2020-04-01,-0.6
+Boston,2020-05-01,7.6
+Boston,2020-06-01,20.2
+Boston,2020-07-01,13.7
+Boston,2020-08-01,11.1
+Boston,2020-09-01,20.9
+Boston,2020-10-01,15.0
+Boston,2020-11-01,15.6
+Boston,2020-12-01,21.5
+Boston,2021-01-01,12.2
+Boston,2021-02-01,11.4
+Boston,2021-03-01,34.2
+Boston,2021-04-01,39.5
+Boston,2021-05-01,13.9
+Boston,2021-06-01,7.7
+Boston,2021-07-01,3.2
+Boston,2021-08-01,4.9
+Boston,2021-09-01,2.5
+Boston,2021-10-01,0.5
+Boston,2021-11-01,8.4
+Boston,2021-12-01,6.3
+Boston,2022-01-01,18.4
+Boston,2022-02-01,20.1
+Boston,2022-03-01,11.1
+Boston,2022-04-01,3.2
+Boston,2022-05-01,10.3
+Boston,2022-06-01,9.3
+Boston,2022-07-01,9.2
+Boston,2022-08-01,19.0
+Boston,2022-09-01,14.9
+Boston,2022-10-01,15.0
+Boston,2022-11-01,7.7
+Boston,2022-12-01,6.6
+Boston,2023-01-01,0.0
+Boston,2023-02-01,-1.3
+Boston,2023-03-01,-10.2
+Boston,2023-04-01,-10.0
+Boston,2023-05-01,-2.5
+Boston,2023-06-01,-6.9
+Boston,2023-07-01,-5.8
+Boston,2023-08-01,-4.2
+Boston,2023-09-01,-8.8
+Boston,2023-10-01,-4.7
+Boston,2023-11-01,-4.0
+Boston,2023-12-01,-8.2
+Boston,2024-01-01,-11.3
+Boston,2024-02-01,-5.4
+Boston,2024-03-01,-11.8
+Boston,2024-04-01,-0.9
+Boston,2024-05-01,-7.6
+Boston,2024-06-01,-8.3
+Boston,2024-07-01,0.3
+Boston,2024-08-01,-7.2
+Boston,2024-09-01,-3.4
+Boston,2024-10-01,2.0
+Boston,2024-11-01,-3.6
+Boston,2024-12-01,-4.6
+Boston,2025-01-01,0.1
+Boston,2025-02-01,-4.3
+Boston,2025-03-01,4.0
+Boston,2025-04-01,1.2
+Boston,2025-05-01,-4.2
+Boston,2025-06-01,1.0
+Boston,2025-07-01,-2.1
+Boston,2025-08-01,-6.4
+Boston,2025-09-01,0.0
+Boston,2025-10-01,-6.7
+Boston,2025-11-01,-5.4
+Boston,2025-12-01,4.8
+Boston,2026-01-01,4.6
+Boston,2026-02-01,0.7
+Boston,2026-03-01,3.7
+Boston,2026-04-01,4.3
+Boston,2026-05-01,3.6
+Philadelphia,2019-01-01,17.5
+Philadelphia,2019-02-01,2.3
+Philadelphia,2019-03-01,0.4
+Philadelphia,2019-04-01,5.8
+Philadelphia,2019-05-01,-1.0
+Philadelphia,2019-06-01,-3.3
+Philadelphia,2019-07-01,0.9
+Philadelphia,2019-08-01,0.4
+Philadelphia,2019-09-01,1.7
+Philadelphia,2019-10-01,-0.7
+Philadelphia,2019-11-01,-2.0
+Philadelphia,2019-12-01,0.9
+Philadelphia,2020-01-01,-0.6
+Philadelphia,2020-02-01,7.1
+Philadelphia,2020-03-01,3.9
+Philadelphia,2020-04-01,2.1
+Philadelphia,2020-05-01,11.0
+Philadelphia,2020-06-01,23.3
+Philadelphia,2020-07-01,15.7
+Philadelphia,2020-08-01,11.7
+Philadelphia,2020-09-01,22.3
+Philadelphia,2020-10-01,13.4
+Philadelphia,2020-11-01,15.7
+Philadelphia,2020-12-01,20.1
+Philadelphia,2021-01-01,12.3
+Philadelphia,2021-02-01,10.4
+Philadelphia,2021-03-01,34.2
+Philadelphia,2021-04-01,32.4
+Philadelphia,2021-05-01,10.2
+Philadelphia,2021-06-01,7.9
+Philadelphia,2021-07-01,4.9
+Philadelphia,2021-08-01,9.1
+Philadelphia,2021-09-01,5.4
+Philadelphia,2021-10-01,5.2
+Philadelphia,2021-11-01,15.5
+Philadelphia,2021-12-01,10.2
+Philadelphia,2022-01-01,10.8
+Philadelphia,2022-02-01,16.4
+Philadelphia,2022-03-01,5.6
+Philadelphia,2022-04-01,0.3
+Philadelphia,2022-05-01,9.1
+Philadelphia,2022-06-01,8.6
+Philadelphia,2022-07-01,6.2
+Philadelphia,2022-08-01,14.5
+Philadelphia,2022-09-01,10.2
+Philadelphia,2022-10-01,10.4
+Philadelphia,2022-11-01,2.6
+Philadelphia,2022-12-01,2.4
+Philadelphia,2023-01-01,2.7
+Philadelphia,2023-02-01,1.4
+Philadelphia,2023-03-01,-5.8
+Philadelphia,2023-04-01,-6.0
+Philadelphia,2023-05-01,1.2
+Philadelphia,2023-06-01,-4.2
+Philadelphia,2023-07-01,-3.2
+Philadelphia,2023-08-01,-1.8
+Philadelphia,2023-09-01,-6.6
+Philadelphia,2023-10-01,-1.6
+Philadelphia,2023-11-01,-1.5
+Philadelphia,2023-12-01,-5.3
+Philadelphia,2024-01-01,-9.2
+Philadelphia,2024-02-01,-3.9
+Philadelphia,2024-03-01,-10.9
+Philadelphia,2024-04-01,0.5
+Philadelphia,2024-05-01,-7.6
+Philadelphia,2024-06-01,-9.4
+Philadelphia,2024-07-01,0.7
+Philadelphia,2024-08-01,-11.7
+Philadelphia,2024-09-01,-2.8
+Philadelphia,2024-10-01,2.7
+Philadelphia,2024-11-01,-7.2
+Philadelphia,2024-12-01,-7.6
+Philadelphia,2025-01-01,-4.0
+Philadelphia,2025-02-01,-11.1
+Philadelphia,2025-03-01,-4.0
+Philadelphia,2025-04-01,-6.2
+Philadelphia,2025-05-01,-9.5
+Philadelphia,2025-06-01,-5.2
+Philadelphia,2025-07-01,-7.2
+Philadelphia,2025-08-01,-6.7
+Philadelphia,2025-09-01,-5.8
+Philadelphia,2025-10-01,-11.9
+Philadelphia,2025-11-01,-7.9
+Philadelphia,2025-12-01,3.3
+Philadelphia,2026-01-01,0.0
+Philadelphia,2026-02-01,2.5
+Philadelphia,2026-03-01,6.0
+Philadelphia,2026-04-01,3.6
+Philadelphia,2026-05-01,1.9
+Washington DC,2019-01-01,12.9
+Washington DC,2019-02-01,3.4
+Washington DC,2019-03-01,1.6
+Washington DC,2019-04-01,6.8
+Washington DC,2019-05-01,-1.2
+Washington DC,2019-06-01,-4.6
+Washington DC,2019-07-01,0.2
+Washington DC,2019-08-01,1.5
+Washington DC,2019-09-01,1.0
+Washington DC,2019-10-01,-0.2
+Washington DC,2019-11-01,-3.4
+Washington DC,2019-12-01,2.8
+Washington DC,2020-01-01,0.9
+Washington DC,2020-02-01,6.5
+Washington DC,2020-03-01,5.9
+Washington DC,2020-04-01,5.3
+Washington DC,2020-05-01,14.4
+Washington DC,2020-06-01,24.7
+Washington DC,2020-07-01,16.5
+Washington DC,2020-08-01,12.7
+Washington DC,2020-09-01,22.6
+Washington DC,2020-10-01,15.4
+Washington DC,2020-11-01,18.5
+Washington DC,2020-12-01,22.4
+Washington DC,2021-01-01,8.9
+Washington DC,2021-02-01,6.6
+Washington DC,2021-03-01,25.1
+Washington DC,2021-04-01,22.4
+Washington DC,2021-05-01,2.0
+Washington DC,2021-06-01,0.4
+Washington DC,2021-07-01,-1.1
+Washington DC,2021-08-01,1.7
+Washington DC,2021-09-01,0.2
+Washington DC,2021-10-01,0.5
+Washington DC,2021-11-01,8.0
+Washington DC,2021-12-01,4.7
+Washington DC,2022-01-01,8.7
+Washington DC,2022-02-01,13.3
+Washington DC,2022-03-01,2.4
+Washington DC,2022-04-01,-2.5
+Washington DC,2022-05-01,7.6
+Washington DC,2022-06-01,7.3
+Washington DC,2022-07-01,5.4
+Washington DC,2022-08-01,13.5
+Washington DC,2022-09-01,9.7
+Washington DC,2022-10-01,8.4
+Washington DC,2022-11-01,2.6
+Washington DC,2022-12-01,1.1
+Washington DC,2023-01-01,-4.2
+Washington DC,2023-02-01,-5.6
+Washington DC,2023-03-01,-10.8
+Washington DC,2023-04-01,-10.9
+Washington DC,2023-05-01,-5.0
+Washington DC,2023-06-01,-9.0
+Washington DC,2023-07-01,-8.8
+Washington DC,2023-08-01,-8.0
+Washington DC,2023-09-01,-12.3
+Washington DC,2023-10-01,-9.2
+Washington DC,2023-11-01,-8.8
+Washington DC,2023-12-01,-11.4
+Washington DC,2024-01-01,-6.5
+Washington DC,2024-02-01,-1.7
+Washington DC,2024-03-01,-9.2
+Washington DC,2024-04-01,1.4
+Washington DC,2024-05-01,-6.0
+Washington DC,2024-06-01,-8.9
+Washington DC,2024-07-01,2.1
+Washington DC,2024-08-01,-3.9
+Washington DC,2024-09-01,-2.0
+Washington DC,2024-10-01,4.3
+Washington DC,2024-11-01,-1.0
+Washington DC,2024-12-01,-0.7
+Washington DC,2025-01-01,1.9
+Washington DC,2025-02-01,-4.3
+Washington DC,2025-03-01,5.0
+Washington DC,2025-04-01,2.2
+Washington DC,2025-05-01,-1.1
+Washington DC,2025-06-01,3.2
+Washington DC,2025-07-01,0.8
+Washington DC,2025-08-01,-3.9
+Washington DC,2025-09-01,3.4
+Washington DC,2025-10-01,-2.4
+Washington DC,2025-11-01,-2.9
+Washington DC,2025-12-01,4.9
+Washington DC,2026-01-01,5.0
+Washington DC,2026-02-01,4.8
+Washington DC,2026-03-01,6.2
+Washington DC,2026-04-01,4.9
+Washington DC,2026-05-01,1.7
+Baltimore,2019-01-01,14.5
+Baltimore,2019-02-01,2.3
+Baltimore,2019-03-01,0.7
+Baltimore,2019-04-01,5.5
+Baltimore,2019-05-01,-2.4
+Baltimore,2019-06-01,-4.5
+Baltimore,2019-07-01,0.8
+Baltimore,2019-08-01,0.1
+Baltimore,2019-09-01,1.6
+Baltimore,2019-10-01,-0.1
+Baltimore,2019-11-01,-1.3
+Baltimore,2019-12-01,2.0
+Baltimore,2020-01-01,-0.5
+Baltimore,2020-02-01,7.3
+Baltimore,2020-03-01,5.5
+Baltimore,2020-04-01,3.6
+Baltimore,2020-05-01,11.8
+Baltimore,2020-06-01,22.8
+Baltimore,2020-07-01,15.4
+Baltimore,2020-08-01,11.4
+Baltimore,2020-09-01,21.9
+Baltimore,2020-10-01,12.7
+Baltimore,2020-11-01,15.8
+Baltimore,2020-12-01,20.4
+Baltimore,2021-01-01,16.1
+Baltimore,2021-02-01,14.7
+Baltimore,2021-03-01,35.8
+Baltimore,2021-04-01,33.2
+Baltimore,2021-05-01,12.0
+Baltimore,2021-06-01,10.4
+Baltimore,2021-07-01,7.8
+Baltimore,2021-08-01,12.3
+Baltimore,2021-09-01,8.3
+Baltimore,2021-10-01,8.5
+Baltimore,2021-11-01,18.4
+Baltimore,2021-12-01,12.8
+Baltimore,2022-01-01,8.7
+Baltimore,2022-02-01,11.9
+Baltimore,2022-03-01,1.7
+Baltimore,2022-04-01,-3.0
+Baltimore,2022-05-01,6.2
+Baltimore,2022-06-01,5.2
+Baltimore,2022-07-01,3.5
+Baltimore,2022-08-01,11.2
+Baltimore,2022-09-01,7.7
+Baltimore,2022-10-01,7.1
+Baltimore,2022-11-01,0.6
+Baltimore,2022-12-01,-0.1
+Baltimore,2023-01-01,2.8
+Baltimore,2023-02-01,0.7
+Baltimore,2023-03-01,-5.9
+Baltimore,2023-04-01,-6.1
+Baltimore,2023-05-01,0.8
+Baltimore,2023-06-01,-3.7
+Baltimore,2023-07-01,-3.4
+Baltimore,2023-08-01,-1.9
+Baltimore,2023-09-01,-6.5
+Baltimore,2023-10-01,-1.7
+Baltimore,2023-11-01,-1.9
+Baltimore,2023-12-01,-5.2
+Baltimore,2024-01-01,-9.4
+Baltimore,2024-02-01,-3.2
+Baltimore,2024-03-01,-10.2
+Baltimore,2024-04-01,1.3
+Baltimore,2024-05-01,-6.7
+Baltimore,2024-06-01,-9.1
+Baltimore,2024-07-01,1.2
+Baltimore,2024-08-01,-8.8
+Baltimore,2024-09-01,-3.3
+Baltimore,2024-10-01,2.4
+Baltimore,2024-11-01,-5.3
+Baltimore,2024-12-01,-4.5
+Baltimore,2025-01-01,-1.2
+Baltimore,2025-02-01,-8.7
+Baltimore,2025-03-01,-1.7
+Baltimore,2025-04-01,-3.8
+Baltimore,2025-05-01,-6.1
+Baltimore,2025-06-01,-2.6
+Baltimore,2025-07-01,-5.0
+Baltimore,2025-08-01,-7.0
+Baltimore,2025-09-01,-4.2
+Baltimore,2025-10-01,-10.9
+Baltimore,2025-11-01,-9.2
+Baltimore,2025-12-01,2.2
+Baltimore,2026-01-01,-1.0
+Baltimore,2026-02-01,0.4
+Baltimore,2026-03-01,5.0
+Baltimore,2026-04-01,2.3
+Baltimore,2026-05-01,-0.4
+Pittsburgh,2019-01-01,17.5
+Pittsburgh,2019-02-01,2.3
+Pittsburgh,2019-03-01,0.4
+Pittsburgh,2019-04-01,5.8
+Pittsburgh,2019-05-01,-1.0
+Pittsburgh,2019-06-01,-3.3
+Pittsburgh,2019-07-01,0.9
+Pittsburgh,2019-08-01,0.4
+Pittsburgh,2019-09-01,1.7
+Pittsburgh,2019-10-01,-0.7
+Pittsburgh,2019-11-01,-2.0
+Pittsburgh,2019-12-01,0.9
+Pittsburgh,2020-01-01,-0.6
+Pittsburgh,2020-02-01,7.1
+Pittsburgh,2020-03-01,3.9
+Pittsburgh,2020-04-01,2.1
+Pittsburgh,2020-05-01,11.0
+Pittsburgh,2020-06-01,23.3
+Pittsburgh,2020-07-01,15.7
+Pittsburgh,2020-08-01,11.7
+Pittsburgh,2020-09-01,22.3
+Pittsburgh,2020-10-01,13.4
+Pittsburgh,2020-11-01,15.7
+Pittsburgh,2020-12-01,20.1
+Pittsburgh,2021-01-01,12.3
+Pittsburgh,2021-02-01,10.4
+Pittsburgh,2021-03-01,34.2
+Pittsburgh,2021-04-01,32.4
+Pittsburgh,2021-05-01,10.2
+Pittsburgh,2021-06-01,7.9
+Pittsburgh,2021-07-01,4.9
+Pittsburgh,2021-08-01,9.1
+Pittsburgh,2021-09-01,5.4
+Pittsburgh,2021-10-01,5.2
+Pittsburgh,2021-11-01,15.5
+Pittsburgh,2021-12-01,10.2
+Pittsburgh,2022-01-01,10.8
+Pittsburgh,2022-02-01,16.4
+Pittsburgh,2022-03-01,5.6
+Pittsburgh,2022-04-01,0.3
+Pittsburgh,2022-05-01,9.1
+Pittsburgh,2022-06-01,8.6
+Pittsburgh,2022-07-01,6.2
+Pittsburgh,2022-08-01,14.5
+Pittsburgh,2022-09-01,10.2
+Pittsburgh,2022-10-01,10.4
+Pittsburgh,2022-11-01,2.6
+Pittsburgh,2022-12-01,2.4
+Pittsburgh,2023-01-01,2.7
+Pittsburgh,2023-02-01,1.4
+Pittsburgh,2023-03-01,-5.8
+Pittsburgh,2023-04-01,-6.0
+Pittsburgh,2023-05-01,1.2
+Pittsburgh,2023-06-01,-4.2
+Pittsburgh,2023-07-01,-3.2
+Pittsburgh,2023-08-01,-1.8
+Pittsburgh,2023-09-01,-6.6
+Pittsburgh,2023-10-01,-1.6
+Pittsburgh,2023-11-01,-1.5
+Pittsburgh,2023-12-01,-5.3
+Pittsburgh,2024-01-01,-9.2
+Pittsburgh,2024-02-01,-3.9
+Pittsburgh,2024-03-01,-10.9
+Pittsburgh,2024-04-01,0.5
+Pittsburgh,2024-05-01,-7.6
+Pittsburgh,2024-06-01,-9.4
+Pittsburgh,2024-07-01,0.7
+Pittsburgh,2024-08-01,-11.7
+Pittsburgh,2024-09-01,-2.8
+Pittsburgh,2024-10-01,2.7
+Pittsburgh,2024-11-01,-7.2
+Pittsburgh,2024-12-01,-7.6
+Pittsburgh,2025-01-01,-4.0
+Pittsburgh,2025-02-01,-11.1
+Pittsburgh,2025-03-01,-4.0
+Pittsburgh,2025-04-01,-6.2
+Pittsburgh,2025-05-01,-9.5
+Pittsburgh,2025-06-01,-5.2
+Pittsburgh,2025-07-01,-7.2
+Pittsburgh,2025-08-01,-6.7
+Pittsburgh,2025-09-01,-5.8
+Pittsburgh,2025-10-01,-11.9
+Pittsburgh,2025-11-01,-7.9
+Pittsburgh,2025-12-01,3.3
+Pittsburgh,2026-01-01,0.0
+Pittsburgh,2026-02-01,2.5
+Pittsburgh,2026-03-01,6.0
+Pittsburgh,2026-04-01,3.6
+Pittsburgh,2026-05-01,1.9
+Buffalo,2019-01-01,11.3
+Buffalo,2019-02-01,1.0
+Buffalo,2019-03-01,-1.1
+Buffalo,2019-04-01,5.1
+Buffalo,2019-05-01,-2.1
+Buffalo,2019-06-01,-4.4
+Buffalo,2019-07-01,-0.4
+Buffalo,2019-08-01,0.4
+Buffalo,2019-09-01,1.0
+Buffalo,2019-10-01,-1.6
+Buffalo,2019-11-01,-2.8
+Buffalo,2019-12-01,3.2
+Buffalo,2020-01-01,4.7
+Buffalo,2020-02-01,10.4
+Buffalo,2020-03-01,6.9
+Buffalo,2020-04-01,1.7
+Buffalo,2020-05-01,12.6
+Buffalo,2020-06-01,25.3
+Buffalo,2020-07-01,18.1
+Buffalo,2020-08-01,15.1
+Buffalo,2020-09-01,25.2
+Buffalo,2020-10-01,18.0
+Buffalo,2020-11-01,18.7
+Buffalo,2020-12-01,23.2
+Buffalo,2021-01-01,9.8
+Buffalo,2021-02-01,6.3
+Buffalo,2021-03-01,29.0
+Buffalo,2021-04-01,32.1
+Buffalo,2021-05-01,7.4
+Buffalo,2021-06-01,4.3
+Buffalo,2021-07-01,1.4
+Buffalo,2021-08-01,4.0
+Buffalo,2021-09-01,1.9
+Buffalo,2021-10-01,1.2
+Buffalo,2021-11-01,9.5
+Buffalo,2021-12-01,7.3
+Buffalo,2022-01-01,18.8
+Buffalo,2022-02-01,24.1
+Buffalo,2022-03-01,13.0
+Buffalo,2022-04-01,6.7
+Buffalo,2022-05-01,15.6
+Buffalo,2022-06-01,15.2
+Buffalo,2022-07-01,13.0
+Buffalo,2022-08-01,22.8
+Buffalo,2022-09-01,17.7
+Buffalo,2022-10-01,17.3
+Buffalo,2022-11-01,11.0
+Buffalo,2022-12-01,8.9
+Buffalo,2023-01-01,-1.6
+Buffalo,2023-02-01,-2.3
+Buffalo,2023-03-01,-9.3
+Buffalo,2023-04-01,-9.1
+Buffalo,2023-05-01,-1.7
+Buffalo,2023-06-01,-6.7
+Buffalo,2023-07-01,-6.0
+Buffalo,2023-08-01,-4.4
+Buffalo,2023-09-01,-9.6
+Buffalo,2023-10-01,-5.4
+Buffalo,2023-11-01,-5.6
+Buffalo,2023-12-01,-8.9
+Buffalo,2024-01-01,-6.4
+Buffalo,2024-02-01,-1.8
+Buffalo,2024-03-01,-9.0
+Buffalo,2024-04-01,2.0
+Buffalo,2024-05-01,-5.3
+Buffalo,2024-06-01,-7.0
+Buffalo,2024-07-01,3.2
+Buffalo,2024-08-01,-10.8
+Buffalo,2024-09-01,0.2
+Buffalo,2024-10-01,5.0
+Buffalo,2024-11-01,-4.6
+Buffalo,2024-12-01,-5.6
+Buffalo,2025-01-01,-5.3
+Buffalo,2025-02-01,-13.5
+Buffalo,2025-03-01,-3.0
+Buffalo,2025-04-01,-4.9
+Buffalo,2025-05-01,-9.1
+Buffalo,2025-06-01,-5.4
+Buffalo,2025-07-01,-8.0
+Buffalo,2025-08-01,-5.9
+Buffalo,2025-09-01,-7.3
+Buffalo,2025-10-01,-11.3
+Buffalo,2025-11-01,-6.6
+Buffalo,2025-12-01,2.0
+Buffalo,2026-01-01,3.4
+Buffalo,2026-02-01,4.9
+Buffalo,2026-03-01,5.3
+Buffalo,2026-04-01,2.9
+Buffalo,2026-05-01,2.8
+Chicago,2019-01-01,9.7
+Chicago,2019-02-01,2.6
+Chicago,2019-03-01,1.9
+Chicago,2019-04-01,5.4
+Chicago,2019-05-01,-1.8
+Chicago,2019-06-01,-4.1
+Chicago,2019-07-01,1.6
+Chicago,2019-08-01,0.2
+Chicago,2019-09-01,1.2
+Chicago,2019-10-01,0.5
+Chicago,2019-11-01,-0.8
+Chicago,2019-12-01,6.1
+Chicago,2020-01-01,2.9
+Chicago,2020-02-01,7.6
+Chicago,2020-03-01,6.3
+Chicago,2020-04-01,8.2
+Chicago,2020-05-01,14.1
+Chicago,2020-06-01,24.5
+Chicago,2020-07-01,15.4
+Chicago,2020-08-01,11.5
+Chicago,2020-09-01,21.6
+Chicago,2020-10-01,14.1
+Chicago,2020-11-01,15.1
+Chicago,2020-12-01,18.2
+Chicago,2021-01-01,15.0
+Chicago,2021-02-01,12.4
+Chicago,2021-03-01,33.7
+Chicago,2021-04-01,25.5
+Chicago,2021-05-01,7.5
+Chicago,2021-06-01,4.7
+Chicago,2021-07-01,4.0
+Chicago,2021-08-01,6.8
+Chicago,2021-09-01,5.0
+Chicago,2021-10-01,5.7
+Chicago,2021-11-01,14.5
+Chicago,2021-12-01,11.6
+Chicago,2022-01-01,12.6
+Chicago,2022-02-01,18.1
+Chicago,2022-03-01,6.2
+Chicago,2022-04-01,2.4
+Chicago,2022-05-01,12.4
+Chicago,2022-06-01,12.7
+Chicago,2022-07-01,11.3
+Chicago,2022-08-01,19.7
+Chicago,2022-09-01,14.4
+Chicago,2022-10-01,13.6
+Chicago,2022-11-01,9.1
+Chicago,2022-12-01,6.2
+Chicago,2023-01-01,4.0
+Chicago,2023-02-01,1.5
+Chicago,2023-03-01,-6.7
+Chicago,2023-04-01,-5.9
+Chicago,2023-05-01,0.5
+Chicago,2023-06-01,-3.0
+Chicago,2023-07-01,-4.3
+Chicago,2023-08-01,-3.4
+Chicago,2023-09-01,-6.0
+Chicago,2023-10-01,-1.8
+Chicago,2023-11-01,-1.8
+Chicago,2023-12-01,-3.3
+Chicago,2024-01-01,-7.3
+Chicago,2024-02-01,-2.4
+Chicago,2024-03-01,-9.1
+Chicago,2024-04-01,1.4
+Chicago,2024-05-01,-5.3
+Chicago,2024-06-01,-7.6
+Chicago,2024-07-01,6.4
+Chicago,2024-08-01,-4.7
+Chicago,2024-09-01,-1.1
+Chicago,2024-10-01,4.3
+Chicago,2024-11-01,-4.1
+Chicago,2024-12-01,-4.5
+Chicago,2025-01-01,-1.1
+Chicago,2025-02-01,-7.5
+Chicago,2025-03-01,2.3
+Chicago,2025-04-01,-0.5
+Chicago,2025-05-01,-4.2
+Chicago,2025-06-01,-0.9
+Chicago,2025-07-01,-5.8
+Chicago,2025-08-01,-4.8
+Chicago,2025-09-01,-0.5
+Chicago,2025-10-01,-5.4
+Chicago,2025-11-01,-3.4
+Chicago,2025-12-01,2.6
+Chicago,2026-01-01,2.3
+Chicago,2026-02-01,3.2
+Chicago,2026-03-01,5.5
+Chicago,2026-04-01,3.8
+Chicago,2026-05-01,2.2
+Detroit,2019-01-01,19.5
+Detroit,2019-02-01,1.7
+Detroit,2019-03-01,-1.2
+Detroit,2019-04-01,6.7
+Detroit,2019-05-01,-1.7
+Detroit,2019-06-01,-2.5
+Detroit,2019-07-01,1.4
+Detroit,2019-08-01,2.6
+Detroit,2019-09-01,3.1
+Detroit,2019-10-01,0.9
+Detroit,2019-11-01,-0.4
+Detroit,2019-12-01,-1.2
+Detroit,2020-01-01,-7.5
+Detroit,2020-02-01,4.7
+Detroit,2020-03-01,3.1
+Detroit,2020-04-01,-1.4
+Detroit,2020-05-01,10.7
+Detroit,2020-06-01,23.1
+Detroit,2020-07-01,12.5
+Detroit,2020-08-01,10.5
+Detroit,2020-09-01,21.6
+Detroit,2020-10-01,11.9
+Detroit,2020-11-01,14.0
+Detroit,2020-12-01,20.7
+Detroit,2021-01-01,16.3
+Detroit,2021-02-01,14.8
+Detroit,2021-03-01,38.5
+Detroit,2021-04-01,35.6
+Detroit,2021-05-01,9.1
+Detroit,2021-06-01,4.8
+Detroit,2021-07-01,5.1
+Detroit,2021-08-01,8.3
+Detroit,2021-09-01,4.0
+Detroit,2021-10-01,4.5
+Detroit,2021-11-01,13.0
+Detroit,2021-12-01,8.9
+Detroit,2022-01-01,10.3
+Detroit,2022-02-01,13.7
+Detroit,2022-03-01,1.6
+Detroit,2022-04-01,-0.4
+Detroit,2022-05-01,9.8
+Detroit,2022-06-01,8.4
+Detroit,2022-07-01,5.4
+Detroit,2022-08-01,13.5
+Detroit,2022-09-01,10.4
+Detroit,2022-10-01,9.5
+Detroit,2022-11-01,1.8
+Detroit,2022-12-01,0.5
+Detroit,2023-01-01,3.2
+Detroit,2023-02-01,3.0
+Detroit,2023-03-01,-3.5
+Detroit,2023-04-01,-5.4
+Detroit,2023-05-01,1.0
+Detroit,2023-06-01,-2.9
+Detroit,2023-07-01,-1.5
+Detroit,2023-08-01,0.1
+Detroit,2023-09-01,-5.8
+Detroit,2023-10-01,-0.9
+Detroit,2023-11-01,0.1
+Detroit,2023-12-01,-4.0
+Detroit,2024-01-01,-7.1
+Detroit,2024-02-01,-2.1
+Detroit,2024-03-01,-8.5
+Detroit,2024-04-01,2.3
+Detroit,2024-05-01,-5.1
+Detroit,2024-06-01,-7.3
+Detroit,2024-07-01,1.8
+Detroit,2024-08-01,-6.6
+Detroit,2024-09-01,-0.7
+Detroit,2024-10-01,5.4
+Detroit,2024-11-01,-1.2
+Detroit,2024-12-01,-1.4
+Detroit,2025-01-01,-2.2
+Detroit,2025-02-01,-9.3
+Detroit,2025-03-01,1.1
+Detroit,2025-04-01,-0.7
+Detroit,2025-05-01,-4.4
+Detroit,2025-06-01,-0.9
+Detroit,2025-07-01,-2.6
+Detroit,2025-08-01,-6.0
+Detroit,2025-09-01,-1.2
+Detroit,2025-10-01,-7.7
+Detroit,2025-11-01,-5.3
+Detroit,2025-12-01,0.7
+Detroit,2026-01-01,1.9
+Detroit,2026-02-01,3.9
+Detroit,2026-03-01,6.3
+Detroit,2026-04-01,4.0
+Detroit,2026-05-01,2.2
+Minneapolis,2019-01-01,11.3
+Minneapolis,2019-02-01,5.5
+Minneapolis,2019-03-01,2.8
+Minneapolis,2019-04-01,7.0
+Minneapolis,2019-05-01,-3.2
+Minneapolis,2019-06-01,-2.4
+Minneapolis,2019-07-01,3.2
+Minneapolis,2019-08-01,1.4
+Minneapolis,2019-09-01,2.9
+Minneapolis,2019-10-01,1.1
+Minneapolis,2019-11-01,1.6
+Minneapolis,2019-12-01,5.1
+Minneapolis,2020-01-01,2.0
+Minneapolis,2020-02-01,6.4
+Minneapolis,2020-03-01,6.9
+Minneapolis,2020-04-01,11.8
+Minneapolis,2020-05-01,16.4
+Minneapolis,2020-06-01,23.2
+Minneapolis,2020-07-01,13.9
+Minneapolis,2020-08-01,10.4
+Minneapolis,2020-09-01,20.3
+Minneapolis,2020-10-01,12.1
+Minneapolis,2020-11-01,12.6
+Minneapolis,2020-12-01,18.7
+Minneapolis,2021-01-01,14.4
+Minneapolis,2021-02-01,11.1
+Minneapolis,2021-03-01,31.5
+Minneapolis,2021-04-01,22.6
+Minneapolis,2021-05-01,6.9
+Minneapolis,2021-06-01,6.5
+Minneapolis,2021-07-01,5.4
+Minneapolis,2021-08-01,9.1
+Minneapolis,2021-09-01,7.5
+Minneapolis,2021-10-01,8.2
+Minneapolis,2021-11-01,14.4
+Minneapolis,2021-12-01,14.0
+Minneapolis,2022-01-01,6.1
+Minneapolis,2022-02-01,11.2
+Minneapolis,2022-03-01,2.2
+Minneapolis,2022-04-01,-3.2
+Minneapolis,2022-05-01,5.9
+Minneapolis,2022-06-01,4.3
+Minneapolis,2022-07-01,4.0
+Minneapolis,2022-08-01,10.7
+Minneapolis,2022-09-01,6.4
+Minneapolis,2022-10-01,5.1
+Minneapolis,2022-11-01,1.2
+Minneapolis,2022-12-01,-1.8
+Minneapolis,2023-01-01,4.4
+Minneapolis,2023-02-01,-1.0
+Minneapolis,2023-03-01,-12.3
+Minneapolis,2023-04-01,-12.3
+Minneapolis,2023-05-01,-7.1
+Minneapolis,2023-06-01,-10.0
+Minneapolis,2023-07-01,-10.6
+Minneapolis,2023-08-01,-7.6
+Minneapolis,2023-09-01,-12.0
+Minneapolis,2023-10-01,-8.7
+Minneapolis,2023-11-01,-8.9
+Minneapolis,2023-12-01,-12.6
+Minneapolis,2024-01-01,-11.5
+Minneapolis,2024-02-01,-2.2
+Minneapolis,2024-03-01,-4.3
+Minneapolis,2024-04-01,6.3
+Minneapolis,2024-05-01,-1.6
+Minneapolis,2024-06-01,-4.1
+Minneapolis,2024-07-01,4.7
+Minneapolis,2024-08-01,3.6
+Minneapolis,2024-09-01,1.3
+Minneapolis,2024-10-01,7.2
+Minneapolis,2024-11-01,9.2
+Minneapolis,2024-12-01,8.6
+Minneapolis,2025-01-01,6.3
+Minneapolis,2025-02-01,-0.9
+Minneapolis,2025-03-01,9.2
+Minneapolis,2025-04-01,9.5
+Minneapolis,2025-05-01,4.4
+Minneapolis,2025-06-01,8.5
+Minneapolis,2025-07-01,8.7
+Minneapolis,2025-08-01,-3.3
+Minneapolis,2025-09-01,8.3
+Minneapolis,2025-10-01,2.8
+Minneapolis,2025-11-01,-2.5
+Minneapolis,2025-12-01,4.5
+Minneapolis,2026-01-01,3.1
+Minneapolis,2026-02-01,1.8
+Minneapolis,2026-03-01,3.6
+Minneapolis,2026-04-01,-0.1
+Minneapolis,2026-05-01,-0.3
+St. Louis,2019-01-01,6.1
+St. Louis,2019-02-01,2.0
+St. Louis,2019-03-01,-1.3
+St. Louis,2019-04-01,8.0
+St. Louis,2019-05-01,-9.2
+St. Louis,2019-06-01,-3.1
+St. Louis,2019-07-01,3.7
+St. Louis,2019-08-01,7.4
+St. Louis,2019-09-01,7.7
+St. Louis,2019-10-01,-0.1
+St. Louis,2019-11-01,7.2
+St. Louis,2019-12-01,9.9
+St. Louis,2020-01-01,9.3
+St. Louis,2020-02-01,14.3
+St. Louis,2020-03-01,12.2
+St. Louis,2020-04-01,8.9
+St. Louis,2020-05-01,20.0
+St. Louis,2020-06-01,27.9
+St. Louis,2020-07-01,15.3
+St. Louis,2020-08-01,17.9
+St. Louis,2020-09-01,31.8
+St. Louis,2020-10-01,26.8
+St. Louis,2020-11-01,21.5
+St. Louis,2020-12-01,25.7
+St. Louis,2021-01-01,20.2
+St. Louis,2021-02-01,18.4
+St. Louis,2021-03-01,42.0
+St. Louis,2021-04-01,29.9
+St. Louis,2021-05-01,14.6
+St. Louis,2021-06-01,13.3
+St. Louis,2021-07-01,13.8
+St. Louis,2021-08-01,14.8
+St. Louis,2021-09-01,11.2
+St. Louis,2021-10-01,11.4
+St. Louis,2021-11-01,19.9
+St. Louis,2021-12-01,17.9
+St. Louis,2022-01-01,8.3
+St. Louis,2022-02-01,11.4
+St. Louis,2022-03-01,-0.6
+St. Louis,2022-04-01,-4.3
+St. Louis,2022-05-01,6.3
+St. Louis,2022-06-01,3.5
+St. Louis,2022-07-01,4.0
+St. Louis,2022-08-01,12.7
+St. Louis,2022-09-01,9.3
+St. Louis,2022-10-01,7.1
+St. Louis,2022-11-01,0.9
+St. Louis,2022-12-01,-2.2
+St. Louis,2023-01-01,0.1
+St. Louis,2023-02-01,-3.2
+St. Louis,2023-03-01,-11.2
+St. Louis,2023-04-01,-9.7
+St. Louis,2023-05-01,-5.7
+St. Louis,2023-06-01,-10.7
+St. Louis,2023-07-01,-13.1
+St. Louis,2023-08-01,-16.0
+St. Louis,2023-09-01,-10.4
+St. Louis,2023-10-01,-5.8
+St. Louis,2023-11-01,-6.2
+St. Louis,2023-12-01,-9.0
+St. Louis,2024-01-01,-6.3
+St. Louis,2024-02-01,0.2
+St. Louis,2024-03-01,-5.7
+St. Louis,2024-04-01,2.6
+St. Louis,2024-05-01,-3.3
+St. Louis,2024-06-01,-3.3
+St. Louis,2024-07-01,11.2
+St. Louis,2024-08-01,8.7
+St. Louis,2024-09-01,-0.3
+St. Louis,2024-10-01,5.3
+St. Louis,2024-11-01,1.1
+St. Louis,2024-12-01,4.6
+St. Louis,2025-01-01,2.7
+St. Louis,2025-02-01,-4.3
+St. Louis,2025-03-01,7.6
+St. Louis,2025-04-01,6.0
+St. Louis,2025-05-01,1.5
+St. Louis,2025-06-01,3.4
+St. Louis,2025-07-01,-0.2
+St. Louis,2025-08-01,-4.3
+St. Louis,2025-09-01,2.6
+St. Louis,2025-10-01,-0.7
+St. Louis,2025-11-01,-1.8
+St. Louis,2025-12-01,1.6
+St. Louis,2026-01-01,3.8
+St. Louis,2026-02-01,5.3
+St. Louis,2026-03-01,6.4
+St. Louis,2026-04-01,2.5
+St. Louis,2026-05-01,3.1
+Kansas City,2019-01-01,6.1
+Kansas City,2019-02-01,2.0
+Kansas City,2019-03-01,-1.3
+Kansas City,2019-04-01,8.0
+Kansas City,2019-05-01,-9.2
+Kansas City,2019-06-01,-3.1
+Kansas City,2019-07-01,3.7
+Kansas City,2019-08-01,7.4
+Kansas City,2019-09-01,7.7
+Kansas City,2019-10-01,-0.1
+Kansas City,2019-11-01,7.2
+Kansas City,2019-12-01,9.9
+Kansas City,2020-01-01,9.3
+Kansas City,2020-02-01,14.3
+Kansas City,2020-03-01,12.2
+Kansas City,2020-04-01,8.9
+Kansas City,2020-05-01,20.0
+Kansas City,2020-06-01,27.9
+Kansas City,2020-07-01,15.3
+Kansas City,2020-08-01,17.9
+Kansas City,2020-09-01,31.8
+Kansas City,2020-10-01,26.8
+Kansas City,2020-11-01,21.5
+Kansas City,2020-12-01,25.7
+Kansas City,2021-01-01,20.2
+Kansas City,2021-02-01,18.4
+Kansas City,2021-03-01,42.0
+Kansas City,2021-04-01,29.9
+Kansas City,2021-05-01,14.6
+Kansas City,2021-06-01,13.3
+Kansas City,2021-07-01,13.8
+Kansas City,2021-08-01,14.8
+Kansas City,2021-09-01,11.2
+Kansas City,2021-10-01,11.4
+Kansas City,2021-11-01,19.9
+Kansas City,2021-12-01,17.9
+Kansas City,2022-01-01,8.3
+Kansas City,2022-02-01,11.4
+Kansas City,2022-03-01,-0.6
+Kansas City,2022-04-01,-4.3
+Kansas City,2022-05-01,6.3
+Kansas City,2022-06-01,3.5
+Kansas City,2022-07-01,4.0
+Kansas City,2022-08-01,12.7
+Kansas City,2022-09-01,9.3
+Kansas City,2022-10-01,7.1
+Kansas City,2022-11-01,0.9
+Kansas City,2022-12-01,-2.2
+Kansas City,2023-01-01,0.1
+Kansas City,2023-02-01,-3.2
+Kansas City,2023-03-01,-11.2
+Kansas City,2023-04-01,-9.7
+Kansas City,2023-05-01,-5.7
+Kansas City,2023-06-01,-10.7
+Kansas City,2023-07-01,-13.1
+Kansas City,2023-08-01,-16.0
+Kansas City,2023-09-01,-10.4
+Kansas City,2023-10-01,-5.8
+Kansas City,2023-11-01,-6.2
+Kansas City,2023-12-01,-9.0
+Kansas City,2024-01-01,-6.3
+Kansas City,2024-02-01,0.2
+Kansas City,2024-03-01,-5.7
+Kansas City,2024-04-01,2.6
+Kansas City,2024-05-01,-3.3
+Kansas City,2024-06-01,-3.3
+Kansas City,2024-07-01,11.2
+Kansas City,2024-08-01,8.7
+Kansas City,2024-09-01,-0.3
+Kansas City,2024-10-01,5.3
+Kansas City,2024-11-01,1.1
+Kansas City,2024-12-01,4.6
+Kansas City,2025-01-01,2.7
+Kansas City,2025-02-01,-4.3
+Kansas City,2025-03-01,7.6
+Kansas City,2025-04-01,6.0
+Kansas City,2025-05-01,1.5
+Kansas City,2025-06-01,3.4
+Kansas City,2025-07-01,-0.2
+Kansas City,2025-08-01,-4.3
+Kansas City,2025-09-01,2.6
+Kansas City,2025-10-01,-0.7
+Kansas City,2025-11-01,-1.8
+Kansas City,2025-12-01,1.6
+Kansas City,2026-01-01,3.8
+Kansas City,2026-02-01,5.3
+Kansas City,2026-03-01,6.4
+Kansas City,2026-04-01,2.5
+Kansas City,2026-05-01,3.1
+Milwaukee,2019-01-01,10.2
+Milwaukee,2019-02-01,4.9
+Milwaukee,2019-03-01,3.3
+Milwaukee,2019-04-01,6.5
+Milwaukee,2019-05-01,-3.3
+Milwaukee,2019-06-01,-5.0
+Milwaukee,2019-07-01,3.5
+Milwaukee,2019-08-01,1.3
+Milwaukee,2019-09-01,3.6
+Milwaukee,2019-10-01,6.0
+Milwaukee,2019-11-01,1.4
+Milwaukee,2019-12-01,5.0
+Milwaukee,2020-01-01,-0.2
+Milwaukee,2020-02-01,7.2
+Milwaukee,2020-03-01,5.0
+Milwaukee,2020-04-01,7.0
+Milwaukee,2020-05-01,11.4
+Milwaukee,2020-06-01,22.0
+Milwaukee,2020-07-01,10.5
+Milwaukee,2020-08-01,5.9
+Milwaukee,2020-09-01,16.6
+Milwaukee,2020-10-01,5.7
+Milwaukee,2020-11-01,12.7
+Milwaukee,2020-12-01,17.4
+Milwaukee,2021-01-01,11.9
+Milwaukee,2021-02-01,8.0
+Milwaukee,2021-03-01,30.3
+Milwaukee,2021-04-01,23.8
+Milwaukee,2021-05-01,8.6
+Milwaukee,2021-06-01,7.3
+Milwaukee,2021-07-01,4.9
+Milwaukee,2021-08-01,8.7
+Milwaukee,2021-09-01,4.9
+Milwaukee,2021-10-01,4.5
+Milwaukee,2021-11-01,13.4
+Milwaukee,2021-12-01,10.4
+Milwaukee,2022-01-01,0.9
+Milwaukee,2022-02-01,5.5
+Milwaukee,2022-03-01,-3.8
+Milwaukee,2022-04-01,-8.0
+Milwaukee,2022-05-01,2.9
+Milwaukee,2022-06-01,-1.0
+Milwaukee,2022-07-01,-1.1
+Milwaukee,2022-08-01,5.9
+Milwaukee,2022-09-01,3.0
+Milwaukee,2022-10-01,2.9
+Milwaukee,2022-11-01,-4.0
+Milwaukee,2022-12-01,-5.7
+Milwaukee,2023-01-01,0.7
+Milwaukee,2023-02-01,-5.6
+Milwaukee,2023-03-01,-13.9
+Milwaukee,2023-04-01,-15.1
+Milwaukee,2023-05-01,-11.1
+Milwaukee,2023-06-01,-13.1
+Milwaukee,2023-07-01,-11.8
+Milwaukee,2023-08-01,-10.2
+Milwaukee,2023-09-01,-13.7
+Milwaukee,2023-10-01,-10.7
+Milwaukee,2023-11-01,-10.9
+Milwaukee,2023-12-01,-13.4
+Milwaukee,2024-01-01,-8.4
+Milwaukee,2024-02-01,3.8
+Milwaukee,2024-03-01,-3.6
+Milwaukee,2024-04-01,6.9
+Milwaukee,2024-05-01,-1.1
+Milwaukee,2024-06-01,-3.4
+Milwaukee,2024-07-01,5.8
+Milwaukee,2024-08-01,8.7
+Milwaukee,2024-09-01,2.4
+Milwaukee,2024-10-01,9.8
+Milwaukee,2024-11-01,13.7
+Milwaukee,2024-12-01,12.1
+Milwaukee,2025-01-01,11.1
+Milwaukee,2025-02-01,1.5
+Milwaukee,2025-03-01,13.3
+Milwaukee,2025-04-01,12.3
+Milwaukee,2025-05-01,8.0
+Milwaukee,2025-06-01,13.2
+Milwaukee,2025-07-01,12.3
+Milwaukee,2025-08-01,-3.9
+Milwaukee,2025-09-01,13.0
+Milwaukee,2025-10-01,6.6
+Milwaukee,2025-11-01,-3.0
+Milwaukee,2025-12-01,4.1
+Milwaukee,2026-01-01,2.1
+Milwaukee,2026-02-01,4.4
+Milwaukee,2026-03-01,4.9
+Milwaukee,2026-04-01,2.3
+Milwaukee,2026-05-01,1.9
+Columbus,2019-01-01,24.6
+Columbus,2019-02-01,2.1
+Columbus,2019-03-01,0.3
+Columbus,2019-04-01,1.7
+Columbus,2019-05-01,-1.2
+Columbus,2019-06-01,-5.8
+Columbus,2019-07-01,-2.6
+Columbus,2019-08-01,-6.3
+Columbus,2019-09-01,0.6
+Columbus,2019-10-01,-4.0
+Columbus,2019-11-01,-4.8
+Columbus,2019-12-01,-8.6
+Columbus,2020-01-01,-10.2
+Columbus,2020-02-01,5.1
+Columbus,2020-03-01,3.5
+Columbus,2020-04-01,-0.7
+Columbus,2020-05-01,9.4
+Columbus,2020-06-01,25.4
+Columbus,2020-07-01,17.1
+Columbus,2020-08-01,14.2
+Columbus,2020-09-01,24.1
+Columbus,2020-10-01,16.5
+Columbus,2020-11-01,17.3
+Columbus,2020-12-01,23.5
+Columbus,2021-01-01,18.3
+Columbus,2021-02-01,16.5
+Columbus,2021-03-01,39.1
+Columbus,2021-04-01,41.1
+Columbus,2021-05-01,14.1
+Columbus,2021-06-01,10.3
+Columbus,2021-07-01,8.8
+Columbus,2021-08-01,12.2
+Columbus,2021-09-01,8.6
+Columbus,2021-10-01,8.6
+Columbus,2021-11-01,17.6
+Columbus,2021-12-01,13.9
+Columbus,2022-01-01,18.1
+Columbus,2022-02-01,22.8
+Columbus,2022-03-01,13.3
+Columbus,2022-04-01,7.1
+Columbus,2022-05-01,17.9
+Columbus,2022-06-01,18.2
+Columbus,2022-07-01,14.8
+Columbus,2022-08-01,23.4
+Columbus,2022-09-01,18.1
+Columbus,2022-10-01,18.6
+Columbus,2022-11-01,14.1
+Columbus,2022-12-01,9.0
+Columbus,2023-01-01,-0.5
+Columbus,2023-02-01,-0.5
+Columbus,2023-03-01,-8.4
+Columbus,2023-04-01,-7.9
+Columbus,2023-05-01,-1.4
+Columbus,2023-06-01,-5.8
+Columbus,2023-07-01,-5.8
+Columbus,2023-08-01,-4.5
+Columbus,2023-09-01,-8.7
+Columbus,2023-10-01,-4.5
+Columbus,2023-11-01,-4.9
+Columbus,2023-12-01,-7.6
+Columbus,2024-01-01,-6.9
+Columbus,2024-02-01,-2.2
+Columbus,2024-03-01,-8.6
+Columbus,2024-04-01,2.1
+Columbus,2024-05-01,-5.1
+Columbus,2024-06-01,-7.4
+Columbus,2024-07-01,2.8
+Columbus,2024-08-01,-11.7
+Columbus,2024-09-01,-0.3
+Columbus,2024-10-01,5.1
+Columbus,2024-11-01,-7.8
+Columbus,2024-12-01,-8.6
+Columbus,2025-01-01,-7.5
+Columbus,2025-02-01,-11.7
+Columbus,2025-03-01,-2.5
+Columbus,2025-04-01,-4.7
+Columbus,2025-05-01,-8.3
+Columbus,2025-06-01,-4.5
+Columbus,2025-07-01,-5.9
+Columbus,2025-08-01,-3.2
+Columbus,2025-09-01,-5.3
+Columbus,2025-10-01,-11.3
+Columbus,2025-11-01,-3.7
+Columbus,2025-12-01,5.4
+Columbus,2026-01-01,5.1
+Columbus,2026-02-01,2.9
+Columbus,2026-03-01,6.0
+Columbus,2026-04-01,4.0
+Columbus,2026-05-01,2.3
+Cincinnati,2019-01-01,24.6
+Cincinnati,2019-02-01,2.1
+Cincinnati,2019-03-01,0.3
+Cincinnati,2019-04-01,1.7
+Cincinnati,2019-05-01,-1.2
+Cincinnati,2019-06-01,-5.8
+Cincinnati,2019-07-01,-2.6
+Cincinnati,2019-08-01,-6.3
+Cincinnati,2019-09-01,0.6
+Cincinnati,2019-10-01,-4.0
+Cincinnati,2019-11-01,-4.8
+Cincinnati,2019-12-01,-8.6
+Cincinnati,2020-01-01,-10.2
+Cincinnati,2020-02-01,5.1
+Cincinnati,2020-03-01,3.5
+Cincinnati,2020-04-01,-0.7
+Cincinnati,2020-05-01,9.4
+Cincinnati,2020-06-01,25.4
+Cincinnati,2020-07-01,17.1
+Cincinnati,2020-08-01,14.2
+Cincinnati,2020-09-01,24.1
+Cincinnati,2020-10-01,16.5
+Cincinnati,2020-11-01,17.3
+Cincinnati,2020-12-01,23.5
+Cincinnati,2021-01-01,18.3
+Cincinnati,2021-02-01,16.5
+Cincinnati,2021-03-01,39.1
+Cincinnati,2021-04-01,41.1
+Cincinnati,2021-05-01,14.1
+Cincinnati,2021-06-01,10.3
+Cincinnati,2021-07-01,8.8
+Cincinnati,2021-08-01,12.2
+Cincinnati,2021-09-01,8.6
+Cincinnati,2021-10-01,8.6
+Cincinnati,2021-11-01,17.6
+Cincinnati,2021-12-01,13.9
+Cincinnati,2022-01-01,18.1
+Cincinnati,2022-02-01,22.8
+Cincinnati,2022-03-01,13.3
+Cincinnati,2022-04-01,7.1
+Cincinnati,2022-05-01,17.9
+Cincinnati,2022-06-01,18.2
+Cincinnati,2022-07-01,14.8
+Cincinnati,2022-08-01,23.4
+Cincinnati,2022-09-01,18.1
+Cincinnati,2022-10-01,18.6
+Cincinnati,2022-11-01,14.1
+Cincinnati,2022-12-01,9.0
+Cincinnati,2023-01-01,-0.5
+Cincinnati,2023-02-01,-0.5
+Cincinnati,2023-03-01,-8.4
+Cincinnati,2023-04-01,-7.9
+Cincinnati,2023-05-01,-1.4
+Cincinnati,2023-06-01,-5.8
+Cincinnati,2023-07-01,-5.8
+Cincinnati,2023-08-01,-4.5
+Cincinnati,2023-09-01,-8.7
+Cincinnati,2023-10-01,-4.5
+Cincinnati,2023-11-01,-4.9
+Cincinnati,2023-12-01,-7.6
+Cincinnati,2024-01-01,-6.9
+Cincinnati,2024-02-01,-2.2
+Cincinnati,2024-03-01,-8.6
+Cincinnati,2024-04-01,2.1
+Cincinnati,2024-05-01,-5.1
+Cincinnati,2024-06-01,-7.4
+Cincinnati,2024-07-01,2.8
+Cincinnati,2024-08-01,-11.7
+Cincinnati,2024-09-01,-0.3
+Cincinnati,2024-10-01,5.1
+Cincinnati,2024-11-01,-7.8
+Cincinnati,2024-12-01,-8.6
+Cincinnati,2025-01-01,-7.5
+Cincinnati,2025-02-01,-11.7
+Cincinnati,2025-03-01,-2.5
+Cincinnati,2025-04-01,-4.7
+Cincinnati,2025-05-01,-8.3
+Cincinnati,2025-06-01,-4.5
+Cincinnati,2025-07-01,-5.9
+Cincinnati,2025-08-01,-3.2
+Cincinnati,2025-09-01,-5.3
+Cincinnati,2025-10-01,-11.3
+Cincinnati,2025-11-01,-3.7
+Cincinnati,2025-12-01,5.4
+Cincinnati,2026-01-01,5.1
+Cincinnati,2026-02-01,2.9
+Cincinnati,2026-03-01,6.0
+Cincinnati,2026-04-01,4.0
+Cincinnati,2026-05-01,2.3
+Cleveland,2019-01-01,24.6
+Cleveland,2019-02-01,2.1
+Cleveland,2019-03-01,0.3
+Cleveland,2019-04-01,1.7
+Cleveland,2019-05-01,-1.2
+Cleveland,2019-06-01,-5.8
+Cleveland,2019-07-01,-2.6
+Cleveland,2019-08-01,-6.3
+Cleveland,2019-09-01,0.6
+Cleveland,2019-10-01,-4.0
+Cleveland,2019-11-01,-4.8
+Cleveland,2019-12-01,-8.6
+Cleveland,2020-01-01,-10.2
+Cleveland,2020-02-01,5.1
+Cleveland,2020-03-01,3.5
+Cleveland,2020-04-01,-0.7
+Cleveland,2020-05-01,9.4
+Cleveland,2020-06-01,25.4
+Cleveland,2020-07-01,17.1
+Cleveland,2020-08-01,14.2
+Cleveland,2020-09-01,24.1
+Cleveland,2020-10-01,16.5
+Cleveland,2020-11-01,17.3
+Cleveland,2020-12-01,23.5
+Cleveland,2021-01-01,18.3
+Cleveland,2021-02-01,16.5
+Cleveland,2021-03-01,39.1
+Cleveland,2021-04-01,41.1
+Cleveland,2021-05-01,14.1
+Cleveland,2021-06-01,10.3
+Cleveland,2021-07-01,8.8
+Cleveland,2021-08-01,12.2
+Cleveland,2021-09-01,8.6
+Cleveland,2021-10-01,8.6
+Cleveland,2021-11-01,17.6
+Cleveland,2021-12-01,13.9
+Cleveland,2022-01-01,18.1
+Cleveland,2022-02-01,22.8
+Cleveland,2022-03-01,13.3
+Cleveland,2022-04-01,7.1
+Cleveland,2022-05-01,17.9
+Cleveland,2022-06-01,18.2
+Cleveland,2022-07-01,14.8
+Cleveland,2022-08-01,23.4
+Cleveland,2022-09-01,18.1
+Cleveland,2022-10-01,18.6
+Cleveland,2022-11-01,14.1
+Cleveland,2022-12-01,9.0
+Cleveland,2023-01-01,-0.5
+Cleveland,2023-02-01,-0.5
+Cleveland,2023-03-01,-8.4
+Cleveland,2023-04-01,-7.9
+Cleveland,2023-05-01,-1.4
+Cleveland,2023-06-01,-5.8
+Cleveland,2023-07-01,-5.8
+Cleveland,2023-08-01,-4.5
+Cleveland,2023-09-01,-8.7
+Cleveland,2023-10-01,-4.5
+Cleveland,2023-11-01,-4.9
+Cleveland,2023-12-01,-7.6
+Cleveland,2024-01-01,-6.9
+Cleveland,2024-02-01,-2.2
+Cleveland,2024-03-01,-8.6
+Cleveland,2024-04-01,2.1
+Cleveland,2024-05-01,-5.1
+Cleveland,2024-06-01,-7.4
+Cleveland,2024-07-01,2.8
+Cleveland,2024-08-01,-11.7
+Cleveland,2024-09-01,-0.3
+Cleveland,2024-10-01,5.1
+Cleveland,2024-11-01,-7.8
+Cleveland,2024-12-01,-8.6
+Cleveland,2025-01-01,-7.5
+Cleveland,2025-02-01,-11.7
+Cleveland,2025-03-01,-2.5
+Cleveland,2025-04-01,-4.7
+Cleveland,2025-05-01,-8.3
+Cleveland,2025-06-01,-4.5
+Cleveland,2025-07-01,-5.9
+Cleveland,2025-08-01,-3.2
+Cleveland,2025-09-01,-5.3
+Cleveland,2025-10-01,-11.3
+Cleveland,2025-11-01,-3.7
+Cleveland,2025-12-01,5.4
+Cleveland,2026-01-01,5.1
+Cleveland,2026-02-01,2.9
+Cleveland,2026-03-01,6.0
+Cleveland,2026-04-01,4.0
+Cleveland,2026-05-01,2.3
+Indianapolis,2019-01-01,21.0
+Indianapolis,2019-02-01,1.6
+Indianapolis,2019-03-01,-1.6
+Indianapolis,2019-04-01,3.1
+Indianapolis,2019-05-01,-2.3
+Indianapolis,2019-06-01,-3.2
+Indianapolis,2019-07-01,3.2
+Indianapolis,2019-08-01,-0.1
+Indianapolis,2019-09-01,2.7
+Indianapolis,2019-10-01,1.0
+Indianapolis,2019-11-01,0.4
+Indianapolis,2019-12-01,0.1
+Indianapolis,2020-01-01,-4.3
+Indianapolis,2020-02-01,11.7
+Indianapolis,2020-03-01,6.7
+Indianapolis,2020-04-01,4.7
+Indianapolis,2020-05-01,10.8
+Indianapolis,2020-06-01,23.9
+Indianapolis,2020-07-01,15.8
+Indianapolis,2020-08-01,12.3
+Indianapolis,2020-09-01,21.0
+Indianapolis,2020-10-01,12.5
+Indianapolis,2020-11-01,16.9
+Indianapolis,2020-12-01,18.6
+Indianapolis,2021-01-01,17.1
+Indianapolis,2021-02-01,13.6
+Indianapolis,2021-03-01,39.5
+Indianapolis,2021-04-01,34.6
+Indianapolis,2021-05-01,14.1
+Indianapolis,2021-06-01,8.6
+Indianapolis,2021-07-01,6.8
+Indianapolis,2021-08-01,10.4
+Indianapolis,2021-09-01,10.1
+Indianapolis,2021-10-01,10.7
+Indianapolis,2021-11-01,16.4
+Indianapolis,2021-12-01,16.3
+Indianapolis,2022-01-01,13.6
+Indianapolis,2022-02-01,17.8
+Indianapolis,2022-03-01,7.5
+Indianapolis,2022-04-01,1.7
+Indianapolis,2022-05-01,11.2
+Indianapolis,2022-06-01,10.2
+Indianapolis,2022-07-01,8.9
+Indianapolis,2022-08-01,16.7
+Indianapolis,2022-09-01,11.7
+Indianapolis,2022-10-01,10.7
+Indianapolis,2022-11-01,5.6
+Indianapolis,2022-12-01,2.3
+Indianapolis,2023-01-01,1.5
+Indianapolis,2023-02-01,1.1
+Indianapolis,2023-03-01,-8.1
+Indianapolis,2023-04-01,-7.2
+Indianapolis,2023-05-01,-1.1
+Indianapolis,2023-06-01,-4.5
+Indianapolis,2023-07-01,-6.1
+Indianapolis,2023-08-01,-4.9
+Indianapolis,2023-09-01,-6.9
+Indianapolis,2023-10-01,-2.2
+Indianapolis,2023-11-01,-3.2
+Indianapolis,2023-12-01,-5.7
+Indianapolis,2024-01-01,-7.2
+Indianapolis,2024-02-01,-2.4
+Indianapolis,2024-03-01,-8.0
+Indianapolis,2024-04-01,2.1
+Indianapolis,2024-05-01,-5.4
+Indianapolis,2024-06-01,-7.6
+Indianapolis,2024-07-01,4.3
+Indianapolis,2024-08-01,-7.1
+Indianapolis,2024-09-01,-1.8
+Indianapolis,2024-10-01,3.6
+Indianapolis,2024-11-01,-5.0
+Indianapolis,2024-12-01,-5.5
+Indianapolis,2025-01-01,-4.5
+Indianapolis,2025-02-01,-7.5
+Indianapolis,2025-03-01,3.1
+Indianapolis,2025-04-01,0.5
+Indianapolis,2025-05-01,-2.3
+Indianapolis,2025-06-01,1.1
+Indianapolis,2025-07-01,-1.1
+Indianapolis,2025-08-01,-0.5
+Indianapolis,2025-09-01,0.0
+Indianapolis,2025-10-01,-5.7
+Indianapolis,2025-11-01,-1.6
+Indianapolis,2025-12-01,6.4
+Indianapolis,2026-01-01,5.8
+Indianapolis,2026-02-01,2.2
+Indianapolis,2026-03-01,4.4
+Indianapolis,2026-04-01,2.8
+Indianapolis,2026-05-01,-0.2
+Louisville,2019-01-01,11.9
+Louisville,2019-02-01,2.8
+Louisville,2019-03-01,1.4
+Louisville,2019-04-01,-3.2
+Louisville,2019-05-01,-1.4
+Louisville,2019-06-01,-3.9
+Louisville,2019-07-01,1.5
+Louisville,2019-08-01,-7.8
+Louisville,2019-09-01,3.2
+Louisville,2019-10-01,-2.2
+Louisville,2019-11-01,-1.4
+Louisville,2019-12-01,3.6
+Louisville,2020-01-01,-2.1
+Louisville,2020-02-01,3.5
+Louisville,2020-03-01,1.7
+Louisville,2020-04-01,0.4
+Louisville,2020-05-01,4.0
+Louisville,2020-06-01,18.4
+Louisville,2020-07-01,10.4
+Louisville,2020-08-01,7.2
+Louisville,2020-09-01,17.1
+Louisville,2020-10-01,10.1
+Louisville,2020-11-01,11.0
+Louisville,2020-12-01,15.6
+Louisville,2021-01-01,20.3
+Louisville,2021-02-01,20.4
+Louisville,2021-03-01,42.7
+Louisville,2021-04-01,40.3
+Louisville,2021-05-01,21.1
+Louisville,2021-06-01,17.1
+Louisville,2021-07-01,15.7
+Louisville,2021-08-01,21.3
+Louisville,2021-09-01,15.0
+Louisville,2021-10-01,17.9
+Louisville,2021-11-01,26.2
+Louisville,2021-12-01,23.3
+Louisville,2022-01-01,18.2
+Louisville,2022-02-01,21.9
+Louisville,2022-03-01,11.1
+Louisville,2022-04-01,5.2
+Louisville,2022-05-01,15.4
+Louisville,2022-06-01,14.8
+Louisville,2022-07-01,13.1
+Louisville,2022-08-01,21.1
+Louisville,2022-09-01,19.0
+Louisville,2022-10-01,15.1
+Louisville,2022-11-01,11.7
+Louisville,2022-12-01,7.1
+Louisville,2023-01-01,1.4
+Louisville,2023-02-01,-0.6
+Louisville,2023-03-01,-8.8
+Louisville,2023-04-01,-9.1
+Louisville,2023-05-01,-2.5
+Louisville,2023-06-01,-6.9
+Louisville,2023-07-01,-6.6
+Louisville,2023-08-01,-5.3
+Louisville,2023-09-01,-8.9
+Louisville,2023-10-01,-4.7
+Louisville,2023-11-01,-4.9
+Louisville,2023-12-01,-7.5
+Louisville,2024-01-01,-5.6
+Louisville,2024-02-01,0.0
+Louisville,2024-03-01,-7.4
+Louisville,2024-04-01,4.6
+Louisville,2024-05-01,-4.1
+Louisville,2024-06-01,-5.6
+Louisville,2024-07-01,4.8
+Louisville,2024-08-01,-8.2
+Louisville,2024-09-01,0.6
+Louisville,2024-10-01,7.3
+Louisville,2024-11-01,-3.2
+Louisville,2024-12-01,-3.2
+Louisville,2025-01-01,-1.7
+Louisville,2025-02-01,-2.0
+Louisville,2025-03-01,6.5
+Louisville,2025-04-01,2.6
+Louisville,2025-05-01,-1.7
+Louisville,2025-06-01,2.3
+Louisville,2025-07-01,1.3
+Louisville,2025-08-01,2.7
+Louisville,2025-09-01,3.1
+Louisville,2025-10-01,-4.4
+Louisville,2025-11-01,1.2
+Louisville,2025-12-01,17.5
+Louisville,2026-01-01,10.5
+Louisville,2026-02-01,5.2
+Louisville,2026-03-01,9.2
+Louisville,2026-04-01,6.8
+Louisville,2026-05-01,3.8

@@ -1,0 +1,5 @@
+model,label,rank_corr,top5_beat_avg,bottom5_trail_avg,top5_excess_pct
+Naive12,Trend continues (last 12 months repeat),0.415,0.736,0.775,1.843
+A12,Housing data only,0.602,0.868,0.875,3.189
+Y12_nosearch,+ page views + rent,0.65,0.893,0.896,3.346
+Y12,+ page views + rent + nationwide search,0.648,0.882,0.893,3.295

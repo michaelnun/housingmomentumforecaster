@@ -1,0 +1,13 @@
+{
+  "months_tested": 56,
+  "first_month": "Feb 2021",
+  "last_month": "Sep 2025",
+  "model": "Y12_nosearch",
+  "p_vs_trend": 0.0032,
+  "p_vs_housing_only": 0.0472,
+  "search_gain": -0.0014,
+  "search_better_share": 0.518,
+  "p_search_helps": 0.5643,
+  "all_metros_rank_corr": 0.65,
+  "share_with_data_gaps": 0.003
+}

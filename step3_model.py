@@ -1,4 +1,5 @@
-"""Step 3: walk-forward test of Model A vs B vs C, then this month's ranked metro list.
+"""Step 3: walk-forward test of Model A vs B vs C (vs P, with page views), this month's ranked
+metro list, and the 12-month outlook model.
 
 Walk-forward = for every test month, train only on months whose 3-month outcome was
 already known at that time, then predict. Exactly what an investor could have done live.
@@ -18,20 +19,43 @@ from sklearn.linear_model import RidgeCV
 from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import StandardScaler
 
-from config import PROCESSED, RESULTS, HORIZON, TEST_START, PERIODS
+from config import PROCESSED, RESULTS, HORIZON, TEST_START, PERIODS, SCORE_MODEL, OUTLOOK_USE_SEARCH
 
 warnings.filterwarnings("ignore")
 TOP_K = 5
-COLORS = {"Naive": "#9aa0a6", "A": "#4c6ef5", "B": "#f08c00", "C": "#2b8a3e"}
+COLORS = {"Naive": "#9aa0a6", "A": "#4c6ef5", "B": "#f08c00", "C": "#2b8a3e", "P": "#ae3ec9"}
 LABELS = {"Naive": "Naive (trend continues)", "A": "A: housing data",
-          "B": "B: + buyer search", "C": "C: + home-improvement search"}
+          "B": "B: + buyer search", "C": "C: + home-improvement search",
+          "P": "P: + Realtor.com page views"}
 
 
 def ridge():
     return make_pipeline(StandardScaler(), RidgeCV(alphas=np.logspace(-2, 3, 30)))
 
 
-def walk_forward(panel, feats, use_gbm=False):
+def fit_predict(train, test, cols, target, base=None):
+    """Fit on training rows that have every column; predict the test rows.
+    Returns (strict, live). strict: NaN for a metro missing any column (used for fair tests).
+    live: if `base` is given, a metro missing only the extra (non-base) columns is predicted
+    with those set to 0, i.e. 'typical, like the average metro' (every extra column is already
+    relative to the average metro). One model for every metro, so scores stay comparable."""
+    tr = train.dropna(subset=cols)
+    strict = np.full(len(test), np.nan)
+    live = np.full(len(test), np.nan)
+    if len(tr) < 200:
+        return strict, live
+    model = ridge().fit(tr[cols], tr[target])
+    ok = test[cols].notna().all(axis=1).values
+    if ok.any():
+        strict[ok] = model.predict(test.loc[ok, cols])
+    if base is not None:
+        okb = test[base].notna().all(axis=1).values
+        if okb.any():
+            live[okb] = model.predict(test.loc[okb, cols].fillna(0))
+    return strict, live
+
+
+def walk_forward(panel, feats, use_gbm=False, live=None):
     known = panel.dropna(subset=["target"])  # outcomes we can train on
     # predict every month, including the latest ones whose outcome isn't known yet
     months = sorted(panel.loc[panel["date"] >= TEST_START, "date"].unique())
@@ -40,12 +64,16 @@ def walk_forward(panel, feats, use_gbm=False):
         cutoff = pd.Timestamp(m) - pd.DateOffset(months=HORIZON)  # outcome known by m
         train = known[known["date"] <= cutoff]
         test = panel[panel["date"] == m]
-        if len(train) < 200:
+        if len(train) < 200 or train["date"].nunique() < 12:  # at least a year of history
             continue
         row = test[["metro", "date", "target"]].copy()
         row["Naive"] = test["rel_price_chg_3m"].values  # last 3 months repeat
         for name, cols in feats.items():
-            row[name] = ridge().fit(train[cols], train["target"]).predict(test[cols])
+            base = (live or {}).get(name)
+            strict, lv = fit_predict(train, test, cols, "target", base)
+            row[name] = strict
+            if base is not None:
+                row[f"{name}_live"] = lv
         if use_gbm:  # nonlinear check on Model C, refit twice a year to save time
             if gbm_fit_month is None or (pd.Timestamp(m) - gbm_fit_month).days > 180:
                 gbm = HistGradientBoostingRegressor(max_depth=3, learning_rate=0.05,
@@ -58,6 +86,9 @@ def walk_forward(panel, feats, use_gbm=False):
 
 
 def month_metrics(g, model):
+    g = g.dropna(subset=[model])  # each model is scored on the metros it has data for
+    if len(g) < 2 * TOP_K:
+        return pd.Series(dtype=float)
     p, y = g[model], g["target"]
     pred_top = set(g.nlargest(TOP_K, model)["metro"])
     true_top = set(g.nlargest(TOP_K, "target")["metro"])
@@ -86,6 +117,7 @@ def scorecard(preds, models):
 def diebold_mariano(preds, a, b):
     """Is b's lower error real or luck? Monthly avg squared-error gap, with
     Newey-West standard errors because 3-month-ahead targets overlap."""
+    preds = preds.dropna(subset=[a, b])  # same rows for both models
     e = preds.assign(d=(preds["target"] - preds[a]) ** 2 - (preds["target"] - preds[b]) ** 2)
     d = e.groupby("date")["d"].mean().values
     T, lag = len(d), HORIZON - 1
@@ -176,16 +208,115 @@ def charts(card, periods, lt_buyer, lt_hi, ranked):
     plt.close(fig)
 
 
+# ---------------- 12-month outlook
+def walk_12(panel, feats12, base, product):
+    """Same month-by-month test as above, 12 months ahead: train only on months whose
+    12-month outcome was already known (at least 12 months before the test month)."""
+    known = panel.dropna(subset=["target_12"])
+    out = []
+    for m in sorted(panel.loc[panel["date"] >= TEST_START, "date"].unique()):
+        train = known[known["date"] <= pd.Timestamp(m) - pd.DateOffset(months=12)]
+        test = panel[panel["date"] == m]
+        if len(train) < 200 or train["date"].nunique() < 12:
+            continue
+        row = test[["metro", "date", "target_12"]].copy()
+        row["Naive12"] = test["rel_price_chg_12m"].values  # last 12 months repeat
+        for name, cols in feats12.items():
+            strict, lv = fit_predict(train, test, cols, "target_12", base)
+            row[name] = strict
+            if name == product:
+                row[f"{name}_live"] = lv
+        out.append(row)
+    return pd.concat(out, ignore_index=True) if out else None
+
+
+def monthly_rank_corr(e, model, target):
+    return e.groupby("date").apply(lambda x: x[model].rank().corr(x[target].rank()),
+                                   include_groups=False)
+
+
+def nw_pvalue(d, lag):
+    """One-sided p-value that the average of d is above 0, Newey-West for overlapping months."""
+    d = np.asarray(d, dtype=float)
+    T = len(d)
+    dc = d - d.mean()
+    var = dc @ dc / T + 2 * sum((1 - k / (lag + 1)) * (dc[k:] @ dc[:-k]) / T for k in range(1, lag + 1))
+    return float(1 - stats.norm.cdf(d.mean() / np.sqrt(var / T))) if var > 0 else 1.0
+
+
+def outlook_12(panel, fs):
+    if "target_12" not in panel:
+        return None
+    A = fs["A"].split(",")
+    nat = [c for c in fs.get("B", "").split(",") if "outoftown" in c]
+    pv = fs["pageviews"].split(",") if "pageviews" in fs else []
+    rent = fs["rent"].split(",") if "rent" in fs else []
+    feats12 = {"A12": A}
+    if pv or rent:
+        feats12["Y12_nosearch"] = A + pv + rent
+    if nat:
+        feats12["Y12"] = A + nat + pv + rent
+    print("12-month outlook: walk-forward testing...")
+    product = ("Y12" if "Y12" in feats12 and OUTLOOK_USE_SEARCH
+               else "Y12_nosearch" if "Y12_nosearch" in feats12 else "A12")
+    preds = walk_12(panel, feats12, A, product)
+    if preds is None:
+        return None
+    preds.to_csv(RESULTS / "predictions_12m.csv", index=False)
+    models = ["Naive12"] + list(feats12)
+    e = preds.dropna(subset=["target_12"] + models)
+    labels = {"Naive12": "Trend continues (last 12 months repeat)", "A12": "Housing data only",
+              "Y12_nosearch": "+ page views + rent", "Y12": "+ page views + rent + nationwide search"}
+    rows, rc = [], {}
+    for m in models:
+        rc[m] = monthly_rank_corr(e, m, "target_12")
+        g = e.groupby("date")
+        rows.append({"model": m, "label": labels[m], "rank_corr": rc[m].mean(),
+                     "top5_beat_avg": g.apply(lambda x: (x.nlargest(TOP_K, m)["target_12"] > 0).mean(),
+                                              include_groups=False).mean(),
+                     "bottom5_trail_avg": g.apply(lambda x: (x.nsmallest(TOP_K, m)["target_12"] < 0).mean(),
+                                                  include_groups=False).mean(),
+                     "top5_excess_pct": 100 * g.apply(lambda x: x.nlargest(TOP_K, m)["target_12"].mean(),
+                                                      include_groups=False).mean()})
+    card = pd.DataFrame(rows).set_index("model")
+    card.round(3).to_csv(RESULTS / "scorecard_12m.csv")
+    tests = {"months_tested": int(e["date"].nunique()),
+             "first_month": f"{e['date'].min():%b %Y}", "last_month": f"{e['date'].max():%b %Y}",
+             "model": product}
+    best = tests["model"]
+    tests["p_vs_trend"] = round(nw_pvalue(rc[best] - rc["Naive12"], 11), 4)
+    tests["p_vs_housing_only"] = round(nw_pvalue(rc[best] - rc["A12"], 11), 4)
+    if "Y12" in rc and "Y12_nosearch" in rc:
+        d = rc["Y12"] - rc["Y12_nosearch"]
+        tests["search_gain"] = round(float(d.mean()), 4)
+        tests["search_better_share"] = round(float((d > 0).mean()), 3)
+        tests["p_search_helps"] = round(nw_pvalue(d, 11), 4)
+    lv = preds.dropna(subset=["target_12", f"{product}_live"])  # every metro, gaps filled as typical
+    tests["all_metros_rank_corr"] = round(float(monthly_rank_corr(lv, f"{product}_live", "target_12").mean()), 3)
+    tests["share_with_data_gaps"] = round(float(lv[product].isna().mean()), 3)
+    import json
+    (RESULTS / "tests_12m.json").write_text(json.dumps(tests, indent=2))
+    print(card.round(3).to_string())
+    print(tests)
+    return card
+
+
 def main():
     panel = pd.read_csv(PROCESSED / "panel.csv", parse_dates=["date"])
     fs = pd.read_csv(PROCESSED / "feature_sets.csv", index_col=0)["features"]
-    feats = {k: v.split(",") for k, v in fs.items()}
+    feats = {k: v.split(",") for k, v in fs.items() if k in ("A", "B", "C")}  # extras: step 7
+    if "pageviews" in fs:  # model P: housing data + Realtor.com listing page views
+        feats["P"] = feats["A"] + fs["pageviews"].split(",")
 
     print("Walk-forward testing (refits every month)...")
-    preds = walk_forward(panel, feats, use_gbm=True)
+    live = {SCORE_MODEL: feats["A"]} if SCORE_MODEL in feats and SCORE_MODEL != "A" else None
+    preds = walk_forward(panel, feats, use_gbm=True, live=live)
     preds.to_csv(RESULTS / "predictions.csv", index=False)
-    all_preds, preds = preds, preds.dropna(subset=["target"])  # score only known outcomes
-    models = ["Naive", "A", "B", "C", "C_gbm"]
+    models = ["Naive", "A", "B", "C", "C_gbm"] + (["P"] if "P" in feats else [])
+    # score only known outcomes, and compare every model on the same rows
+    # score only known outcomes; each model on the metros it has data for (pairwise tests use
+    # the same rows for both models)
+    all_preds, preds = preds, preds.dropna(subset=["target"])
 
     card = scorecard(preds, models)
     card.round(3).to_csv(RESULTS / "scorecard.csv")
@@ -194,27 +325,30 @@ def main():
     for name, (s, e) in PERIODS.items():
         sub = preds[(preds["date"] >= s) & (preds["date"] <= e)]
         if sub["date"].nunique() >= 3:
-            per.append(scorecard(sub, ["Naive", "A", "B", "C"]).assign(period=name))
+            per.append(scorecard(sub, ["Naive", "A", "B", "C"] + (["P"] if "P" in feats else []))
+                       .assign(period=name))
     periods = pd.concat(per).reset_index().set_index(["period", "model"])
     periods.round(3).to_csv(RESULTS / "scorecard_by_period.csv")
 
     dm = pd.DataFrame([diebold_mariano(preds, "Naive", "A"),
                        diebold_mariano(preds, "A", "B"),
-                       diebold_mariano(preds, "B", "C")])
+                       diebold_mariano(preds, "B", "C")]
+                      + ([diebold_mariano(preds.dropna(subset=["P"]), "A", "P")] if "P" in feats else []))
     dm.round(3).to_csv(RESULTS / "significance_tests.csv", index=False)
 
     lt_b, lt_h = lead_time(panel, "search_index"), lead_time(panel, "homeimp_index")
     lt = lt_b.merge(lt_h, on="months_ahead", suffixes=("_buyer", "_homeimp"))
     lt.round(3).to_csv(RESULTS / "lead_time.csv", index=False)
 
-    # Which model goes in the product? The best by rank correlation among A/B/C.
-    best = card.loc[["A", "B", "C"], "rank_corr"].idxmax()
-    trained = panel.dropna(subset=["target"])
+    # Which model goes in the product? The one set in config.py, else the best of A/B/C.
+    best = SCORE_MODEL if SCORE_MODEL in feats else card.loc[["A", "B", "C"], "rank_corr"].idxmax()
+    trained = panel.dropna(subset=["target"] + feats[best])
     final = ridge().fit(trained[feats[best]], trained["target"])
-    latest = panel[panel["date"] == panel["date"].max()]
+    # every metro with housing data; missing extra signals count as typical (0), as in step 4
+    latest = panel[panel["date"] == panel["date"].max()].dropna(subset=feats["A"])
     ranked = pd.DataFrame({
         "metro": latest["metro"].values,
-        "predicted_vs_avg_pct": 100 * final.predict(latest[feats[best]]),
+        "predicted_vs_avg_pct": 100 * final.predict(latest[feats[best]].fillna(0)),
     }).sort_values("predicted_vs_avg_pct", ascending=False)
     ranked.insert(0, "rank", range(1, len(ranked) + 1))
     ranked["signal"] = np.where(ranked["rank"] <= TOP_K, "Overweight",
@@ -227,6 +361,7 @@ def main():
     coefs.round(4).to_csv(RESULTS / "drivers.csv", header=["standardized_weight"])
 
     charts(card, periods, lt_b, lt_h, ranked)
+    outlook_12(panel, fs)
 
     pd.set_option("display.width", 120)
     print("\nSCORECARD (test period", f"{preds['date'].min():%b %Y}-{preds['date'].max():%b %Y})")

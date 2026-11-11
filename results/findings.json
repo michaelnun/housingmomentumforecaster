@@ -2,36 +2,36 @@
   "periods": [
     {
       "period": "COVID boom (Mar 2020-Jun 2022)",
-      "months": 28,
-      "ranking_accuracy": 0.83,
-      "worst_month": 0.51,
-      "top5_beat_avg": 0.91
+      "months": 26,
+      "ranking_accuracy": 0.86,
+      "worst_month": 0.71,
+      "top5_beat_avg": 1.0
     },
     {
       "period": "Rate shock (Jul 2022-Dec 2023)",
       "months": 18,
-      "ranking_accuracy": 0.89,
-      "worst_month": 0.78,
+      "ranking_accuracy": 0.88,
+      "worst_month": 0.73,
       "top5_beat_avg": 0.99
     },
     {
       "period": "Recent (2024 on)",
-      "months": 29,
+      "months": 30,
       "ranking_accuracy": 0.9,
-      "worst_month": 0.79,
+      "worst_month": 0.81,
       "top5_beat_avg": 0.99
     }
   ],
   "turning_points": {
-    "turns": 93,
-    "flagged_before": 0.81,
-    "missed": 0.1,
+    "turns": 174,
+    "flagged_before": 0.84,
+    "missed": 0.08,
     "median_months_early_up": 2.0,
-    "median_months_early_down": 1.0
+    "median_months_early_down": 2.0
   },
   "worst_months": {
-    "May 2021": 0.51,
-    "Apr 2021": 0.63,
-    "Jun 2021": 0.64
+    "Apr 2022": 0.71,
+    "May 2020": 0.72,
+    "Dec 2023": 0.73
   }
 }

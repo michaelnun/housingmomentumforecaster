@@ -1,0 +1,53 @@
+[
+  {
+    "horizon_months": 3,
+    "months_tested": 74,
+    "naive": 0.535,
+    "housing_model": 0.631,
+    "p_model_vs_naive": 0.0,
+    "nat_without": 0.631,
+    "with_nationwide_search": 0.623,
+    "p_nationwide_helps": 0.886,
+    "pageviews_without": 0.63,
+    "pageviews_with": 0.682,
+    "p_pageviews_helps": 0.0,
+    "rent_without": 0.631,
+    "rent_with": 0.629,
+    "p_rent_helps": 0.556
+  },
+  {
+    "horizon_months": 6,
+    "months_tested": 68,
+    "naive": 0.384,
+    "housing_model": 0.656,
+    "p_model_vs_naive": 0.0,
+    "nat_without": 0.656,
+    "with_nationwide_search": 0.662,
+    "p_nationwide_helps": 0.185,
+    "pageviews_without": 0.655,
+    "pageviews_with": 0.692,
+    "p_pageviews_helps": 0.0,
+    "rent_without": 0.656,
+    "rent_with": 0.65,
+    "p_rent_helps": 0.662
+  },
+  {
+    "horizon_months": 12,
+    "months_tested": 56,
+    "naive": 0.418,
+    "housing_model": 0.506,
+    "p_model_vs_naive": 0.185,
+    "nat_without": 0.506,
+    "with_nationwide_search": 0.539,
+    "p_nationwide_helps": 0.054,
+    "pageviews_without": 0.504,
+    "pageviews_with": 0.539,
+    "p_pageviews_helps": 0.054,
+    "rent_without": 0.506,
+    "rent_with": 0.538,
+    "p_rent_helps": 0.05,
+    "outlook_model": 0.574,
+    "outlook_naive": 0.416,
+    "p_outlook_vs_naive": 0.021
+  }
+]

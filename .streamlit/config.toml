@@ -5,5 +5,8 @@ backgroundColor = "#FFFFFF"
 secondaryBackgroundColor = "#F4F6F5"
 textColor = "#1E2421"
 
+[server]
+headless = true
+
 [browser]
 gatherUsageStats = false

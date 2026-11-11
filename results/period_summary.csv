@@ -1,4 +1,4 @@
 period,months,ranking_accuracy,worst_month,top5_beat_avg
-COVID boom (Mar 2020-Jun 2022),28,0.83,0.51,0.91
-Rate shock (Jul 2022-Dec 2023),18,0.89,0.78,0.99
-Recent (2024 on),29,0.9,0.79,0.99
+COVID boom (Mar 2020-Jun 2022),26,0.86,0.71,1.0
+Rate shock (Jul 2022-Dec 2023),18,0.88,0.73,0.99
+Recent (2024 on),30,0.9,0.81,0.99

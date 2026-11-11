@@ -1,7 +1,7 @@
 @echo off
 REM Double-click this file in File Explorer.
 cd /d "%~dp0"
-echo Working... this takes about an hour (mostly Google Trends).
+echo Working... the first run after adding metros takes 1.5-2 hours (mostly Google Trends). Later monthly runs take about an hour.
 echo Everything is also saved to run_log.txt in this folder, so Claude can check progress.
 echo Leave this window open.
 echo.
@@ -31,5 +31,7 @@ python step4_index.py || (echo STEP 4 FAILED & exit /b 1)
 python step5_activity.py || echo STEP 5 (activity test) FAILED - dashboard still works
 python step6_findings.py || echo STEP 6 (findings) FAILED - dashboard still works
 python step7_signal_tests.py || echo STEP 7 (signal tests) FAILED - dashboard still works
+python step8_robustness.py || echo STEP 8 (robustness) FAILED - dashboard still works
+python step9_stability.py || echo STEP 9 (stability) FAILED - dashboard still works
 echo DONE %date% %time%. Open the dashboard with run_dashboard.bat
 exit /b 0

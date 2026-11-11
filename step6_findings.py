@@ -149,7 +149,8 @@ def main():
     bars = ax.barh([a for a, _ in items], [b for _, b in items],
                    color=[GREEN if b >= 0.3 else "#9DB8A6" for _, b in items], height=0.6)
     ax.bar_label(bars, labels=[f"{b:.2f}" for _, b in items], padding=3, color=INK)
-    ax.set_xlim(0, 0.8)
+    ax.set_xlim(min(0, min(b for _, b in items) - 0.08), 0.8)
+    ax.axvline(0, color="#8C958F", lw=1)
     ax.set_xlabel("Rank correlation with the next 3 months (0 = no link)")
     ax.set_title("Market data predicts; search barely does", loc="left", fontweight="bold", color=INK)
     ax.grid(axis="x", color=GRID)

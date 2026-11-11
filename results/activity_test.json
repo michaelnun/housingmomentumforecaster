@@ -1,30 +1,30 @@
 {
-  "new_listings": {
-    "label": "New listings",
+  "sales_count": {
+    "label": "Homes sold",
     "scorecard": {
       "Naive": {
-        "rank_corr": 0.225,
-        "top5_overlap": 0.322,
-        "direction": 0.582
+        "rank_corr": 0.294,
+        "top5_overlap": 0.274,
+        "direction": 0.6
       },
       "A": {
-        "rank_corr": 0.412,
-        "top5_overlap": 0.45,
-        "direction": 0.641
+        "rank_corr": 0.471,
+        "top5_overlap": 0.353,
+        "direction": 0.677
       },
       "B": {
-        "rank_corr": 0.394,
-        "top5_overlap": 0.431,
-        "direction": 0.642
+        "rank_corr": 0.455,
+        "top5_overlap": 0.353,
+        "direction": 0.67
       }
     },
     "B_vs_A": {
       "comparison": "B vs A",
-      "DM_stat": -1.303,
-      "p_value_one_sided": 0.904,
+      "DM_stat": -1.661,
+      "p_value_one_sided": 0.952,
       "verdict": "no clear difference"
     },
-    "test_months": 72,
+    "test_months": 81,
     "lead_time": [
       {
         "months_ahead": 0,
@@ -33,63 +33,157 @@
       },
       {
         "months_ahead": 1,
-        "corr_buyer_search": -0.037,
-        "corr_outoftown": 0.025
+        "corr_buyer_search": -0.021,
+        "corr_outoftown": 0.02
       },
       {
         "months_ahead": 2,
-        "corr_buyer_search": -0.07,
+        "corr_buyer_search": -0.062,
         "corr_outoftown": 0.018
       },
       {
         "months_ahead": 3,
-        "corr_buyer_search": -0.092,
-        "corr_outoftown": 0.013
+        "corr_buyer_search": -0.104,
+        "corr_outoftown": 0.012
       },
       {
         "months_ahead": 4,
-        "corr_buyer_search": -0.088,
-        "corr_outoftown": 0.014
+        "corr_buyer_search": -0.128,
+        "corr_outoftown": 0.017
       },
       {
         "months_ahead": 5,
-        "corr_buyer_search": -0.086,
-        "corr_outoftown": 0.022
+        "corr_buyer_search": -0.121,
+        "corr_outoftown": 0.008
       },
       {
         "months_ahead": 6,
-        "corr_buyer_search": -0.073,
-        "corr_outoftown": 0.045
+        "corr_buyer_search": -0.105,
+        "corr_outoftown": 0.003
       },
       {
         "months_ahead": 7,
-        "corr_buyer_search": -0.079,
-        "corr_outoftown": 0.062
+        "corr_buyer_search": -0.117,
+        "corr_outoftown": -0.005
       },
       {
         "months_ahead": 8,
-        "corr_buyer_search": -0.106,
-        "corr_outoftown": 0.068
+        "corr_buyer_search": -0.112,
+        "corr_outoftown": 0.0
       },
       {
         "months_ahead": 9,
-        "corr_buyer_search": -0.144,
-        "corr_outoftown": 0.07
+        "corr_buyer_search": -0.118,
+        "corr_outoftown": -0.01
       },
       {
         "months_ahead": 10,
-        "corr_buyer_search": -0.165,
-        "corr_outoftown": 0.089
+        "corr_buyer_search": -0.135,
+        "corr_outoftown": 0.001
       },
       {
         "months_ahead": 11,
-        "corr_buyer_search": -0.171,
-        "corr_outoftown": 0.097
+        "corr_buyer_search": -0.152,
+        "corr_outoftown": -0.007
       },
       {
         "months_ahead": 12,
-        "corr_buyer_search": -0.175,
-        "corr_outoftown": 0.11
+        "corr_buyer_search": -0.162,
+        "corr_outoftown": -0.003
+      }
+    ]
+  },
+  "new_listings": {
+    "label": "New listings",
+    "scorecard": {
+      "Naive": {
+        "rank_corr": 0.248,
+        "top5_overlap": 0.236,
+        "direction": 0.595
+      },
+      "A": {
+        "rank_corr": 0.433,
+        "top5_overlap": 0.349,
+        "direction": 0.653
+      },
+      "B": {
+        "rank_corr": 0.415,
+        "top5_overlap": 0.359,
+        "direction": 0.644
+      }
+    },
+    "B_vs_A": {
+      "comparison": "B vs A",
+      "DM_stat": -0.098,
+      "p_value_one_sided": 0.539,
+      "verdict": "no clear difference"
+    },
+    "test_months": 78,
+    "lead_time": [
+      {
+        "months_ahead": 0,
+        "corr_buyer_search": NaN,
+        "corr_outoftown": NaN
+      },
+      {
+        "months_ahead": 1,
+        "corr_buyer_search": -0.015,
+        "corr_outoftown": 0.029
+      },
+      {
+        "months_ahead": 2,
+        "corr_buyer_search": -0.045,
+        "corr_outoftown": 0.033
+      },
+      {
+        "months_ahead": 3,
+        "corr_buyer_search": -0.062,
+        "corr_outoftown": 0.033
+      },
+      {
+        "months_ahead": 4,
+        "corr_buyer_search": -0.067,
+        "corr_outoftown": 0.039
+      },
+      {
+        "months_ahead": 5,
+        "corr_buyer_search": -0.066,
+        "corr_outoftown": 0.05
+      },
+      {
+        "months_ahead": 6,
+        "corr_buyer_search": -0.062,
+        "corr_outoftown": 0.054
+      },
+      {
+        "months_ahead": 7,
+        "corr_buyer_search": -0.065,
+        "corr_outoftown": 0.053
+      },
+      {
+        "months_ahead": 8,
+        "corr_buyer_search": -0.077,
+        "corr_outoftown": 0.06
+      },
+      {
+        "months_ahead": 9,
+        "corr_buyer_search": -0.095,
+        "corr_outoftown": 0.061
+      },
+      {
+        "months_ahead": 10,
+        "corr_buyer_search": -0.119,
+        "corr_outoftown": 0.07
+      },
+      {
+        "months_ahead": 11,
+        "corr_buyer_search": -0.125,
+        "corr_outoftown": 0.074
+      },
+      {
+        "months_ahead": 12,
+        "corr_buyer_search": -0.133,
+        "corr_outoftown": 0.076
       }
     ]
   }

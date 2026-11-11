@@ -2,7 +2,7 @@
 
 Target: change in a metro's new listings over the next 3 months (year-over-year, to remove
 seasons), vs. the average metro. Same walk-forward test as step 3:
-  A = activity history + housing data,  B = A + buyer and out-of-town search.
+  A = activity history + housing data,  B = A + local and nationwide search.
 
     python step5_activity.py
 """

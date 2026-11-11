@@ -1,0 +1,91 @@
+search,metro,term,pulls_averaged,zero_share,current_term
+outoftown,Phoenix,phoenix homes for sale,2,0.0,True
+outoftown,Dallas,dallas homes for sale,2,0.0,True
+outoftown,Houston,houston homes for sale,2,0.0,True
+outoftown,Austin,austin homes for sale,2,0.0,True
+outoftown,San Antonio,san antonio homes for sale,2,0.0,True
+outoftown,Atlanta,atlanta homes for sale,2,0.0,True
+outoftown,Tampa,tampa homes for sale,2,0.0,True
+outoftown,Orlando,orlando homes for sale,2,0.0,True
+outoftown,Miami,miami homes for sale,2,0.0,True
+outoftown,Jacksonville,jacksonville homes for sale,2,0.0,True
+outoftown,Charlotte,charlotte homes for sale,2,0.0,True
+outoftown,Raleigh,raleigh homes for sale,2,0.0,True
+outoftown,Nashville,nashville homes for sale,2,0.0,True
+outoftown,Memphis,memphis homes for sale,1,0.0,True
+outoftown,Birmingham,birmingham al homes for sale,1,0.0,True
+outoftown,New Orleans,new orleans homes for sale,1,0.0,True
+outoftown,Oklahoma City,oklahoma city homes for sale,1,0.0,True
+outoftown,Richmond,richmond va homes for sale,1,0.0,True
+outoftown,Denver,denver homes for sale,2,0.0,True
+outoftown,Las Vegas,las vegas homes for sale,2,0.0,True
+outoftown,Salt Lake City,salt lake city homes for sale,2,0.0,True
+outoftown,Los Angeles,los angeles homes for sale,1,0.0,True
+outoftown,San Diego,san diego homes for sale,2,0.0,True
+outoftown,San Francisco,san francisco homes for sale,1,0.0,True
+outoftown,Sacramento,sacramento homes for sale,1,0.0,True
+outoftown,Seattle,seattle homes for sale,2,0.0,True
+outoftown,Portland,portland oregon homes for sale,1,0.0,True
+outoftown,New York,new york homes for sale,1,0.0,True
+outoftown,Boston,boston homes for sale,2,0.0,True
+outoftown,Philadelphia,philadelphia homes for sale,1,0.0,True
+outoftown,Washington DC,washington dc homes for sale,1,0.0,True
+outoftown,Baltimore,baltimore homes for sale,1,0.0,True
+outoftown,Pittsburgh,pittsburgh homes for sale,1,0.0,True
+outoftown,Buffalo,buffalo homes for sale,1,0.0,True
+outoftown,Chicago,chicago homes for sale,2,0.0,True
+outoftown,Detroit,detroit homes for sale,1,0.0,True
+outoftown,Minneapolis,minneapolis homes for sale,1,0.0,True
+outoftown,St. Louis,st louis homes for sale,1,0.0,True
+outoftown,Kansas City,kansas city homes for sale,1,0.0,True
+outoftown,Milwaukee,milwaukee homes for sale,1,0.0,True
+outoftown,Columbus,columbus ohio homes for sale,1,0.0,True
+outoftown,Cincinnati,cincinnati homes for sale,1,0.0,True
+outoftown,Cleveland,cleveland homes for sale,1,0.0,True
+outoftown,Indianapolis,indianapolis homes for sale,2,0.0,True
+outoftown,Louisville,louisville homes for sale,1,0.0,True
+movingto,Phoenix,moving to phoenix,2,0.0,True
+movingto,Dallas,moving to dallas,2,0.0,True
+movingto,Houston,moving to houston,2,0.0,True
+movingto,Austin,moving to austin,2,0.0,True
+movingto,San Antonio,moving to san antonio,2,0.0,True
+movingto,Atlanta,moving to atlanta,2,0.0,True
+movingto,Tampa,moving to tampa,2,0.0,True
+movingto,Orlando,moving to orlando,2,0.0,True
+movingto,Miami,moving to miami,2,0.0,True
+movingto,Jacksonville,moving to jacksonville,2,0.0,True
+movingto,Charlotte,moving to charlotte,2,0.0,True
+movingto,Raleigh,moving to raleigh,2,0.0,True
+movingto,Nashville,moving to nashville,2,0.0,True
+movingto,Memphis,moving to memphis,1,0.007,True
+movingto,Birmingham,moving to birmingham al,1,0.811,True
+movingto,New Orleans,moving to new orleans,1,0.0,True
+movingto,Oklahoma City,moving to oklahoma city,1,0.238,True
+movingto,Richmond,moving to richmond va,1,0.126,True
+movingto,Denver,moving to denver,2,0.0,True
+movingto,Las Vegas,moving to las vegas,2,0.0,True
+movingto,Salt Lake City,moving to salt lake city,2,0.0,True
+movingto,Los Angeles,moving to los angeles,1,0.0,True
+movingto,San Diego,moving to san diego,2,0.0,True
+movingto,San Francisco,moving to san francisco,1,0.0,True
+movingto,Sacramento,moving to sacramento,1,0.0,True
+movingto,Seattle,moving to seattle,2,0.0,True
+movingto,Portland,moving to portland oregon,1,0.0,True
+movingto,New York,moving to new york,1,0.0,True
+movingto,Boston,moving to boston,2,0.0,True
+movingto,Philadelphia,moving to philadelphia,1,0.0,True
+movingto,Washington DC,moving to washington dc,1,0.0,True
+movingto,Baltimore,moving to baltimore,1,0.0,True
+movingto,Pittsburgh,moving to pittsburgh,1,0.0,True
+movingto,Buffalo,moving to buffalo,1,0.0,True
+movingto,Chicago,moving to chicago,2,0.0,True
+movingto,Detroit,moving to detroit,1,0.0,True
+movingto,Minneapolis,moving to minneapolis,1,0.0,True
+movingto,St. Louis,moving to st louis,1,0.0,True
+movingto,Kansas City,moving to kansas city,1,0.0,True
+movingto,Milwaukee,moving to milwaukee,1,0.0,True
+movingto,Columbus,moving to columbus ohio,1,0.021,True
+movingto,Cincinnati,moving to cincinnati,1,0.0,True
+movingto,Cleveland,moving to cleveland,1,0.0,True
+movingto,Indianapolis,moving to indianapolis,2,0.007,True
+movingto,Louisville,moving to louisville,1,0.021,True

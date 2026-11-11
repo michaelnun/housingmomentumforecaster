@@ -1,25 +1,55 @@
 {
-  "model": "A",
-  "months_tested": 75,
-  "top5_hit_rate": 0.963,
-  "top5_excess_3m_pct": 1.14,
-  "top5_excess_per_year_pct": 4.54,
+  "model": "P",
+  "months_tested": 74,
+  "top5_hit_rate": 0.995,
+  "top5_excess_3m_pct": 1.52,
+  "top5_excess_per_year_pct": 6.08,
   "driver_rank_corr": {
-    "Price momentum": 0.682,
-    "Market tightness": 0.503,
-    "Buyer demand": 0.161,
-    "Out-of-town demand": 0.161,
-    "Local jobs": 0.082,
-    "score": 0.871
+    "Price momentum": 0.694,
+    "Market tightness": 0.543,
+    "Buyer demand": 0.18,
+    "Nationwide interest": 0.175,
+    "Online listing views": 0.328,
+    "score": 0.878
   },
   "components": [
     "Price momentum",
     "Market tightness",
     "Buyer demand",
-    "Out-of-town demand",
-    "Local jobs"
+    "Nationwide interest",
+    "Online listing views"
   ],
   "demo": false,
-  "as_of": "Aug 2026",
-  "first_test_month": "Mar 2020"
+  "as_of": "Sep 2026",
+  "updated": "Nov 11, 2026",
+  "first_test_month": "May 2020",
+  "metros": 45,
+  "rank_corr": 0.878,
+  "outlook": {
+    "months_tested": 56,
+    "first_month": "Feb 2021",
+    "last_month": "Sep 2025",
+    "model": "Y12_nosearch",
+    "p_vs_trend": 0.0032,
+    "p_vs_housing_only": 0.0472,
+    "search_gain": -0.0014,
+    "search_better_share": 0.518,
+    "p_search_helps": 0.5643,
+    "all_metros_rank_corr": 0.65,
+    "share_with_data_gaps": 0.003,
+    "rank_corr": 0.65,
+    "top5_beat_avg": 0.893,
+    "bottom5_trail_avg": 0.896,
+    "top5_excess_pct": 3.35,
+    "trend_rank_corr": 0.415,
+    "housing_only_rank_corr": 0.602
+  },
+  "live": {
+    "first_published": "2026-11-11",
+    "months_logged": 1,
+    "first_results_3m": "Dec 2026",
+    "months_scored_3m": 0,
+    "first_results_12m": "Sep 2027",
+    "months_scored_12m": 0
+  }
 }

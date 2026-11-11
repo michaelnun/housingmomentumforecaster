@@ -63,13 +63,19 @@ def main(raw):
 
     base = feats["A"]
     search = [c for c in feats["B"] if c not in base]
-    signals = {"Out-of-town search": [c for c in search if "outoftown" in c],
+    signals = {"Nationwide search interest": [c for c in search if "outoftown" in c],
                "Local buyer search": [c for c in search if "outoftown" not in c],
                "Home Depot / Lowe's searches": [c for c in feats["C"] if c not in feats["B"]]}
     if "spending" in feats:
         signals["Home-improvement store sales (Census)"] = feats["spending"]
     if "jobs" in feats:
         signals["Metro jobs and unemployment (BLS)"] = feats["jobs"]
+    for key, name in (("pageviews", "Realtor.com listing page views"),
+                      ("moving", "Nationwide \"moving to [city]\" searches"),
+                      ("seller", "Local seller searches"),
+                      ("rent", "Zillow rent growth")):
+        if key in feats:
+            signals[name] = feats[key]
 
     rows = []
     for name, add in signals.items():
@@ -102,22 +108,29 @@ def main(raw):
         plt.rcParams.update({"font.family": "DejaVu Sans", "font.size": 11, "axes.spines.top": False,
                              "axes.spines.right": False, "axes.edgecolor": "#B8BFBB",
                              "axes.labelcolor": MUTED, "xtick.color": MUTED, "ytick.color": MUTED})
-        fig, ax = plt.subplots(figsize=(8.5, 4.4))
-        ax.axhline(0, color="#8C958F", lw=1)
-        for i, (name, g) in enumerate(res.groupby("signal", sort=False)):
-            c = COLORS[i % len(COLORS)]
-            ax.plot(g["horizon_months"], g["gain"], "-o", color=c, lw=2, ms=7, label=name)
-            for _, r in g.iterrows():
-                if r["helps"]:
-                    ax.scatter(r["horizon_months"], r["gain"], s=160, facecolor="none", edgecolor=c, lw=1.5)
-        ax.set_xticks(list(HORIZONS), [f"{h} months" for h in HORIZONS])
-        ax.set_xlabel("How far ahead we predict")
-        ax.set_ylabel("Change in ranking accuracy")
-        ax.set_title("Does adding the signal improve the forecast?", loc="left", fontweight="bold", color=INK, pad=24)
-        ax.text(0, 1.015, "Above 0 = helps. Circled = statistically significant.",
+        # one row per signal, one dot per horizon; filled dot = significant improvement
+        order = list(dict.fromkeys(res["signal"]))[::-1]
+        fig, ax = plt.subplots(figsize=(9, 0.55 * len(order) + 1.6))
+        ax.axvline(0, color="#8C958F", lw=1)
+        for j, h in enumerate(HORIZONS):
+            d = res[res["horizon_months"] == h].set_index("signal").reindex(order)
+            y = np.arange(len(order)) + (1 - j) * 0.22
+            c = COLORS[j]
+            ax.scatter(d["gain"], y, s=60, color=[c if hh else "white" for hh in d["helps"].fillna(False)],
+                       edgecolor=c, lw=1.6, zorder=3, label=f"{h} months ahead")
+        ax.set_yticks(np.arange(len(order)), order)
+        ax.set_xlabel("Change in ranking accuracy when the signal is added")
+        ax.set_title("Does adding the signal improve the forecast?", loc="left", fontweight="bold",
+                     color=INK, pad=24)
+        ax.text(0, 1.01, "Right of 0 = helps. Filled dot = statistically significant (p < 0.05).",
                 transform=ax.transAxes, color=MUTED, fontsize=9.5)
-        ax.grid(axis="y", color=GRID)
-        ax.legend(frameon=False, fontsize=9, loc="center left", bbox_to_anchor=(1.0, 0.5))
+        ax.grid(axis="x", color=GRID)
+        ax.set_axisbelow(True)
+        from matplotlib.lines import Line2D
+        handles = [Line2D([], [], marker="o", ls="", mfc=COLORS[j], mec=COLORS[j], ms=8,
+                          label=f"{h} months ahead") for j, h in enumerate(HORIZONS)]
+        ax.legend(handles=handles, frameon=False, fontsize=9, loc="upper left",
+                  bbox_to_anchor=(1.01, 1.0))
         fig.tight_layout()
         (RESULTS / "figures").mkdir(exist_ok=True)
         fig.savefig(RESULTS / "figures" / "signal_tests.png", dpi=200, bbox_inches="tight")
