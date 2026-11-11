@@ -14,7 +14,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-from config import PROCESSED, RAW, RESULTS
+from config import OUTLOOK_USE_SEARCH, PROCESSED, RAW, RESULTS
 from step3_model import nw_pvalue
 from step7_signal_tests import walk
 
@@ -80,8 +80,8 @@ def main(raw):
             res = compare(df.dropna(subset=cols), base, base + cols, t, h)
             if res:
                 r[f"{k}_without"], r[f"{k}_with"], r[f"p_{k}_helps"] = res[:3]
-        if h == 12 and nat and others:  # the full 12-month outlook model, on raw values
-            full = base + nat + sum(others.values(), [])
+        if h == 12 and others:  # the 12-month outlook model as used, on raw values
+            full = base + (nat if OUTLOOK_USE_SEARCH else []) + sum(others.values(), [])
             sub = df.dropna(subset=full)
             o = walk(sub, full, t, h)
             if o is not None:
