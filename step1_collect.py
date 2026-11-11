@@ -665,7 +665,7 @@ def collect_news():
     for f in (NEWS_ARCHIVE, RAW / "news_headlines.csv"):
         if f.exists():
             have_heads |= set(pd.read_csv(f)["metro"])
-    t0, quality, heads = time.time(), [], []
+    t0, quality, heads, todo_heads = time.time(), [], [], []
     for metro, queries in NEWS_QUERIES.items():
         dest = _news_file(metro)
         if _cached_ok(dest):
@@ -714,13 +714,19 @@ def collect_news():
             quality.append({"metro": metro, "query": q, "articles_per_month": round(float(per), 1),
                             "status": "ok" if per >= NEWS_MIN_ARTICLES else "too little news"})
             print(f"  {metro}: {per:.0f} articles a month")
-        # recent headlines: refreshed with each new download, or if we have none for this city yet
+        # recent headlines: refreshed with each new download, or if we have none for this city yet.
+        # Fetched after every city's article counts and tone, which the test needs first.
         just_downloaded = dest.exists() and dest.stat().st_mtime > t0
         if quality[-1]["status"] == "ok" and (just_downloaded or metro not in have_heads):
-            art = gdelt({"query": q, "mode": "artlist", "maxrecords": 50, "sort": "datedesc", **recent})
-            for a in (art or {}).get("articles", []):
-                heads.append({"metro": metro, "seen": a.get("seendate"), "title": a.get("title"),
-                              "url": a.get("url"), "site": a.get("domain")})
+            todo_heads.append((metro, q))
+    for metro, q in todo_heads:
+        if (time.time() - t0) / 60 > NEWS_BUDGET_MIN:
+            print(f"  out of time for headlines; {len(todo_heads)} cities' headlines wait for the next run")
+            break
+        art = gdelt({"query": q, "mode": "artlist", "maxrecords": 50, "sort": "datedesc", **recent})
+        for a in (art or {}).get("articles", []):
+            heads.append({"metro": metro, "seen": a.get("seendate"), "title": a.get("title"),
+                          "url": a.get("url"), "site": a.get("domain")})
     rows = [_news_monthly(pd.read_csv(f, parse_dates=["date"])).assign(metro=m)
             for m in NEWS_QUERIES if (f := _news_file(m)).exists()]
     if rows:
@@ -751,7 +757,12 @@ if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("--skip-trends", action="store_true")
     ap.add_argument("--pulls", type=int, default=1)
+    ap.add_argument("--news-only", action="store_true", help="only download the news data (GDELT)")
     a = ap.parse_args()
+    if a.news_only:
+        collect_news()
+        print("Done. Commit and push the data folder, then run the monthly update on GitHub.")
+        sys.exit(0)
     collect_zillow()
     collect_fred()
     collect_market()
