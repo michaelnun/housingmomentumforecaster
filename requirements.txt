@@ -7,3 +7,4 @@ scipy>=1.11
 matplotlib>=3.8
 requests>=2.31
 pytrends>=4.9
+vaderSentiment>=3.3

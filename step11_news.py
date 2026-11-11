@@ -9,9 +9,15 @@ docs/preregistration_news.md. This script applies it exactly.
   Each passes only if: main values, all metros, better with p < 0.05; better on the 23 metros
   added in Nov 2026; better on Zillow's raw values.
 
-Writes results/news_test.csv and results/news_test.json, plus results/news_metro.csv and
-results/news_headlines.csv for the dashboard (each metro's news tone over time and its latest
-headlines, shown as context).
+Writes results/news_test.csv and results/news_test.json, plus, for the dashboard: each metro's news
+tone over time (results/news_metro.csv), its latest headlines with our own sentiment score
+(results/news_headlines.csv), and a per-metro headline sentiment summary checked against GDELT's tone
+(results/news_sentiment.csv, results/news_sentiment.json).
+
+Our own headline sentiment uses VADER, a standard dictionary-based sentiment tool, two ways: as is,
+and with a short list of housing words added (a general tool reads "prices fall" as neutral or even
+positive and "bidding wars" as negative). It is context only: GDELT only returns full headlines for
+the last few months, so it can't be tested historically yet; the archive builds that history.
 
     python step11_news.py
 """
@@ -25,6 +31,20 @@ from step9_stability import check, pair, raw_targets, slices
 
 SUN_BELT = list(METROS)[:21]  # config lists the Sun Belt and Mountain West metros first
 RULE = "docs/preregistration_news.md"
+# Housing words for VADER (scale -4 to +4): positive = market strengthening, negative = weakening
+HOUSING_TERMS = {
+    **{w: 1.5 for w in ("rise", "rises", "rising", "rose", "climb", "climbs", "climbing", "climbed", "jump", "jumps",
+                        "gain", "gains", "rebound", "rebounds", "recovery", "strong", "stronger", "hot", "appreciation")},
+    **{w: 2.0 for w in ("surge", "surges", "surging", "soar", "soars", "soaring", "boom", "booming", "hottest")},
+    **{w: 1.0 for w in ("bidding", "competitive")},
+    **{w: -1.5 for w in ("fall", "falls", "falling", "fell", "drop", "drops", "dropping", "dropped", "decline",
+                         "declines", "declining", "slide", "slides", "sliding", "slowdown", "stall", "stalls",
+                         "stalled", "sluggish", "glut", "bubble", "correction")},
+    **{w: -2.0 for w in ("slump", "slumps", "plunge", "plunges", "foreclosure", "foreclosures", "underwater")},
+    **{w: -1.0 for w in ("cool", "cools", "cooling", "cooled", "slow", "slows", "slowing", "cut", "cuts")},
+    "plummet": -2.5, "plummets": -2.5, "crash": -3.0,
+    "war": 0.0, "wars": 0.0,  # "bidding wars" means a hot market
+}
 
 
 def tagged(m, h, test, version):
@@ -89,6 +109,14 @@ def run_test(panel, F):
         return {k: (None if isinstance(v, float) and np.isnan(v) else v) for k, v in r.iloc[0].to_dict().items()}
 
     res = {"rule_file": RULE, "metros_with_news": int(panel.dropna(subset=news)["metro"].nunique())}
+    qf = RAW / "news_quality.csv"
+    q = pd.read_csv(qf) if qf.exists() else pd.DataFrame()
+    problems = sorted(q.loc[q["status"].isin(["download failed", "not downloaded yet"]), "metro"]) \
+        if "status" in q else []
+    # Only a run in which every metro's news downloaded counts (addendum in the rule file)
+    res["complete"] = "status" in q and not problems
+    res["download_problems"] = problems
+    res["too_little_news"] = sorted(q.loc[q["status"] == "too little news", "metro"]) if "status" in q else []
     for name, key in (("3-month score", "3m"), ("12-month outlook", "12m")):
         allm, new, rawm = (get(name, "All metros", "Main values"), get(name, "New metros (untouched test)", "Main values"),
                            get(name, "All metros", "Raw values"))
@@ -123,12 +151,62 @@ def dashboard_tables():
     d["typical_tone_3m"] = d.groupby("date")["tone_3m"].transform("median")
     d[["metro", "date", "articles", "articles_3m", "tone", "tone_3m", "typical_tone_3m"]].round(3).to_csv(
         RESULTS / "news_metro.csv", index=False)
-    hf = RAW / "news_headlines.csv"
-    if hf.exists():
-        h = pd.read_csv(hf).dropna(subset=["title", "url"])
-        h["seen"] = pd.to_datetime(h["seen"], format="%Y%m%dT%H%M%SZ", errors="coerce")
-        h.sort_values(["metro", "seen"], ascending=[True, False]).groupby("metro").head(6).to_csv(
-            RESULTS / "news_headlines.csv", index=False)
+    headline_sentiment(d)
+
+
+def scorers():
+    """VADER as is, and VADER with housing words added. None if VADER isn't installed."""
+    try:
+        from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
+    except ImportError:
+        print("vaderSentiment not installed; skipping headline sentiment (pip install vaderSentiment)")
+        return None, None
+    plain, housing = SentimentIntensityAnalyzer(), SentimentIntensityAnalyzer()
+    housing.lexicon.update(HOUSING_TERMS)
+    return plain, housing
+
+
+def headline_sentiment(news_monthly):
+    """Score recent headlines; summarize per metro; check against GDELT's tone across metros."""
+    f = next((x for x in (RAW / "news_headlines_archive.csv", RAW / "news_headlines.csv") if x.exists()), None)
+    if f is None:
+        return
+    h = pd.read_csv(f).dropna(subset=["title", "url"]).drop_duplicates(["metro", "url"])
+    h["seen"] = pd.to_datetime(h["seen"].astype(str), format="%Y%m%dT%H%M%SZ", errors="coerce")
+    h = h.dropna(subset=["seen"])
+    plain, housing = scorers()
+    if plain is not None and len(h):
+        h["sent_plain"] = [plain.polarity_scores(str(t))["compound"] for t in h["title"]]
+        h["sent_housing"] = [housing.polarity_scores(str(t))["compound"] for t in h["title"]]
+        h["label"] = pd.cut(h["sent_housing"], [-1.01, -0.05, 0.05, 1.01], labels=["negative", "neutral", "positive"])
+    h.sort_values(["metro", "seen"], ascending=[True, False]).groupby("metro").head(6).round(3).to_csv(
+        RESULTS / "news_headlines.csv", index=False)
+    if plain is None or not len(h):
+        return
+    recent = h[h["seen"] >= h["seen"].max() - pd.Timedelta(days=60)]
+    s = recent.groupby("metro").agg(headlines=("title", "size"), sent_housing=("sent_housing", "mean"),
+                                    sent_plain=("sent_plain", "mean"),
+                                    share_positive=("label", lambda x: (x == "positive").mean()),
+                                    share_negative=("label", lambda x: (x == "negative").mean())).reset_index()
+    # GDELT's tone over the same recent months, to compare with our own scores
+    since = (recent["seen"].min().to_period("M")).to_timestamp()
+    g = news_monthly[news_monthly["date"] >= since].assign(tx=lambda x: x["tone"] * x["articles"])
+    g = g.groupby("metro").apply(lambda x: x["tx"].sum() / x["articles"].sum() if x["articles"].sum() else np.nan,
+                                 include_groups=False).rename("gdelt_tone").reset_index()
+    s = s.merge(g, on="metro", how="left")
+    s.round(3).to_csv(RESULTS / "news_sentiment.csv", index=False)
+    ok = s[s["headlines"] >= 5].dropna(subset=["gdelt_tone"])
+    def corr(c):
+        v = ok[c].rank().corr(ok["gdelt_tone"].rank()) if len(ok) >= 10 else np.nan
+        return None if pd.isna(v) else round(float(v), 3)
+    out = {"headlines_scored": int(len(recent)), "metros": int(s["metro"].nunique()),
+           "from": f"{recent['seen'].min():%b %d, %Y}", "to": f"{recent['seen'].max():%b %d, %Y}",
+           "headlines_in_archive": int(len(h)),
+           "agreement_with_gdelt_plain": corr("sent_plain"), "agreement_with_gdelt_housing": corr("sent_housing"),
+           "share_label_changed_by_housing_words": round(float(
+               (np.sign(recent["sent_plain"].round(2)) != np.sign(recent["sent_housing"].round(2))).mean()), 3)}
+    (RESULTS / "news_sentiment.json").write_text(json.dumps(out, indent=2))
+    print("Headline sentiment:", out)
 
 
 def main():

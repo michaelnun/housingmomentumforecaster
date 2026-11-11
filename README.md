@@ -13,7 +13,7 @@ A monthly dashboard that ranks 45 big U.S. housing markets by where home values 
 - **Stages:** Rising, Turning up, Turning down, Falling (where prices have been vs. where they're expected to go).
 - **How often it's right** next to every score, a **"market right now"** panel (home value, rent, days to sell, price cuts, buyer's or seller's market), plain-language reasons, advice for each audience, CSV downloads and shareable links for each metro.
 - **Out-of-town interest:** how much people across the U.S. search "[city] homes for sale", compared with other cities and a year ago. Shown as context only, not used in the scores (see findings).
-- **In the news:** how positive or negative each city's housing news is (GDELT tone) over time, and its latest headlines.
+- **In the news:** how positive or negative each city's housing news is (GDELT tone) over time, and its latest headlines, each scored with our own sentiment analysis (VADER, with housing words added).
 - **Usage analytics:** the dashboard records anonymous page views (which pages, metros and industries people look at, and downloads) with Google Analytics, so we can see how the tool is used.
 - **Updates itself** every month (GitHub Actions), and saves each month's published scores so the live track record can't be revised later.
 
@@ -71,7 +71,7 @@ The downloaded data is stored in `data/`.
 8. `step8_robustness.py`: the tests again on Zillow's unsmoothed values
 9. `step9_stability.py`: untouched metros, early vs. recent years, drop-one-metro, verdict per finding
 10. `step10_search.py`: search as an early read (pre-registered test), where search helped, and the out-of-town interest table for the dashboard
-11. `step11_news.py`: does news coverage help? (pre-registered test), plus each metro's news tone and headlines for the dashboard
+11. `step11_news.py`: does news coverage help? (pre-registered test), each metro's news tone and headlines for the dashboard, and our own headline sentiment (VADER as is vs. with housing words), checked against GDELT's tone
 12. `dashboard.py`: Streamlit dashboard, with anonymous usage tracking (Google Analytics 4, server-side)
 
 ## Monthly updates (automatic)

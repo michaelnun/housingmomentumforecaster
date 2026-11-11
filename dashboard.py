@@ -71,6 +71,7 @@ def load():
         "nowcast_t": _csv("nowcast.csv"), "where": _csv("search_by_region.csv"),
         "news_test": _json("news_test.json"), "news_test_t": _csv("news_test.csv"),
         "news_metro": _csv("news_metro.csv", parse_dates=["date"]), "news_heads": _csv("news_headlines.csv"),
+        "news_sent": _csv("news_sentiment.csv"), "news_sent_j": _json("news_sentiment.json"),
     }
 
 
@@ -503,10 +504,11 @@ elif view == "Metro":
     mn = nm[nm["metro"] == pick].dropna(subset=["tone_3m"]).sort_values("date") if nm is not None else None
     if mn is not None and len(mn):
         ln = mn.iloc[-1]
-        passed = any((nt.get(k) or {}).get("passed") for k in ("3m", "12m"))
+        final = bool(nt.get("complete"))
+        passed = final and any((nt.get(k) or {}).get("passed") for k in ("3m", "12m"))
         status = ("It improved the forecasts in testing (Track record page)." if passed else
                   "**Context only, not used in the scores:** it didn't improve the forecasts (Track record page)."
-                  if nt.get("3m") else "**Context only, not used in the scores.**")
+                  if final and nt.get("3m") else "**Context only, not used in the scores** (its test is still running).")
         st.markdown(f"#### {pick} in the news")
         st.caption(f"U.S. news articles about {pick}'s housing market (tracked by GDELT), through {ln['date']:%B %Y}. "
                    f"Tone is GDELT's automated score of the wording: above 0 = more positive, below 0 = more "
@@ -518,6 +520,15 @@ elif view == "Metro":
                 st.metric("Tone vs. the typical metro", f"{ln['tone_3m'] - ln['typical_tone_3m']:+.2f}",
                           help="Average tone of this metro's housing news over the last 3 months, minus the "
                                "typical metro's.")
+            ns = D["news_sent"]
+            sm = ns[ns["metro"] == pick] if ns is not None else None
+            if sm is not None and len(sm) and sm.iloc[0]["headlines"] >= 3:
+                x = sm.iloc[0]
+                st.metric("Headline sentiment (our scoring)", f"{x['sent_housing']:+.2f}",
+                          help="Average VADER score of this metro's recent headlines, with housing words added "
+                               "(-1 = very negative, +1 = very positive).")
+                st.caption(f"{x['share_positive']:.0%} of {int(x['headlines'])} recent headlines positive, "
+                           f"{x['share_negative']:.0%} negative.")
         with c2:
             rec = mn[mn["date"] >= mn["date"].max() - pd.DateOffset(years=5)]
             fig = go.Figure()
@@ -534,10 +545,16 @@ elif view == "Metro":
         hs = nh[nh["metro"] == pick].head(5) if nh is not None else None
         if hs is not None and len(hs):
             st.markdown("**Latest headlines**")
+            colors = {"positive": "#2F6B45", "negative": "#B5533C", "neutral": "#8C958F"}
             for h_ in hs.itertuples():
                 title = str(h_.title).replace("[", "(").replace("]", ")")
                 when = f" · {pd.Timestamp(h_.seen):%b %d}" if ok(h_.seen) else ""
-                st.markdown(f"- [{title}]({h_.url}) · {h_.site}{when}")
+                lab = getattr(h_, "label", None)
+                tag = (f" <span style='color:{colors.get(lab, MUTED)};font-weight:600'>{lab}</span>"
+                       if isinstance(lab, str) else "")
+                st.markdown(f"- [{title}]({h_.url}) · {h_.site}{when}{tag}", unsafe_allow_html=True)
+            st.caption("Positive / neutral / negative = our own scoring of each headline (VADER sentiment with "
+                       "housing words added).")
 
     left, right = st.columns([1, 1.3])
     with left:
@@ -846,9 +863,19 @@ elif view == "Track record":
                          f"{a_['gain']:+.3f} across all metros (p = {a_['p']:.2f}), "
                          f"{n_.get('gain', float('nan')):+.3f} on the 23 new metros, "
                          f"{w_.get('gain', float('nan')):+.3f} on raw values.")
+        pre_note = ""
+        if not ntest.get("complete"):
+            probs = ntest.get("download_problems") or []
+            pre_note = ("\n\n**Preliminary, doesn't count yet:** " + (f"news for {len(probs)} metro(s) "
+                        f"({', '.join(probs)}) didn't download" if probs else "this run predates the download check")
+                        + " because GDELT limited our requests. The decision uses the first run in which every "
+                          "metro's news downloaded; the next run fills the gaps automatically.")
+        low = ntest.get("too_little_news") or []
+        low_note = f"\n\nToo little news to use: {', '.join(low)}." if low else ""
         st.markdown("We added how much U.S. news writes about each city's housing market, and how positive or "
                     "negative that coverage is (GDELT news data since 2017), to the score models. The pass/fail rule "
-                    "was written down before any news data was downloaded.\n\n" + "\n".join(lines))
+                    "was written down before any news data was downloaded.\n\n" + "\n".join(lines) + pre_note
+                    + low_note)
         tn = D["news_test_t"]
         with st.expander("Every check, and the rule as written beforehand"):
             if tn is not None:
@@ -860,6 +887,23 @@ elif view == "Track record":
             pre3 = Path(__file__).resolve().parent / "docs" / "preregistration_news.md"
             if pre3.exists():
                 st.markdown(pre3.read_text())
+
+    sj = D["news_sent_j"]
+    if sj and sj.get("headlines_scored"):
+        st.markdown("#### Our own headline sentiment (VADER)")
+        fmt = lambda v: f"{v:.2f}" if v is not None else "n/a"
+        st.markdown(
+            f"We scored {sj['headlines_scored']:,} recent housing headlines ({sj['from']} to {sj['to']}, "
+            f"{sj['metros']} metros) with VADER, a standard dictionary-based sentiment tool, two ways: as is, and "
+            f"with a short list of housing words added. A general tool reads \"prices fall\" as neutral or even "
+            f"positive and \"bidding wars\" as negative; the housing words changed the direction of "
+            f"{sj['share_label_changed_by_housing_words']:.0%} of the scores.\n\n"
+            f"**Agreement with GDELT's tone** across metros (rank correlation, 1 = same order): "
+            f"{fmt(sj.get('agreement_with_gdelt_plain'))} for VADER as is, "
+            f"{fmt(sj.get('agreement_with_gdelt_housing'))} with housing words.\n\n"
+            "Context only: GDELT returns full headlines only for the last few months, so our own scores can't be "
+            "tested against past prices yet. Every month's headlines are saved, so that history builds up. A word "
+            "list also can't always tell *what* is rising (\"rates climb\" vs. \"prices climb\").")
 
     rob = D["rob"]
     if rob is not None and len(rob):

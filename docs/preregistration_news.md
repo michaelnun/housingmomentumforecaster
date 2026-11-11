@@ -1,4 +1,4 @@
-**Written November 11, 2026, 4:40 pm ET, before any news data was downloaded.**
+**Written November 11, 2026, 4:36 pm ET, before any news data was downloaded.**
 
 # Does the news about a city's housing market help predict it?
 
@@ -37,3 +37,7 @@ Either way, the result is reported as it comes out, including on the dashboard.
 - A city's name plus a housing phrase also catches national stories that mention the city in passing.
 - GDELT's tone score is an automated dictionary measure, not a reading of each article.
 - We have already seen the housing, search and page-view data in other tests; only the news data is new.
+
+---
+
+**Addendum (November 11, 2026, 5:52 pm ET, written while the first news download was still running and before any news results existed).** GDELT limited how fast GitHub's computers could download, so some cities' downloads failed (for example, Memphis and Oklahoma City were logged as "no news found" after three blocked requests). A failed download is not the same as "too little news," so those cities don't fall under the data quality rule above. The downloader now records failed downloads separately and retries them on the next run. **The decision uses the first run in which every metro's news downloaded.** Any result from a run with failed downloads is shown as preliminary and doesn't count. Our own headline sentiment (VADER, scored as is and with housing words added) is shown on the dashboard as context and compared with GDELT's tone; it is not part of this test, because GDELT returns full headlines only for the last few months.

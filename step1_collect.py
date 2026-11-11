@@ -562,15 +562,20 @@ def collect_nationwide(key, template):
 
 GDELT_URL = "https://api.gdeltproject.org/api/v2/doc/doc"
 NEWS_DIR = RAW / "news"
+NEWS_ARCHIVE = RAW / "news_headlines_archive.csv"  # every headline collected so far (grows each month)
+NEWS_BUDGET_MIN = 100  # stop starting new cities after this long; the rest are picked up next run
+FAILED = None          # gdelt() result when GDELT couldn't answer (vs. {} = nothing found)
 
 
 def gdelt(params, tries=3):
-    """One call to the GDELT DOC 2.0 API. Returns the parsed JSON ({} = nothing found) or None
-    if GDELT couldn't answer. GDELT asks for at most one request every 5 seconds."""
+    """One call to the GDELT DOC 2.0 API. Returns the parsed JSON, {} if nothing was found, or
+    FAILED if GDELT couldn't answer (e.g. it kept asking us to slow down). GDELT allows at most
+    one request every 5 seconds and slows down busy computers further, so we go gently."""
+    waits = [10, 45, 90]
     for k in range(tries):
-        time.sleep(6 if k == 0 else 30)
+        time.sleep(waits[min(k, len(waits) - 1)])
         try:
-            r = requests.get(GDELT_URL, params={**params, "format": "json"}, timeout=90)
+            r = requests.get(GDELT_URL, params={**params, "format": "json"}, timeout=120)
         except requests.RequestException as e:
             print(f"    request failed ({type(e).__name__}), retrying")
             continue
@@ -587,8 +592,8 @@ def gdelt(params, tries=3):
             return r.json()
         except ValueError:  # GDELT answers in plain text when it can't run a query
             print(f"    GDELT said: {txt[:150]}")
-            return None
-    return None
+            return {}
+    return FAILED
 
 
 def _gdelt_timeline(js):
@@ -618,73 +623,118 @@ def _news_monthly(daily):
     return out.drop(columns="tone_x").reset_index().rename(columns={"month": "date"})
 
 
+def _news_file(metro):
+    return NEWS_DIR / f"{metro.replace(' ', '_')}.csv"
+
+
+def _cached_ok(f):
+    """A saved city file counts only if it was downloaded recently and has tone data
+    (an earlier download could have lost the tone request)."""
+    if not is_fresh(f):
+        return False
+    d = pd.read_csv(f)
+    return len(d) > 0 and d["tone"].notna().any()
+
+
+def _save_headlines(rows):
+    """Add new headlines to the archive, one row per metro and article."""
+    new = pd.DataFrame(rows, columns=["metro", "seen", "title", "url", "site"])
+    old = pd.read_csv(NEWS_ARCHIVE) if NEWS_ARCHIVE.exists() else None
+    legacy = RAW / "news_headlines.csv"  # headlines saved before the archive existed
+    if old is None and legacy.exists():
+        old = pd.read_csv(legacy)
+    frames = [x for x in (old, new) if x is not None and len(x)]
+    allh = pd.concat(frames) if frames else new
+    allh = allh.dropna(subset=["title", "url"]).drop_duplicates(["metro", "url"], keep="last")
+    allh.to_csv(NEWS_ARCHIVE, index=False)
+    return len(allh)
+
+
 def collect_news():
     """Web content: how much U.S. news writes about each city's housing market, and how positive
-    or negative it is (GDELT's tone score), monthly since 2017. Plus each city's latest headlines.
-    Rules for testing it: docs/preregistration_news.md."""
+    or negative it is (GDELT's tone score), monthly since 2017, plus recent headlines (kept in an
+    archive so our own headline sentiment builds a history). Rules: docs/preregistration_news.md.
+    A city whose download fails is recorded as 'download failed' (not 'too little news') and is
+    retried on the next run; cities already downloaded this month are skipped."""
     print("News coverage of each housing market (GDELT)")
     NEWS_DIR.mkdir(parents=True, exist_ok=True)
     start, end = pd.Timestamp(NEWS_START), pd.Timestamp.now().floor("D")
     span = {"startdatetime": f"{start:%Y%m%d%H%M%S}", "enddatetime": f"{end:%Y%m%d%H%M%S}"}
-    quality, heads = [], []
-    for metro, queries in NEWS_QUERIES.items():
-        dest = NEWS_DIR / f"{metro.replace(' ', '_')}.csv"
-        if is_fresh(dest):
-            old = pd.read_csv(dest, parse_dates=["date"])
-            quality.append({"metro": metro, "query": old["query"].iloc[0] if len(old) else "",
-                            "articles_per_month": round(float(_news_monthly(old)["articles"].mean()), 1)
-                            if len(old) else 0.0})
-            continue
-        best = None
-        for q in queries:  # a later wording is tried only if the earlier one finds almost nothing
-            vol = _gdelt_timeline(gdelt({"query": q, "mode": "timelinevolraw", "timelinesmooth": 0, **span}))
-            per_month = vol.groupby(vol["date"].dt.to_period("M"))["value"].sum().mean() if len(vol) else 0.0
-            if best is None or per_month > best[2]:
-                best = (q, vol, per_month)
-            if per_month >= NEWS_MIN_ARTICLES:
-                break
-        q, vol, per_month = best
-        if vol.empty:
-            print(f"  {metro}: no news found")
-            quality.append({"metro": metro, "query": q, "articles_per_month": 0.0})
-            continue
-        tone = _gdelt_timeline(gdelt({"query": q, "mode": "timelinetone", "timelinesmooth": 0, **span}))
-        daily = vol.rename(columns={"value": "articles", "norm": "total"})[["date", "articles", "total"]]
-        daily = daily.merge(tone[["date", "value"]].rename(columns={"value": "tone"}), on="date", how="left")
-        daily["query"] = q
-        daily.to_csv(dest, index=False)
-        mark(dest)
-        quality.append({"metro": metro, "query": q, "articles_per_month": round(float(per_month), 1)})
-        print(f"  {metro}: {per_month:.0f} articles a month")
-        art = gdelt({"query": q, "mode": "artlist", "maxrecords": 8, "sort": "datedesc",
-                     "startdatetime": f"{end - pd.Timedelta(days=60):%Y%m%d%H%M%S}",
-                     "enddatetime": span["enddatetime"]})
-        for a in (art or {}).get("articles", []):
-            heads.append({"metro": metro, "seen": a.get("seendate"), "title": a.get("title"),
-                          "url": a.get("url"), "site": a.get("domain")})
-    rows = []
-    for metro in NEWS_QUERIES:
-        f = NEWS_DIR / f"{metro.replace(' ', '_')}.csv"
+    recent = {"startdatetime": f"{end - pd.Timedelta(days=60):%Y%m%d%H%M%S}", "enddatetime": span["enddatetime"]}
+    have_heads = set()
+    for f in (NEWS_ARCHIVE, RAW / "news_headlines.csv"):
         if f.exists():
-            m = _news_monthly(pd.read_csv(f, parse_dates=["date"]))
-            rows.append(m.assign(metro=metro))
-    if not rows:
-        print("  no news data; skipping")
-        return
-    df = pd.concat(rows)[["metro", "date", "articles", "total", "share", "tone"]]
-    df.to_csv(RAW / "news_clean.csv", index=False)
+            have_heads |= set(pd.read_csv(f)["metro"])
+    t0, quality, heads = time.time(), [], []
+    for metro, queries in NEWS_QUERIES.items():
+        dest = _news_file(metro)
+        if _cached_ok(dest):
+            old = pd.read_csv(dest, parse_dates=["date"])
+            per = float(_news_monthly(old)["articles"].mean())
+            quality.append({"metro": metro, "query": old["query"].iloc[0], "articles_per_month": round(per, 1),
+                            "status": "ok" if per >= NEWS_MIN_ARTICLES else "too little news"})
+            q = old["query"].iloc[0]
+        else:
+            if (time.time() - t0) / 60 > NEWS_BUDGET_MIN:
+                quality.append({"metro": metro, "query": queries[0], "articles_per_month": None,
+                                "status": "not downloaded yet"})
+                continue
+            best, failed = None, False
+            for q in queries:  # a later wording is tried only if the earlier one finds almost nothing
+                js = gdelt({"query": q, "mode": "timelinevolraw", "timelinesmooth": 0, **span})
+                if js is FAILED:
+                    failed = True
+                    break
+                vol = _gdelt_timeline(js)
+                per = vol.groupby(vol["date"].dt.to_period("M"))["value"].sum().mean() if len(vol) else 0.0
+                if best is None or per > best[2]:
+                    best = (q, vol, per)
+                if per >= NEWS_MIN_ARTICLES:
+                    break
+            tone_js = None
+            if not failed and len(best[1]):
+                tone_js = gdelt({"query": best[0], "mode": "timelinetone", "timelinesmooth": 0, **span})
+                failed = tone_js is FAILED
+            if failed:
+                print(f"  {metro}: download failed (GDELT limited our requests); will retry next run")
+                quality.append({"metro": metro, "query": queries[0], "articles_per_month": None,
+                                "status": "download failed"})
+                continue
+            q, vol, per = best
+            if vol.empty:
+                print(f"  {metro}: no news found")
+                quality.append({"metro": metro, "query": q, "articles_per_month": 0.0, "status": "too little news"})
+                continue
+            tone = _gdelt_timeline(tone_js)
+            daily = vol.rename(columns={"value": "articles", "norm": "total"})[["date", "articles", "total"]]
+            daily = daily.merge(tone[["date", "value"]].rename(columns={"value": "tone"}), on="date", how="left")
+            daily["query"] = q
+            daily.to_csv(dest, index=False)
+            mark(dest)
+            quality.append({"metro": metro, "query": q, "articles_per_month": round(float(per), 1),
+                            "status": "ok" if per >= NEWS_MIN_ARTICLES else "too little news"})
+            print(f"  {metro}: {per:.0f} articles a month")
+        # recent headlines: refreshed with each new download, or if we have none for this city yet
+        just_downloaded = dest.exists() and dest.stat().st_mtime > t0
+        if quality[-1]["status"] == "ok" and (just_downloaded or metro not in have_heads):
+            art = gdelt({"query": q, "mode": "artlist", "maxrecords": 50, "sort": "datedesc", **recent})
+            for a in (art or {}).get("articles", []):
+                heads.append({"metro": metro, "seen": a.get("seendate"), "title": a.get("title"),
+                              "url": a.get("url"), "site": a.get("domain")})
+    rows = [_news_monthly(pd.read_csv(f, parse_dates=["date"])).assign(metro=m)
+            for m in NEWS_QUERIES if (f := _news_file(m)).exists()]
+    if rows:
+        df = pd.concat(rows)[["metro", "date", "articles", "total", "share", "tone"]]
+        df.to_csv(RAW / "news_clean.csv", index=False)
     q = pd.DataFrame(quality)
-    q["usable"] = q["articles_per_month"] >= NEWS_MIN_ARTICLES
+    q["usable"] = q["status"] == "ok"
     q.to_csv(RAW / "news_quality.csv", index=False)
-    if heads:  # keep earlier headlines for metros that weren't re-downloaded this time
-        h = pd.DataFrame(heads)
-        hf = RAW / "news_headlines.csv"
-        if hf.exists():
-            old = pd.read_csv(hf)
-            h = pd.concat([h, old[~old["metro"].isin(h["metro"])]])
-        h.to_csv(hf, index=False)
-    print(f"  {df['metro'].nunique()} metros, {df['date'].min():%b %Y} to {df['date'].max():%b %Y}; "
-          f"too little news (not used): {', '.join(q.loc[~q['usable'], 'metro']) or 'none'}")
+    n_heads = _save_headlines(heads) if (heads or NEWS_ARCHIVE.exists() or (RAW / "news_headlines.csv").exists()) else 0
+    counts = q["status"].value_counts().to_dict()
+    print(f"  {counts}; headlines in archive: {n_heads}")
+    for status in ("too little news", "download failed", "not downloaded yet"):
+        if status in counts:
+            print(f"  {status}: {', '.join(q.loc[q['status'] == status, 'metro'])}")
 
 
 def collect_trends(pulls):
