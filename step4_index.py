@@ -146,11 +146,15 @@ def market_now(out):
     # Rough buyer's/seller's market label from the two numbers buyers feel most
     if {"sale_to_list_pct", "price_cut_share_pct"} <= set(out):
         stl, cut = out["sale_to_list_pct"], out["price_cut_share_pct"]
+        above = out.get("sold_above_list_pct", pd.Series(np.nan, index=out.index))
         dtp = out.get("days_to_pending", pd.Series(np.nan, index=out.index))
-        out["market_type"] = np.select(
-            [stl >= 100, (stl < 98) & ((cut >= 30) | (dtp >= 60))],
-            ["Seller's market", "Buyer's market"], "Balanced")
-        out.loc[stl.isna() | cut.isna(), "market_type"] = None
+        slow = (cut >= 30) | (dtp >= 60)
+        # Main rule uses sale price vs. asking. If Zillow stopped publishing that for a metro,
+        # fall back to the share of homes sold above asking.
+        seller = (stl >= 100) | (stl.isna() & (above >= 40))
+        buyer = ((stl < 98) | (stl.isna() & (above <= 15))) & slow
+        out["market_type"] = np.select([seller, buyer], ["Seller's market", "Buyer's market"], "Balanced")
+        out.loc[(stl.isna() & above.isna()) | cut.isna(), "market_type"] = None
     return out
 
 

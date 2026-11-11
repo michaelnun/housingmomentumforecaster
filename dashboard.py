@@ -255,7 +255,9 @@ if view == "Overview":
         fig.add_trace(go.Scatter(
             x=d[px], y=d[fc], mode="markers+text", text=d["metro"],
             texttemplate=[m if m in show_names else "" for m in d["metro"]],
-            textposition="top center", textfont=dict(size=11, color=INK),
+            # alternate label above / below so neighbors don't print on top of each other
+            textposition=["top center" if i % 2 == 0 else "bottom center" for i in range(len(d))],
+            textfont=dict(size=11, color=INK),
             marker=dict(size=8 + d[sc] / 8, color=colors, line=dict(color="white", width=1)),
             customdata=d[[sc]],
             hovertemplate="<b>%{text}</b><br>Score %{customdata[0]:.0f}<br>Last " + str(k) +
@@ -380,8 +382,9 @@ elif view == "Metro":
     if ok(r.get("market_type")):
         m3.markdown(f"<div class='lbl'>Who has the upper hand</div>{pill(r['market_type'], MARKET_COLORS)}",
                     unsafe_allow_html=True)
-        m3.caption("Rough guide: seller's market = homes sell at or above asking on average; buyer's "
-                   "market = under 98% of asking, with many price cuts or slow sales.")
+        m3.caption("Rough guide: seller's market = homes sell at or above asking on average (or 40%+ "
+                   "sell above asking); buyer's market = under 98% of asking, with many price cuts or "
+                   "slow sales.")
     m4, m5, m6, m7 = st.columns(4)
     if ok(r.get("days_to_pending")):
         last = r.get("days_to_pending_last_year")
