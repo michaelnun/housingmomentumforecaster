@@ -154,6 +154,21 @@ def dashboard_tables():
     headline_sentiment(d)
 
 
+HOUSING_WORDS = (r"\b(home|homes|house|houses|housing|real estate|mortgages?|rents?|renters|rental|realtors?|"
+                 r"listings?|propert(y|ies)|apartments?|condos?|buyers|sellers|homebuyers|homeowners)\b")
+CITY_PATTERNS = {"Washington DC": r"washington|d\.c\.", "St. Louis": r"st\.? louis|saint louis"}
+
+
+def on_topic(h):
+    """Keep headlines that mention the city or housing; GDELT also returns national stories that
+    only mention the city in passing (earnings calls, politics)."""
+    title = h["title"].astype(str).str.lower()
+    housing = title.str.contains(HOUSING_WORDS, regex=True)
+    city = pd.Series([bool(pd.Series([t]).str.contains(CITY_PATTERNS.get(m, m.lower()), regex=True).iloc[0])
+                      for t, m in zip(title, h["metro"])], index=h.index)
+    return housing | city
+
+
 def scorers():
     """VADER as is, and VADER with housing words added. None if VADER isn't installed."""
     try:
@@ -174,6 +189,9 @@ def headline_sentiment(news_monthly):
     h = pd.read_csv(f).dropna(subset=["title", "url"]).drop_duplicates(["metro", "url"])
     h["seen"] = pd.to_datetime(h["seen"].astype(str), format="%Y%m%dT%H%M%SZ", errors="coerce")
     h = h.dropna(subset=["seen"])
+    n_all = len(h)
+    h = h[on_topic(h)]
+    off_topic = n_all - len(h)
     plain, housing = scorers()
     if plain is not None and len(h):
         h["sent_plain"] = [plain.polarity_scores(str(t))["compound"] for t in h["title"]]
@@ -201,7 +219,7 @@ def headline_sentiment(news_monthly):
         return None if pd.isna(v) else round(float(v), 3)
     out = {"headlines_scored": int(len(recent)), "metros": int(s["metro"].nunique()),
            "from": f"{recent['seen'].min():%b %d, %Y}", "to": f"{recent['seen'].max():%b %d, %Y}",
-           "headlines_in_archive": int(len(h)),
+           "headlines_in_archive": int(n_all), "dropped_as_off_topic": int(off_topic),
            "agreement_with_gdelt_plain": corr("sent_plain"), "agreement_with_gdelt_housing": corr("sent_housing"),
            "share_label_changed_by_housing_words": round(float(
                (np.sign(recent["sent_plain"].round(2)) != np.sign(recent["sent_housing"].round(2))).mean()), 3)}

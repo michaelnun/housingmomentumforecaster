@@ -23,7 +23,7 @@ class _Tee:
         self.f = open(path, "a", encoding="utf-8")
         self.out = sys.__stdout__
     def write(self, s):
-        self.out.write(s); self.f.write(s); self.f.flush()
+        self.out.write(s); self.out.flush(); self.f.write(s); self.f.flush()  # show progress right away
     def flush(self):
         self.out.flush(); self.f.flush()
 
@@ -563,19 +563,21 @@ def collect_nationwide(key, template):
 GDELT_URL = "https://api.gdeltproject.org/api/v2/doc/doc"
 NEWS_DIR = RAW / "news"
 NEWS_ARCHIVE = RAW / "news_headlines_archive.csv"  # every headline collected so far (grows each month)
-NEWS_BUDGET_MIN = 100  # stop starting new cities after this long; the rest are picked up next run
+NEWS_BUDGET_MIN = 150  # stop starting new cities after this long; the rest are picked up next run
+GDELT_HEADERS = {"User-Agent": "HousingMomentumForecaster/1.0 (Fordham University class project)"}
 FAILED = None          # gdelt() result when GDELT couldn't answer (vs. {} = nothing found)
 
 
 def gdelt(params, tries=3):
     """One call to the GDELT DOC 2.0 API. Returns the parsed JSON, {} if nothing was found, or
     FAILED if GDELT couldn't answer (e.g. it kept asking us to slow down). GDELT allows at most
-    one request every 5 seconds and slows down busy computers further, so we go gently."""
-    waits = [10, 45, 90]
+    one request every 5 seconds and blocks senders that retry too soon, so we keep a steady
+    30-second gap and, after a block, wait 3 minutes before trying again."""
+    waits = [30, 180, 300]
     for k in range(tries):
         time.sleep(waits[min(k, len(waits) - 1)])
         try:
-            r = requests.get(GDELT_URL, params={**params, "format": "json"}, timeout=120)
+            r = requests.get(GDELT_URL, params={**params, "format": "json"}, headers=GDELT_HEADERS, timeout=120)
         except requests.RequestException as e:
             print(f"    request failed ({type(e).__name__}), retrying")
             continue
@@ -676,8 +678,15 @@ def collect_news():
             q = old["query"].iloc[0]
         else:
             if (time.time() - t0) / 60 > NEWS_BUDGET_MIN:
-                quality.append({"metro": metro, "query": queries[0], "articles_per_month": None,
-                                "status": "not downloaded yet"})
+                old = pd.read_csv(dest, parse_dates=["date"]) if dest.exists() else None
+                if old is not None and old["tone"].notna().any():  # keep last month's data for now
+                    per = float(_news_monthly(old)["articles"].mean())
+                    quality.append({"metro": metro, "query": old["query"].iloc[0], "articles_per_month": round(per, 1),
+                                    "status": "ok" if per >= NEWS_MIN_ARTICLES else "too little news"})
+                    print(f"  {metro}: out of time, keeping the earlier download")
+                else:
+                    quality.append({"metro": metro, "query": queries[0], "articles_per_month": None,
+                                    "status": "not downloaded yet"})
                 continue
             best, failed = None, False
             for q in queries:  # a later wording is tried only if the earlier one finds almost nothing
