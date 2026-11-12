@@ -20,7 +20,7 @@ concurrency:
 jobs:
   update:
     runs-on: ubuntu-latest
-    timeout-minutes: 240
+    timeout-minutes: 330
     steps:
       - name: Get the code and saved data
         uses: actions/checkout@v4
@@ -35,6 +35,9 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: "Step 1: download new data"
+        # if downloading runs long, stop it and still build, test and save what came in
+        timeout-minutes: 270
+        continue-on-error: true
         run: python step1_collect.py
         env:
           MEDIACLOUD_API_KEY: ${{ secrets.MEDIACLOUD_API_KEY }}   # free key, stored as a GitHub secret

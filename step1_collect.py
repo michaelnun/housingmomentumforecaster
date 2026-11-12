@@ -564,7 +564,7 @@ def collect_nationwide(key, template):
 GDELT_URL = "https://api.gdeltproject.org/api/v2/doc/doc"
 NEWS_DIR = RAW / "news"
 NEWS_ARCHIVE = RAW / "news_headlines_archive.csv"  # every headline collected so far (grows each month)
-NEWS_BUDGET_MIN = 60   # stop starting new cities after this long; the rest are picked up next run
+NEWS_BUDGET_MIN = 15   # GDELT mostly blocks GitHub's computers; keep trying briefly, the rest next run
 GDELT_HEADERS = {"User-Agent": "HousingMomentumForecaster/1.0 (Fordham University class project)"}
 FAILED = None          # gdelt() result when GDELT couldn't answer (vs. {} = nothing found)
 
@@ -754,7 +754,7 @@ def collect_news():
 
 
 MC_DIR = RAW / "mediacloud"
-MC_BUDGET_MIN = 150   # stop starting new cities after this long; the rest are picked up next run
+MC_BUDGET_MIN = 210   # stop starting new cities after this long; the rest are picked up next run
 MC_MAX_PAGES = 60     # headline pages per city (up to 1,000 headlines a page)
 
 
