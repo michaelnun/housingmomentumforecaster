@@ -1,16 +1,18 @@
 check,months,gain,better_share,p,test,version,share_significant
-All metros,69,-0.0095,0.232,0.9795,3-month score,Main values,
-Early years,34,-0.006,0.235,0.8487,3-month score,Main values,
-Recent years,35,-0.013,0.229,0.9669,3-month score,Main values,
-Drop any one metro,69,-0.0131,0.188,0.9962,3-month score,Main values,0.0
-All metros,69,-0.0186,0.275,0.9857,3-month score,Raw values,
-All metros,51,-0.0123,0.373,0.7313,12-month outlook,Main values,
-Early years,25,0.0199,0.4,0.1577,12-month outlook,Main values,
-Recent years,26,-0.0431,0.346,0.9866,12-month outlook,Main values,
-Drop any one metro,51,-0.02,0.275,0.8218,12-month outlook,Main values,0.0
-All metros,51,-0.0279,0.392,0.9259,12-month outlook,Raw values,
-All metros,69,-0.0074,0.29,0.9439,3-month score: tone only,Main values,
-All metros,69,-0.001,0.072,0.839,3-month score: volume only,Main values,
-All metros,63,-0.0077,0.365,0.6772,6 months ahead,Main values,
-Sun Belt and Mountain West,69,-0.0099,0.058,0.9438,3-month score,Main values,
-"Coastal, Midwest and Northeast",69,-0.0008,0.145,0.5325,3-month score,Main values,
+All metros,72,-0.0066,0.333,0.9543,3-month score,Main values,
+Original 22 metros,72,0.004,0.181,0.2733,3-month score,Main values,
+Early years,36,-0.0027,0.417,0.6742,3-month score,Main values,
+Recent years,36,-0.0105,0.25,0.9848,3-month score,Main values,
+Drop any one metro,72,-0.0093,0.264,0.9859,3-month score,Main values,0.0
+All metros,72,-0.0175,0.417,0.989,3-month score,Raw values,
+All metros,54,-0.0066,0.519,0.6666,12-month outlook,Main values,
+Original 22 metros,54,0.0328,0.222,0.2013,12-month outlook,Main values,
+Early years,27,0.0085,0.519,0.304,12-month outlook,Main values,
+Recent years,27,-0.0217,0.519,0.8162,12-month outlook,Main values,
+Drop any one metro,54,-0.0176,0.352,0.8637,12-month outlook,Main values,0.0
+All metros,54,-0.0048,0.463,0.5914,12-month outlook,Raw values,
+All metros,72,-0.0055,0.347,0.944,3-month score: tone only,Main values,
+All metros,72,0.0002,0.208,0.4139,3-month score: volume only,Main values,
+All metros,66,-0.0117,0.5,0.8029,6 months ahead,Main values,
+Sun Belt and Mountain West,72,-0.0044,0.264,0.798,3-month score,Main values,
+"Coastal, Midwest and Northeast",72,0.0058,0.181,0.3184,3-month score,Main values,

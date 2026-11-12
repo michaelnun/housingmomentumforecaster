@@ -1,46 +1,46 @@
-metro,query,articles_per_month,usable
-Phoenix,"""phoenix"" (""housing market"" OR ""home prices"" OR ""home sales"" OR ""real estate market"" OR ""housing prices"") sourcecountry:US sourcelang:english",240.3,True
-Dallas,"""dallas"" (""housing market"" OR ""home prices"" OR ""home sales"" OR ""real estate market"" OR ""housing prices"") sourcecountry:US sourcelang:english",331.6,True
-Houston,"""houston"" (""housing market"" OR ""home prices"" OR ""home sales"" OR ""real estate market"" OR ""housing prices"") sourcecountry:US sourcelang:english",263.3,True
-Austin,"""austin"" (""housing market"" OR ""home prices"" OR ""home sales"" OR ""real estate market"" OR ""housing prices"") sourcecountry:US sourcelang:english",0.0,False
-San Antonio,"""san antonio"" (""housing market"" OR ""home prices"" OR ""home sales"" OR ""real estate market"" OR ""housing prices"") sourcecountry:US sourcelang:english",96.9,True
-Atlanta,"""atlanta"" (""housing market"" OR ""home prices"" OR ""home sales"" OR ""real estate market"" OR ""housing prices"") sourcecountry:US sourcelang:english",0.0,False
-Tampa,"""tampa"" (""housing market"" OR ""home prices"" OR ""home sales"" OR ""real estate market"" OR ""housing prices"") sourcecountry:US sourcelang:english",159.8,True
-Orlando,"""orlando"" (""housing market"" OR ""home prices"" OR ""home sales"" OR ""real estate market"" OR ""housing prices"") sourcecountry:US sourcelang:english",0.0,False
-Miami,"""miami"" (""housing market"" OR ""home prices"" OR ""home sales"" OR ""real estate market"" OR ""housing prices"") sourcecountry:US sourcelang:english",301.4,True
-Jacksonville,"""jacksonville"" (""housing market"" OR ""home prices"" OR ""home sales"" OR ""real estate market"" OR ""housing prices"") sourcecountry:US sourcelang:english",76.6,True
-Charlotte,"""charlotte"" (""housing market"" OR ""home prices"" OR ""home sales"" OR ""real estate market"" OR ""housing prices"") sourcecountry:US sourcelang:english",146.5,True
-Raleigh,"""raleigh"" (""housing market"" OR ""home prices"" OR ""home sales"" OR ""real estate market"" OR ""housing prices"") sourcecountry:US sourcelang:english",0.0,False
-Nashville,"""nashville"" (""housing market"" OR ""home prices"" OR ""home sales"" OR ""real estate market"" OR ""housing prices"") sourcecountry:US sourcelang:english",133.9,True
-Memphis,"""memphis"" (""housing market"" OR ""home prices"" OR ""home sales"" OR ""real estate market"" OR ""housing prices"") sourcecountry:US sourcelang:english",0.0,False
-Birmingham,"""birmingham"" (""housing market"" OR ""home prices"" OR ""home sales"" OR ""real estate market"" OR ""housing prices"") sourcecountry:US sourcelang:english",55.8,True
-New Orleans,"""new orleans"" (""housing market"" OR ""home prices"" OR ""home sales"" OR ""real estate market"" OR ""housing prices"") sourcecountry:US sourcelang:english",83.4,True
-Oklahoma City,"""oklahoma city"" (""housing market"" OR ""home prices"" OR ""home sales"" OR ""real estate market"" OR ""housing prices"") sourcecountry:US sourcelang:english",0.0,False
-Richmond,"""richmond"" virginia (""housing market"" OR ""home prices"" OR ""home sales"" OR ""real estate market"" OR ""housing prices"") sourcecountry:US sourcelang:english",0.0,False
-Denver,"""denver"" (""housing market"" OR ""home prices"" OR ""home sales"" OR ""real estate market"" OR ""housing prices"") sourcecountry:US sourcelang:english",0.0,False
-Las Vegas,"""las vegas"" (""housing market"" OR ""home prices"" OR ""home sales"" OR ""real estate market"" OR ""housing prices"") sourcecountry:US sourcelang:english",230.2,True
-Salt Lake City,"""salt lake city"" (""housing market"" OR ""home prices"" OR ""home sales"" OR ""real estate market"" OR ""housing prices"") sourcecountry:US sourcelang:english",0.0,False
-Los Angeles,"""los angeles"" (""housing market"" OR ""home prices"" OR ""home sales"" OR ""real estate market"" OR ""housing prices"") sourcecountry:US sourcelang:english",584.9,True
-San Diego,"""san diego"" (""housing market"" OR ""home prices"" OR ""home sales"" OR ""real estate market"" OR ""housing prices"") sourcecountry:US sourcelang:english",0.0,False
-San Francisco,"""san francisco"" (""housing market"" OR ""home prices"" OR ""home sales"" OR ""real estate market"" OR ""housing prices"") sourcecountry:US sourcelang:english",0.0,False
-Sacramento,"""sacramento"" (""housing market"" OR ""home prices"" OR ""home sales"" OR ""real estate market"" OR ""housing prices"") sourcecountry:US sourcelang:english",142.6,True
-Seattle,"""seattle"" (""housing market"" OR ""home prices"" OR ""home sales"" OR ""real estate market"" OR ""housing prices"") sourcecountry:US sourcelang:english",0.0,False
-Portland,"""portland"" oregon (""housing market"" OR ""home prices"" OR ""home sales"" OR ""real estate market"" OR ""housing prices"") sourcecountry:US sourcelang:english",0.0,False
-New York,"""new york"" (""housing market"" OR ""home prices"" OR ""home sales"" OR ""real estate market"" OR ""housing prices"") sourcecountry:US sourcelang:english",0.0,False
-Boston,"""boston"" (""housing market"" OR ""home prices"" OR ""home sales"" OR ""real estate market"" OR ""housing prices"") sourcecountry:US sourcelang:english",0.0,False
-Philadelphia,"""philadelphia"" (""housing market"" OR ""home prices"" OR ""home sales"" OR ""real estate market"" OR ""housing prices"") sourcecountry:US sourcelang:english",0.0,False
-Washington DC,"""washington dc"" (""housing market"" OR ""home prices"" OR ""home sales"" OR ""real estate market"" OR ""housing prices"") sourcecountry:US sourcelang:english",70.4,True
-Baltimore,"""baltimore"" (""housing market"" OR ""home prices"" OR ""home sales"" OR ""real estate market"" OR ""housing prices"") sourcecountry:US sourcelang:english",103.1,True
-Pittsburgh,"""pittsburgh"" (""housing market"" OR ""home prices"" OR ""home sales"" OR ""real estate market"" OR ""housing prices"") sourcecountry:US sourcelang:english",115.3,True
-Buffalo,"""buffalo"" (""housing market"" OR ""home prices"" OR ""home sales"" OR ""real estate market"" OR ""housing prices"") sourcecountry:US sourcelang:english",74.9,True
-Chicago,"""chicago"" (""housing market"" OR ""home prices"" OR ""home sales"" OR ""real estate market"" OR ""housing prices"") sourcecountry:US sourcelang:english",0.0,False
-Detroit,"""detroit"" (""housing market"" OR ""home prices"" OR ""home sales"" OR ""real estate market"" OR ""housing prices"") sourcecountry:US sourcelang:english",0.0,False
-Minneapolis,"""minneapolis"" (""housing market"" OR ""home prices"" OR ""home sales"" OR ""real estate market"" OR ""housing prices"") sourcecountry:US sourcelang:english",137.8,True
-St. Louis,"""st. louis"" (""housing market"" OR ""home prices"" OR ""home sales"" OR ""real estate market"" OR ""housing prices"") sourcecountry:US sourcelang:english",138.6,True
-Kansas City,"""kansas city"" (""housing market"" OR ""home prices"" OR ""home sales"" OR ""real estate market"" OR ""housing prices"") sourcecountry:US sourcelang:english",121.3,True
-Milwaukee,"""milwaukee"" (""housing market"" OR ""home prices"" OR ""home sales"" OR ""real estate market"" OR ""housing prices"") sourcecountry:US sourcelang:english",0.0,False
-Columbus,"""columbus"" ohio (""housing market"" OR ""home prices"" OR ""home sales"" OR ""real estate market"" OR ""housing prices"") sourcecountry:US sourcelang:english",0.0,False
-Cincinnati,"""cincinnati"" (""housing market"" OR ""home prices"" OR ""home sales"" OR ""real estate market"" OR ""housing prices"") sourcecountry:US sourcelang:english",0.0,False
-Cleveland,"""cleveland"" (""housing market"" OR ""home prices"" OR ""home sales"" OR ""real estate market"" OR ""housing prices"") sourcecountry:US sourcelang:english",133.3,True
-Indianapolis,"""indianapolis"" (""housing market"" OR ""home prices"" OR ""home sales"" OR ""real estate market"" OR ""housing prices"") sourcecountry:US sourcelang:english",89.6,True
-Louisville,"""louisville"" (""housing market"" OR ""home prices"" OR ""home sales"" OR ""real estate market"" OR ""housing prices"") sourcecountry:US sourcelang:english",0.0,False
+metro,query,articles_per_month,status,usable
+Phoenix,"""phoenix"" (""housing market"" OR ""home prices"" OR ""home sales"" OR ""real estate market"" OR ""housing prices"") sourcecountry:US sourcelang:english",,download failed,False
+Dallas,"""dallas"" (""housing market"" OR ""home prices"" OR ""home sales"" OR ""real estate market"" OR ""housing prices"") sourcecountry:US sourcelang:english",331.6,ok,True
+Houston,"""houston"" (""housing market"" OR ""home prices"" OR ""home sales"" OR ""real estate market"" OR ""housing prices"") sourcecountry:US sourcelang:english",,download failed,False
+Austin,"""austin"" (""housing market"" OR ""home prices"" OR ""home sales"" OR ""real estate market"" OR ""housing prices"") sourcecountry:US sourcelang:english",,download failed,False
+San Antonio,"""san antonio"" (""housing market"" OR ""home prices"" OR ""home sales"" OR ""real estate market"" OR ""housing prices"") sourcecountry:US sourcelang:english",,download failed,False
+Atlanta,"""atlanta"" (""housing market"" OR ""home prices"" OR ""home sales"" OR ""real estate market"" OR ""housing prices"") sourcecountry:US sourcelang:english",,download failed,False
+Tampa,"""tampa"" (""housing market"" OR ""home prices"" OR ""home sales"" OR ""real estate market"" OR ""housing prices"") sourcecountry:US sourcelang:english",159.8,ok,True
+Orlando,"""orlando"" (""housing market"" OR ""home prices"" OR ""home sales"" OR ""real estate market"" OR ""housing prices"") sourcecountry:US sourcelang:english",,download failed,False
+Miami,"""miami"" (""housing market"" OR ""home prices"" OR ""home sales"" OR ""real estate market"" OR ""housing prices"") sourcecountry:US sourcelang:english",,download failed,False
+Jacksonville,"""jacksonville"" (""housing market"" OR ""home prices"" OR ""home sales"" OR ""real estate market"" OR ""housing prices"") sourcecountry:US sourcelang:english",76.6,ok,True
+Charlotte,"""charlotte"" (""housing market"" OR ""home prices"" OR ""home sales"" OR ""real estate market"" OR ""housing prices"") sourcecountry:US sourcelang:english",146.5,ok,True
+Raleigh,"""raleigh"" (""housing market"" OR ""home prices"" OR ""home sales"" OR ""real estate market"" OR ""housing prices"") sourcecountry:US sourcelang:english",,download failed,False
+Nashville,"""nashville"" (""housing market"" OR ""home prices"" OR ""home sales"" OR ""real estate market"" OR ""housing prices"") sourcecountry:US sourcelang:english",133.9,ok,True
+Memphis,"""memphis"" (""housing market"" OR ""home prices"" OR ""home sales"" OR ""real estate market"" OR ""housing prices"") sourcecountry:US sourcelang:english",65.2,ok,True
+Birmingham,"""birmingham"" (""housing market"" OR ""home prices"" OR ""home sales"" OR ""real estate market"" OR ""housing prices"") sourcecountry:US sourcelang:english",55.8,ok,True
+New Orleans,"""new orleans"" (""housing market"" OR ""home prices"" OR ""home sales"" OR ""real estate market"" OR ""housing prices"") sourcecountry:US sourcelang:english",83.4,ok,True
+Oklahoma City,"""oklahoma city"" (""housing market"" OR ""home prices"" OR ""home sales"" OR ""real estate market"" OR ""housing prices"") sourcecountry:US sourcelang:english",,download failed,False
+Richmond,"""richmond"" virginia (""housing market"" OR ""home prices"" OR ""home sales"" OR ""real estate market"" OR ""housing prices"") sourcecountry:US sourcelang:english",,download failed,False
+Denver,"""denver"" (""housing market"" OR ""home prices"" OR ""home sales"" OR ""real estate market"" OR ""housing prices"") sourcecountry:US sourcelang:english",,download failed,False
+Las Vegas,"""las vegas"" (""housing market"" OR ""home prices"" OR ""home sales"" OR ""real estate market"" OR ""housing prices"") sourcecountry:US sourcelang:english",230.2,ok,True
+Salt Lake City,"""salt lake city"" (""housing market"" OR ""home prices"" OR ""home sales"" OR ""real estate market"" OR ""housing prices"") sourcecountry:US sourcelang:english",,download failed,False
+Los Angeles,"""los angeles"" (""housing market"" OR ""home prices"" OR ""home sales"" OR ""real estate market"" OR ""housing prices"") sourcecountry:US sourcelang:english",,download failed,False
+San Diego,"""san diego"" (""housing market"" OR ""home prices"" OR ""home sales"" OR ""real estate market"" OR ""housing prices"") sourcecountry:US sourcelang:english",,download failed,False
+San Francisco,"""san francisco"" (""housing market"" OR ""home prices"" OR ""home sales"" OR ""real estate market"" OR ""housing prices"") sourcecountry:US sourcelang:english",,download failed,False
+Sacramento,"""sacramento"" (""housing market"" OR ""home prices"" OR ""home sales"" OR ""real estate market"" OR ""housing prices"") sourcecountry:US sourcelang:english",142.6,ok,True
+Seattle,"""seattle"" (""housing market"" OR ""home prices"" OR ""home sales"" OR ""real estate market"" OR ""housing prices"") sourcecountry:US sourcelang:english",,download failed,False
+Portland,"""portland"" oregon (""housing market"" OR ""home prices"" OR ""home sales"" OR ""real estate market"" OR ""housing prices"") sourcecountry:US sourcelang:english",,download failed,False
+New York,"""new york"" (""housing market"" OR ""home prices"" OR ""home sales"" OR ""real estate market"" OR ""housing prices"") sourcecountry:US sourcelang:english",,download failed,False
+Boston,"""boston"" (""housing market"" OR ""home prices"" OR ""home sales"" OR ""real estate market"" OR ""housing prices"") sourcecountry:US sourcelang:english",,download failed,False
+Philadelphia,"""philadelphia"" (""housing market"" OR ""home prices"" OR ""home sales"" OR ""real estate market"" OR ""housing prices"") sourcecountry:US sourcelang:english",,download failed,False
+Washington DC,"""washington dc"" (""housing market"" OR ""home prices"" OR ""home sales"" OR ""real estate market"" OR ""housing prices"") sourcecountry:US sourcelang:english",,download failed,False
+Baltimore,"""baltimore"" (""housing market"" OR ""home prices"" OR ""home sales"" OR ""real estate market"" OR ""housing prices"") sourcecountry:US sourcelang:english",103.1,ok,True
+Pittsburgh,"""pittsburgh"" (""housing market"" OR ""home prices"" OR ""home sales"" OR ""real estate market"" OR ""housing prices"") sourcecountry:US sourcelang:english",,download failed,False
+Buffalo,"""buffalo"" (""housing market"" OR ""home prices"" OR ""home sales"" OR ""real estate market"" OR ""housing prices"") sourcecountry:US sourcelang:english",74.9,ok,True
+Chicago,"""chicago"" (""housing market"" OR ""home prices"" OR ""home sales"" OR ""real estate market"" OR ""housing prices"") sourcecountry:US sourcelang:english",,download failed,False
+Detroit,"""detroit"" (""housing market"" OR ""home prices"" OR ""home sales"" OR ""real estate market"" OR ""housing prices"") sourcecountry:US sourcelang:english",,download failed,False
+Minneapolis,"""minneapolis"" (""housing market"" OR ""home prices"" OR ""home sales"" OR ""real estate market"" OR ""housing prices"") sourcecountry:US sourcelang:english",137.8,ok,True
+St. Louis,"""st. louis"" (""housing market"" OR ""home prices"" OR ""home sales"" OR ""real estate market"" OR ""housing prices"") sourcecountry:US sourcelang:english",,download failed,False
+Kansas City,"""kansas city"" (""housing market"" OR ""home prices"" OR ""home sales"" OR ""real estate market"" OR ""housing prices"") sourcecountry:US sourcelang:english",121.3,ok,True
+Milwaukee,"""milwaukee"" (""housing market"" OR ""home prices"" OR ""home sales"" OR ""real estate market"" OR ""housing prices"") sourcecountry:US sourcelang:english",,download failed,False
+Columbus,"""columbus"" ohio (""housing market"" OR ""home prices"" OR ""home sales"" OR ""real estate market"" OR ""housing prices"") sourcecountry:US sourcelang:english",,download failed,False
+Cincinnati,"""cincinnati"" (""housing market"" OR ""home prices"" OR ""home sales"" OR ""real estate market"" OR ""housing prices"") sourcecountry:US sourcelang:english",,download failed,False
+Cleveland,"""cleveland"" (""housing market"" OR ""home prices"" OR ""home sales"" OR ""real estate market"" OR ""housing prices"") sourcecountry:US sourcelang:english",133.3,ok,True
+Indianapolis,"""indianapolis"" (""housing market"" OR ""home prices"" OR ""home sales"" OR ""real estate market"" OR ""housing prices"") sourcecountry:US sourcelang:english",,not downloaded yet,False
+Louisville,"""louisville"" (""housing market"" OR ""home prices"" OR ""home sales"" OR ""real estate market"" OR ""housing prices"") sourcecountry:US sourcelang:english",,not downloaded yet,False

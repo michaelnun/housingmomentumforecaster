@@ -1,6 +1,40 @@
 {
   "rule_file": "docs/preregistration_news.md",
-  "metros_with_news": 12,
+  "metros_with_news": 15,
+  "complete": false,
+  "download_problems": [
+    "Atlanta",
+    "Austin",
+    "Boston",
+    "Chicago",
+    "Cincinnati",
+    "Columbus",
+    "Denver",
+    "Detroit",
+    "Houston",
+    "Indianapolis",
+    "Los Angeles",
+    "Louisville",
+    "Miami",
+    "Milwaukee",
+    "New York",
+    "Oklahoma City",
+    "Orlando",
+    "Philadelphia",
+    "Phoenix",
+    "Pittsburgh",
+    "Portland",
+    "Raleigh",
+    "Richmond",
+    "Salt Lake City",
+    "San Antonio",
+    "San Diego",
+    "San Francisco",
+    "Seattle",
+    "St. Louis",
+    "Washington DC"
+  ],
+  "too_little_news": [],
   "3m": {
     "passed": false,
     "rules": {
@@ -10,10 +44,10 @@
     },
     "all_metros": {
       "check": "All metros",
-      "months": 69,
-      "gain": -0.0095,
-      "better_share": 0.232,
-      "p": 0.9795,
+      "months": 72,
+      "gain": -0.0066,
+      "better_share": 0.333,
+      "p": 0.9543,
       "test": "3-month score",
       "version": "Main values",
       "share_significant": null
@@ -21,15 +55,15 @@
     "new_metros": null,
     "raw_values": {
       "check": "All metros",
-      "months": 69,
-      "gain": -0.0186,
-      "better_share": 0.275,
-      "p": 0.9857,
+      "months": 72,
+      "gain": -0.0175,
+      "better_share": 0.417,
+      "p": 0.989,
       "test": "3-month score",
       "version": "Raw values",
       "share_significant": null
     },
-    "first_month": "Oct 2020",
+    "first_month": "Jul 2020",
     "last_month": "Jun 2026"
   },
   "12m": {
@@ -41,10 +75,10 @@
     },
     "all_metros": {
       "check": "All metros",
-      "months": 51,
-      "gain": -0.0123,
-      "better_share": 0.373,
-      "p": 0.7313,
+      "months": 54,
+      "gain": -0.0066,
+      "better_share": 0.519,
+      "p": 0.6666,
       "test": "12-month outlook",
       "version": "Main values",
       "share_significant": null
@@ -52,15 +86,15 @@
     "new_metros": null,
     "raw_values": {
       "check": "All metros",
-      "months": 51,
-      "gain": -0.0279,
-      "better_share": 0.392,
-      "p": 0.9259,
+      "months": 54,
+      "gain": -0.0048,
+      "better_share": 0.463,
+      "p": 0.5914,
       "test": "12-month outlook",
       "version": "Raw values",
       "share_significant": null
     },
-    "first_month": "Jul 2021",
+    "first_month": "Apr 2021",
     "last_month": "Sep 2025"
   }
 }
