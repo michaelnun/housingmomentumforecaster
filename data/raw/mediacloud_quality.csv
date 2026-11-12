@@ -1,0 +1,46 @@
+metro,status,stories_per_month,first_month,usable
+Phoenix,ok,60.6,2017-01,True
+Dallas,ok,65.1,2017-01,True
+Houston,ok,47.4,2017-01,True
+Austin,ok,60.4,2017-01,True
+San Antonio,ok,18.5,2017-01,True
+Atlanta,ok,68.8,2017-01,True
+Tampa,ok,33.1,2017-01,True
+Orlando,ok,26.9,2017-01,True
+Miami,ok,72.3,2017-01,True
+Jacksonville,ok,14.7,2017-01,True
+Charlotte,ok,29.3,2017-01,True
+Raleigh,ok,14.2,2017-01,True
+Nashville,ok,20.9,2017-01,True
+Memphis,ok,10.2,2017-01,True
+Birmingham,too little news,3.8,2017-01,False
+New Orleans,ok,13.9,2017-01,True
+Oklahoma City,ok,7.3,2017-01,True
+Richmond,too little news,4.9,2017-01,False
+Denver,ok,55.7,2017-01,True
+Las Vegas,ok,44.2,2017-01,True
+Salt Lake City,ok,10.5,2017-01,True
+Los Angeles,ok,149.2,2017-01,True
+San Diego,ok,61.6,2017-01,True
+San Francisco,ok,142.7,2017-01,True
+Sacramento,ok,40.3,2017-01,True
+Seattle,ok,81.5,2017-01,True
+Portland,ok,12.1,2017-01,True
+New York,download failed,,,False
+Boston,ok,67.8,2017-01,True
+Philadelphia,ok,56.4,2017-01,True
+Washington DC,ok,69.8,2017-01,True
+Baltimore,ok,21.2,2017-01,True
+Pittsburgh,ok,22.4,2017-01,True
+Buffalo,ok,14.2,2017-01,True
+Chicago,ok,97.4,2017-01,True
+Detroit,ok,39.3,2017-01,True
+Minneapolis,ok,34.3,2017-01,True
+St. Louis,ok,36.4,2017-01,True
+Kansas City,ok,22.2,2017-01,True
+Milwaukee,ok,17.7,2017-01,True
+Columbus,ok,13.1,2017-01,True
+Cincinnati,ok,15.6,2017-01,True
+Cleveland,ok,35.3,2017-01,True
+Indianapolis,ok,15.4,2017-01,True
+Louisville,ok,8.1,2017-01,True

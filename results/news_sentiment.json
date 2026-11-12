@@ -1,10 +1,11 @@
 {
-  "headlines_scored": 100,
-  "metros": 13,
-  "from": "Sep 24, 2026",
+  "headlines_scored": 48,
+  "metros": 12,
+  "from": "Oct 01, 2026",
   "to": "Nov 10, 2026",
   "headlines_in_archive": 100,
+  "dropped_as_off_topic": 52,
   "agreement_with_gdelt_plain": null,
   "agreement_with_gdelt_housing": null,
-  "share_label_changed_by_housing_words": 0.05
+  "share_label_changed_by_housing_words": 0.0
 }

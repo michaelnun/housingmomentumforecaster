@@ -1,0 +1,94 @@
+{
+  "rule_file": "docs/preregistration_news.md",
+  "source": "Media Cloud",
+  "metros_with_news": 42,
+  "complete": false,
+  "download_problems": [
+    "New York"
+  ],
+  "too_little_news": [
+    "Birmingham",
+    "Richmond"
+  ],
+  "3m": {
+    "passed": false,
+    "rules": {
+      "Main values, all metros: better with p < 0.05": false,
+      "Main values, 23 new metros: better (above zero)": true,
+      "Raw values, all metros: better (above zero)": true
+    },
+    "all_metros": {
+      "check": "All metros",
+      "months": 74,
+      "gain": 0.0,
+      "better_share": 0.432,
+      "p": 0.4812,
+      "test": "3-month score",
+      "version": "Main values",
+      "share_significant": null
+    },
+    "new_metros": {
+      "check": "New metros (untouched test)",
+      "months": 74,
+      "gain": 0.0011,
+      "better_share": 0.297,
+      "p": 0.3052,
+      "test": "3-month score",
+      "version": "Main values",
+      "share_significant": null
+    },
+    "raw_values": {
+      "check": "All metros",
+      "months": 74,
+      "gain": 0.0007,
+      "better_share": 0.419,
+      "p": 0.4145,
+      "test": "3-month score",
+      "version": "Raw values",
+      "share_significant": null
+    },
+    "first_month": "May 2020",
+    "last_month": "Jun 2026"
+  },
+  "12m": {
+    "passed": false,
+    "rules": {
+      "Main values, all metros: better with p < 0.05": false,
+      "Main values, 23 new metros: better (above zero)": false,
+      "Raw values, all metros: better (above zero)": false
+    },
+    "all_metros": {
+      "check": "All metros",
+      "months": 56,
+      "gain": -0.0107,
+      "better_share": 0.25,
+      "p": 0.9954,
+      "test": "12-month outlook",
+      "version": "Main values",
+      "share_significant": null
+    },
+    "new_metros": {
+      "check": "New metros (untouched test)",
+      "months": 56,
+      "gain": -0.0167,
+      "better_share": 0.375,
+      "p": 0.9794,
+      "test": "12-month outlook",
+      "version": "Main values",
+      "share_significant": null
+    },
+    "raw_values": {
+      "check": "All metros",
+      "months": 56,
+      "gain": -0.0134,
+      "better_share": 0.304,
+      "p": 0.9956,
+      "test": "12-month outlook",
+      "version": "Raw values",
+      "share_significant": null
+    },
+    "first_month": "Feb 2021",
+    "last_month": "Sep 2025"
+  },
+  "enough_history": true
+}

@@ -1,5 +1,6 @@
 {
   "rule_file": "docs/preregistration_news.md",
+  "source": "GDELT",
   "metros_with_news": 15,
   "complete": false,
   "download_problems": [
