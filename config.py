@@ -160,3 +160,17 @@ NEWS_QUERIES = {
         for name in NEWS_NAMES.get(m, [f'"{m.lower()}"'])]
     for m in METROS
 }
+
+# Second news source: Media Cloud (free researcher news archive; needs a free API key in the
+# MEDIACLOUD_API_KEY environment variable / GitHub secret). Same cities and housing phrases as above,
+# in Media Cloud's search syntax. Rules: addendum 2 in docs/preregistration_news.md
+MEDIACLOUD_COLLECTIONS = [34412234]  # United States - National
+MC_NAMES = {
+    "Portland": '"portland" AND oregon', "Columbus": '"columbus" AND ohio',
+    "Richmond": '"richmond" AND virginia', "Birmingham": '"birmingham" AND alabama',
+    "Washington DC": '("washington dc" OR "washington d.c." OR "district of columbia")',
+    "St. Louis": '("st. louis" OR "st louis" OR "saint louis")',
+}
+MC_QUERIES = {m: f'{MC_NAMES.get(m, chr(34) + m.lower() + chr(34))} AND ({" OR ".join(NEWS_PHRASES)})'
+              for m in METROS}
+MC_MIN_HEADLINES = 10  # months with fewer scored headlines (3-month window) get no tone value

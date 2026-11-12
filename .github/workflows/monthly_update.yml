@@ -36,6 +36,8 @@ jobs:
 
       - name: "Step 1: download new data"
         run: python step1_collect.py
+        env:
+          MEDIACLOUD_API_KEY: ${{ secrets.MEDIACLOUD_API_KEY }}   # free key, stored as a GitHub secret
 
       - name: "Steps 2-4: build the table, test the model, make the score"
         run: |

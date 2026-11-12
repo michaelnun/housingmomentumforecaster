@@ -41,3 +41,13 @@ Either way, the result is reported as it comes out, including on the dashboard.
 ---
 
 **Addendum (November 11, 2026, 5:52 pm ET, written while the first news download was still running and before any news results existed).** GDELT limited how fast GitHub's computers could download, so some cities' downloads failed (for example, Memphis and Oklahoma City were logged as "no news found" after three blocked requests). A failed download is not the same as "too little news," so those cities don't fall under the data quality rule above. The downloader now records failed downloads separately and retries them on the next run. **The decision uses the first run in which every metro's news downloaded.** Any result from a run with failed downloads is shown as preliminary and doesn't count. Our own headline sentiment (VADER, scored as is and with housing words added) is shown on the dashboard as context and compared with GDELT's tone; it is not part of this test, because GDELT returns full headlines only for the last few months.
+
+---
+
+**Addendum 2 (November 12, 2026, 12:55 AM ET, before any Media Cloud data was downloaded): a second news source.** GDELT kept blocking downloads (both GitHub's computers and a home connection), so the same question is also tested with **Media Cloud** (a free news archive run by researchers at MIT, Northeastern and UMass). Only the archive's date coverage may be checked before running this (whether stories exist back to 2017); no relationship with prices is looked at.
+
+- **Data:** Media Cloud's U.S. National news collection; the same city names and housing phrases as above (Lucene syntax, in `config.py`, `MC_QUERIES`). Per city: daily story counts and the share of all stories in the collection, and the headlines of the matching stories.
+- **Tone comes from our own scoring:** each headline that mentions the city or a housing word is scored with VADER plus the housing word list (`sentiment.py`), and averaged by month.
+- **Features,** compared with the typical metro like everything else: average headline tone over the last 3 months (needs at least 10 headlines, otherwise missing); its change vs. 3 months earlier; news volume (3-month average share) vs. a year earlier.
+- **Test and pass rule:** exactly the same as above (3-month score and 12-month outlook; three conditions each; only a run in which every metro's Media Cloud data downloaded counts). If the archive covers too little history for at least 24 months of the month-by-month test, the test is not run and the project says so.
+- **Two news tests now exist (GDELT and Media Cloud).** Each is reported. News goes into a score only if that source passes its own rule; if both pass, the one with the larger gain on the 23 new metros is used.

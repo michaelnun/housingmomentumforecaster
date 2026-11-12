@@ -181,6 +181,25 @@ def build(raw: Path):
             share3.where(share3 > 0).groupby(df["metro"]).shift(12))      # news volume vs. a year ago
         extra["news"] = ["news_tone_3m", "news_tone_chg3", "news_vol_yoy"]
 
+    mc_file = raw / "mediacloud_clean.csv"  # second news source, tone = our own headline scores
+    if mc_file.exists():
+        from config import MC_MIN_HEADLINES
+        mcd = pd.read_csv(mc_file, parse_dates=["date"])
+        qf = raw / "mediacloud_quality.csv"
+        if qf.exists():
+            mcd = mcd[mcd["metro"].isin(pd.read_csv(qf).query("usable")["metro"])]
+        df = df.merge(mcd[["metro", "date", "share", "headlines", "tone_sum"]].rename(
+            columns={"share": "mc_share", "headlines": "mc_heads", "tone_sum": "mc_tone_sum"}),
+            on=["metro", "date"], how="left")
+        g = df.groupby("metro")
+        roll3 = lambda c: g[c].transform(lambda s: s.rolling(3, min_periods=3).sum())
+        n3 = roll3("mc_heads")
+        df["mc_tone_3m"] = roll3("mc_tone_sum") / n3.where(n3 >= MC_MIN_HEADLINES)  # headline tone, last 3 months
+        df["mc_tone_chg3"] = df["mc_tone_3m"] - g["mc_tone_3m"].shift(3)
+        s3 = g["mc_share"].transform(lambda s: s.rolling(3, min_periods=3).mean())
+        df["mc_vol_yoy"] = np.log(s3.where(s3 > 0)) - np.log(s3.where(s3 > 0).groupby(df["metro"]).shift(12))
+        extra["mediacloud"] = ["mc_tone_3m", "mc_tone_chg3", "mc_vol_yoy"]
+
     for key, fname, terms in (("seller", "seller_clean.csv", SELLER_TERMS),
                               ("moving", "movingto_clean.csv", ["movingto"])):
         f = raw / fname

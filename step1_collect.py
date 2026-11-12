@@ -5,6 +5,7 @@
     python step1_collect.py --pulls 3  # average 3 Google Trends pulls (less noise, slower)
 """
 import argparse
+import datetime as dt
 import io
 import json
 import os
@@ -30,7 +31,7 @@ class _Tee:
 
 from config import (RAW, START, METROS, BUYER_TERMS, HOME_IMPROVEMENT_TERMS, SELLER_TERMS,
                     NATIONWIDE_SEARCHES, SEARCH_NAMES, FRED_NATIONAL, BLS_AREAS,
-                    NEWS_START, NEWS_QUERIES, NEWS_MIN_ARTICLES)
+                    NEWS_START, NEWS_QUERIES, NEWS_MIN_ARTICLES, MEDIACLOUD_COLLECTIONS, MC_QUERIES)
 
 ZILLOW_URL = ("https://files.zillowstatic.com/research/public_csvs/zhvi/"
               "Metro_zhvi_uc_sfrcondo_tier_0.33_0.67_sm_sa_month.csv")
@@ -563,7 +564,7 @@ def collect_nationwide(key, template):
 GDELT_URL = "https://api.gdeltproject.org/api/v2/doc/doc"
 NEWS_DIR = RAW / "news"
 NEWS_ARCHIVE = RAW / "news_headlines_archive.csv"  # every headline collected so far (grows each month)
-NEWS_BUDGET_MIN = 150  # stop starting new cities after this long; the rest are picked up next run
+NEWS_BUDGET_MIN = 60   # stop starting new cities after this long; the rest are picked up next run
 GDELT_HEADERS = {"User-Agent": "HousingMomentumForecaster/1.0 (Fordham University class project)"}
 FAILED = None          # gdelt() result when GDELT couldn't answer (vs. {} = nothing found)
 
@@ -752,6 +753,115 @@ def collect_news():
             print(f"  {status}: {', '.join(q.loc[q['status'] == status, 'metro'])}")
 
 
+MC_DIR = RAW / "mediacloud"
+MC_BUDGET_MIN = 150   # stop starting new cities after this long; the rest are picked up next run
+MC_MAX_PAGES = 60     # headline pages per city (up to 1,000 headlines a page)
+
+
+def collect_mediacloud():
+    """Second news source (web content): Media Cloud's U.S. National collection. Per city: daily
+    counts of housing stories and their share of all stories, plus every matching headline, which
+    we score ourselves (sentiment.py). Needs a free API key in MEDIACLOUD_API_KEY.
+    Rules: addendum 2 in docs/preregistration_news.md."""
+    print("News coverage of each housing market (Media Cloud)")
+    key = os.environ.get("MEDIACLOUD_API_KEY", "").strip()
+    if not key:
+        print("  no MEDIACLOUD_API_KEY set; skipping Media Cloud")
+        return
+    try:
+        import mediacloud.api
+    except ImportError:
+        print("  mediacloud package not installed (pip install mediacloud); skipping")
+        return
+    mc = mediacloud.api.SearchApi(key)
+    MC_DIR.mkdir(parents=True, exist_ok=True)
+    start, end = dt.date.fromisoformat(NEWS_START), dt.date.today()
+    t0, quality = time.time(), []
+    for metro, q in MC_QUERIES.items():
+        base = MC_DIR / metro.replace(" ", "_")
+        cf, tf = base.with_name(base.name + "_counts.csv"), base.with_name(base.name + "_headlines.csv")
+        if not (is_fresh(cf) and is_fresh(tf)):
+            if (time.time() - t0) / 60 > MC_BUDGET_MIN:
+                quality.append({"metro": metro, "status": "ok" if cf.exists() and tf.exists() else "not downloaded yet"})
+                continue
+            try:
+                pts = mc.story_count_over_time(q, start, end, collection_ids=MEDIACLOUD_COLLECTIONS)
+                counts = pd.DataFrame(pts)
+                rows, token, pages = [], None, 0
+                while pages < MC_MAX_PAGES:
+                    try:
+                        stories, token = mc.story_list(q, start, end, collection_ids=MEDIACLOUD_COLLECTIONS,
+                                                       pagination_token=token, page_size=1000)
+                    except Exception:
+                        if pages:  # page size refused: fall back to the default size
+                            raise
+                        stories, token = mc.story_list(q, start, end, collection_ids=MEDIACLOUD_COLLECTIONS,
+                                                       pagination_token=token)
+                    rows += [{"date": s.get("publish_date"), "title": s.get("title"), "url": s.get("url"),
+                              "site": s.get("media_name")} for s in stories]
+                    pages += 1
+                    if not token or not stories:
+                        break
+            except Exception as e:
+                print(f"  {metro}: download failed ({type(e).__name__}: {str(e)[:120]}); will retry next run")
+                quality.append({"metro": metro, "status": "download failed"})
+                continue
+            counts.to_csv(cf, index=False)
+            pd.DataFrame(rows, columns=["date", "title", "url", "site"]).to_csv(tf, index=False)
+            mark(cf)
+            mark(tf)
+            print(f"  {metro}: {int(counts['count'].sum()) if len(counts) else 0:,} stories, {len(rows):,} headlines"
+                  + (" (headline cap reached)" if pages >= MC_MAX_PAGES and token else ""))
+        quality.append({"metro": metro, "status": "ok"})
+    _mediacloud_monthly(quality)
+
+
+def _mediacloud_monthly(quality):
+    """Monthly table for the model: stories, share of all stories, and our own headline tone
+    (VADER with housing words, on headlines about the city or housing)."""
+    try:
+        from sentiment import on_topic, scorers
+        _, housing = scorers()
+    except Exception:
+        housing = None
+    out, qrows = [], []
+    for row in quality:
+        metro = row["metro"]
+        base = MC_DIR / metro.replace(" ", "_")
+        cf, tf = base.with_name(base.name + "_counts.csv"), base.with_name(base.name + "_headlines.csv")
+        if not (cf.exists() and tf.exists()):
+            qrows.append({**row, "stories_per_month": None, "first_month": None})
+            continue
+        c = pd.read_csv(cf, parse_dates=["date"])
+        c["month"] = c["date"].dt.to_period("M").dt.to_timestamp()
+        m = c.groupby("month").agg(articles=("count", "sum"), total=("total_count", "sum")).reset_index()
+        m["share"] = m["articles"] / m["total"].where(m["total"] > 0)
+        h = pd.read_csv(tf, parse_dates=["date"]).dropna(subset=["date", "title"]).assign(metro=metro)
+        if housing is not None and len(h):
+            h = h[on_topic(h)].copy()
+            h["tone"] = [housing.polarity_scores(str(t))["compound"] for t in h["title"]]
+            h["month"] = h["date"].dt.to_period("M").dt.to_timestamp()
+            t = h.groupby("month").agg(headlines=("tone", "size"), tone_sum=("tone", "sum")).reset_index()
+            m = m.merge(t, on="month", how="left")
+        else:
+            m["headlines"], m["tone_sum"] = 0, float("nan")
+        m["headlines"] = m["headlines"].fillna(0)
+        out.append(m.assign(metro=metro).rename(columns={"month": "date"}))
+        per = float(m["articles"].mean()) if len(m) else 0.0
+        first = m.loc[m["articles"] > 0, "month"].min()
+        status = row["status"] if row["status"] != "ok" else ("ok" if per >= NEWS_MIN_ARTICLES else "too little news")
+        qrows.append({"metro": metro, "status": status, "stories_per_month": round(per, 1),
+                      "first_month": f"{first:%Y-%m}" if pd.notna(first) else None})
+    q = pd.DataFrame(qrows)
+    q["usable"] = q["status"] == "ok"
+    q.to_csv(RAW / "mediacloud_quality.csv", index=False)
+    if out:
+        pd.concat(out)[["metro", "date", "articles", "total", "share", "headlines", "tone_sum"]].to_csv(
+            RAW / "mediacloud_clean.csv", index=False)
+    counts = q["status"].value_counts().to_dict()
+    print(f"  Media Cloud: {counts}; earliest month with stories: {q['first_month'].dropna().min()}")
+
+
 def collect_trends(pulls):
     collect_local((BUYER_TERMS, HOME_IMPROVEMENT_TERMS), "trends", "trends_clean.csv", pulls,
                   "buyer and Home Depot / Lowe's searches")
@@ -769,13 +879,16 @@ if __name__ == "__main__":
     ap.add_argument("--news-only", action="store_true", help="only download the news data (GDELT)")
     a = ap.parse_args()
     if a.news_only:
+        collect_mediacloud()
         collect_news()
         print("Done. Commit and push the data folder, then run the monthly update on GitHub.")
         sys.exit(0)
     collect_zillow()
     collect_fred()
     collect_market()
-    extras = [collect_home_improvement, collect_employment, collect_rent, collect_pageviews, collect_news]
+    # Media Cloud first (steady), then GDELT (often blocked; capped so the whole run fits GitHub's limit)
+    extras = [collect_home_improvement, collect_employment, collect_rent, collect_pageviews, collect_mediacloud,
+              collect_news]
     if not a.skip_trends:
         extras.append(lambda: collect_trends(a.pulls))
     for extra in extras:

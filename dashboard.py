@@ -78,6 +78,9 @@ def load():
         "news_metro": _csv("news_metro.csv", parse_dates=["date"]), "news_heads": _csv("news_headlines.csv"),
         "news_sent": _csv("news_sentiment.csv"), "news_sent_j": _json("news_sentiment.json"),
         "pv": _raw("pageviews_clean.csv"),
+        "mc_test": _json("mediacloud_test.json"), "mc_test_t": _csv("mediacloud_test.csv"),
+        "mc_metro": _csv("mediacloud_metro.csv", parse_dates=["date"]),
+        "mc_heads": _csv("mediacloud_headlines.csv"),
     }
 
 
@@ -228,6 +231,26 @@ def signal_card(col, label, value, detail, status):
         f"font-weight:600;color:{fg};background:{bg}'>{status}</span></div>", unsafe_allow_html=True)
 
 
+def news_status(test):
+    """'Passed its test' / 'Context only' / 'Being tested' from a news test's results file."""
+    if not test or not test.get("3m"):
+        return "Being tested"
+    if not test.get("complete") or test.get("enough_history") is False:
+        return "Being tested" if test.get("enough_history") is not False else "Context only"
+    return "Passed its test" if any((test.get(k) or {}).get("passed") for k in ("3m", "12m")) else "Context only"
+
+
+def metro_news(pick):
+    """This metro's news tone over time: Media Cloud (our own headline scores) if available, else GDELT."""
+    for key, tkey, label in (("mc_metro", "mc_test", "Media Cloud, tone = our VADER headline scores"),
+                             ("news_metro", "news_test", "GDELT, tone = GDELT's score")):
+        d = D[key]
+        m = d[d["metro"] == pick].dropna(subset=["tone_3m"]).sort_values("date") if d is not None else None
+        if m is not None and len(m) and ok(m.iloc[-1]["typical_tone_3m"]):
+            return m, D[tkey], label
+    return None, None, None
+
+
 def web_signals(pick):
     """What the web says about one metro: the four web signals side by side, each labeled by
     whether it's used in the score (it improved forecasts) or shown as context only."""
@@ -247,17 +270,13 @@ def web_signals(pick):
         cards.append(("OUT-OF-TOWN SEARCHES · GOOGLE", f"{li['vs_year_ago_pct']:+.0f}%",
                       f"vs. a year ago, compared with other cities; rank {int(li['rank_rising'])} of "
                       f"{int(li['metros_ranked'])} for rising interest", "Context only"))
-    nm, nt = D["news_metro"], D["news_test"]
-    mn = nm[nm["metro"] == pick].dropna(subset=["tone_3m"]).sort_values("date") if nm is not None else None
-    if mn is not None and len(mn) and ok(mn.iloc[-1]["typical_tone_3m"]):
+    mn, nt, src = metro_news(pick)
+    if mn is not None:
         ln = mn.iloc[-1]
-        final = bool(nt.get("complete"))
-        passed = final and any((nt.get(k) or {}).get("passed") for k in ("3m", "12m"))
         diff = ln["tone_3m"] - ln["typical_tone_3m"]
-        cards.append(("NEWS TONE · GDELT", f"{diff:+.2f}",
+        cards.append((f"NEWS TONE · {'MEDIA CLOUD' if src.startswith('Media') else 'GDELT'}", f"{diff:+.2f}",
                       f"{'More positive' if diff > 0 else 'More negative'} than the typical metro's housing news; "
-                      f"{ln['articles_3m']:,.0f} articles a month",
-                      "Passed its test" if passed else "Context only" if final else "Being tested"))
+                      f"{ln['articles_3m']:,.0f} stories a month", news_status(nt)))
     ns = D["news_sent"]
     sm = ns[ns["metro"] == pick] if ns is not None else None
     if sm is not None and len(sm) and sm.iloc[0]["headlines"] >= 3:
@@ -274,6 +293,49 @@ def web_signals(pick):
     cols = st.columns(len(cards))
     for col, card in zip(cols, cards):
         signal_card(col, *card)
+
+
+def news_section(title, ntest, tn, intro):
+    """Track record: one news source's pre-registered test, with its completeness."""
+    if not ntest or not (ntest.get("3m") or {}).get("all_metros"):
+        return
+    st.markdown(f"#### {title}")
+    lines = []
+    for key, label in (("3m", "3-month score"), ("12m", "12-month outlook")):
+        r_ = ntest.get(key) or {}
+        a_ = r_.get("all_metros")
+        if not a_:
+            continue
+        n_, w_ = r_.get("new_metros") or {}, r_.get("raw_values") or {}
+        lines.append(f"- **{label}: {'passed' if r_['passed'] else 'failed'}.** Change in ranking accuracy "
+                     f"{a_['gain']:+.3f} across all metros (p = {a_['p']:.2f}), "
+                     f"{n_.get('gain', float('nan')):+.3f} on the 23 new metros, "
+                     f"{w_.get('gain', float('nan')):+.3f} on raw values ({r_.get('first_month')} to "
+                     f"{r_.get('last_month')}).")
+    note = ""
+    if ntest.get("enough_history") is False:
+        note = ("\n\n**Not a valid test:** the archive covers too little history (fewer than 24 test months), "
+                "so no decision is made, as the rule says.")
+    elif not ntest.get("complete"):
+        probs = ntest.get("download_problems") or []
+        note = ("\n\n**Preliminary, doesn't count yet:** " + (f"data for {len(probs)} metro(s) "
+                f"({', '.join(probs)}) didn't download" if probs else "this run predates the download check")
+                + ". The decision uses the first run in which every metro's data downloaded; later runs fill the "
+                  "gaps automatically.")
+    low = ntest.get("too_little_news") or []
+    low_note = f"\n\nToo little news to use: {', '.join(low)}." if low else ""
+    st.markdown(intro + " The pass/fail rule was written down before the data was downloaded.\n\n"
+                + "\n".join(lines) + note + low_note)
+    with st.expander("Every check, and the rule as written beforehand"):
+        if tn is not None:
+            t3 = tn.assign(cell=[f"{g:+.3f}{' ✓' if p < 0.05 else ''}" for g, p in zip(tn["gain"], tn["p"])])
+            st.dataframe(t3.rename(columns={"test": "Test", "check": "Metros", "version": "Values",
+                                            "cell": "Change in ranking accuracy", "months": "Months"})
+                         [["Test", "Values", "Metros", "Months", "Change in ranking accuracy"]],
+                         hide_index=True, width="stretch")
+        pre3 = Path(__file__).resolve().parent / "docs" / "preregistration_news.md"
+        if pre3.exists():
+            st.markdown(pre3.read_text())
 
 
 def open_metro():
@@ -570,22 +632,21 @@ elif view == "Metro":
         if li["date"] >= pd.Timestamp("2026-03-01"):
             st.caption(SPIKE_NOTE)
 
-    nm, nh, nt = D["news_metro"], D["news_heads"], D["news_test"]
-    mn = nm[nm["metro"] == pick].dropna(subset=["tone_3m"]).sort_values("date") if nm is not None else None
-    if mn is not None and len(mn):
+    mn, nt, src = metro_news(pick)
+    nh = D["mc_heads"] if (D["mc_heads"] is not None and pick in set(D["mc_heads"]["metro"])) else D["news_heads"]
+    if mn is not None:
         ln = mn.iloc[-1]
-        final = bool(nt.get("complete"))
-        passed = final and any((nt.get(k) or {}).get("passed") for k in ("3m", "12m"))
-        status = ("It improved the forecasts in testing (Track record page)." if passed else
-                  "**Context only, not used in the scores:** it didn't improve the forecasts (Track record page)."
-                  if final and nt.get("3m") else "**Context only, not used in the scores** (its test is still running).")
+        stat = news_status(nt)
+        status = {"Passed its test": "It improved the forecasts in testing (Track record page).",
+                  "Context only": "**Context only, not used in the scores:** it didn't improve the forecasts "
+                                  "(Track record page).",
+                  "Being tested": "**Context only, not used in the scores** (its test is still running)."}[stat]
         st.markdown(f"#### {pick} in the news")
-        st.caption(f"U.S. news articles about {pick}'s housing market (tracked by GDELT), through {ln['date']:%B %Y}. "
-                   f"Tone is GDELT's automated score of the wording: above 0 = more positive, below 0 = more "
-                   f"negative. {status}")
+        st.caption(f"U.S. news stories about {pick}'s housing market ({src}), through {ln['date']:%B %Y}. "
+                   f"Tone above 0 = more positive wording, below 0 = more negative. {status}")
         c1, c2 = st.columns([1, 2])
         with c1:
-            st.metric("Articles a month (last 3 months)", f"{ln['articles_3m']:,.0f}")
+            st.metric("Stories a month (last 3 months)", f"{ln['articles_3m']:,.0f}")
             if ok(ln["typical_tone_3m"]):
                 st.metric("Tone vs. the typical metro", f"{ln['tone_3m'] - ln['typical_tone_3m']:+.2f}",
                           help="Average tone of this metro's housing news over the last 3 months, minus the "
@@ -919,44 +980,12 @@ elif view == "Track record":
             if pre2.exists():
                 st.markdown(pre2.read_text())
 
-    ntest = D["news_test"]
-    if ntest and (ntest.get("3m") or {}).get("all_metros"):
-        st.markdown("#### Does news coverage help? (web content)")
-        lines = []
-        for key, label in (("3m", "3-month score"), ("12m", "12-month outlook")):
-            r_ = ntest.get(key) or {}
-            a_ = r_.get("all_metros")
-            if not a_:
-                continue
-            n_, w_ = r_.get("new_metros") or {}, r_.get("raw_values") or {}
-            lines.append(f"- **{label}: {'passed' if r_['passed'] else 'failed'}.** Change in ranking accuracy "
-                         f"{a_['gain']:+.3f} across all metros (p = {a_['p']:.2f}), "
-                         f"{n_.get('gain', float('nan')):+.3f} on the 23 new metros, "
-                         f"{w_.get('gain', float('nan')):+.3f} on raw values.")
-        pre_note = ""
-        if not ntest.get("complete"):
-            probs = ntest.get("download_problems") or []
-            pre_note = ("\n\n**Preliminary, doesn't count yet:** " + (f"news for {len(probs)} metro(s) "
-                        f"({', '.join(probs)}) didn't download" if probs else "this run predates the download check")
-                        + " because GDELT limited our requests. The decision uses the first run in which every "
-                          "metro's news downloaded; the next run fills the gaps automatically.")
-        low = ntest.get("too_little_news") or []
-        low_note = f"\n\nToo little news to use: {', '.join(low)}." if low else ""
-        st.markdown("We added how much U.S. news writes about each city's housing market, and how positive or "
-                    "negative that coverage is (GDELT news data since 2017), to the score models. The pass/fail rule "
-                    "was written down before any news data was downloaded.\n\n" + "\n".join(lines) + pre_note
-                    + low_note)
-        tn = D["news_test_t"]
-        with st.expander("Every check, and the rule as written beforehand"):
-            if tn is not None:
-                t3 = tn.assign(cell=[f"{g:+.3f}{' ✓' if p < 0.05 else ''}" for g, p in zip(tn["gain"], tn["p"])])
-                st.dataframe(t3.rename(columns={"test": "Test", "check": "Metros", "version": "Values",
-                                                "cell": "Change in ranking accuracy", "months": "Months"})
-                             [["Test", "Values", "Metros", "Months", "Change in ranking accuracy"]],
-                             hide_index=True, width="stretch")
-            pre3 = Path(__file__).resolve().parent / "docs" / "preregistration_news.md"
-            if pre3.exists():
-                st.markdown(pre3.read_text())
+    news_section("Does news coverage help? GDELT (web content)", D["news_test"], D["news_test_t"],
+                 "We added how much U.S. news writes about each city's housing market, and how positive or negative "
+                 "that coverage is (GDELT news data since 2017, GDELT's tone score), to the score models.")
+    news_section("Does news coverage help? Media Cloud (web content, our own sentiment)", D["mc_test"], D["mc_test_t"],
+                 "The same test with a second news source, Media Cloud's U.S. National collection, where the tone is "
+                 "our own VADER scoring of the matching headlines. Added because GDELT kept blocking our downloads.")
 
     sj = D["news_sent_j"]
     if sj and sj.get("headlines_scored"):

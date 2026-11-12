@@ -8,3 +8,4 @@ matplotlib>=3.8
 requests>=2.31
 pytrends>=4.9
 vaderSentiment>=3.3
+mediacloud>=5.0

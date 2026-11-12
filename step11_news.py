@@ -27,26 +27,11 @@ import numpy as np
 import pandas as pd
 
 from config import METROS, OUTLOOK_USE_SEARCH, PROCESSED, RAW, RESULTS, SCORE_MODEL
+from sentiment import on_topic, scorers
 from step9_stability import check, pair, raw_targets, slices
 
 SUN_BELT = list(METROS)[:21]  # config lists the Sun Belt and Mountain West metros first
 RULE = "docs/preregistration_news.md"
-# Housing words for VADER (scale -4 to +4): positive = market strengthening, negative = weakening
-HOUSING_TERMS = {
-    **{w: 1.5 for w in ("rise", "rises", "rising", "rose", "climb", "climbs", "climbing", "climbed", "jump", "jumps",
-                        "gain", "gains", "rebound", "rebounds", "recovery", "strong", "stronger", "hot", "appreciation")},
-    **{w: 2.0 for w in ("surge", "surges", "surging", "soar", "soars", "soaring", "boom", "booming", "hottest")},
-    **{w: 1.0 for w in ("bidding", "competitive")},
-    **{w: -1.5 for w in ("fall", "falls", "falling", "fell", "drop", "drops", "dropping", "dropped", "decline",
-                         "declines", "declining", "slide", "slides", "sliding", "slowdown", "stall", "stalls",
-                         "stalled", "sluggish", "glut", "bubble", "correction")},
-    **{w: -2.0 for w in ("slump", "slumps", "plunge", "plunges", "foreclosure", "foreclosures", "underwater")},
-    **{w: -1.0 for w in ("cool", "cools", "cooling", "cooled", "slow", "slows", "slowing", "cut", "cuts")},
-    "plummet": -2.5, "plummets": -2.5, "crash": -3.0,
-    "war": 0.0, "wars": 0.0,  # "bidding wars" means a hot market
-}
-
-
 def tagged(m, h, test, version):
     return [dict(r, test=test, version=version) for r in slices(m, "a", "b", h)] if m is not None else []
 
@@ -56,12 +41,18 @@ def one_line(m, h, test, version, check_name="All metros"):
     return [dict(r, check=check_name, test=test, version=version)] if r else []
 
 
-def run_test(panel, F):
+SOURCES = {"news": ("GDELT", "news_quality.csv", "news_test"),
+           "mediacloud": ("Media Cloud", "mediacloud_quality.csv", "mediacloud_test")}
+MIN_TEST_MONTHS = 24  # Media Cloud rule: fewer test months than this and the test isn't run
+
+
+def run_test(panel, F, key="news"):
+    source, quality_file, out_name = SOURCES[key]
     A = F["A"]
     pv = F.get("pageviews", []) if SCORE_MODEL == "P" else []
     rent = F.get("rent", [])
     nat = [c for c in F.get("B", []) if c.startswith("rel_outoftown")]
-    news = F["news"]
+    news = F[key]
     tone = [c for c in news if "tone" in c]
     vol = [c for c in news if "vol" in c]
     raw = raw_targets(panel) if (RAW / "zillow_raw_clean.csv").exists() else None
@@ -100,7 +91,7 @@ def run_test(panel, F):
             out += one_line(m3[m3["metro"].isin(grp)], 3, "3-month score", "Main values", label)
 
     table = pd.DataFrame(out)
-    table.to_csv(RESULTS / "news_test.csv", index=False)
+    table.to_csv(RESULTS / f"{out_name}.csv", index=False)
 
     def get(test, check_name, version):
         r = table[(table["test"] == test) & (table["check"] == check_name) & (table["version"] == version)]
@@ -108,8 +99,9 @@ def run_test(panel, F):
             return None
         return {k: (None if isinstance(v, float) and np.isnan(v) else v) for k, v in r.iloc[0].to_dict().items()}
 
-    res = {"rule_file": RULE, "metros_with_news": int(panel.dropna(subset=news)["metro"].nunique())}
-    qf = RAW / "news_quality.csv"
+    res = {"rule_file": RULE, "source": source,
+           "metros_with_news": int(panel.dropna(subset=news)["metro"].nunique())}
+    qf = RAW / quality_file
     q = pd.read_csv(qf) if qf.exists() else pd.DataFrame()
     problems = sorted(q.loc[q["status"].isin(["download failed", "not downloaded yet"]), "metro"]) \
         if "status" in q else []
@@ -117,19 +109,25 @@ def run_test(panel, F):
     res["complete"] = "status" in q and not problems
     res["download_problems"] = problems
     res["too_little_news"] = sorted(q.loc[q["status"] == "too little news", "metro"]) if "status" in q else []
-    for name, key in (("3-month score", "3m"), ("12-month outlook", "12m")):
+    for name, hk in (("3-month score", "3m"), ("12-month outlook", "12m")):
         allm, new, rawm = (get(name, "All metros", "Main values"), get(name, "New metros (untouched test)", "Main values"),
                            get(name, "All metros", "Raw values"))
         rules = {"Main values, all metros: better with p < 0.05": bool(allm and allm["gain"] > 0 and allm["p"] < 0.05),
                  "Main values, 23 new metros: better (above zero)": bool(new and new["gain"] > 0),
                  "Raw values, all metros: better (above zero)": bool(rawm and rawm["gain"] > 0)}
         m = models.get(name)
-        res[key] = {"passed": all(rules.values()) and allm is not None, "rules": rules, "all_metros": allm,
+        res[hk] = {"passed": all(rules.values()) and allm is not None, "rules": rules, "all_metros": allm,
                     "new_metros": new, "raw_values": rawm,
                     "first_month": f"{m['date'].min():%b %Y}" if m is not None else None,
                     "last_month": f"{m['date'].max():%b %Y}" if m is not None else None}
-        print(f"News, {name}: {'PASSED' if res[key]['passed'] else 'FAILED'}", rules)
-    (RESULTS / "news_test.json").write_text(json.dumps(res, indent=2, default=float))
+        print(f"{source}, {name}: {'PASSED' if res[hk]['passed'] else 'FAILED'}", rules)
+    if key == "mediacloud":  # too little history for a fair test: no decision (addendum 2)
+        months = (res.get("3m", {}).get("all_metros") or {}).get("months", 0) or 0
+        res["enough_history"] = months >= MIN_TEST_MONTHS
+        if not res["enough_history"]:
+            for k in ("3m", "12m"):
+                res[k]["passed"] = False
+    (RESULTS / f"{out_name}.json").write_text(json.dumps(res, indent=2, default=float))
     return res
 
 
@@ -152,33 +150,6 @@ def dashboard_tables():
     d[["metro", "date", "articles", "articles_3m", "tone", "tone_3m", "typical_tone_3m"]].round(3).to_csv(
         RESULTS / "news_metro.csv", index=False)
     headline_sentiment(d)
-
-
-HOUSING_WORDS = (r"\b(home|homes|house|houses|housing|real estate|mortgages?|rents?|renters|rental|realtors?|"
-                 r"listings?|propert(y|ies)|apartments?|condos?|buyers|sellers|homebuyers|homeowners)\b")
-CITY_PATTERNS = {"Washington DC": r"washington|d\.c\.", "St. Louis": r"st\.? louis|saint louis"}
-
-
-def on_topic(h):
-    """Keep headlines that mention the city or housing; GDELT also returns national stories that
-    only mention the city in passing (earnings calls, politics)."""
-    title = h["title"].astype(str).str.lower()
-    housing = title.str.contains(HOUSING_WORDS, regex=True)
-    city = pd.Series([bool(pd.Series([t]).str.contains(CITY_PATTERNS.get(m, m.lower()), regex=True).iloc[0])
-                      for t, m in zip(title, h["metro"])], index=h.index)
-    return housing | city
-
-
-def scorers():
-    """VADER as is, and VADER with housing words added. None if VADER isn't installed."""
-    try:
-        from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
-    except ImportError:
-        print("vaderSentiment not installed; skipping headline sentiment (pip install vaderSentiment)")
-        return None, None
-    plain, housing = SentimentIntensityAnalyzer(), SentimentIntensityAnalyzer()
-    housing.lexicon.update(HOUSING_TERMS)
-    return plain, housing
 
 
 def headline_sentiment(news_monthly):
@@ -230,11 +201,46 @@ def headline_sentiment(news_monthly):
 def main():
     panel = pd.read_csv(PROCESSED / "panel.csv", parse_dates=["date"])
     F = {k: v.split(",") for k, v in pd.read_csv(PROCESSED / "feature_sets.csv", index_col=0)["features"].items()}
-    if "news" in F:
-        run_test(panel, F)
-    else:
-        print("No news data in the panel yet (run step 1 and step 2 first).")
+    for key in SOURCES:
+        if key in F:
+            run_test(panel, F, key)
+        else:
+            print(f"No {SOURCES[key][0]} data in the panel yet (run step 1 and step 2 first).")
     dashboard_tables()
+    mediacloud_tables()
+
+
+def mediacloud_tables():
+    """Media Cloud for the dashboard: each metro's monthly stories and our own headline tone."""
+    f = RAW / "mediacloud_clean.csv"
+    if not f.exists():
+        return
+    from config import MC_MIN_HEADLINES
+    d = pd.read_csv(f, parse_dates=["date"])
+    d = d[d["date"] < pd.Timestamp.today().normalize().replace(day=1)].sort_values(["metro", "date"])
+    qf = RAW / "mediacloud_quality.csv"
+    if qf.exists():
+        d = d[d["metro"].isin(pd.read_csv(qf).query("usable")["metro"])]
+    g = d.groupby("metro")
+    n3 = g["headlines"].transform(lambda s: s.rolling(3, min_periods=3).sum())
+    d["tone_3m"] = g["tone_sum"].transform(lambda s: s.rolling(3, min_periods=3).sum()) / n3.where(n3 >= MC_MIN_HEADLINES)
+    d["articles_3m"] = g["articles"].transform(lambda s: s.rolling(3, min_periods=3).mean())
+    d["typical_tone_3m"] = d.groupby("date")["tone_3m"].transform("median")
+    d[["metro", "date", "articles", "articles_3m", "headlines", "tone_3m", "typical_tone_3m"]].round(3).to_csv(
+        RESULTS / "mediacloud_metro.csv", index=False)
+    # latest on-topic headlines per metro, with our sentiment label, for the dashboard
+    rows = []
+    plain, housing = scorers()
+    for f in sorted((RAW / "mediacloud").glob("*_headlines.csv")):
+        metro = f.name.replace("_headlines.csv", "").replace("_", " ")
+        h = pd.read_csv(f, parse_dates=["date"]).dropna(subset=["date", "title", "url"]).assign(metro=metro)
+        h = h[on_topic(h)].sort_values("date", ascending=False).drop_duplicates("title").head(6)
+        if housing is not None and len(h):
+            h["sent_housing"] = [housing.polarity_scores(str(t))["compound"] for t in h["title"]]
+            h["label"] = pd.cut(h["sent_housing"], [-1.01, -0.05, 0.05, 1.01], labels=["negative", "neutral", "positive"])
+        rows.append(h.rename(columns={"date": "seen"}))
+    if rows:
+        pd.concat(rows).round(3).to_csv(RESULTS / "mediacloud_headlines.csv", index=False)
 
 
 if __name__ == "__main__":
