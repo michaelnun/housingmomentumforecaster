@@ -24,7 +24,8 @@ HOUSING_TERMS = {
 
 HOUSING_WORDS = (r"\b(home|homes|house|houses|housing|real estate|mortgages?|rents?|renters|rental|realtors?|"
                  r"listings?|propert(y|ies)|apartments?|condos?|buyers|sellers|homebuyers|homeowners)\b")
-CITY_PATTERNS = {"Washington DC": r"washington|d\.c\.", "St. Louis": r"st\.? louis|saint louis"}
+CITY_PATTERNS = {"Washington DC": r"washington|d\.c\.", "St. Louis": r"st\.? louis|saint louis",
+                 "New York": r"new york|nyc|manhattan|brooklyn|queens|bronx|staten island|long island|westchester"}
 
 
 def on_topic(h):

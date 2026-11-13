@@ -167,9 +167,19 @@ NEWS_QUERIES = {
 MEDIACLOUD_COLLECTIONS = [34412234]  # United States - National
 MC_NAMES = {
     "Portland": '"portland" AND oregon', "Columbus": '"columbus" AND ohio',
-    "Richmond": '"richmond" AND virginia', "Birmingham": '"birmingham" AND alabama',
     "Washington DC": '("washington dc" OR "washington d.c." OR "district of columbia")',
     "St. Louis": '("st. louis" OR "st louis" OR "saint louis")',
+    # Reworded November 12 (addendum 3): New York by its boroughs and region, since "new york" also
+    # matches every national story datelined NEW YORK; Birmingham and Richmond exclude the other
+    # places with the same name (and the Richmond Fed) instead of requiring the state's name,
+    # which missed AP style ("Birmingham, Ala.", "Richmond, Va.").
+    "New York": ('("new york city" OR nyc OR manhattan OR brooklyn OR queens OR bronx OR "staten island" '
+                 'OR "long island" OR westchester OR "new york area" OR "new york metro" OR "new york region")'),
+    "Birmingham": ('"birmingham" AND NOT (england OR britain OR british OR "united kingdom" OR uk '
+                   'OR "west midlands" OR michigan)'),
+    "Richmond": ('"richmond" AND NOT ("richmond fed" OR "federal reserve bank of richmond" OR barkin '
+                 'OR california OR "bay area" OR "british columbia" OR vancouver OR "richmond hill" '
+                 'OR "staten island")'),
 }
 MC_QUERIES = {m: f'{MC_NAMES.get(m, chr(34) + m.lower() + chr(34))} AND ({" OR ".join(NEWS_PHRASES)})'
               for m in METROS}

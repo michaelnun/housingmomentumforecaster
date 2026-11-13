@@ -755,14 +755,54 @@ def collect_news():
 
 MC_DIR = RAW / "mediacloud"
 MC_BUDGET_MIN = 210   # stop starting new cities after this long; the rest are picked up next run
-MC_MAX_PAGES = 60     # headline pages per city (up to 1,000 headlines a page)
+MC_PAGES_PER_YEAR = 15  # headline pages per city per year (up to 1,000 headlines a page)
+MC_QUERY_LOG = MC_DIR / "queries.json"  # the search each city's files were downloaded with
+
+
+def _mc_retry(call, what, waits=(20, 60)):
+    """One Media Cloud request, retried after a short wait if it fails (busy server, rate limit)."""
+    for wait in (*waits, None):
+        try:
+            return call()
+        except Exception as e:
+            if wait is None:
+                raise
+            print(f"    {what}: {type(e).__name__}: {str(e)[:100]}; retrying in {wait}s")
+            time.sleep(wait)
+
+
+def _mc_download(mc, q, start, end):
+    """Daily story counts and every matching headline for one city, one year at a time, so a big
+    city (New York) never depends on one huge request."""
+    counts, rows, capped = [], [], False
+    for y in range(start.year, end.year + 1):
+        a, b = max(start, dt.date(y, 1, 1)), min(end, dt.date(y + 1, 1, 1))
+        counts += _mc_retry(lambda: mc.story_count_over_time(q, a, b, collection_ids=MEDIACLOUD_COLLECTIONS),
+                            f"{y} counts")
+        token, pages = None, 0
+        while pages < MC_PAGES_PER_YEAR:
+            stories, token = _mc_retry(lambda: mc.story_list(q, a, b, collection_ids=MEDIACLOUD_COLLECTIONS,
+                                                             pagination_token=token, page_size=1000),
+                                       f"{y} headlines page {pages + 1}")
+            rows += [{"date": s.get("publish_date"), "title": s.get("title"), "url": s.get("url"),
+                      "site": s.get("media_name")} for s in stories]
+            pages += 1
+            if not token or not stories:
+                break
+        capped |= bool(pages >= MC_PAGES_PER_YEAR and token)
+    counts = pd.DataFrame(counts)
+    if len(counts):
+        counts = counts.assign(date=pd.to_datetime(counts["date"]).dt.date).drop_duplicates("date").sort_values("date")
+    heads = pd.DataFrame(rows, columns=["date", "title", "url", "site"])
+    heads = heads.drop_duplicates("url") if heads["url"].notna().any() else heads
+    return counts, heads, capped
 
 
 def collect_mediacloud():
     """Second news source (web content): Media Cloud's U.S. National collection. Per city: daily
     counts of housing stories and their share of all stories, plus every matching headline, which
     we score ourselves (sentiment.py). Needs a free API key in MEDIACLOUD_API_KEY.
-    Rules: addendum 2 in docs/preregistration_news.md."""
+    Rules: addenda 2 and 3 in docs/preregistration_news.md."""
     print("News coverage of each housing market (Media Cloud)")
     key = os.environ.get("MEDIACLOUD_API_KEY", "").strip()
     if not key:
@@ -775,43 +815,32 @@ def collect_mediacloud():
         return
     mc = mediacloud.api.SearchApi(key)
     MC_DIR.mkdir(parents=True, exist_ok=True)
+    used = json.loads(MC_QUERY_LOG.read_text()) if MC_QUERY_LOG.exists() else {}
     start, end = dt.date.fromisoformat(NEWS_START), dt.date.today()
     t0, quality = time.time(), []
     for metro, q in MC_QUERIES.items():
         base = MC_DIR / metro.replace(" ", "_")
         cf, tf = base.with_name(base.name + "_counts.csv"), base.with_name(base.name + "_headlines.csv")
-        if not (is_fresh(cf) and is_fresh(tf)):
+        same_search = used.get(metro, q) == q  # a reworded search is downloaded again
+        if not (is_fresh(cf) and is_fresh(tf) and same_search):
             if (time.time() - t0) / 60 > MC_BUDGET_MIN:
-                quality.append({"metro": metro, "status": "ok" if cf.exists() and tf.exists() else "not downloaded yet"})
+                old_ok = cf.exists() and tf.exists() and same_search
+                quality.append({"metro": metro, "status": "ok" if old_ok else "not downloaded yet"})
                 continue
             try:
-                pts = mc.story_count_over_time(q, start, end, collection_ids=MEDIACLOUD_COLLECTIONS)
-                counts = pd.DataFrame(pts)
-                rows, token, pages = [], None, 0
-                while pages < MC_MAX_PAGES:
-                    try:
-                        stories, token = mc.story_list(q, start, end, collection_ids=MEDIACLOUD_COLLECTIONS,
-                                                       pagination_token=token, page_size=1000)
-                    except Exception:
-                        if pages:  # page size refused: fall back to the default size
-                            raise
-                        stories, token = mc.story_list(q, start, end, collection_ids=MEDIACLOUD_COLLECTIONS,
-                                                       pagination_token=token)
-                    rows += [{"date": s.get("publish_date"), "title": s.get("title"), "url": s.get("url"),
-                              "site": s.get("media_name")} for s in stories]
-                    pages += 1
-                    if not token or not stories:
-                        break
+                counts, heads, capped = _mc_download(mc, q, start, end)
             except Exception as e:
                 print(f"  {metro}: download failed ({type(e).__name__}: {str(e)[:120]}); will retry next run")
                 quality.append({"metro": metro, "status": "download failed"})
                 continue
             counts.to_csv(cf, index=False)
-            pd.DataFrame(rows, columns=["date", "title", "url", "site"]).to_csv(tf, index=False)
+            heads.to_csv(tf, index=False)
             mark(cf)
             mark(tf)
-            print(f"  {metro}: {int(counts['count'].sum()) if len(counts) else 0:,} stories, {len(rows):,} headlines"
-                  + (" (headline cap reached)" if pages >= MC_MAX_PAGES and token else ""))
+            used[metro] = q
+            MC_QUERY_LOG.write_text(json.dumps(used, indent=1))
+            print(f"  {metro}: {int(counts['count'].sum()) if len(counts) else 0:,} stories, {len(heads):,} headlines"
+                  + (" (headline cap reached in some years)" if capped else ""))
         quality.append({"metro": metro, "status": "ok"})
     _mediacloud_monthly(quality)
 

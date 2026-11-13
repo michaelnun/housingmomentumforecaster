@@ -51,3 +51,14 @@ Either way, the result is reported as it comes out, including on the dashboard.
 - **Features,** compared with the typical metro like everything else: average headline tone over the last 3 months (needs at least 10 headlines, otherwise missing); its change vs. 3 months earlier; news volume (3-month average share) vs. a year earlier.
 - **Test and pass rule:** exactly the same as above (3-month score and 12-month outlook; three conditions each; only a run in which every metro's Media Cloud data downloaded counts). If the archive covers too little history for at least 24 months of the month-by-month test, the test is not run and the project says so.
 - **Two news tests now exist (GDELT and Media Cloud).** Each is reported. News goes into a score only if that source passes its own rule; if both pass, the one with the larger gain on the 23 new metros is used.
+
+---
+
+**Addendum 3 (November 12, 2026, 1:50 PM ET, written after the preliminary Media Cloud result had been seen).** The 6:00 AM run downloaded Media Cloud news for 42 of the 45 metros. New York's download failed, and Birmingham (3.8 stories a month) and Richmond (4.9) fell just under the 5-a-month bar. To cover all 45 metros, three searches are reworded (`config.py`, `MC_NAMES`):
+
+- **New York:** searched by its boroughs and region ("new york city", NYC, Manhattan, Brooklyn, Queens, the Bronx, Staten Island, Long Island, Westchester, "new york area/metro/region") instead of "new york", which also matches every national story datelined NEW YORK or quoting a New York-based outlet. New York's news had not been downloaded or looked at.
+- **Birmingham and Richmond:** instead of requiring the story to also name the state, which missed AP style ("Birmingham, Ala.", "Richmond, Va."), the search leaves out the other places with the same name (Birmingham, England and Birmingham, Michigan; Richmond, California and Richmond, British Columbia, Richmond Hill, Staten Island). For Richmond it also leaves out stories about the Federal Reserve Bank of Richmond, which comments on the national housing market.
+- **Downloads** now go one year at a time and retry a failed request, so a large city can't fail on one bad request.
+- **Nothing else changes:** the same 5-stories-a-month bar, features, test and pass rule.
+
+Because this change was made after the preliminary result was seen, that result is reported as well. On those 42 metros, news did not pass: the 3-month score didn't change (p = 0.48), and the 12-month outlook got slightly worse.
