@@ -1,7 +1,7 @@
 {
   "rule_file": "docs/preregistration_news.md",
   "source": "GDELT",
-  "metros_with_news": 15,
+  "metros_with_news": 16,
   "complete": false,
   "download_problems": [
     "Atlanta",
@@ -12,7 +12,6 @@
     "Columbus",
     "Denver",
     "Detroit",
-    "Houston",
     "Indianapolis",
     "Los Angeles",
     "Louisville",
@@ -45,10 +44,10 @@
     },
     "all_metros": {
       "check": "All metros",
-      "months": 72,
-      "gain": -0.0066,
-      "better_share": 0.333,
-      "p": 0.9543,
+      "months": 73,
+      "gain": -0.0016,
+      "better_share": 0.397,
+      "p": 0.6435,
       "test": "3-month score",
       "version": "Main values",
       "share_significant": null
@@ -56,15 +55,15 @@
     "new_metros": null,
     "raw_values": {
       "check": "All metros",
-      "months": 72,
-      "gain": -0.0175,
-      "better_share": 0.417,
-      "p": 0.989,
+      "months": 73,
+      "gain": -0.0234,
+      "better_share": 0.356,
+      "p": 0.9968,
       "test": "3-month score",
       "version": "Raw values",
       "share_significant": null
     },
-    "first_month": "Jul 2020",
+    "first_month": "Jun 2020",
     "last_month": "Jun 2026"
   },
   "12m": {
@@ -76,10 +75,10 @@
     },
     "all_metros": {
       "check": "All metros",
-      "months": 54,
-      "gain": -0.0066,
-      "better_share": 0.519,
-      "p": 0.6666,
+      "months": 55,
+      "gain": -0.0098,
+      "better_share": 0.364,
+      "p": 0.72,
       "test": "12-month outlook",
       "version": "Main values",
       "share_significant": null
@@ -87,15 +86,15 @@
     "new_metros": null,
     "raw_values": {
       "check": "All metros",
-      "months": 54,
-      "gain": -0.0048,
-      "better_share": 0.463,
-      "p": 0.5914,
+      "months": 55,
+      "gain": -0.0072,
+      "better_share": 0.382,
+      "p": 0.6283,
       "test": "12-month outlook",
       "version": "Raw values",
       "share_significant": null
     },
-    "first_month": "Apr 2021",
+    "first_month": "Mar 2021",
     "last_month": "Sep 2025"
   }
 }

@@ -1,46 +1,46 @@
 rank,metro,predicted_vs_avg_pct,signal,model_used,as_of
-1,San Francisco,1.06,Overweight,P,Sep 2026
-2,Chicago,1.05,Overweight,P,Sep 2026
-3,Kansas City,0.85,Overweight,P,Sep 2026
+1,Chicago,1.11,Overweight,P,Sep 2026
+2,San Francisco,1.06,Overweight,P,Sep 2026
+3,Kansas City,0.87,Overweight,P,Sep 2026
 4,Cleveland,0.79,Overweight,P,Sep 2026
 5,Milwaukee,0.61,Overweight,P,Sep 2026
-6,Miami,0.41,Hold,P,Sep 2026
-7,New York,0.41,Hold,P,Sep 2026
-8,Minneapolis,0.34,Hold,P,Sep 2026
-9,Richmond,0.33,Hold,P,Sep 2026
-10,Jacksonville,0.33,Hold,P,Sep 2026
-11,Los Angeles,0.31,Hold,P,Sep 2026
-12,San Diego,0.25,Hold,P,Sep 2026
-13,Sacramento,0.12,Hold,P,Sep 2026
-14,Salt Lake City,0.12,Hold,P,Sep 2026
-15,Columbus,0.1,Hold,P,Sep 2026
-16,Birmingham,0.1,Hold,P,Sep 2026
-17,St. Louis,0.09,Hold,P,Sep 2026
-18,Portland,0.08,Hold,P,Sep 2026
-19,Indianapolis,0.08,Hold,P,Sep 2026
-20,Boston,0.05,Hold,P,Sep 2026
-21,Cincinnati,0.05,Hold,P,Sep 2026
-22,Philadelphia,0.0,Hold,P,Sep 2026
-23,Austin,-0.0,Hold,P,Sep 2026
-24,Oklahoma City,-0.01,Hold,P,Sep 2026
-25,Dallas,-0.03,Hold,P,Sep 2026
-26,Pittsburgh,-0.04,Hold,P,Sep 2026
-27,Tampa,-0.09,Hold,P,Sep 2026
-28,Orlando,-0.11,Hold,P,Sep 2026
-29,Denver,-0.12,Hold,P,Sep 2026
-30,Detroit,-0.13,Hold,P,Sep 2026
-31,Nashville,-0.13,Hold,P,Sep 2026
-32,Louisville,-0.23,Hold,P,Sep 2026
-33,Phoenix,-0.28,Hold,P,Sep 2026
-34,Houston,-0.3,Hold,P,Sep 2026
-35,Washington DC,-0.37,Hold,P,Sep 2026
-36,Buffalo,-0.38,Hold,P,Sep 2026
-37,Atlanta,-0.45,Hold,P,Sep 2026
-38,Memphis,-0.51,Hold,P,Sep 2026
-39,Seattle,-0.52,Hold,P,Sep 2026
-40,San Antonio,-0.57,Hold,P,Sep 2026
-41,Raleigh,-0.57,Avoid,P,Sep 2026
-42,Las Vegas,-0.58,Avoid,P,Sep 2026
-43,Charlotte,-0.61,Avoid,P,Sep 2026
-44,Baltimore,-0.62,Avoid,P,Sep 2026
-45,New Orleans,-0.9,Avoid,P,Sep 2026
+6,New York,0.4,Hold,P,Sep 2026
+7,Miami,0.36,Hold,P,Sep 2026
+8,Richmond,0.36,Hold,P,Sep 2026
+9,Jacksonville,0.32,Hold,P,Sep 2026
+10,Los Angeles,0.29,Hold,P,Sep 2026
+11,Minneapolis,0.28,Hold,P,Sep 2026
+12,San Diego,0.24,Hold,P,Sep 2026
+13,St. Louis,0.15,Hold,P,Sep 2026
+14,Salt Lake City,0.15,Hold,P,Sep 2026
+15,Columbus,0.14,Hold,P,Sep 2026
+16,Sacramento,0.14,Hold,P,Sep 2026
+17,Portland,0.11,Hold,P,Sep 2026
+18,Birmingham,0.1,Hold,P,Sep 2026
+19,Cincinnati,0.1,Hold,P,Sep 2026
+20,Indianapolis,0.1,Hold,P,Sep 2026
+21,Boston,0.06,Hold,P,Sep 2026
+22,Austin,0.04,Hold,P,Sep 2026
+23,Philadelphia,0.02,Hold,P,Sep 2026
+24,Dallas,-0.03,Hold,P,Sep 2026
+25,Pittsburgh,-0.03,Hold,P,Sep 2026
+26,Oklahoma City,-0.05,Hold,P,Sep 2026
+27,Nashville,-0.1,Hold,P,Sep 2026
+28,Tampa,-0.11,Hold,P,Sep 2026
+29,Orlando,-0.11,Hold,P,Sep 2026
+30,Denver,-0.14,Hold,P,Sep 2026
+31,Detroit,-0.2,Hold,P,Sep 2026
+32,Louisville,-0.24,Hold,P,Sep 2026
+33,Phoenix,-0.29,Hold,P,Sep 2026
+34,Houston,-0.33,Hold,P,Sep 2026
+35,Washington DC,-0.36,Hold,P,Sep 2026
+36,Buffalo,-0.44,Hold,P,Sep 2026
+37,Memphis,-0.46,Hold,P,Sep 2026
+38,Atlanta,-0.47,Hold,P,Sep 2026
+39,Raleigh,-0.53,Hold,P,Sep 2026
+40,Seattle,-0.54,Hold,P,Sep 2026
+41,San Antonio,-0.58,Avoid,P,Sep 2026
+42,Las Vegas,-0.61,Avoid,P,Sep 2026
+43,Baltimore,-0.62,Avoid,P,Sep 2026
+44,Charlotte,-0.63,Avoid,P,Sep 2026
+45,New Orleans,-0.91,Avoid,P,Sep 2026

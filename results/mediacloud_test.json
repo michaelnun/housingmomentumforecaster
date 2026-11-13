@@ -1,28 +1,23 @@
 {
   "rule_file": "docs/preregistration_news.md",
   "source": "Media Cloud",
-  "metros_with_news": 42,
-  "complete": false,
-  "download_problems": [
-    "New York"
-  ],
-  "too_little_news": [
-    "Birmingham",
-    "Richmond"
-  ],
+  "metros_with_news": 45,
+  "complete": true,
+  "download_problems": [],
+  "too_little_news": [],
   "3m": {
     "passed": false,
     "rules": {
       "Main values, all metros: better with p < 0.05": false,
-      "Main values, 23 new metros: better (above zero)": true,
+      "Main values, 23 new metros: better (above zero)": false,
       "Raw values, all metros: better (above zero)": true
     },
     "all_metros": {
       "check": "All metros",
       "months": 74,
-      "gain": 0.0,
+      "gain": -0.0007,
       "better_share": 0.432,
-      "p": 0.4812,
+      "p": 0.7675,
       "test": "3-month score",
       "version": "Main values",
       "share_significant": null
@@ -30,9 +25,9 @@
     "new_metros": {
       "check": "New metros (untouched test)",
       "months": 74,
-      "gain": 0.0011,
-      "better_share": 0.297,
-      "p": 0.3052,
+      "gain": -0.001,
+      "better_share": 0.365,
+      "p": 0.7052,
       "test": "3-month score",
       "version": "Main values",
       "share_significant": null
@@ -40,9 +35,9 @@
     "raw_values": {
       "check": "All metros",
       "months": 74,
-      "gain": 0.0007,
+      "gain": 0.001,
       "better_share": 0.419,
-      "p": 0.4145,
+      "p": 0.3776,
       "test": "3-month score",
       "version": "Raw values",
       "share_significant": null
@@ -60,9 +55,9 @@
     "all_metros": {
       "check": "All metros",
       "months": 56,
-      "gain": -0.0107,
+      "gain": -0.0133,
       "better_share": 0.25,
-      "p": 0.9954,
+      "p": 0.9978,
       "test": "12-month outlook",
       "version": "Main values",
       "share_significant": null
@@ -70,9 +65,9 @@
     "new_metros": {
       "check": "New metros (untouched test)",
       "months": 56,
-      "gain": -0.0167,
-      "better_share": 0.375,
-      "p": 0.9794,
+      "gain": -0.0178,
+      "better_share": 0.357,
+      "p": 0.9856,
       "test": "12-month outlook",
       "version": "Main values",
       "share_significant": null
@@ -80,9 +75,9 @@
     "raw_values": {
       "check": "All metros",
       "months": 56,
-      "gain": -0.0134,
-      "better_share": 0.304,
-      "p": 0.9956,
+      "gain": -0.0132,
+      "better_share": 0.357,
+      "p": 0.9974,
       "test": "12-month outlook",
       "version": "Raw values",
       "share_significant": null

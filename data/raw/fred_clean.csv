@@ -141,7 +141,7 @@ date,mortgage_rate,unemployment,metro
 2026-08-01,6.6675,4.9,Phoenix
 2026-09-01,6.862500000000001,4.9,Phoenix
 2026-10-01,7.328,,Phoenix
-2026-11-01,7.18,,Phoenix
+2026-11-01,7.145,,Phoenix
 2015-01-01,3.67,4.5,Dallas
 2015-02-01,3.71,4.5,Dallas
 2015-03-01,3.77,4.5,Dallas
@@ -284,7 +284,7 @@ date,mortgage_rate,unemployment,metro
 2026-08-01,6.6675,4.4,Dallas
 2026-09-01,6.862500000000001,4.4,Dallas
 2026-10-01,7.328,,Dallas
-2026-11-01,7.18,,Dallas
+2026-11-01,7.145,,Dallas
 2015-01-01,3.67,4.5,Houston
 2015-02-01,3.71,4.5,Houston
 2015-03-01,3.77,4.5,Houston
@@ -427,7 +427,7 @@ date,mortgage_rate,unemployment,metro
 2026-08-01,6.6675,4.4,Houston
 2026-09-01,6.862500000000001,4.4,Houston
 2026-10-01,7.328,,Houston
-2026-11-01,7.18,,Houston
+2026-11-01,7.145,,Houston
 2015-01-01,3.67,4.5,Austin
 2015-02-01,3.71,4.5,Austin
 2015-03-01,3.77,4.5,Austin
@@ -570,7 +570,7 @@ date,mortgage_rate,unemployment,metro
 2026-08-01,6.6675,4.4,Austin
 2026-09-01,6.862500000000001,4.4,Austin
 2026-10-01,7.328,,Austin
-2026-11-01,7.18,,Austin
+2026-11-01,7.145,,Austin
 2015-01-01,3.67,4.5,San Antonio
 2015-02-01,3.71,4.5,San Antonio
 2015-03-01,3.77,4.5,San Antonio
@@ -713,7 +713,7 @@ date,mortgage_rate,unemployment,metro
 2026-08-01,6.6675,4.4,San Antonio
 2026-09-01,6.862500000000001,4.4,San Antonio
 2026-10-01,7.328,,San Antonio
-2026-11-01,7.18,,San Antonio
+2026-11-01,7.145,,San Antonio
 2015-01-01,3.67,6.5,Atlanta
 2015-02-01,3.71,6.4,Atlanta
 2015-03-01,3.77,6.3,Atlanta
@@ -856,7 +856,7 @@ date,mortgage_rate,unemployment,metro
 2026-08-01,6.6675,3.2,Atlanta
 2026-09-01,6.862500000000001,3.3,Atlanta
 2026-10-01,7.328,,Atlanta
-2026-11-01,7.18,,Atlanta
+2026-11-01,7.145,,Atlanta
 2015-01-01,3.67,5.9,Tampa
 2015-02-01,3.71,5.8,Tampa
 2015-03-01,3.77,5.8,Tampa
@@ -999,7 +999,7 @@ date,mortgage_rate,unemployment,metro
 2026-08-01,6.6675,4.5,Tampa
 2026-09-01,6.862500000000001,4.4,Tampa
 2026-10-01,7.328,,Tampa
-2026-11-01,7.18,,Tampa
+2026-11-01,7.145,,Tampa
 2015-01-01,3.67,5.9,Orlando
 2015-02-01,3.71,5.8,Orlando
 2015-03-01,3.77,5.8,Orlando
@@ -1142,7 +1142,7 @@ date,mortgage_rate,unemployment,metro
 2026-08-01,6.6675,4.5,Orlando
 2026-09-01,6.862500000000001,4.4,Orlando
 2026-10-01,7.328,,Orlando
-2026-11-01,7.18,,Orlando
+2026-11-01,7.145,,Orlando
 2015-01-01,3.67,5.9,Miami
 2015-02-01,3.71,5.8,Miami
 2015-03-01,3.77,5.8,Miami
@@ -1285,7 +1285,7 @@ date,mortgage_rate,unemployment,metro
 2026-08-01,6.6675,4.5,Miami
 2026-09-01,6.862500000000001,4.4,Miami
 2026-10-01,7.328,,Miami
-2026-11-01,7.18,,Miami
+2026-11-01,7.145,,Miami
 2015-01-01,3.67,5.9,Jacksonville
 2015-02-01,3.71,5.8,Jacksonville
 2015-03-01,3.77,5.8,Jacksonville
@@ -1428,7 +1428,7 @@ date,mortgage_rate,unemployment,metro
 2026-08-01,6.6675,4.5,Jacksonville
 2026-09-01,6.862500000000001,4.4,Jacksonville
 2026-10-01,7.328,,Jacksonville
-2026-11-01,7.18,,Jacksonville
+2026-11-01,7.145,,Jacksonville
 2015-01-01,3.67,5.7,Charlotte
 2015-02-01,3.71,5.7,Charlotte
 2015-03-01,3.77,5.8,Charlotte
@@ -1571,7 +1571,7 @@ date,mortgage_rate,unemployment,metro
 2026-08-01,6.6675,3.5,Charlotte
 2026-09-01,6.862500000000001,3.4,Charlotte
 2026-10-01,7.328,,Charlotte
-2026-11-01,7.18,,Charlotte
+2026-11-01,7.145,,Charlotte
 2015-01-01,3.67,5.7,Raleigh
 2015-02-01,3.71,5.7,Raleigh
 2015-03-01,3.77,5.8,Raleigh
@@ -1714,7 +1714,7 @@ date,mortgage_rate,unemployment,metro
 2026-08-01,6.6675,3.5,Raleigh
 2026-09-01,6.862500000000001,3.4,Raleigh
 2026-10-01,7.328,,Raleigh
-2026-11-01,7.18,,Raleigh
+2026-11-01,7.145,,Raleigh
 2015-01-01,3.67,6.1,Nashville
 2015-02-01,3.71,6.0,Nashville
 2015-03-01,3.77,5.9,Nashville
@@ -1857,7 +1857,7 @@ date,mortgage_rate,unemployment,metro
 2026-08-01,6.6675,3.4,Nashville
 2026-09-01,6.862500000000001,3.4,Nashville
 2026-10-01,7.328,,Nashville
-2026-11-01,7.18,,Nashville
+2026-11-01,7.145,,Nashville
 2015-01-01,3.67,6.1,Memphis
 2015-02-01,3.71,6.0,Memphis
 2015-03-01,3.77,5.9,Memphis
@@ -2000,7 +2000,7 @@ date,mortgage_rate,unemployment,metro
 2026-08-01,6.6675,3.4,Memphis
 2026-09-01,6.862500000000001,3.4,Memphis
 2026-10-01,7.328,,Memphis
-2026-11-01,7.18,,Memphis
+2026-11-01,7.145,,Memphis
 2015-01-01,3.67,6.2,Birmingham
 2015-02-01,3.71,6.1,Birmingham
 2015-03-01,3.77,6.1,Birmingham
@@ -2143,7 +2143,7 @@ date,mortgage_rate,unemployment,metro
 2026-08-01,6.6675,3.4,Birmingham
 2026-09-01,6.862500000000001,3.5,Birmingham
 2026-10-01,7.328,,Birmingham
-2026-11-01,7.18,,Birmingham
+2026-11-01,7.145,,Birmingham
 2015-01-01,3.67,6.7,New Orleans
 2015-02-01,3.71,6.7,New Orleans
 2015-03-01,3.77,6.6,New Orleans
@@ -2286,7 +2286,7 @@ date,mortgage_rate,unemployment,metro
 2026-08-01,6.6675,4.2,New Orleans
 2026-09-01,6.862500000000001,4.0,New Orleans
 2026-10-01,7.328,,New Orleans
-2026-11-01,7.18,,New Orleans
+2026-11-01,7.145,,New Orleans
 2015-01-01,3.67,4.0,Oklahoma City
 2015-02-01,3.71,4.1,Oklahoma City
 2015-03-01,3.77,4.2,Oklahoma City
@@ -2429,7 +2429,7 @@ date,mortgage_rate,unemployment,metro
 2026-08-01,6.6675,4.3,Oklahoma City
 2026-09-01,6.862500000000001,4.2,Oklahoma City
 2026-10-01,7.328,,Oklahoma City
-2026-11-01,7.18,,Oklahoma City
+2026-11-01,7.145,,Oklahoma City
 2015-01-01,3.67,4.7,Richmond
 2015-02-01,3.71,4.7,Richmond
 2015-03-01,3.77,4.6,Richmond
@@ -2572,7 +2572,7 @@ date,mortgage_rate,unemployment,metro
 2026-08-01,6.6675,3.6,Richmond
 2026-09-01,6.862500000000001,3.6,Richmond
 2026-10-01,7.328,,Richmond
-2026-11-01,7.18,,Richmond
+2026-11-01,7.145,,Richmond
 2015-01-01,3.67,4.1,Denver
 2015-02-01,3.71,4.1,Denver
 2015-03-01,3.77,4.0,Denver
@@ -2715,7 +2715,7 @@ date,mortgage_rate,unemployment,metro
 2026-08-01,6.6675,4.0,Denver
 2026-09-01,6.862500000000001,4.1,Denver
 2026-10-01,7.328,,Denver
-2026-11-01,7.18,,Denver
+2026-11-01,7.145,,Denver
 2015-01-01,3.67,7.4,Las Vegas
 2015-02-01,3.71,7.3,Las Vegas
 2015-03-01,3.77,7.3,Las Vegas
@@ -2858,7 +2858,7 @@ date,mortgage_rate,unemployment,metro
 2026-08-01,6.6675,4.8,Las Vegas
 2026-09-01,6.862500000000001,4.7,Las Vegas
 2026-10-01,7.328,,Las Vegas
-2026-11-01,7.18,,Las Vegas
+2026-11-01,7.145,,Las Vegas
 2015-01-01,3.67,3.5,Salt Lake City
 2015-02-01,3.71,3.5,Salt Lake City
 2015-03-01,3.77,3.5,Salt Lake City
@@ -3001,7 +3001,7 @@ date,mortgage_rate,unemployment,metro
 2026-08-01,6.6675,3.5,Salt Lake City
 2026-09-01,6.862500000000001,3.5,Salt Lake City
 2026-10-01,7.328,,Salt Lake City
-2026-11-01,7.18,,Salt Lake City
+2026-11-01,7.145,,Salt Lake City
 2015-01-01,3.67,6.8,Los Angeles
 2015-02-01,3.71,6.7,Los Angeles
 2015-03-01,3.77,6.6,Los Angeles
@@ -3144,7 +3144,7 @@ date,mortgage_rate,unemployment,metro
 2026-08-01,6.6675,5.1,Los Angeles
 2026-09-01,6.862500000000001,5.1,Los Angeles
 2026-10-01,7.328,,Los Angeles
-2026-11-01,7.18,,Los Angeles
+2026-11-01,7.145,,Los Angeles
 2015-01-01,3.67,6.8,San Diego
 2015-02-01,3.71,6.7,San Diego
 2015-03-01,3.77,6.6,San Diego
@@ -3287,7 +3287,7 @@ date,mortgage_rate,unemployment,metro
 2026-08-01,6.6675,5.1,San Diego
 2026-09-01,6.862500000000001,5.1,San Diego
 2026-10-01,7.328,,San Diego
-2026-11-01,7.18,,San Diego
+2026-11-01,7.145,,San Diego
 2015-01-01,3.67,6.8,San Francisco
 2015-02-01,3.71,6.7,San Francisco
 2015-03-01,3.77,6.6,San Francisco
@@ -3430,7 +3430,7 @@ date,mortgage_rate,unemployment,metro
 2026-08-01,6.6675,5.1,San Francisco
 2026-09-01,6.862500000000001,5.1,San Francisco
 2026-10-01,7.328,,San Francisco
-2026-11-01,7.18,,San Francisco
+2026-11-01,7.145,,San Francisco
 2015-01-01,3.67,6.8,Sacramento
 2015-02-01,3.71,6.7,Sacramento
 2015-03-01,3.77,6.6,Sacramento
@@ -3573,7 +3573,7 @@ date,mortgage_rate,unemployment,metro
 2026-08-01,6.6675,5.1,Sacramento
 2026-09-01,6.862500000000001,5.1,Sacramento
 2026-10-01,7.328,,Sacramento
-2026-11-01,7.18,,Sacramento
+2026-11-01,7.145,,Sacramento
 2015-01-01,3.67,5.6,Seattle
 2015-02-01,3.71,5.5,Seattle
 2015-03-01,3.77,5.5,Seattle
@@ -3716,7 +3716,7 @@ date,mortgage_rate,unemployment,metro
 2026-08-01,6.6675,4.9,Seattle
 2026-09-01,6.862500000000001,4.8,Seattle
 2026-10-01,7.328,,Seattle
-2026-11-01,7.18,,Seattle
+2026-11-01,7.145,,Seattle
 2015-01-01,3.67,5.8,Portland
 2015-02-01,3.71,5.8,Portland
 2015-03-01,3.77,5.7,Portland
@@ -3859,7 +3859,7 @@ date,mortgage_rate,unemployment,metro
 2026-08-01,6.6675,5.1,Portland
 2026-09-01,6.862500000000001,5.0,Portland
 2026-10-01,7.328,,Portland
-2026-11-01,7.18,,Portland
+2026-11-01,7.145,,Portland
 2015-01-01,3.67,5.7,New York
 2015-02-01,3.71,5.6,New York
 2015-03-01,3.77,5.6,New York
@@ -4002,7 +4002,7 @@ date,mortgage_rate,unemployment,metro
 2026-08-01,6.6675,4.3,New York
 2026-09-01,6.862500000000001,4.3,New York
 2026-10-01,7.328,,New York
-2026-11-01,7.18,,New York
+2026-11-01,7.145,,New York
 2015-01-01,3.67,5.2,Boston
 2015-02-01,3.71,5.1,Boston
 2015-03-01,3.77,5.0,Boston
@@ -4145,7 +4145,7 @@ date,mortgage_rate,unemployment,metro
 2026-08-01,6.6675,4.3,Boston
 2026-09-01,6.862500000000001,4.3,Boston
 2026-10-01,7.328,,Boston
-2026-11-01,7.18,,Boston
+2026-11-01,7.145,,Boston
 2015-01-01,3.67,5.5,Philadelphia
 2015-02-01,3.71,5.6,Philadelphia
 2015-03-01,3.77,5.6,Philadelphia
@@ -4288,7 +4288,7 @@ date,mortgage_rate,unemployment,metro
 2026-08-01,6.6675,3.7,Philadelphia
 2026-09-01,6.862500000000001,3.6,Philadelphia
 2026-10-01,7.328,,Philadelphia
-2026-11-01,7.18,,Philadelphia
+2026-11-01,7.145,,Philadelphia
 2015-01-01,3.67,7.3,Washington DC
 2015-02-01,3.71,7.3,Washington DC
 2015-03-01,3.77,7.2,Washington DC
@@ -4431,7 +4431,7 @@ date,mortgage_rate,unemployment,metro
 2026-08-01,6.6675,5.7,Washington DC
 2026-09-01,6.862500000000001,5.6,Washington DC
 2026-10-01,7.328,,Washington DC
-2026-11-01,7.18,,Washington DC
+2026-11-01,7.145,,Washington DC
 2015-01-01,3.67,5.4,Baltimore
 2015-02-01,3.71,5.3,Baltimore
 2015-03-01,3.77,5.3,Baltimore
@@ -4574,7 +4574,7 @@ date,mortgage_rate,unemployment,metro
 2026-08-01,6.6675,4.1,Baltimore
 2026-09-01,6.862500000000001,3.9,Baltimore
 2026-10-01,7.328,,Baltimore
-2026-11-01,7.18,,Baltimore
+2026-11-01,7.145,,Baltimore
 2015-01-01,3.67,5.5,Pittsburgh
 2015-02-01,3.71,5.6,Pittsburgh
 2015-03-01,3.77,5.6,Pittsburgh
@@ -4717,7 +4717,7 @@ date,mortgage_rate,unemployment,metro
 2026-08-01,6.6675,3.7,Pittsburgh
 2026-09-01,6.862500000000001,3.6,Pittsburgh
 2026-10-01,7.328,,Pittsburgh
-2026-11-01,7.18,,Pittsburgh
+2026-11-01,7.145,,Pittsburgh
 2015-01-01,3.67,5.7,Buffalo
 2015-02-01,3.71,5.6,Buffalo
 2015-03-01,3.77,5.6,Buffalo
@@ -4860,7 +4860,7 @@ date,mortgage_rate,unemployment,metro
 2026-08-01,6.6675,4.3,Buffalo
 2026-09-01,6.862500000000001,4.3,Buffalo
 2026-10-01,7.328,,Buffalo
-2026-11-01,7.18,,Buffalo
+2026-11-01,7.145,,Buffalo
 2015-01-01,3.67,6.1,Chicago
 2015-02-01,3.71,6.1,Chicago
 2015-03-01,3.77,6.0,Chicago
@@ -5003,7 +5003,7 @@ date,mortgage_rate,unemployment,metro
 2026-08-01,6.6675,4.7,Chicago
 2026-09-01,6.862500000000001,4.6,Chicago
 2026-10-01,7.328,,Chicago
-2026-11-01,7.18,,Chicago
+2026-11-01,7.145,,Chicago
 2015-01-01,3.67,6.0,Detroit
 2015-02-01,3.71,5.9,Detroit
 2015-03-01,3.77,5.8,Detroit
@@ -5146,7 +5146,7 @@ date,mortgage_rate,unemployment,metro
 2026-08-01,6.6675,5.0,Detroit
 2026-09-01,6.862500000000001,5.0,Detroit
 2026-10-01,7.328,,Detroit
-2026-11-01,7.18,,Detroit
+2026-11-01,7.145,,Detroit
 2015-01-01,3.67,3.8,Minneapolis
 2015-02-01,3.71,3.8,Minneapolis
 2015-03-01,3.77,3.8,Minneapolis
@@ -5289,7 +5289,7 @@ date,mortgage_rate,unemployment,metro
 2026-08-01,6.6675,4.4,Minneapolis
 2026-09-01,6.862500000000001,4.5,Minneapolis
 2026-10-01,7.328,,Minneapolis
-2026-11-01,7.18,,Minneapolis
+2026-11-01,7.145,,Minneapolis
 2015-01-01,3.67,5.6,St. Louis
 2015-02-01,3.71,5.6,St. Louis
 2015-03-01,3.77,5.5,St. Louis
@@ -5432,7 +5432,7 @@ date,mortgage_rate,unemployment,metro
 2026-08-01,6.6675,3.5,St. Louis
 2026-09-01,6.862500000000001,3.6,St. Louis
 2026-10-01,7.328,,St. Louis
-2026-11-01,7.18,,St. Louis
+2026-11-01,7.145,,St. Louis
 2015-01-01,3.67,5.6,Kansas City
 2015-02-01,3.71,5.6,Kansas City
 2015-03-01,3.77,5.5,Kansas City
@@ -5575,7 +5575,7 @@ date,mortgage_rate,unemployment,metro
 2026-08-01,6.6675,3.5,Kansas City
 2026-09-01,6.862500000000001,3.6,Kansas City
 2026-10-01,7.328,,Kansas City
-2026-11-01,7.18,,Kansas City
+2026-11-01,7.145,,Kansas City
 2015-01-01,3.67,4.7,Milwaukee
 2015-02-01,3.71,4.7,Milwaukee
 2015-03-01,3.77,4.6,Milwaukee
@@ -5718,7 +5718,7 @@ date,mortgage_rate,unemployment,metro
 2026-08-01,6.6675,3.2,Milwaukee
 2026-09-01,6.862500000000001,3.2,Milwaukee
 2026-10-01,7.328,,Milwaukee
-2026-11-01,7.18,,Milwaukee
+2026-11-01,7.145,,Milwaukee
 2015-01-01,3.67,5.2,Columbus
 2015-02-01,3.71,5.2,Columbus
 2015-03-01,3.77,5.1,Columbus
@@ -5861,7 +5861,7 @@ date,mortgage_rate,unemployment,metro
 2026-08-01,6.6675,3.3,Columbus
 2026-09-01,6.862500000000001,3.4,Columbus
 2026-10-01,7.328,,Columbus
-2026-11-01,7.18,,Columbus
+2026-11-01,7.145,,Columbus
 2015-01-01,3.67,5.2,Cincinnati
 2015-02-01,3.71,5.2,Cincinnati
 2015-03-01,3.77,5.1,Cincinnati
@@ -6004,7 +6004,7 @@ date,mortgage_rate,unemployment,metro
 2026-08-01,6.6675,3.3,Cincinnati
 2026-09-01,6.862500000000001,3.4,Cincinnati
 2026-10-01,7.328,,Cincinnati
-2026-11-01,7.18,,Cincinnati
+2026-11-01,7.145,,Cincinnati
 2015-01-01,3.67,5.2,Cleveland
 2015-02-01,3.71,5.2,Cleveland
 2015-03-01,3.77,5.1,Cleveland
@@ -6147,7 +6147,7 @@ date,mortgage_rate,unemployment,metro
 2026-08-01,6.6675,3.3,Cleveland
 2026-09-01,6.862500000000001,3.4,Cleveland
 2026-10-01,7.328,,Cleveland
-2026-11-01,7.18,,Cleveland
+2026-11-01,7.145,,Cleveland
 2015-01-01,3.67,5.4,Indianapolis
 2015-02-01,3.71,5.2,Indianapolis
 2015-03-01,3.77,5.1,Indianapolis
@@ -6290,7 +6290,7 @@ date,mortgage_rate,unemployment,metro
 2026-08-01,6.6675,3.3,Indianapolis
 2026-09-01,6.862500000000001,3.4,Indianapolis
 2026-10-01,7.328,,Indianapolis
-2026-11-01,7.18,,Indianapolis
+2026-11-01,7.145,,Indianapolis
 2015-01-01,3.67,5.4,Louisville
 2015-02-01,3.71,5.3,Louisville
 2015-03-01,3.77,5.3,Louisville
@@ -6433,4 +6433,4 @@ date,mortgage_rate,unemployment,metro
 2026-08-01,6.6675,4.7,Louisville
 2026-09-01,6.862500000000001,4.7,Louisville
 2026-10-01,7.328,,Louisville
-2026-11-01,7.18,,Louisville
+2026-11-01,7.145,,Louisville

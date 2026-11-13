@@ -13,10 +13,10 @@
  "Raleigh": "\"raleigh\" AND (\"housing market\" OR \"home prices\" OR \"home sales\" OR \"real estate market\" OR \"housing prices\")",
  "Nashville": "\"nashville\" AND (\"housing market\" OR \"home prices\" OR \"home sales\" OR \"real estate market\" OR \"housing prices\")",
  "Memphis": "\"memphis\" AND (\"housing market\" OR \"home prices\" OR \"home sales\" OR \"real estate market\" OR \"housing prices\")",
- "Birmingham": "\"birmingham\" AND alabama AND (\"housing market\" OR \"home prices\" OR \"home sales\" OR \"real estate market\" OR \"housing prices\")",
+ "Birmingham": "\"birmingham\" AND NOT (england OR britain OR british OR \"united kingdom\" OR uk OR \"west midlands\" OR michigan) AND (\"housing market\" OR \"home prices\" OR \"home sales\" OR \"real estate market\" OR \"housing prices\")",
  "New Orleans": "\"new orleans\" AND (\"housing market\" OR \"home prices\" OR \"home sales\" OR \"real estate market\" OR \"housing prices\")",
  "Oklahoma City": "\"oklahoma city\" AND (\"housing market\" OR \"home prices\" OR \"home sales\" OR \"real estate market\" OR \"housing prices\")",
- "Richmond": "\"richmond\" AND virginia AND (\"housing market\" OR \"home prices\" OR \"home sales\" OR \"real estate market\" OR \"housing prices\")",
+ "Richmond": "\"richmond\" AND NOT (\"richmond fed\" OR \"federal reserve bank of richmond\" OR barkin OR california OR \"bay area\" OR \"british columbia\" OR vancouver OR \"richmond hill\" OR \"staten island\") AND (\"housing market\" OR \"home prices\" OR \"home sales\" OR \"real estate market\" OR \"housing prices\")",
  "Denver": "\"denver\" AND (\"housing market\" OR \"home prices\" OR \"home sales\" OR \"real estate market\" OR \"housing prices\")",
  "Las Vegas": "\"las vegas\" AND (\"housing market\" OR \"home prices\" OR \"home sales\" OR \"real estate market\" OR \"housing prices\")",
  "Salt Lake City": "\"salt lake city\" AND (\"housing market\" OR \"home prices\" OR \"home sales\" OR \"real estate market\" OR \"housing prices\")",
@@ -42,5 +42,6 @@
  "Cincinnati": "\"cincinnati\" AND (\"housing market\" OR \"home prices\" OR \"home sales\" OR \"real estate market\" OR \"housing prices\")",
  "Cleveland": "\"cleveland\" AND (\"housing market\" OR \"home prices\" OR \"home sales\" OR \"real estate market\" OR \"housing prices\")",
  "Indianapolis": "\"indianapolis\" AND (\"housing market\" OR \"home prices\" OR \"home sales\" OR \"real estate market\" OR \"housing prices\")",
- "Louisville": "\"louisville\" AND (\"housing market\" OR \"home prices\" OR \"home sales\" OR \"real estate market\" OR \"housing prices\")"
+ "Louisville": "\"louisville\" AND (\"housing market\" OR \"home prices\" OR \"home sales\" OR \"real estate market\" OR \"housing prices\")",
+ "New York": "(\"new york city\" OR nyc OR manhattan OR brooklyn OR queens OR bronx OR \"staten island\" OR \"long island\" OR westchester OR \"new york area\" OR \"new york metro\" OR \"new york region\") AND (\"housing market\" OR \"home prices\" OR \"home sales\" OR \"real estate market\" OR \"housing prices\")"
 }

@@ -1,7 +1,7 @@
 metro,query,articles_per_month,status,usable
 Phoenix,"""phoenix"" (""housing market"" OR ""home prices"" OR ""home sales"" OR ""real estate market"" OR ""housing prices"") sourcecountry:US sourcelang:english",,download failed,False
 Dallas,"""dallas"" (""housing market"" OR ""home prices"" OR ""home sales"" OR ""real estate market"" OR ""housing prices"") sourcecountry:US sourcelang:english",331.6,ok,True
-Houston,"""houston"" (""housing market"" OR ""home prices"" OR ""home sales"" OR ""real estate market"" OR ""housing prices"") sourcecountry:US sourcelang:english",,download failed,False
+Houston,"""houston"" (""housing market"" OR ""home prices"" OR ""home sales"" OR ""real estate market"" OR ""housing prices"") sourcecountry:US sourcelang:english",260.5,ok,True
 Austin,"""austin"" (""housing market"" OR ""home prices"" OR ""home sales"" OR ""real estate market"" OR ""housing prices"") sourcecountry:US sourcelang:english",,not downloaded yet,False
 San Antonio,"""san antonio"" (""housing market"" OR ""home prices"" OR ""home sales"" OR ""real estate market"" OR ""housing prices"") sourcecountry:US sourcelang:english",,not downloaded yet,False
 Atlanta,"""atlanta"" (""housing market"" OR ""home prices"" OR ""home sales"" OR ""real estate market"" OR ""housing prices"") sourcecountry:US sourcelang:english",,not downloaded yet,False

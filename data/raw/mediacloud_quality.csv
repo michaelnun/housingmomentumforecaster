@@ -13,10 +13,10 @@ Charlotte,ok,29.3,2017-01,True
 Raleigh,ok,14.2,2017-01,True
 Nashville,ok,20.9,2017-01,True
 Memphis,ok,10.2,2017-01,True
-Birmingham,too little news,3.8,2017-01,False
+Birmingham,ok,6.9,2017-01,True
 New Orleans,ok,13.9,2017-01,True
 Oklahoma City,ok,7.3,2017-01,True
-Richmond,too little news,4.9,2017-01,False
+Richmond,ok,8.7,2017-01,True
 Denver,ok,55.7,2017-01,True
 Las Vegas,ok,44.2,2017-01,True
 Salt Lake City,ok,10.5,2017-01,True
@@ -26,7 +26,7 @@ San Francisco,ok,142.7,2017-01,True
 Sacramento,ok,40.3,2017-01,True
 Seattle,ok,81.5,2017-01,True
 Portland,ok,12.1,2017-01,True
-New York,download failed,,,False
+New York,ok,146.8,2017-01,True
 Boston,ok,67.8,2017-01,True
 Philadelphia,ok,56.4,2017-01,True
 Washington DC,ok,69.8,2017-01,True
