@@ -13,13 +13,24 @@ A monthly dashboard that ranks 45 big U.S. housing markets by where home values 
 - **Stages:** Rising, Turning up, Turning down, Falling (where prices have been vs. where they're expected to go).
 - **How often it's right** next to every score, a **"market right now"** panel (home value, rent, days to sell, price cuts, buyer's or seller's market), plain-language reasons, advice for each audience, CSV downloads and shareable links for each metro.
 - **Out-of-town interest:** how much people across the U.S. search "[city] homes for sale", compared with other cities and a year ago. Shown as context only, not used in the scores (see findings).
-- **In the news:** how positive or negative each city's housing news is (GDELT tone) over time, and its latest headlines, each scored with our own sentiment analysis (VADER, with housing words added).
+- **In the news:** how much the news writes about each city's housing market and how positive or negative its headlines are (Media Cloud news, 2017 on, each headline scored with our own sentiment analysis: VADER with housing words added), plus the latest headlines. Shown as context only, not used in the scores (see findings).
 - **Usage analytics:** the dashboard records anonymous page views (which pages, metros and industries people look at, and downloads) with Google Analytics, so we can see how the tool is used.
 - **Updates itself** every month (GitHub Actions), and saves each month's published scores so the live track record can't be revised later.
 
 ![Metro detail](docs/metro.png)
 
 ## Key findings
+
+### Web data at a glance
+
+| Web data | Kind | Result |
+| --- | --- | --- |
+| Realtor.com listing page views | Web usage (what people look at) | **Helps.** In the 3-month score and the 12-month outlook |
+| Google searches: local buyer and seller, Home Depot / Lowe's, nationwide "[city] homes for sale" | Web usage (what people search for) | Didn't help. Out-of-town interest is shown as context |
+| News coverage and headline sentiment (Media Cloud, VADER) | Web content (what the news says) | Didn't help. Shown as context |
+| Visits to this dashboard (Google Analytics 4) | Web usage (how the tool is used) | Tracked, to see which pages and metros people use |
+
+### Forecast tests
 
 Tested month by month from May 2020 to 2026. Every forecast used only data available at the time.
 
@@ -31,14 +42,15 @@ Tested month by month from May 2020 to 2026. Every forecast used only data avail
 | Turning points | Score crossed 50 before 84% of 174 lasting price-trend turns, typically 2 months early |
 | **Does Google search help?** | **No.** Not at 3 or 6 months. Nationwide search looked helpful 12 months out on the first 22 metros, but on 23 metros added later it made the outlook worse (−0.06), and across all 45 it added nothing (p = 0.56). It was removed, as the [pre-registered rule](docs/preregistration.md) required |
 | Where search did help | Nationwide "[city] homes for sale" searches helped a year out in Sun Belt and Mountain West metros (+0.037, p = 0.003), where people from other states were buying in 2020–23, and hurt in coastal, Midwest and Northeast metros (−0.082). The first 22 metros were mostly Sun Belt, which is why it looked useful at first. The gain faded after 2023, and listing views and rent capture it |
-| Search as an early read | **No.** Search arrives weeks before Zillow's numbers, so we tested whether one extra month of search improves the 3-month score, with the [rule written down first](docs/preregistration_nowcast.md). It didn't (−0.003, p = 0.93); waiting for Zillow's next month would add +0.083 |
+| Search as an early read | **No.** Search arrives weeks before Zillow's numbers, so we tested whether one extra month of search improves the 3-month score, with the [rule written down first](docs/preregistration_nowcast.md). It didn't (−0.004, p = 0.94); waiting for Zillow's next month would add +0.083 |
 | **Does website activity help?** | **Yes.** Realtor.com listing page views improve the forecast on Zillow's raw values, including on the 23 untouched metros (+0.08, p < 0.001). **Solid** |
+| **Does the news help?** | **No.** 227,300 news stories about the 45 metros' housing markets (Media Cloud, 2017 on), with 119,481 headlines scored for sentiment. With the [rule written down first](docs/preregistration_news.md), adding news coverage and headline tone didn't improve the 3-month score (−0.001, p = 0.77) and made the 12-month outlook slightly worse (−0.013). Tone alone and coverage alone didn't help either |
 | 12-month outlook | Ranking accuracy 0.65 vs. 0.42 for "trend continues" across all metros (p = 0.003), but not clearly better on the 23 new metros, so it's labeled experimental |
 | Didn't help | Local buyer and seller searches, Home Depot / Lowe's searches, metro jobs, Census store sales |
 
-**Takeaway:** what people *search* for didn't add anything beyond housing data, not even as an early signal, but what they actually *look at* (listing views) did. Nationwide search tracked one big event, the 2020–23 move to the Sun Belt, and didn't carry over to other regions or later years.
+**Takeaway:** what people *search* for and what the *news* says didn't add anything beyond housing data, but what people actually *look at* (listing views) did. Nationwide search tracked one big event, the 2020–23 move to the Sun Belt, and didn't carry over to other regions or later years. A likely reason: news mostly reports price changes after they show up in the data.
 
-**News coverage (web content), being tested:** does how much the news writes about a city's housing market, and how positive it is, improve the forecasts? The pass/fail rule was [written down before any news data was downloaded](docs/preregistration_news.md); the result appears on the dashboard's Track record page after the first run with news data.
+**How the news test was run:** the pass/fail rule was [written down before any news data was downloaded](docs/preregistration_news.md). The first source, GDELT, kept blocking downloads (16 of 45 metros), so the same test was run on Media Cloud (addendum 2). After a first Media Cloud run covered 42 metros, the searches for New York, Birmingham and Richmond were reworded to cover all 45 (addendum 3). That first result also failed. Only the complete run counts.
 
 **How we kept it honest:** all modeling choices were made on the original 22 metros. The rules for judging them on 23 new metros were [written down before that data was downloaded](docs/preregistration.md). Every finding is re-checked on raw (unsmoothed) values, on early vs. recent years and with each metro dropped (`step9_stability.py`; dashboard → Track record).
 
@@ -46,7 +58,7 @@ Tested month by month from May 2020 to 2026. Every forecast used only data avail
 
 ![Which signals help](docs/signal_tests.png)
 
-**Limits:** Zillow smooths its home-value series, which flatters short-term accuracy; on raw values it's lower (0.63 vs. 0.54 for the trend at 3 months) but still significant. The scores compare metros with each other and don't forecast national price levels. Google Trends data is a sample, and nationwide searches for nearly every city jumped in spring 2026 and fell back by fall while local searches didn't (most likely a change in Google's data). Realtor.com changed how it counts page views in late 2021.
+**Limits:** Zillow smooths its home-value series, which flatters short-term accuracy; on raw values it's lower (0.63 vs. 0.54 for the trend at 3 months) but still significant. The scores compare metros with each other and don't forecast national price levels. Google Trends data is a sample, and nationwide searches for nearly every city jumped in spring 2026 and fell back by fall while local searches didn't (most likely a change in Google's data). Realtor.com changed how it counts page views in late 2021. A news story counts for a city if it mentions the city and a housing phrase anywhere, so national round-ups ("America's 25 least affordable markets") count too; about half the headlines are clearly about housing or the city and are scored for tone. VADER scores words from a dictionary, not each article's meaning.
 
 ## Data (all free and public)
 
@@ -55,7 +67,8 @@ Tested month by month from May 2020 to 2026. Every forecast used only data avail
 - [FRED](https://fred.stlouisfed.org/): 30-year mortgage rate, state unemployment, Census home-improvement store sales by state
 - [BLS](https://www.bls.gov/): metro payroll jobs and unemployment
 - [Google Trends](https://trends.google.com/): local buyer, seller and Home Depot / Lowe's searches; nationwide "[city] homes for sale" and "moving to [city]" (averaged across monthly downloads)
-- [GDELT](https://www.gdeltproject.org/) DOC 2.0 API: U.S. news articles about each city's housing market (monthly volume and tone, 2017 on) and the latest headlines
+- [Media Cloud](https://www.mediacloud.org/) (free research news archive, U.S. National collection, free API key): stories about each city's housing market, 2017 on, daily counts and headlines
+- [GDELT](https://www.gdeltproject.org/) DOC 2.0 API: the first news source tried; it blocked most downloads (16 of 45 metros), so its partial result is shown but doesn't count
 
 The downloaded data is stored in `data/`.
 
@@ -71,12 +84,12 @@ The downloaded data is stored in `data/`.
 8. `step8_robustness.py`: the tests again on Zillow's unsmoothed values
 9. `step9_stability.py`: untouched metros, early vs. recent years, drop-one-metro, verdict per finding
 10. `step10_search.py`: search as an early read (pre-registered test), where search helped, and the out-of-town interest table for the dashboard
-11. `step11_news.py`: does news coverage help? (pre-registered test), each metro's news tone and headlines for the dashboard, and our own headline sentiment (VADER as is vs. with housing words), checked against GDELT's tone
+11. `step11_news.py`: does news coverage help? (pre-registered test, for Media Cloud and GDELT), each metro's news tone and headlines for the dashboard; headline sentiment comes from `sentiment.py` (VADER with housing words added, and a filter that keeps headlines about housing or the city)
 12. `dashboard.py`: Streamlit dashboard, with anonymous usage tracking (Google Analytics 4, server-side)
 
 ## Monthly updates (automatic)
 
-`.github/workflows/monthly_update.yml` runs the whole pipeline on the 22nd of every month and saves the new data and results here; the dashboard picks them up within minutes. Anyone with write access can also run it: **Actions → Monthly data update → Run workflow**. If Google Trends blocks GitHub's servers, the run uses the search data already saved and still finishes.
+`.github/workflows/monthly_update.yml` runs the whole pipeline on the 22nd of every month and saves the new data and results here; the dashboard picks them up within minutes. Anyone with write access can also run it: **Actions → Monthly data update → Run workflow**. A run takes about 3–4 hours, mostly the news download (Media Cloud allows about 10 requests a minute). If Google Trends or GDELT blocks GitHub's servers, the run uses the data already saved and still finishes, and if the downloads run long the run still tests and saves what came in. The Media Cloud key is stored as the GitHub secret `MEDIACLOUD_API_KEY`.
 
 ## Usage analytics (Google Analytics)
 
@@ -94,7 +107,7 @@ api_secret = "your-measurement-protocol-secret"
 
 ```bash
 pip install -r requirements.txt
-python step1_collect.py          # about 1 hour (Google Trends is slow)
+python step1_collect.py          # 1-4 hours (Google Trends and news are slow); news needs MEDIACLOUD_API_KEY set
 python step2_build.py && python step3_model.py && python step4_index.py
 python step5_activity.py && python step6_findings.py && python step7_signal_tests.py
 python step8_robustness.py && python step9_stability.py && python step10_search.py && python step11_news.py
