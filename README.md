@@ -4,6 +4,8 @@ A monthly dashboard that ranks 45 big U.S. housing markets by where home values 
 
 **Live dashboard:** https://housing-momentum-forecaster.streamlit.app/
 
+**Every graph, with its code:** [open the notebook in Google Colab](https://colab.research.google.com/github/michaelnun/housingmomentumforecaster/blob/main/notebooks/housing_momentum_graphs.ipynb) (Runtime → Run all, about 2 minutes, no setup)
+
 ![Dashboard overview](docs/overview.png)
 
 ## What it does
@@ -85,7 +87,8 @@ The downloaded data is stored in `data/`.
 9. `step9_stability.py`: untouched metros, early vs. recent years, drop-one-metro, verdict per finding
 10. `step10_search.py`: search as an early read (pre-registered test), where search helped, and the out-of-town interest table for the dashboard
 11. `step11_news.py`: does news coverage help? (pre-registered test, for Media Cloud and GDELT), each metro's news tone and headlines for the dashboard; headline sentiment comes from `sentiment.py` (VADER with housing words added, and a filter that keeps headlines about housing or the city)
-12. `dashboard.py`: Streamlit dashboard, with anonymous usage tracking (Google Analytics 4, server-side)
+12. `step12_classification.py`: model evaluation as a yes/no question (will a metro beat the typical metro over the next 3 months?): our ridge model vs. a walk-forward logistic regression on the same inputs vs. "trend continues" (accuracy, precision, recall, AUC)
+13. `dashboard.py`: Streamlit dashboard, with anonymous usage tracking (Google Analytics 4, server-side)
 
 ## Monthly updates (automatic)
 

@@ -1,0 +1,116 @@
+{
+ "months": [
+  "2020-05-01",
+  "2026-06-01"
+ ],
+ "n": 3314,
+ "results": {
+  "All 45 metros": [
+   {
+    "model": "Trend continues",
+    "accuracy": 0.79963789981895,
+    "precision": 0.8035608308605341,
+    "recall": 0.8026081802015412,
+    "auc": 0.8670836568298231,
+    "rank_corr": 0.7274593832733366,
+    "top5_hit": 0.9270270270270268,
+    "tp": 1354,
+    "fp": 331,
+    "fn": 333,
+    "tn": 1296,
+    "acc_vs_ridge_p": 0.9999999999685649
+   },
+   {
+    "model": "Ridge score model (ours)",
+    "accuracy": 0.8789981894990947,
+    "precision": 0.8827380952380952,
+    "recall": 0.8790752815649081,
+    "auc": 0.9463663161913894,
+    "rank_corr": 0.8775061714899934,
+    "top5_hit": 0.9945945945945945,
+    "tp": 1483,
+    "fp": 197,
+    "fn": 204,
+    "tn": 1430,
+    "acc_vs_ridge_p": null
+   },
+   {
+    "model": "Logistic regression",
+    "accuracy": 0.8672299336149668,
+    "precision": 0.8639813193228254,
+    "recall": 0.8772969768820391,
+    "auc": 0.9378908599657018,
+    "rank_corr": 0.8683174626046213,
+    "top5_hit": 0.9891891891891892,
+    "tp": 1480,
+    "fp": 233,
+    "fn": 207,
+    "tn": 1394,
+    "acc_vs_ridge_p": 0.9968471357289046
+   }
+  ],
+  "23 untouched metros": [
+   {
+    "model": "Trend continues",
+    "accuracy": 0.7669039145907474,
+    "precision": 0.7936333699231614,
+    "recall": 0.7790948275862069,
+    "auc": 0.8416943408243108,
+    "rank_corr": 0.5970401513879775,
+    "top5_hit": 0.7810810810810811,
+    "tp": 723,
+    "fp": 188,
+    "fn": 205,
+    "tn": 570,
+    "acc_vs_ridge_p": 0.9999999997433056
+   },
+   {
+    "model": "Ridge score model (ours)",
+    "accuracy": 0.8623962040332147,
+    "precision": 0.8725910064239829,
+    "recall": 0.8782327586206896,
+    "auc": 0.9337966859248475,
+    "rank_corr": 0.7926179284874937,
+    "top5_hit": 0.8729729729729729,
+    "tp": 815,
+    "fp": 119,
+    "fn": 113,
+    "tn": 639,
+    "acc_vs_ridge_p": null
+   },
+   {
+    "model": "Logistic regression",
+    "accuracy": 0.8457888493475683,
+    "precision": 0.8493723849372385,
+    "recall": 0.875,
+    "auc": 0.9225005117823675,
+    "rank_corr": 0.7880701848093152,
+    "top5_hit": 0.8594594594594593,
+    "tp": 812,
+    "fp": 144,
+    "fn": 116,
+    "tn": 614,
+    "acc_vs_ridge_p": 0.9967934290490783
+   }
+  ]
+ },
+ "features": [
+  "rel_price_chg_1m",
+  "rel_price_chg_3m",
+  "rel_price_chg_12m",
+  "rel_median_dom_yoy",
+  "rel_avg_sale_to_list_yoy",
+  "rel_price_drops_yoy",
+  "rel_sold_above_list_yoy",
+  "rel_inventory_yoy",
+  "rel_median_dom",
+  "rel_avg_sale_to_list",
+  "rel_unemployment",
+  "rel_unemployment_chg_12m",
+  "mortgage_rate",
+  "mortgage_chg_3m",
+  "rel_pageviews_level",
+  "rel_pageviews_chg3",
+  "rel_pageviews_yoy"
+ ]
+}
